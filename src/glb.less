@@ -1,7 +1,7 @@
 @import 'base.less';
 body {
-    // font: 14px/24px @ll-font-family;
-    font: .875rem/1.5rem @ll-font-family;
+    font: 14px/24px @ll-font-family;
+    // font: .875rem/1.5rem @ll-font-family;
     color: @color-normal;
 }
 
@@ -54,7 +54,7 @@ table {
 		border: none;
 		border-collapse: collapse;
 		border-spacing: 0;
-		font-size: .875rem;
+		font-size: 14px;
 	}
 	
 	&.table-fixed {
@@ -115,7 +115,7 @@ td {
 	position: fixed;
 	//border-bottom: 1px solid rgba(104, 110, 113, 89);
 	// border-radius: 0 0 4px 4px;
-	min-width: 180px;
+	min-width: 150px;
 	border-radius: 4px;
 	background: #fff;
 	box-sizing: content-box;
@@ -200,13 +200,13 @@ td {
 					padding-right: 25px;
 				}
 
-				tr {
-					> td {
-						&:first-child {
-							padding-left: 2 * 25px;
-						}
-					}
-				}
+				// tr {
+				// 	> td {
+				// 		&:first-child {
+				// 			padding-left: 2 * 25px;
+				// 		}
+				// 	}
+				// }
 			}
 		}
 	}
@@ -223,6 +223,12 @@ td {
 		&:hover:not(.cannt-click) {
 			color: #fff;
 			background: @color-active;
+
+			> .check-td {
+				i {
+					color: #fff !important;
+				}
+			}
 		}
 
 		&.more-right-triangle {
@@ -522,8 +528,8 @@ td {
 		}
 
 		.input-box {
-			height: 1.5rem;
-			line-height: 1.5rem;
+			height: 24px;
+			line-height: 24px;
 			border-radius: 2px;
 			border: 1px solid @color-input-border;
 
@@ -538,4 +544,28 @@ td {
 		}
 
     }
+}
+
+// **************
+// pipeline setting
+// **************
+.ppl-body {
+	tr:hover {
+		.ppl-color > i {
+			border-color: #fff;
+		}
+	}
+}
+
+.ppl-color {
+	width: 15px;
+
+	& > i {
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		box-sizing: border-box;
+		border: 1px solid @color-less;
+		background: orange;
+	}
 }

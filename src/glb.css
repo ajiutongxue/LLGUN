@@ -1,5 +1,5 @@
 body {
-  font: 0.875rem/1.5rem "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+  font: 14px/24px "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
   color: #81878B;
 }
 input,
@@ -44,7 +44,7 @@ table td {
   border: none;
   border-collapse: collapse;
   border-spacing: 0;
-  font-size: .875rem;
+  font-size: 14px;
 }
 table.table-fixed {
   table-layout: fixed;
@@ -78,7 +78,7 @@ td {
 }
 .modal-flatest-container {
   position: fixed;
-  min-width: 180px;
+  min-width: 150px;
   border-radius: 4px;
   background: #fff;
   box-sizing: content-box;
@@ -147,9 +147,6 @@ td {
 .common-content > table tr > td:last-child {
   padding-right: 25px;
 }
-.common-content > table tr > td tr > td:first-child {
-  padding-left: 50px;
-}
 .common-content tr.row-selected {
   background: #EBEDEF;
 }
@@ -159,6 +156,9 @@ td {
 .common-content tr:hover:not(.cannt-click) {
   color: #fff;
   background: #50A6E1;
+}
+.common-content tr:hover:not(.cannt-click) > .check-td i {
+  color: #fff !important;
 }
 .common-content tr.more-right-triangle > td:last-child {
   position: relative;
@@ -376,8 +376,8 @@ td {
   font-size: 12px;
 }
 .ll-modal-body .form-row .input-box {
-  height: 1.5rem;
-  line-height: 1.5rem;
+  height: 24px;
+  line-height: 24px;
   border-radius: 2px;
   border: 1px solid #B3B6B9;
 }
@@ -388,4 +388,18 @@ td {
   padding-left: 5px;
   border: none;
   border-radius: inherit;
+}
+.ppl-body tr:hover .ppl-color > i {
+  border-color: #fff;
+}
+.ppl-color {
+  width: 15px;
+}
+.ppl-color > i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border: 1px solid #9FA5A8;
+  background: orange;
 }
