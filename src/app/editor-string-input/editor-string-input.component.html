@@ -1,0 +1,11 @@
+<table *ngFor="let row of allFields" class="table-fixed form-row">
+    <tbody>
+        <tr>
+            <td class="row-title">{{ row }}</td>
+            <td>
+                <app-string-input></app-string-input>
+            </td>
+            <td class="row-msg"><div class="error-msg" title="this is big problem!"><i class="fa fa-info"></i></div></td>
+        </tr>
+    </tbody>
+</table>

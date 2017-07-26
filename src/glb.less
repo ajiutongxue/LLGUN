@@ -1,0 +1,522 @@
+@import 'base.less';
+body {
+    // font: 14px/24px @ll-font-family;
+    font: .875rem/1.5rem @ll-font-family;
+    color: @color-normal;
+}
+
+input,
+textarea,
+select,
+button {
+	font-family: @ll-font-family;
+	font-size: inherit;
+}
+
+button {
+    border: 0;
+    padding: 0;
+}
+
+.btn {
+	display: inline-block;
+	padding: 0 15px;
+	text-align: center;
+	border-radius: 4px;
+	border: 1px solid #111;
+	background: #fff;
+	color: #fff;
+	cursor: pointer;
+
+	&.btn-default {
+		background: #fff;
+		color: @color-normal;
+		border-color: @btn-default-border;
+
+		&:hover {
+			color: @color-strongest;
+		}
+	}
+
+	&.btn-primary {
+		background: @btn-primary;
+		border-color: @btn-primary-border;
+
+		&:hover {
+			background: @btn-primary-border;
+		}
+	}
+}
+
+table {
+	&, td {
+		padding: 0;
+		border: none;
+		border-collapse: collapse;
+		border-spacing: 0;
+		font-size: .875rem;
+	}
+	
+	&.table-fixed {
+		table-layout: fixed;
+	}
+}
+
+input {
+	font: inherit;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	color: @color-stronger;
+}
+
+td {
+	box-sizing: border-box;
+}
+
+.checkbox-row {
+	color: inherit;
+
+	input[type="checkbox"] {
+		border-color: red;
+
+		.ll-modal-footer &:checked {
+			// 回头在这里定义checkbox
+		}
+
+	}
+
+}
+
+.more-fields {
+	.ll-modal-body & {
+		margin-left: 8em;
+	}
+}
+
+// *************
+// 拟态框工具定义
+// *************
+.put-up {
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+.put-down {
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+}
+// *** end ***
+
+
+// ************
+// 浮起最低的拟态框
+// *************
+.modal-flatest-container {
+	position: fixed;
+	//border-bottom: 1px solid rgba(104, 110, 113, 89);
+	// border-radius: 0 0 4px 4px;
+	min-width: 180px;
+	border-radius: 4px;
+	background: #fff;
+	
+
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		border-radius: inherit;
+		background: #fff;
+		z-index: -1;
+	}
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: -1px;
+		right: -1px; 
+		bottom: -1px;
+		left: -1px;
+		z-index: -2;
+		border-radius: inherit;
+		// border-bottom: 1px solid rgba(104, 110, 113, 89);
+		border-bottom: 1px solid @color-normal;
+		background: linear-gradient(#D0D0D0, #A1A8AC 30px, #A1A8AC 80%, #B3B9BD);
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .13), 
+					0 4px 5px 0 rgba(0, 0, 0, .25);
+	}
+}
+// ** end **
+
+
+// *********
+// 下拉框，右键菜单，下拉菜单 元素通用设置
+// **********
+.common-content {
+	position: absolute;
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 2px; // 0时：当出现滚动条时，下拉框圆角会被系统自带控件遮盖，变成直角， 如没其他问题先这么写
+	line-height: 24px;
+	border-radius: inherit;
+	overflow: auto;
+	overflow-x: hidden;
+	text-align: left;
+	color: @color-strongest;
+
+	> table {
+		width: 100%;
+		margin: 5px 0;
+
+		tr {
+			> td {
+				&:first-child {
+					padding-left: 25px;
+
+					&.check-td {
+						position: relative;
+						width: 25px;
+
+						i {
+							position: absolute;
+							left: 0;
+							top: 0;
+							width: 25px;
+							height: inherit;
+							line-height: inherit;
+							text-align: center;
+							color: @color-succes;
+						}
+					}
+				}
+				&:last-child {
+					padding-right: 25px;
+				}
+
+				tr {
+					> td {
+						&:first-child {
+							padding-left: 2 * 25px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	tr {
+		&.row-selected {
+			background: @bg-selected;
+		}
+		
+		&.cannt-click {
+			color: @color-weak;
+		}
+
+		&:hover:not(.cannt-click) {
+			color: #fff;
+			background: @color-active;
+		}
+
+	}
+
+
+	hr.line-separator {
+		height: 1px;
+		border: none;
+		margin: 0;
+		background: @normal-border;
+	}
+}
+// *** end ***
+
+.select-box {
+	// position: relative;
+
+	.modal-flatest-container {
+		// position: fixed;
+		// 随便写的数字
+		// left: 342px;
+		// top: 269px;
+		// width: 220px;
+		// min-height: 400px;
+		// height: 350px;
+		z-index: 199;
+	}
+
+	.select-content {
+		//position: absolute;
+		// top:0;
+		// left: 0;
+		// right: 0;
+		//bottom: 2px; // 0时：当出现滚动条时，下拉框圆角会被系统自带控件遮盖，变成直角， 如没其他问题先这么写
+		border-radius: inherit;
+		// overflow: auto;
+		// overflow-x: hidden;
+	}
+}
+
+.modal-container {
+    .modal-content {
+        position: relative;
+        text-align: left;
+        border-radius: 4px; //border: 1px solid #D0D0D0;
+        //border-image: linear-gradient(#D0D0D0 30px, #8C9295 30px, #8C9295 85%, #B3B9BD 90%) 1;
+        border-bottom: 1px solid rgba(104, 110, 113, 89);
+        background: #fff;
+        &::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            bottom: -1px;
+            left: -1px;
+            border-radius: 4px;
+            z-index: -1;
+            background: linear-gradient(#D0D0D0, #8C9295 30px, #8C9295 80%, #B3B9BD);
+			box-shadow: 0 0 10px rgba(0, 0, 0, .13), 
+						0 20px 33px rgba(0, 0, 0, .39);
+        }
+    }
+    .modal-header {
+        position: relative;
+        height: 30px;
+        line-height: 30px;
+        padding-left: 10px;
+        >span:first-child {
+            color: @color-strongest;
+            font-weight: 600;
+        }
+        .close-modal {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            right: 0;
+            background: @color-warning;
+        }
+    }
+    .modal-body {
+        // margin: 0 -1px;
+        // border: 1px solid;
+        // border-top: none;
+        // border-bottom: none;
+        // border-color: #D0D0D0;
+        //border-image: linear-gradient(#D0D0D0, #8C9295 10%, #8C9295 85%, #B3B9BD) 10;
+    }
+    .modal-content-simple {
+        width: 490px;
+        height: 380px;
+        .modal-body {
+            padding: 25px 0;
+        }
+    }
+}
+
+// ***************
+// 覆盖 jqxWindow 样式
+// ***************
+.jqx-window {
+    &.jqx-widget-content {
+        //position: relative;
+        text-align: left;
+        border-radius: 4px;
+        border: none; //border-bottom: 1px solid rgba(104, 110, 113, 89);
+        background: #fff;
+		overflow: unset;
+		
+        &:after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            bottom: -1px;
+            left: -1px;
+            border-radius: 4px;
+            border-bottom: 1px solid rgba(104, 110, 113, 89);
+            z-index: -1;
+            background: linear-gradient(#D0D0D0, #8C9295 30px, #8C9295 80%, #B3B9BD);
+			box-shadow: 0 0 10px rgba(0, 0, 0, .13), 
+						0 20px 33px rgba(0, 0, 0, .39);
+		}
+					
+        > div:last-child {
+            border-radius: 0 0 4px 4px;
+        }
+    }
+    .ll-modal-header {
+        height: 30px;
+        line-height: 30px;
+        border: none;
+        border-radius: 4px 4px 0 0;
+        background: inherit;
+		padding: 0 0 0 10px;
+		
+        > div:first-child {
+            color: @color-strongest;
+            font-weight: 600;
+		}
+		
+        .jqx-window-close-button-background {
+			top: 7px;
+			right: 10px !important;
+            width: 14px !important;
+			height: 14px !important;
+			border-radius: 50%;
+			overflow: hidden;
+        }
+        .jqx-window-close-button {
+			background: url('./assets/style/images/modal-close.png') 50% 50% no-repeat transparent;
+		}
+        .jqx-window-close-button-hover {
+            background: url('./assets/style/images/modal-close-hover.png') 50% 50% no-repeat @color-warning;
+        }
+    }
+    .ll-modal-main {
+		position: relative;
+        padding: 0;
+		border: none;
+		overflow: hidden;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 20px;
+			height: 25px;
+			background: linear-gradient(rgba(255,255, 255,1) 20%, rgba(255,255,255, 0));
+			z-index: 1;
+		}
+
+        .ll-modal-body {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 55px;
+			left: 0;
+            font: inherit;
+			padding: 25px 0;
+			overflow: auto;
+			overflow-x: hidden;
+		}
+		
+        .ll-modal-footer {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom:0;
+			height: 55px;
+			line-height: 55px;
+			padding: 0 30px;
+			text-align: right;
+			border-top: 1px solid @normal-border;
+			color: @color-stronger;
+			background: @bg-weak;
+
+			&:after {
+				position: absolute;
+				content: '';
+				top: -11px;
+				left: 0;
+				right: 20px;
+				height: 10px;
+				background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+				z-index: 1;
+			}
+
+			> .checkbox-row {
+				position: absolute;
+				left: 30px;
+				top: 0;
+			}
+		}
+
+		.btn {
+			height: 28px;
+			line-height: 28px;
+		}
+    }
+}
+
+.jqx-window-modal {
+    background: #fff;
+    opacity: .7!important;
+}
+
+// ***************
+// 新建中的输入框组 form-row 样式
+// ***************
+.ll-modal-body {
+    .form-row {
+        // 就是table
+		width: 100%;
+		margin-bottom: 5px;
+
+
+		&.select-row {}
+
+		&.error-row {
+			.input-box {
+				border-color: @color-warning;
+			}
+
+			.error-msg {
+				display: block !important;
+			}
+		}
+		
+        td {
+
+			&.row-title {
+				width: 8em;
+				padding-right: 1em;
+				text-align: right;
+				color: @color-normal;				
+			}
+
+			&.row-msg {
+				width: 30px;
+				text-align: center;
+				vertical-align: middle;
+				
+				.error-msg {
+					display: none;
+					margin: 0 12px 0 auto;
+					width: 14px;
+					height: 14px;
+					line-height: 14px;
+					text-align: center;
+					border-radius: 50%;
+					background: @color-less;
+					color: #fff;
+
+					i.fa {
+						font-size: 12px;
+					}
+				}
+			}
+            
+		}
+
+		.input-box {
+			height: 1.5rem;
+			line-height: 1.5rem;
+			border-radius: 2px;
+			border: 1px solid @color-input-border;
+
+			> input[type="text"] {
+				display: block;
+				width: 100%;
+				height: inherit;
+				padding-left: 5px;
+				border: none;
+				border-radius: inherit;
+			}
+		}
+
+    }
+}

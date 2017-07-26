@@ -1,0 +1,16 @@
+<div class="modal-container">
+  <div class="modal-content modal-content-simple">
+    <div class="modal-header">
+      <span>{{ modalTitle }}</span>
+      <button class="close-modal"></button>
+    </div>
+    <div class="modal-body">
+      <app-editor-string-input></app-editor-string-input>
+    </div>
+    <div class="modal-footer">
+      <button (click)="void(0)">确定</button>
+      <button (click)="void(0)">取消</button>
+    </div>
+  </div>
+  <div class="modal-mask"></div>
+</div>
