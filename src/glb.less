@@ -118,7 +118,7 @@ td {
 	min-width: 180px;
 	border-radius: 4px;
 	background: #fff;
-	
+	box-sizing: content-box;
 
 	&:after {
 		content: '';
@@ -171,6 +171,10 @@ td {
 		width: 100%;
 		margin: 5px 0;
 
+		&:last-child {
+			margin-bottom: 3px;
+		}
+
 		tr {
 			> td {
 				&:first-child {
@@ -221,6 +225,21 @@ td {
 			background: @color-active;
 		}
 
+		&.more-right-triangle {
+			& > td:last-child {
+				position: relative;
+
+				&:after {
+					position: absolute;
+					top: 0;
+					right: 10px;
+					font-family: FontAwesome;
+					content: '\f0da';
+					color: inherit;
+				}
+			}
+		}
+
 	}
 
 
@@ -243,7 +262,7 @@ td {
 		// top: 269px;
 		// width: 220px;
 		// min-height: 400px;
-		// height: 350px;
+		height: 350px;
 		z-index: 199;
 	}
 

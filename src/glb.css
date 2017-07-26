@@ -81,6 +81,7 @@ td {
   min-width: 180px;
   border-radius: 4px;
   background: #fff;
+  box-sizing: content-box;
 }
 .modal-flatest-container:after {
   content: '';
@@ -123,6 +124,9 @@ td {
   width: 100%;
   margin: 5px 0;
 }
+.common-content > table:last-child {
+  margin-bottom: 3px;
+}
 .common-content > table tr > td:first-child {
   padding-left: 25px;
 }
@@ -156,6 +160,17 @@ td {
   color: #fff;
   background: #50A6E1;
 }
+.common-content tr.more-right-triangle > td:last-child {
+  position: relative;
+}
+.common-content tr.more-right-triangle > td:last-child:after {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-family: FontAwesome;
+  content: '\f0da';
+  color: inherit;
+}
 .common-content hr.line-separator {
   height: 1px;
   border: none;
@@ -163,6 +178,7 @@ td {
   background: #D1D8DE;
 }
 .select-box .modal-flatest-container {
+  height: 350px;
   z-index: 199;
 }
 .select-box .select-content {
