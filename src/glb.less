@@ -1,4 +1,9 @@
 @import 'base.less';
+
+* {
+	outline: none;
+}
+
 body {
     font: 14px/24px @ll-font-family;
     // font: .875rem/1.5rem @ll-font-family;
@@ -59,6 +64,7 @@ table {
 	
 	&.table-fixed {
 		table-layout: fixed;
+
 	}
 }
 
@@ -177,6 +183,8 @@ td {
 
 		tr {
 			> td {
+				white-space: nowrap;
+
 				&:first-child {
 					padding-left: 25px;
 
@@ -197,7 +205,8 @@ td {
 					}
 				}
 				&:last-child {
-					padding-right: 25px;
+					//padding-right: 25px;
+					text-overflow: ellipsis;
 				}
 
 				// tr {
@@ -221,6 +230,7 @@ td {
 		}
 
 		&:hover:not(.cannt-click) {
+			cursor: default;
 			color: #fff;
 			background: @color-active;
 
@@ -472,78 +482,99 @@ td {
     opacity: .7!important;
 }
 
+// *************
+// input 一行的通用样式 form-row
+// *************
+.form-row {
+	// 就是table
+	width: 100%;
+	margin-bottom: 5px;
+
+
+	&.select-row {}
+
+	&.error-row {
+		.input-box {
+			border-color: @color-warning;
+		}
+
+		.error-msg {
+			display: block !important;
+		}
+	}
+	
+	td {
+
+		&.row-title {
+			width: 8em;
+			padding-right: 1em;
+			text-align: right;
+			color: @color-normal;				
+		}
+
+		&.row-msg {
+			width: 30px;
+			text-align: center;
+			vertical-align: middle;
+			
+			.error-msg {
+				display: none;
+				margin: 0 12px 0 auto;
+				width: 14px;
+				height: 14px;
+				line-height: 14px;
+				text-align: center;
+				border-radius: 50%;
+				background: @color-less;
+				color: #fff;
+
+				i.fa {
+					font-size: 12px;
+				}
+			}
+		}
+		
+	}
+
+	.input-box {
+		position: relative;
+		height: 24px;
+		line-height: 24px;
+		border-radius: 2px;
+		border: 1px solid @color-input-border;
+
+		> i {
+			position: absolute;
+			left: 10px;
+			top: 0;
+			line-height: 24px;
+			color: @color-strongest;
+
+			& + input[type="text"] {
+				padding-left: 30px;
+			}
+		}
+
+		> input[type="text"] {
+			display: block;
+			width: 100%;
+			height: inherit;
+			padding-left: 5px;
+			border: none;
+			border-radius: inherit;
+			color: @color-strongest;
+		}
+	}
+}
+
+
+// *** end ***
+
 // ***************
 // 新建中的输入框组 form-row 样式
 // ***************
 .ll-modal-body {
-    .form-row {
-        // 就是table
-		width: 100%;
-		margin-bottom: 5px;
-
-
-		&.select-row {}
-
-		&.error-row {
-			.input-box {
-				border-color: @color-warning;
-			}
-
-			.error-msg {
-				display: block !important;
-			}
-		}
-		
-        td {
-
-			&.row-title {
-				width: 8em;
-				padding-right: 1em;
-				text-align: right;
-				color: @color-normal;				
-			}
-
-			&.row-msg {
-				width: 30px;
-				text-align: center;
-				vertical-align: middle;
-				
-				.error-msg {
-					display: none;
-					margin: 0 12px 0 auto;
-					width: 14px;
-					height: 14px;
-					line-height: 14px;
-					text-align: center;
-					border-radius: 50%;
-					background: @color-less;
-					color: #fff;
-
-					i.fa {
-						font-size: 12px;
-					}
-				}
-			}
-            
-		}
-
-		.input-box {
-			height: 24px;
-			line-height: 24px;
-			border-radius: 2px;
-			border: 1px solid @color-input-border;
-
-			> input[type="text"] {
-				display: block;
-				width: 100%;
-				height: inherit;
-				padding-left: 5px;
-				border: none;
-				border-radius: inherit;
-			}
-		}
-
-    }
+    
 }
 
 // **************
@@ -567,5 +598,48 @@ td {
 		box-sizing: border-box;
 		border: 1px solid @color-less;
 		background: orange;
+	}
+}
+// *** end ***
+
+
+// ****************
+// 状态下拉框设置
+// ****************
+.status-body { // 这个是用在 table 上的
+
+	tr {
+		> td {
+			box-sizing: content-box;
+			overflow: hidden;
+		}
+	}
+	
+	&.status-col-3 {
+		tr {
+			> td {
+				&:first-child {
+					width: 15px;
+					padding-left: 20px !important;
+					padding-right: 15px;
+				}
+
+				&:nth-child(2) {
+					width: 35px;
+				}
+			}
+		}
+	}
+	
+	&.status-col-2 {
+		tr {
+			> td {
+				&:first-child {
+					width: 15px;
+					padding-left: 20px !important;
+					padding-right: 15px;
+				}
+			}
+		}
 	}
 }

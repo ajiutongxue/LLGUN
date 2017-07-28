@@ -1,3 +1,6 @@
+* {
+  outline: none;
+}
 body {
   font: 14px/24px "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
   color: #81878B;
@@ -127,6 +130,9 @@ td {
 .common-content > table:last-child {
   margin-bottom: 3px;
 }
+.common-content > table tr > td {
+  white-space: nowrap;
+}
 .common-content > table tr > td:first-child {
   padding-left: 25px;
 }
@@ -145,7 +151,7 @@ td {
   color: #00B577;
 }
 .common-content > table tr > td:last-child {
-  padding-right: 25px;
+  text-overflow: ellipsis;
 }
 .common-content tr.row-selected {
   background: #EBEDEF;
@@ -154,6 +160,7 @@ td {
   color: #CCCFD1;
 }
 .common-content tr:hover:not(.cannt-click) {
+  cursor: default;
   color: #fff;
   background: #50A6E1;
 }
@@ -340,28 +347,28 @@ td {
   background: #fff;
   opacity: .7!important;
 }
-.ll-modal-body .form-row {
+.form-row {
   width: 100%;
   margin-bottom: 5px;
 }
-.ll-modal-body .form-row.error-row .input-box {
+.form-row.error-row .input-box {
   border-color: #E30000;
 }
-.ll-modal-body .form-row.error-row .error-msg {
+.form-row.error-row .error-msg {
   display: block !important;
 }
-.ll-modal-body .form-row td.row-title {
+.form-row td.row-title {
   width: 8em;
   padding-right: 1em;
   text-align: right;
   color: #81878B;
 }
-.ll-modal-body .form-row td.row-msg {
+.form-row td.row-msg {
   width: 30px;
   text-align: center;
   vertical-align: middle;
 }
-.ll-modal-body .form-row td.row-msg .error-msg {
+.form-row td.row-msg .error-msg {
   display: none;
   margin: 0 12px 0 auto;
   width: 14px;
@@ -372,22 +379,34 @@ td {
   background: #9FA5A8;
   color: #fff;
 }
-.ll-modal-body .form-row td.row-msg .error-msg i.fa {
+.form-row td.row-msg .error-msg i.fa {
   font-size: 12px;
 }
-.ll-modal-body .form-row .input-box {
+.form-row .input-box {
+  position: relative;
   height: 24px;
   line-height: 24px;
   border-radius: 2px;
   border: 1px solid #B3B6B9;
 }
-.ll-modal-body .form-row .input-box > input[type="text"] {
+.form-row .input-box > i {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  line-height: 24px;
+  color: #14323A;
+}
+.form-row .input-box > i + input[type="text"] {
+  padding-left: 30px;
+}
+.form-row .input-box > input[type="text"] {
   display: block;
   width: 100%;
   height: inherit;
   padding-left: 5px;
   border: none;
   border-radius: inherit;
+  color: #14323A;
 }
 .ppl-body tr:hover .ppl-color > i {
   border-color: #fff;
@@ -402,4 +421,21 @@ td {
   box-sizing: border-box;
   border: 1px solid #9FA5A8;
   background: orange;
+}
+.status-body tr > td {
+  box-sizing: content-box;
+  overflow: hidden;
+}
+.status-body.status-col-3 tr > td:first-child {
+  width: 15px;
+  padding-left: 20px !important;
+  padding-right: 15px;
+}
+.status-body.status-col-3 tr > td:nth-child(2) {
+  width: 35px;
+}
+.status-body.status-col-2 tr > td:first-child {
+  width: 15px;
+  padding-left: 20px !important;
+  padding-right: 15px;
 }
