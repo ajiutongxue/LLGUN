@@ -258,12 +258,89 @@ td {
 
 	}
 
+	// 带有标题、缩进的分块内容组
+	.content-group {
+
+		.group-title {
+			padding-left: 10px;
+			font-size: 12px;
+			font-weight: 600;
+			color: @color-less;
+		}
+
+		.pipeline-body {
+			tr {
+				td:first-child {
+					padding-left: 25px;
+				}
+			}
+		}
+		
+
+		.content-group {
+			.group-title {
+				padding-left: 25px;
+			}
+
+			.pipeline-body {
+				tr {
+					td:first-child {
+						padding-left: 50px;
+					}
+				}
+			}
+		}
+	}
+
+	& > .content-group {
+		margin: 5px 0;
+
+		&:last-child {
+			margin-bottom: 3px;
+		}
+	}
 
 	hr.line-separator {
 		height: 1px;
 		border: none;
 		margin: 0;
 		background: @normal-border;
+	}
+}
+// *** end ***
+
+// **************
+// pipeline 内容的样式
+// **************
+.pipeline-body {
+	width: 100%;
+
+	tr {
+
+		&:hover {
+			td:first-child {
+				> span,
+				> i {
+					border-color: #fff;
+				}
+			}
+		}
+
+		td:first-child {
+			box-sizing: content-box;
+			width: 15px;
+			padding-left: 25px;
+
+			> span,
+			> i {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				box-sizing: border-box;
+				border: 1px solid @color-less;
+				background: orange;
+			}
+		}
 	}
 }
 // *** end ***
@@ -578,7 +655,7 @@ td {
 }
 
 // **************
-// pipeline setting
+// 泡泡的类似pipeline下拉框的 setting
 // **************
 .ppl-body {
 	tr:hover {
