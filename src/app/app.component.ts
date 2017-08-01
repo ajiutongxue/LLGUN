@@ -17,4 +17,5 @@ export class AppComponent {
     ides = this.inputList[Math.floor(Math.random()*10)];
 
     rowsize: number;
+
 }

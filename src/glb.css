@@ -1,5 +1,6 @@
 * {
   outline: none;
+  box-sizing: border-box;
 }
 body {
   font: 14px/24px "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
@@ -11,10 +12,20 @@ select,
 button {
   font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
   font-size: inherit;
+  color: inherit;
 }
 button {
   border: 0;
   padding: 0;
+  cursor: pointer;
+}
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
 }
 .btn {
   display: inline-block;
@@ -60,7 +71,7 @@ input {
   color: #6C7C84;
 }
 td {
-  box-sizing: border-box;
+  vertical-align: middle;
 }
 .checkbox-row {
   color: inherit;
@@ -151,6 +162,7 @@ td {
   color: #00B577;
 }
 .common-content > table tr > td:last-child {
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 .common-content tr.row-selected {
@@ -159,12 +171,14 @@ td {
 .common-content tr.cannt-click {
   color: #CCCFD1;
 }
-.common-content tr:hover:not(.cannt-click) {
+.common-content tr:hover:not(.cannt-click),
+.common-content tr.hover-row {
   cursor: default;
   color: #fff;
   background: #50A6E1;
 }
-.common-content tr:hover:not(.cannt-click) > .check-td i {
+.common-content tr:hover:not(.cannt-click) > .check-td i,
+.common-content tr.hover-row > .check-td i {
   color: #fff !important;
 }
 .common-content tr.more-right-triangle > td:last-child {
@@ -214,7 +228,9 @@ td {
   width: 100%;
 }
 .pipeline-body tr:hover td:first-child > span,
-.pipeline-body tr:hover td:first-child > i {
+.pipeline-body tr.hover-row td:first-child > span,
+.pipeline-body tr:hover td:first-child > i,
+.pipeline-body tr.hover-row td:first-child > i {
   border-color: #fff;
 }
 .pipeline-body tr td:first-child {
@@ -354,7 +370,7 @@ td {
   bottom: 55px;
   left: 0;
   font: inherit;
-  padding: 25px 0;
+  padding: 25px 30px 25px 0;
   overflow: auto;
   overflow-x: hidden;
 }
@@ -398,11 +414,20 @@ td {
   width: 100%;
   margin-bottom: 5px;
 }
+.form-row.error-row {
+  margin-bottom: 10px;
+}
 .form-row.error-row .input-box {
   border-color: #E30000;
+  outline: 3px solid #F9DBDB;
+  outline-style: double;
 }
 .form-row.error-row .error-msg {
-  display: block !important;
+  padding-left: 5px;
+  outline: 3px solid #F9DBDB;
+  outline-style: double;
+  background: #F9DBDB;
+  color: #E30000;
 }
 .form-row td.row-title {
   width: 8em;
@@ -429,24 +454,25 @@ td {
 .form-row td.row-msg .error-msg i.fa {
   font-size: 12px;
 }
-.form-row .input-box {
+.input-box {
   position: relative;
   height: 24px;
   line-height: 24px;
+  box-sizing: content-box;
   border-radius: 2px;
   border: 1px solid #B3B6B9;
 }
-.form-row .input-box > i {
+.input-box > i {
   position: absolute;
   left: 10px;
   top: 0;
   line-height: 24px;
   color: #14323A;
 }
-.form-row .input-box > i + input[type="text"] {
-  padding-left: 30px;
+.input-box > i + input[type="text"] {
+  padding-left: 25px;
 }
-.form-row .input-box > i.input-ppl-color {
+.input-box > i.input-ppl-color {
   display: inline-block;
   top: 7px;
   width: 10px;
@@ -454,10 +480,7 @@ td {
   box-sizing: border-box;
   border: 1px solid #9FA5A8;
 }
-.form-row .input-box > i.input-ppl-color + input[type="text"] {
-  padding-left: 25px;
-}
-.form-row .input-box > input[type="text"] {
+.input-box > input[type="text"] {
   display: block;
   width: 100%;
   height: inherit;
@@ -496,4 +519,68 @@ td {
   width: 15px;
   padding-left: 20px !important;
   padding-right: 15px;
+}
+.ll-label-box {
+  background: #fff;
+}
+.ll-label-box.input-box {
+  height: auto;
+}
+.ll-label-content {
+  margin-top: 3px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+.ll-label-content + input[type="text"] {
+  border-top: 1px solid #B3B6B9;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.ll-label {
+  position: relative;
+  display: block;
+  float: left;
+  height: 18px;
+  line-height: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: 4px;
+  margin-top: 3px;
+  border-radius: 9px;
+  border: 1px solid #D1D8DE;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #EBEDEF;
+  cursor: default;
+}
+.ll-label:hover {
+  background: #fff;
+}
+.ll-label > i {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  line-height: inherit;
+}
+.ll-label > span {
+  display: inline-block;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #14323A;
+}
+.ll-label > .remove-ll-label {
+  position: absolute;
+  right: 3px;
+  top: 2px;
+  width: 12px;
+  height: 12px;
+  line-height: 12px;
+  border-radius: 50%;
+  background: none;
+}
+.ll-label > .remove-ll-label:hover {
+  color: #fff;
+  background: #E30000;
 }

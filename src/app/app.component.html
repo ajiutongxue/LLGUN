@@ -1,3 +1,160 @@
+<h2>ll-lable</h2>
+<div style="width: 300px; margin-top: 20px;">
+    <div class="input-box ll-label-box">
+        <div class="ll-label-content clearfix">
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+            <span class="ll-label">
+                <i class="fa fa-user"></i>
+                <span>刘大宝</span>
+                <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+            </span>
+        </div>
+        <input type="text"> 
+    </div>
+</div>
+
+<hr>
+<h2>form 元素</h2>
+<h3>input，select</h3>
+<p>input-box, form-row, table-fixed ，需要改变宽度时，在外部添加容器以限制宽度</p>
+<div style="width: 300px;">
+    <div class="input-box">
+        <input type="text">
+    </div>
+</div>
+<div style="width: 300px; margin-top: 20px;">
+    <div class="input-box">
+        <i class="fa fa-play"></i>
+        <input type="text" value="进行中">
+    </div>
+</div>
+<div style="width: 300px; margin-top: 20px;">
+    <div class="input-box">
+        <i class="input-ppl-color" style="background: yellow"></i>
+        <input type="text" value="资产的拍普兰">
+    </div>
+</div>
+
+<div style="width: 400px; margin-top: 20px;">
+    <table class="table-fixed form-row select-row error-row">
+        <tbody>
+            <tr>
+                <td class="row-title">查找选择框</td>
+                <td>
+                    <div class="select-box">
+                        <div class="input-box">
+                            <i class="fa fa-play"></i>
+                            <input type="text" value="进行中" show01="false" (click)="show01 = !show01" />
+                            <!-- <p><i class="fa fa-info"></i> 错误信息</p> -->
+                        </div>
+                        <div *ngIf="show01" class="modal-flatest-container put-down" style="width: 150px; height: 130px;">
+                            <div class="select-content common-content">
+                                <table class="table-fixed status-body status-col-3">
+                                    <tr>
+                                        <td><i class="fa fa-fw fa-stop"></i></td>
+                                        <td>stp</td>
+                                        <td>暂停</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-fw fa-play"></i></td>
+                                        <td>pl</td>
+                                        <td>进行中</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-fw fa-undo"></i></td>
+                                        <td>fin</td>
+                                        <td>完成</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-fw fa-play"></i></td>
+                                        <td>pl</td>
+                                        <td>进行中</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-fw fa-undo"></i></td>
+                                        <td>fin</td>
+                                        <td>完成</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </td>
+            </tr>
+             <tr>
+                <td></td>
+                <td><div class="error-msg"><i class="fa fa-info"></i> 错误信息</div></td>
+            </tr> 
+        </tbody>
+    </table>
+</div>
+
+<hr>
 <table class="table-fixed form-row select-row">
     <tbody>
         <tr>
@@ -351,7 +508,7 @@
     </li>
 </ul>
 
-<jqxWindow [width]="500" [height]="300" [isModal]="true" [resizable]="false" *ngIf="false">
+<jqxWindow [width]="500" [height]="300" [isModal]="true" [resizable]="false" *ngIf="true">
     <div class="ll-modal-header">新建资产</div>
     <div class="ll-modal-main">
         <div class="ll-modal-body">

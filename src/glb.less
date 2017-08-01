@@ -2,6 +2,7 @@
 
 * {
 	outline: none;
+	box-sizing: border-box;
 }
 
 body {
@@ -16,11 +17,25 @@ select,
 button {
 	font-family: @ll-font-family;
 	font-size: inherit;
+	color: inherit;
 }
 
 button {
     border: 0;
-    padding: 0;
+	padding: 0;
+	cursor: pointer;
+}
+
+.clearfix {
+	&:before,
+	&:after {
+		content: '';
+		display: table;
+	}
+
+	&:after {
+		clear:both;
+	}
 }
 
 .btn {
@@ -78,7 +93,8 @@ input {
 }
 
 td {
-	box-sizing: border-box;
+	// box-sizing: border-box;
+	vertical-align: middle;
 }
 
 .checkbox-row {
@@ -207,6 +223,7 @@ td {
 				}
 				&:last-child {
 					//padding-right: 25px;
+					overflow: hidden;
 					text-overflow: ellipsis;
 				}
 
@@ -519,7 +536,7 @@ td {
 			bottom: 55px;
 			left: 0;
             font: inherit;
-			padding: 25px 0;
+			padding: 25px 30px 25px 0;
 			overflow: auto;
 			overflow-x: hidden;
 		}
@@ -579,13 +596,29 @@ td {
 	&.select-row {}
 
 	&.error-row {
+		margin-bottom: 10px;
+
 		.input-box {
 			border-color: @color-warning;
+			outline: 3px solid @bg-warning;
+			outline-style: double;
 		}
 
 		.error-msg {
-			display: block !important;
+			padding-left: 5px;
+			outline: 3px solid @bg-warning;
+			outline-style: double;
+			background: @bg-warning;
+			color: @color-warning;
+
+			i {
+				// color: @color-warning;
+			}
 		}
+
+		// .error-msg {
+		// 	display: block !important;
+		// }
 	}
 	
 	td {
@@ -620,48 +653,49 @@ td {
 		}
 		
 	}
+}
 
-	.input-box {
-		position: relative;
-		height: 24px;
+.input-box {
+	position: relative;
+	height: 24px;
+	line-height: 24px;
+	box-sizing: content-box;
+	border-radius: 2px;
+	border: 1px solid @color-input-border;
+
+	> i {
+		position: absolute;
+		left: 10px;
+		top: 0;
 		line-height: 24px;
-		border-radius: 2px;
-		border: 1px solid @color-input-border;
+		color: @color-strongest;
 
-		> i {
-			position: absolute;
-			left: 10px;
-			top: 0;
-			line-height: 24px;
-			color: @color-strongest;
-
-			& + input[type="text"] {
-				padding-left: 30px;
-			}
-
-			&.input-ppl-color {
-				display: inline-block;
-				top: (24 - 10) / 2px;
-				width: 10px;
-				height: 10px;
-				box-sizing: border-box;
-				border: 1px solid @color-less;
-
-				& + input[type="text"] {
-					padding-left: 25px;
-				}
-			}
+		& + input[type="text"] {
+			padding-left: 25px;
 		}
 
-		> input[type="text"] {
-			display: block;
-			width: 100%;
-			height: inherit;
-			padding-left: 5px;
-			border: none;
-			border-radius: inherit;
-			color: @color-strongest;
+		&.input-ppl-color {
+			display: inline-block;
+			top: (24 - 10) / 2px;
+			width: 10px;
+			height: 10px;
+			box-sizing: border-box;
+			border: 1px solid @color-less;
+
+			// & + input[type="text"] {
+			// 	padding-left: 25px;
+			// }
 		}
+	}
+
+	> input[type="text"] {
+		display: block;
+		width: 100%;
+		height: inherit;
+		padding-left: 5px;
+		border: none;
+		border-radius: inherit;
+		color: @color-strongest;
 	}
 }
 
@@ -741,3 +775,83 @@ td {
 		}
 	}
 }
+
+// ***************
+// 成员相关设置
+// ***************
+.ll-label-box {
+	background: #fff;
+
+	&.input-box {
+		height: auto;
+	}
+}
+
+.ll-label-content {
+	margin-top: 3px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+
+	& + input[type="text"] {
+		border-top: 1px solid @color-input-border;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	}
+}
+
+.ll-label {
+	// 默认状态
+	position: relative;
+	display: block;
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-right: 4px;
+	margin-top: 3px;
+	border-radius: 9px;
+	border: 1px solid @normal-border;
+	font-size: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	background: @bg-selected;
+	cursor: default;
+
+	&:hover {
+		background: #fff;
+	}
+
+
+	> i {
+		position: absolute;
+		left: 5px;
+		top: 0;
+		line-height: inherit;
+	}
+
+	> span {
+		display: inline-block;
+		max-width: 90px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: @color-strongest;
+	}
+
+	> .remove-ll-label {
+		position: absolute;
+		right: 3px;
+		top: 2px;
+		width: 12px;
+		height: 12px;
+		line-height: 12px;
+		border-radius: 50%;
+		background: none;
+
+		&:hover {
+			color: #fff;
+			background: @color-warning;
+		}
+	}
+}
+// *** end ***
