@@ -590,7 +590,11 @@ td {
 .form-row {
 	// 就是table
 	width: 100%;
-	margin-bottom: 5px;
+
+
+	.ll-modal-body & {
+		margin-bottom: 5px;
+	}
 
 
 	&.select-row {}
@@ -602,6 +606,14 @@ td {
 			border-color: @color-warning;
 			outline: 3px solid @bg-warning;
 			outline-style: double;
+
+			&.only-showing {
+				border-color:pink;
+			}
+
+			.detail-content & {
+				background: @bg-warning;
+			}
 		}
 
 		.error-msg {
@@ -624,10 +636,27 @@ td {
 	td {
 
 		&.row-title {
+			position: relative;
 			width: 8em;
 			padding-right: 1em;
 			text-align: right;
-			color: @color-normal;				
+			color: @color-normal;		
+
+			// 针对英文时的设置
+			[lang="en"] & {
+				font-size: 13px;
+				line-height: 16px;
+				white-space: normal;
+			}
+			
+			> i.fa {
+				position: absolute;
+				right: -15px;
+				top: 50%;
+				margin-top: -8px;
+				// line-height: inherit;
+				color: @color-weak;
+			}
 		}
 
 		&.row-msg {
@@ -655,6 +684,8 @@ td {
 	}
 }
 
+
+
 .input-box {
 	position: relative;
 	height: 24px;
@@ -663,6 +694,20 @@ td {
 	border-radius: 2px;
 	border: 1px solid @color-input-border;
 
+	&.only-showing {
+		border-color: transparent;
+	}
+
+	.detail-content & {
+		margin-left: 20px;
+	}
+
+	> span { // input-box里面的东西只能看不能编辑的时候用这个span套起来
+		padding-left: 5px;
+		color: @color-strongest;
+	}
+
+
 	> i {
 		position: absolute;
 		left: 10px;
@@ -670,7 +715,8 @@ td {
 		line-height: 24px;
 		color: @color-strongest;
 
-		& + input[type="text"] {
+		& + input[type="text"],
+		& + span { // 这个span就是不显示input只显示内容的时候用的
 			padding-left: 25px;
 		}
 
@@ -752,7 +798,7 @@ td {
 			> td {
 				&:first-child {
 					width: 15px;
-					padding-left: 20px !important;
+					// padding-left: 20px !important;
 					padding-right: 15px;
 				}
 
@@ -768,7 +814,7 @@ td {
 			> td {
 				&:first-child {
 					width: 15px;
-					padding-left: 20px !important;
+					// padding-left: 20px !important;
 					padding-right: 15px;
 				}
 			}
@@ -855,3 +901,71 @@ td {
 	}
 }
 // *** end ***
+
+
+// ************
+// 详情
+// ************
+.detail-container {
+	position: relative;
+	border: 1px solid @normal-border;
+	background: @bg-weak;
+	overflow: auto;
+}
+
+.detail-content {
+	position: absolute;
+	left: 30px;
+	top: 45px;
+	right: 30px;
+	height: auto;
+	max-width: 700px;
+
+	> .form-row {
+		position: relative;
+		margin: 10px 0;
+		z-index: 1;
+		// border-spacing: 10px;
+		// border-collapse: separate;
+		// border-bottom: 1px solid @normal-border;
+
+		& + .form-row {
+			margin-top: 20px;
+		}
+
+		.row-title {
+			white-space: nowrap;
+			// overflow: hidden;
+		}
+
+		.error-msg {
+			margin-left: 20px;
+		}
+
+		&:hover {
+			background: #fff;
+		}
+
+		// 使用after添加了边距和下边框，整个行的左右边距还要再在其他td上设置，同时table的after总是有点别扭的
+		&:after {
+			position: absolute;
+			display: table-row-group;
+			top: -10px;
+			left: -10px;
+			right: -10px;
+			bottom: -10px;
+			border-bottom: 1px solid @bg-selected;
+			content: '';
+			z-index: -1;
+		}
+
+		&:hover {
+			&:after {
+				background: #fff;
+			}
+		}
+	}
+}
+
+// *** end ***
+
