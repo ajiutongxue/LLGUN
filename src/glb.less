@@ -640,6 +640,7 @@ td {
 			width: 8em;
 			padding-right: 1em;
 			text-align: right;
+			vertical-align: top;
 			color: @color-normal;		
 
 			// 针对英文时的设置
@@ -652,9 +653,10 @@ td {
 			> i.fa {
 				position: absolute;
 				right: -15px;
-				top: 50%;
-				margin-top: -8px;
-				// line-height: inherit;
+				top: 0;
+				// top: 50%;
+				// margin-top: -8px;
+				line-height: inherit;
 				color: @color-weak;
 			}
 		}
@@ -696,6 +698,8 @@ td {
 
 	&.only-showing {
 		border-color: transparent;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.detail-content & {
@@ -705,19 +709,26 @@ td {
 	> span { // input-box里面的东西只能看不能编辑的时候用这个span套起来
 		padding-left: 5px;
 		color: @color-strongest;
+		white-space: nowrap;
+	}
+
+	> .fa-fw {
+		width: auto;
 	}
 
 
 	> i {
 		position: absolute;
-		left: 10px;
+		// left: 10px;
+		left: 5px;
 		top: 0;
 		line-height: 24px;
 		color: @color-strongest;
 
 		& + input[type="text"],
 		& + span { // 这个span就是不显示input只显示内容的时候用的
-			padding-left: 25px;
+			// padding-left: 25px;
+			padding-left: 20px;
 		}
 
 		&.input-ppl-color {
@@ -826,10 +837,14 @@ td {
 // 成员相关设置
 // ***************
 .ll-label-box {
-	background: #fff;
+	background: @bg-weak;
 
 	&.input-box {
 		height: auto;
+	}
+
+	&.only-showing {
+		background: transparent;
 	}
 }
 
@@ -837,6 +852,10 @@ td {
 	margin-top: 3px;
 	margin-left: 5px;
 	margin-bottom: 5px;
+
+	.only-showing & {
+		margin-top: 0;
+	}
 
 	& + input[type="text"] {
 		border-top: 1px solid @color-input-border;
@@ -868,6 +887,13 @@ td {
 		background: #fff;
 	}
 
+	.only-showing & {
+		padding-right: 10px;
+
+		.remove-ll-label {
+			display: none;
+		}
+	}
 
 	> i {
 		position: absolute;
@@ -891,6 +917,7 @@ td {
 		width: 12px;
 		height: 12px;
 		line-height: 12px;
+		text-align: center;
 		border-radius: 50%;
 		background: none;
 
@@ -921,16 +948,37 @@ td {
 	height: auto;
 	max-width: 700px;
 
-	> .form-row {
-		position: relative;
-		margin: 10px 0;
-		z-index: 1;
+	.form-row { // 使用 > 找的时候，由于ng 的组件标签不配合、会渲染到浏览器，会导致无效
+		//position: relative; // 挂了，要把其他里面的下拉框遮住
+		//margin: 20px 0 10px 0;
+		//z-index: 1;
 		// border-spacing: 10px;
 		// border-collapse: separate;
 		// border-bottom: 1px solid @normal-border;
 
-		& + .form-row {
-			margin-top: 20px;
+		// 因为ng标签 失效了
+		// & + .form-row {
+		// 	margin-top: 20px;
+		// }
+
+		// ng里面把所有的 & 都当成了第一个，以后研究
+		// &:first-child {
+		// 	margin-top: 10px;
+		// }
+
+		// border-bottom: 1px solid @bg-selected;
+
+		margin-bottom: 1px;
+		box-shadow: 0 1px 0 @bg-selected;
+
+		> tbody {
+			border-width: 5px;
+			border-style: solid;
+			border-color: transparent;
+		}
+
+		&.error-row {
+			margin-bottom: 0;
 		}
 
 		.row-title {
@@ -947,17 +995,17 @@ td {
 		}
 
 		// 使用after添加了边距和下边框，整个行的左右边距还要再在其他td上设置，同时table的after总是有点别扭的
-		&:after {
-			position: absolute;
-			display: table-row-group;
-			top: -10px;
-			left: -10px;
-			right: -10px;
-			bottom: -10px;
-			border-bottom: 1px solid @bg-selected;
-			content: '';
-			z-index: -1;
-		}
+		// &:after {
+		// 	position: absolute;
+		// 	display: table-row-group;
+		// 	top: -10px;
+		// 	left: -10px;
+		// 	right: -10px;
+		// 	bottom: -10px;
+		// 	border-bottom: 1px solid @bg-selected;
+		// 	content: '';
+		// 	z-index: -1;
+		// }
 
 		&:hover {
 			&:after {
