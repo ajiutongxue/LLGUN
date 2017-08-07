@@ -3,6 +3,8 @@
   box-sizing: border-box;
 }
 body {
+  padding: 0;
+  margin: 0;
   font: 14px/24px "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
   color: #81878B;
 }
@@ -81,6 +83,96 @@ td {
 }
 .ll-modal-body .more-fields {
   margin-left: 8em;
+}
+.ll-layout {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ll-header-box {
+  flex: 0 1 36px;
+  background: orange;
+}
+.ll-page-nav-box {
+  flex: 0 1 48px;
+  background: green;
+}
+.ll-tools-box {
+  flex: 0 1 45px;
+  background: blue;
+}
+.ll-main-box {
+  display: flex;
+  flex: 1 1 auto;
+  background: #fff;
+}
+.ll-left-container {
+  flex: 0 1 260px;
+  border-right: 1px solid #B3B6B9;
+  overflow: auto;
+  overflow-x: hidden;
+  background: pink;
+}
+.ll-main-container {
+  position: relative;
+  flex: 1 1 auto;
+}
+.detail-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.detail-top-container {
+  flex: 0 1 240px;
+}
+.detail-tabs {
+  flex: 0 1 50px;
+  border-top: 1px solid red;
+  border-bottom: 1px solid red;
+}
+.detail-main-container {
+  flex: 1 1 auto;
+  overflow: auto;
+  background: #F8F8F8;
+}
+.detail-content {
+  height: auto;
+  margin-left: 30px;
+  margin-top: 30px;
+  max-width: 700px;
+}
+.detail-content .form-row {
+  margin-bottom: 1px;
+  box-shadow: 0 1px 0 #EBEDEF;
+}
+.detail-content .form-row > tbody {
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent;
+}
+.detail-content .form-row.error-row {
+  margin-bottom: 0;
+}
+.detail-content .form-row .row-title {
+  white-space: nowrap;
+}
+.detail-content .form-row .error-msg {
+  margin-left: 20px;
+}
+.detail-content .form-row:hover {
+  background: #fff;
+}
+.detail-content .form-row:hover:after {
+  background: #fff;
 }
 .put-up {
   border-bottom-left-radius: 0 !important;
@@ -633,42 +725,4 @@ td {
 .ll-label > .remove-ll-label:hover {
   color: #fff;
   background: #E30000;
-}
-.detail-container {
-  position: relative;
-  border: 1px solid #D1D8DE;
-  background: #F8F8F8;
-  overflow: auto;
-}
-.detail-content {
-  position: absolute;
-  left: 30px;
-  top: 45px;
-  right: 30px;
-  height: auto;
-  max-width: 700px;
-}
-.detail-content .form-row {
-  margin-bottom: 1px;
-  box-shadow: 0 1px 0 #EBEDEF;
-}
-.detail-content .form-row > tbody {
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent;
-}
-.detail-content .form-row.error-row {
-  margin-bottom: 0;
-}
-.detail-content .form-row .row-title {
-  white-space: nowrap;
-}
-.detail-content .form-row .error-msg {
-  margin-left: 20px;
-}
-.detail-content .form-row:hover {
-  background: #fff;
-}
-.detail-content .form-row:hover:after {
-  background: #fff;
 }

@@ -6,6 +6,8 @@
 }
 
 body {
+	padding: 0;
+	margin: 0;
     font: 14px/24px @ll-font-family;
     // font: .875rem/1.5rem @ll-font-family;
     color: @color-normal;
@@ -116,6 +118,176 @@ td {
 		margin-left: 8em;
 	}
 }
+
+// *************
+// layout
+// *************
+.ll-layout {
+	position: fixed;
+	top:0;
+	right:0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.ll-header-box {
+	flex: 0 1 36px;
+	background: orange;
+}
+
+.ll-page-nav-box {
+	flex: 0 1 48px;
+	background: green;
+}
+
+.ll-tools-box {
+	flex:0 1 45px;
+	background: blue;
+}
+
+.ll-main-box {
+	display: flex;
+	flex: 1 1 auto;
+	// flex-direction: row;
+	background: #fff;
+}
+
+.ll-left-container {
+	flex: 0 1 260px;
+	border-right: 1px solid @color-input-border;
+	overflow: auto;
+	overflow-x: hidden;
+	background: pink;
+}
+
+.ll-main-container {
+	position: relative;
+	flex: 1 1 auto;
+	// overflow: auto;
+	
+
+}
+// *** end ***
+
+// *************
+// 详情页结构
+// *************
+.detail-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+} 
+.detail-top-container {
+	flex: 0 1 240px;
+}
+.detail-tabs {
+	flex: 0 1 50px;
+	border-top: 1px solid red;
+	border-bottom: 1px solid red;
+}
+.detail-main-container {
+	flex: 1 1 auto;
+	overflow: auto;
+	background: @bg-weak;
+}
+// *** end ***
+
+// ************
+// 详情
+// ************
+// .detail-container {
+// 	position: relative;
+// 	border: 1px solid @normal-border;
+// 	background: @bg-weak;
+// 	overflow: auto;
+// }
+
+.detail-content {
+	// position: absolute;
+	// left: 30px;
+	// top: 45px;
+	// right: 30px;
+	height: auto;
+	margin-left: 30px;
+	margin-top: 30px;
+	max-width: 700px;
+
+	.form-row { // 使用 > 找的时候，由于ng 的组件标签不配合、会渲染到浏览器，会导致无效
+		//position: relative; // 挂了，要把其他里面的下拉框遮住
+		//margin: 20px 0 10px 0;
+		//z-index: 1;
+		// border-spacing: 10px;
+		// border-collapse: separate;
+		// border-bottom: 1px solid @normal-border;
+
+		// 因为ng标签 失效了
+		// & + .form-row {
+		// 	margin-top: 20px;
+		// }
+
+		// ng里面把所有的 & 都当成了第一个，以后研究
+		// &:first-child {
+		// 	margin-top: 10px;
+		// }
+
+		// border-bottom: 1px solid @bg-selected;
+
+		margin-bottom: 1px;
+		box-shadow: 0 1px 0 @bg-selected;
+
+		> tbody {
+			border-width: 5px;
+			border-style: solid;
+			border-color: transparent;
+		}
+
+		&.error-row {
+			margin-bottom: 0;
+		}
+
+		.row-title {
+			white-space: nowrap;
+			// overflow: hidden;
+		}
+
+		.error-msg {
+			margin-left: 20px;
+		}
+
+		&:hover {
+			background: #fff;
+		}
+
+		// 使用after添加了边距和下边框，整个行的左右边距还要再在其他td上设置，同时table的after总是有点别扭的
+		// &:after {
+		// 	position: absolute;
+		// 	display: table-row-group;
+		// 	top: -10px;
+		// 	left: -10px;
+		// 	right: -10px;
+		// 	bottom: -10px;
+		// 	border-bottom: 1px solid @bg-selected;
+		// 	content: '';
+		// 	z-index: -1;
+		// }
+
+		&:hover {
+			&:after {
+				background: #fff;
+			}
+		}
+	}
+}
+
+// *** end ***
+
 
 // *************
 // 拟态框工具定义
@@ -929,91 +1101,4 @@ td {
 }
 // *** end ***
 
-
-// ************
-// 详情
-// ************
-.detail-container {
-	position: relative;
-	border: 1px solid @normal-border;
-	background: @bg-weak;
-	overflow: auto;
-}
-
-.detail-content {
-	position: absolute;
-	left: 30px;
-	top: 45px;
-	right: 30px;
-	height: auto;
-	max-width: 700px;
-
-	.form-row { // 使用 > 找的时候，由于ng 的组件标签不配合、会渲染到浏览器，会导致无效
-		//position: relative; // 挂了，要把其他里面的下拉框遮住
-		//margin: 20px 0 10px 0;
-		//z-index: 1;
-		// border-spacing: 10px;
-		// border-collapse: separate;
-		// border-bottom: 1px solid @normal-border;
-
-		// 因为ng标签 失效了
-		// & + .form-row {
-		// 	margin-top: 20px;
-		// }
-
-		// ng里面把所有的 & 都当成了第一个，以后研究
-		// &:first-child {
-		// 	margin-top: 10px;
-		// }
-
-		// border-bottom: 1px solid @bg-selected;
-
-		margin-bottom: 1px;
-		box-shadow: 0 1px 0 @bg-selected;
-
-		> tbody {
-			border-width: 5px;
-			border-style: solid;
-			border-color: transparent;
-		}
-
-		&.error-row {
-			margin-bottom: 0;
-		}
-
-		.row-title {
-			white-space: nowrap;
-			// overflow: hidden;
-		}
-
-		.error-msg {
-			margin-left: 20px;
-		}
-
-		&:hover {
-			background: #fff;
-		}
-
-		// 使用after添加了边距和下边框，整个行的左右边距还要再在其他td上设置，同时table的after总是有点别扭的
-		// &:after {
-		// 	position: absolute;
-		// 	display: table-row-group;
-		// 	top: -10px;
-		// 	left: -10px;
-		// 	right: -10px;
-		// 	bottom: -10px;
-		// 	border-bottom: 1px solid @bg-selected;
-		// 	content: '';
-		// 	z-index: -1;
-		// }
-
-		&:hover {
-			&:after {
-				background: #fff;
-			}
-		}
-	}
-}
-
-// *** end ***
 
