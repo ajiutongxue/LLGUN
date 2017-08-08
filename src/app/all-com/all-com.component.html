@@ -2,7 +2,7 @@
 <hr>
 <h2>详情</h2>
 <button class="btn btn-primary" showDetail="true" (click)="showDetail = !showDetail">show it!</button>
-<div class="detail-container" style="width: 780px; height: 450px;" *ngIf="showDetail">
+<div class="detail-container" style="width: 780px; height: 450px; position: static;" *ngIf="showDetail">
     <div class="detail-content">
         <table class="table-fixed form-row select-row">
             <tbody>
@@ -201,7 +201,7 @@
 				</label>
             </div>
             <button class="btn btn-primary"><i class="fa fa-check"></i> 确定</button>
-            <button class="btn btn-default">取消</button>
+            <button class="btn btn-default"><i class="fa fa-reply"></i> 取消</button>
         </div>
     </div>
 </jqxWindow>

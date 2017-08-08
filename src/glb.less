@@ -22,6 +22,10 @@ button {
 	color: inherit;
 }
 
+input[type="checkbox"] {
+	outline: auto;
+}
+
 button {
     border: 0;
 	padding: 0;
@@ -49,6 +53,10 @@ button {
 	background: #fff;
 	color: #fff;
 	cursor: pointer;
+
+	//////////
+	font-size: 15px;
+	/////////
 
 	&.btn-default {
 		background: #fff;
@@ -658,15 +666,23 @@ td {
     }
     .ll-modal-header {
         height: 30px;
-        line-height: 30px;
-        border: none;
-        border-radius: 4px 4px 0 0;
-        background: inherit;
+		line-height: 30px;
+		///////////
+		//border: none;
+		///////////
+		border-radius: 4px 4px 0 0;
+		///////////
+		//background: inherit;
+		//////////
 		padding: 0 0 0 10px;
 		
         > div:first-child {
             color: @color-strongest;
-            font-weight: 600;
+			font-weight: 600;
+			
+			/////////
+			font-size: 15px;
+			/////////
 		}
 		
         .jqx-window-close-button-background {
@@ -809,7 +825,7 @@ td {
 
 		&.row-title {
 			position: relative;
-			width: 8em;
+			width: 11em;
 			padding-right: 1em;
 			text-align: right;
 			vertical-align: top;
@@ -1010,6 +1026,9 @@ td {
 // ***************
 .ll-label-box {
 	background: @bg-weak;
+	border-color: @color-input-border;
+	// border-color: @bg-selected;
+	// border-bottom: none;
 
 	&.input-box {
 		height: auto;
@@ -1018,22 +1037,35 @@ td {
 	&.only-showing {
 		background: transparent;
 	}
+
+	// > input[type="text"] {
+	// 	width: calc(~"100% + 2px");
+	// 	margin-left: -1px;
+	// 	margin-bottom: -1px;
+	// 	border: 1px solid @color-input-border;
+	// 	border-top-left-radius: 0;
+	// 	border-top-right-radius: 0;
+	// }
 }
 
 .ll-label-content {
-	margin-top: 3px;
-	margin-left: 5px;
-	margin-bottom: 5px;
+	// margin-top: 3px;
+	// margin-left: 5px;
+	// margin-bottom: 5px;
+	width: calc(~"100% + 2px");
+	padding: 3px 0 5px 5px;
+	margin-left: -1px;
+	margin-top: -1px;
+	border: 1px solid @bg-selected;
+	border-bottom-color: @color-input-border;
 
 	.only-showing & {
-		margin-top: 0;
+		width: auto;
+		margin: 0;
+		padding: 0;
+		border: none;
 	}
 
-	& + input[type="text"] {
-		border-top: 1px solid @color-input-border;
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
-	}
 }
 
 .ll-label {

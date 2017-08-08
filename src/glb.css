@@ -6,7 +6,7 @@ body {
   padding: 0;
   margin: 0;
   font: 14px/24px "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
-  color: #81878B;
+  color: #14323A;
 }
 input,
 textarea,
@@ -15,6 +15,9 @@ button {
   font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
   font-size: inherit;
   color: inherit;
+}
+input[type="checkbox"] {
+  outline: auto;
 }
 button {
   border: 0;
@@ -38,11 +41,12 @@ button {
   background: #fff;
   color: #fff;
   cursor: pointer;
+  font-size: 15px;
 }
 .btn.btn-default {
   background: #fff;
-  color: #81878B;
-  border-color: #81878B;
+  color: #14323A;
+  border-color: #14323A;
 }
 .btn.btn-default:hover {
   color: #14323A;
@@ -70,7 +74,7 @@ input {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  color: #6C7C84;
+  color: #14323A;
 }
 td {
   vertical-align: middle;
@@ -209,7 +213,7 @@ td {
   left: -1px;
   z-index: -2;
   border-radius: inherit;
-  border-bottom: 1px solid #81878B;
+  border-bottom: 1px solid #14323A;
   background: linear-gradient(#D0D0D0, #A1A8AC 30px, #A1A8AC 80%, #B3B9BD);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.13), 0 4px 5px 0 rgba(0, 0, 0, 0.25);
 }
@@ -416,14 +420,13 @@ td {
 .jqx-window .ll-modal-header {
   height: 30px;
   line-height: 30px;
-  border: none;
   border-radius: 4px 4px 0 0;
-  background: inherit;
   padding: 0 0 0 10px;
 }
 .jqx-window .ll-modal-header > div:first-child {
   color: #14323A;
   font-weight: 600;
+  font-size: 15px;
 }
 .jqx-window .ll-modal-header .jqx-window-close-button-background {
   top: 7px;
@@ -476,7 +479,7 @@ td {
   padding: 0 30px;
   text-align: right;
   border-top: 1px solid #D1D8DE;
-  color: #6C7C84;
+  color: #14323A;
   background: #F8F8F8;
 }
 .jqx-window .ll-modal-main .ll-modal-footer:after {
@@ -531,11 +534,11 @@ td {
 }
 .form-row td.row-title {
   position: relative;
-  width: 8em;
+  width: 11em;
   padding-right: 1em;
   text-align: right;
   vertical-align: top;
-  color: #81878B;
+  color: #14323A;
 }
 [lang="en"] .form-row td.row-title {
   font-size: 13px;
