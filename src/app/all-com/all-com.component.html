@@ -1,4 +1,52 @@
+<button #btn type="button" (click)="showData()">shwo</button>
+<div #div1 class="modal-flatest-container" *ngIf="showChild" style="height: 200px;">
+  <div class="select-content common-content">
+    <table class="table-fixed">
+      <tr #adFBtn (click)="openAdvancdeFieldSelectDialog()">
+        <td id='wtd1' class="check-td"></td>
+        <td id="wtd2">字段高级选择</td>
+      </tr>
+      <tr [id]="item.description" (click)="onClickForData(i)" >
+        <td [id]='i+1' class="check-td"><i class="fa fa-checked"></i></td>
+        <td [id]='i+2' >描述</td>
+      </tr>
+      <tr [id]="item.description" (click)="onClickForData(i)" >
+        <td [id]='i+1' class="check-td"><i class="fa fa-checked"></i></td>
+        <td [id]='i+2' >描述</td>
+      </tr>
+      <tr #pplBtn (mouseenter)="showPipeLine()"  class="more-right-triangle">
+        <td id='xtd1' class="check-td"><i [class]="itemCheck(false)"></i></td>
+        <td id="xtd2">步骤
+          <div #pplDiv class="modal-flatest-container" style="display:block;">
+            <div id='pipeline' class="select-content common-content">
+              <table class="table-fixed ppl-body">
+                <tr (click)="onClickForPPL(i)">
+                  <td [id]='i' class="check-td"><i class="fa fa-checked"></i></td>
+                  <td [id]='i+1'  class="ppl-color"><i style="background: red;"></i></td>
+                  <td [id]='i+2' >描述</td>
+                </tr>
+                <tr (click)="onClickForPPL(i)">
+                  <td [id]='i' class="check-td"><i></i></td>
+                  <td [id]='i+1'  class="ppl-color"><i></i></td>
+                  <td [id]='i+2' >描述</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
 
+<hr>
+<h2>日期组件</h2>
+<div style="margin-left: 100px;">
+        <my-date-picker></my-date-picker>
+                    </div>
+<hr>
+<h2>thumbnail</h2>
+<thumbnail></thumbnail>
 <hr>
 <h2>详情</h2>
 <button class="btn btn-primary" showDetail="true" (click)="showDetail = !showDetail">show it!</button>
@@ -189,8 +237,15 @@
     <div class="ll-modal-header">新建资产</div>
     <div class="ll-modal-main">
         <div class="ll-modal-body">
+                <table class="table-fixed form-row">
+                        <tr>
+                            <td class="row-title">创建日期</td>
+                            <td><my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" required></my-date-picker></td>
+                        </tr>
+                </table>
             <app-select-input></app-select-input>
             <app-editor-string-input [rowLength]="4"></app-editor-string-input>
+
             <div class="more-fields">选择字段 <i class="fa fa-plus"></i></div>
         </div>
         <div class="ll-modal-footer">
@@ -428,7 +483,7 @@
                         <i class="input-ppl-color" style="background: yellow"></i>
                         <input type="text" />
                     </div>
-                    <div class="modal-flatest-container put-down" style="width: 180px; height: 230px;">
+                    <div class="modal-flatest-container put-down" style="width: 180px; height: 230px; left: 100px; /*top: 200px;*/">
                         <div class="select-content common-content pipeline-content">
                             <div class="content-group">
                                 <div class="group-title">资产</div>
@@ -505,7 +560,7 @@
     <div class="input-box">
         <input type="text" />
     </div>
-    <div class="modal-flatest-container put-down" style="width: 180px; height: 230px;">
+    <div class="modal-flatest-container put-down" style="width: 180px; height: 230px; left: 500px; /*top: 200px;*/">
         <div class="select-content common-content pipeline-content">
             
             <div class="content-group">

@@ -1,8 +1,12 @@
 @import 'base.less';
 
 * {
-	outline: none;
+	// outline: none;
 	box-sizing: border-box;
+}
+
+[lang="en"] {
+	font: 12px/18px @ll-font-family;
 }
 
 body {
@@ -22,14 +26,45 @@ button {
 	color: inherit;
 }
 
-input[type="checkbox"] {
-	outline: auto;
+input[type="text"],
+select,
+textarea {
+	outline: none;
+	ime-mode: disabled;
 }
+
+.input-active {
+	border-color: @color-active !important;
+	box-shadow: 0 0 3px @color-active;
+
+	&.ll-label-box {
+		border: none;
+		box-shadow: none;
+
+		input[type="text"] {
+			border-color: @color-active !important;
+			box-shadow: 0 0 3px @color-active;
+		}
+
+		// .ll-label-content {
+		// 	border-color: @color-active !important;
+		// }
+	}
+}
+
+// input[type="checkbox"] {
+// 	outline: auto;
+// }
 
 button {
     border: 0;
 	padding: 0;
 	cursor: pointer;
+
+	&.more-fields {
+		background: none;
+		margin-right: 10px;
+	}
 }
 
 .clearfix {
@@ -257,7 +292,7 @@ td {
 		}
 
 		&.error-row {
-			margin-bottom: 0;
+			margin-bottom: 1px;
 		}
 
 		.row-title {
@@ -272,6 +307,7 @@ td {
 		&:hover {
 			background: #fff;
 		}
+
 
 		// 使用after添加了边距和下边框，整个行的左右边距还要再在其他td上设置，同时table的after总是有点别扭的
 		// &:after {
@@ -315,7 +351,8 @@ td {
 // 浮起最低的拟态框
 // *************
 .modal-flatest-container {
-	position: fixed;
+	position: absolute;
+	// position: fixed;
 	//border-bottom: 1px solid rgba(104, 110, 113, 89);
 	// border-radius: 0 0 4px 4px;
 	min-width: 150px;
@@ -345,7 +382,9 @@ td {
 		z-index: -2;
 		border-radius: inherit;
 		// border-bottom: 1px solid rgba(104, 110, 113, 89);
-		border-bottom: 1px solid @color-normal;
+		// @color-normal的颜色被应俊改成了更深的颜色了
+		// border-bottom: 1px solid @color-normal;
+		border-bottom: 1px solid #81878B; 
 		background: linear-gradient(#D0D0D0, #A1A8AC 30px, #A1A8AC 80%, #B3B9BD);
 		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .13), 
 					0 4px 5px 0 rgba(0, 0, 0, .25);
@@ -383,21 +422,25 @@ td {
 				white-space: nowrap;
 
 				&:first-child {
-					padding-left: 25px;
+					padding-left: 15px;
 
 					&.check-td {
 						position: relative;
-						width: 25px;
+						width: 15px;
 
 						i {
 							position: absolute;
 							left: 0;
 							top: 0;
-							width: 25px;
+							width: 15px;
 							height: inherit;
 							line-height: inherit;
 							text-align: center;
 							color: @color-succes;
+
+							&.fa-circle {
+								transform: scale(0.6);
+							}
 						}
 					}
 				}
@@ -461,16 +504,21 @@ td {
 	.content-group {
 
 		.group-title {
-			padding-left: 10px;
+			padding-left: 15px;
 			font-size: 12px;
 			font-weight: 600;
-			color: @color-less;
+			color: @color-normal;
+			// color: @color-less;
 		}
+
+		// & > .group-title {
+		// 		padding-left: 10px;
+		// }
 
 		.pipeline-body {
 			tr {
 				td:first-child {
-					padding-left: 25px;
+					padding-left: 20px;
 				}
 				td:last-child {
 					overflow: hidden;
@@ -489,7 +537,9 @@ td {
 			.pipeline-body {
 				tr {
 					td:first-child {
-						padding-left: 50px;
+						// 他们嫌这个缩进的太多了
+						// padding-left: 50px; 
+						padding-left: 30px;
 					}
 				}
 			}
@@ -551,7 +601,7 @@ td {
 // *** end ***
 
 .select-box {
-	// position: relative;
+	position: relative;
 
 	.modal-flatest-container {
 		// position: fixed;
@@ -560,8 +610,14 @@ td {
 		// top: 269px;
 		// width: 220px;
 		// min-height: 400px;
+		left: 2px;
+		top: 26px;
 		height: 350px;
 		z-index: 199;
+
+		.detail-content & {
+			left: 20 + 2px;
+		}
 	}
 
 	.select-content {
@@ -835,6 +891,7 @@ td {
 			[lang="en"] & {
 				font-size: 13px;
 				line-height: 16px;
+				vertical-align: middle;
 				white-space: normal;
 			}
 			
@@ -1025,27 +1082,29 @@ td {
 // 成员相关设置
 // ***************
 .ll-label-box {
-	background: @bg-weak;
-	border-color: @color-input-border;
+	// background: @bg-weak;
+	background: @bg-selected;
+	// border-color: @color-input-border;
 	// border-color: @bg-selected;
 	// border-bottom: none;
 
 	&.input-box {
 		height: auto;
+		border: none;
 	}
 
 	&.only-showing {
 		background: transparent;
 	}
 
-	// > input[type="text"] {
-	// 	width: calc(~"100% + 2px");
-	// 	margin-left: -1px;
-	// 	margin-bottom: -1px;
-	// 	border: 1px solid @color-input-border;
-	// 	border-top-left-radius: 0;
-	// 	border-top-right-radius: 0;
-	// }
+	input[type="text"] {
+		// width: calc(~"100% + 2px");
+		// margin-left: -1px;
+		// margin-bottom: -1px;
+		border: 1px solid @color-input-border;
+		// border-top-left-radius: 0;
+		// border-top-right-radius: 0;
+	}
 }
 
 .ll-label-content {
@@ -1053,16 +1112,19 @@ td {
 	// margin-left: 5px;
 	// margin-bottom: 5px;
 	width: calc(~"100% + 2px");
-	padding: 3px 0 5px 5px;
+	padding: 0 0 5px 5px;
 	margin-left: -1px;
 	margin-top: -1px;
-	border: 1px solid @bg-selected;
-	border-bottom-color: @color-input-border;
+	// border: 1px solid @bg-selected;
+	// border-bottom-color: @color-input-border;
+	border: none;
+	border-radius: 2px;
+	.put-up;
 
 	.only-showing & {
 		width: auto;
 		margin: 0;
-		padding: 0;
+		// padding: 0;
 		border: none;
 	}
 
@@ -1080,7 +1142,8 @@ td {
 	margin-right: 4px;
 	margin-top: 3px;
 	border-radius: 9px;
-	border: 1px solid @normal-border;
+	// border: 1px solid @normal-border;
+	border: 1px solid @color-input-border;
 	font-size: 12px;
 	white-space: nowrap;
 	overflow: hidden;
