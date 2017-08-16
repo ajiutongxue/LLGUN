@@ -22,6 +22,8 @@ import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 
 import { LayoutComponent } from './layout/layout.component';
 import { AllComponentComponent } from './all-com/all-com.component';
+import { MouseSelectComponent } from './mouse-select/mouse-select.component';
+import {MosueSelectDirective} from './mouse-select/mouse-select.directive';
 
 const appRoutes: Routes = [
 
@@ -32,6 +34,10 @@ const appRoutes: Routes = [
   {
     path: 'all',
     component: AllComponentComponent
+  },
+  {
+    path: 'select',
+    component: MouseSelectComponent
   },
   {
     path: '',
@@ -54,7 +60,8 @@ const appRoutes: Routes = [
     ThumbnailComponent,
     LayoutComponent,
     AllComponentComponent,
-    
+    MouseSelectComponent,
+    MosueSelectDirective
     //HighlightDirective
   ],
   imports: [
