@@ -22,6 +22,7 @@ input[type="text"],
 select,
 textarea {
   outline: none;
+  ime-mode: disabled;
 }
 .input-active {
   border-color: #50A6E1 !important;
@@ -208,7 +209,7 @@ td {
 }
 .modal-flatest-container {
   position: absolute;
-  min-width: 150px;
+  width: 210px;
   border-radius: 4px;
   background: #fff;
   box-sizing: content-box;
@@ -315,7 +316,8 @@ td {
   padding-left: 15px;
   font-size: 12px;
   font-weight: 600;
-  color: #14323A;
+  color: #9FA5A8;
+  background: #eaeaea;
 }
 .common-content .content-group .pipeline-body tr td:first-child {
   padding-left: 20px;
@@ -327,6 +329,7 @@ td {
 }
 .common-content .content-group .content-group .group-title {
   padding-left: 25px;
+  background: #f5f5f5;
 }
 .common-content .content-group .content-group .pipeline-body tr td:first-child {
   padding-left: 30px;
