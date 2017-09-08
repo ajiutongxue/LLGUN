@@ -60,8 +60,8 @@ export class MosueSelectDirective {
             let canvasSize = this._canvas.getBoundingClientRect();
 
             this._start.l = e.pageX;
-            this._start.t = e.pageY
-            
+            this._start.t = e.pageY;
+
             this.theRound.ol = e.pageX - this._canvas.getBoundingClientRect().left; // 如果canvas出去了  那就是 -- = 正
             this.theRound.ot = e.pageY - this._canvas.getBoundingClientRect().top;
 
@@ -91,7 +91,7 @@ export class MosueSelectDirective {
                     this.theRound.t = this.theRound.ot;
                     this.theRound.h = (e.pageY - this._canvas.getBoundingClientRect().top - this.theRound.t) < this.theRound.mh ? (e.pageY - this._canvas.getBoundingClientRect().top - this.theRound.t) : this.theRound.mh;
                 }
-             
+
                 requestAnimationFrame(() => {
                     this.clearCanvas();
                     this._cxt.fillStyle = 'rgba(169, 203, 237, .5)';

@@ -1,52 +1,34 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--<meta charset="UTF-8">-->
-<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
-<!--<title>Document</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div style="width: 100px; height: 100px; background: #360; position: fixed; left: 100px; top: 100px;"></div>-->
-<!--<div style="height: 2000px;"></div>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <tree-root class="ll-side-tree" id="treeDetail">
     <tree-viewport>
         <div style="height: 84px;">
-
             <div class="tree">
                 <tree-node-collection>
-
                     <div style="margin-top: 0px;">
-                        <tree-node ng-reflect-node="[object Object]" ng-reflect-index="0"
-                                   ng-reflect-templates="[object Object]">
+                        <tree-node>
                             <div class="tree-node-level-1 tree-node tree-node-expanded">
-                                <tree-node-drop-slot ng-reflect-node="[object Object]" ng-reflect-drop-index="0">
-                                    <div class="node-drop-slot"
-                                         ng-reflect-tree-allow-drop="function () { [native code] }">
+                                <tree-node-drop-slot>
+                                    <div class="node-drop-slot">
                                     </div>
                                 </tree-node-drop-slot>
 
                                 <tree-node-wrapper>
                                     <div class="node-wrapper" style="padding-left: 0px;">
                                         <tree-node-expander>
-											<span class="toggle-children-wrapper toggle-children-wrapper-expanded">
-												<span class="toggle-children"></span>
-											</span>
+                                            <span class="toggle-children-wrapper toggle-children-wrapper-expanded">
+                                                <span class="toggle-children"></span>
+                                            </span>
                                         </tree-node-expander>
+
                                         <div class="node-content-wrapper">
                                             <tree-node-content>
-                                                <span>1</span>
+                                              <span class="tree-title-content">1</span>
                                             </tree-node-content>
                                         </div>
                                     </div>
                                 </tree-node-wrapper>
 
                                 <tree-node-children>
-                                    <div class="tree-children" style="">
+                                    <div class="tree-children tree-children-no-padding" style="">
                                         <tree-node-collection>
                                             <div style="margin-top: 0px;">
                                                 <tree-node>
@@ -57,57 +39,67 @@
                                                         </tree-node-drop-slot>
 
                                                         <tree-node-wrapper>
-                                                            <div class="node-wrapper" style="padding-left: 0px;">
-                                                                <tree-node-expander ng-reflect-node="[object Object]">
-											<span class="toggle-children-wrapper toggle-children-wrapper-expanded">
-												<span class="toggle-children"></span>
-											</span>
+                                                            <div class="node-wrapper" style="padding-left: 20px;">
+                                                                <tree-node-expander>
+                                                                    <span class="toggle-children-wrapper toggle-children-wrapper-expanded">
+                                                                        <span class="toggle-children"></span>
+                                                                    </span>
                                                                 </tree-node-expander>
+
                                                                 <div class="node-content-wrapper">
                                                                     <tree-node-content>
-                                                                        <span>名ASF就爱上了</span>
+                                                                        <span class="tree-title-content">名ASF就爱上了</span>
+                                                                        <div class="tree-item-container">
+                                                                            <div class="tree-img-box">
+                                                                                <img height="47" width="85" src="/assets/style/tmpImg/detail-p1.png">
+                                                                            </div>
+                                                                            <div class="tree-msg-box">
+                                                                                <span class="_type"><i class=""></i> </span>
+                                                                                <span class="_content">模板名称(asset模板)1</span>
+                                                                                <span class="_time">2017-08-04 14:44:49</span>
+                                                                            </div>
+                                                                        </div>
                                                                     </tree-node-content>
                                                                 </div>
                                                             </div>
                                                         </tree-node-wrapper>
 
                                                         <tree-node-children>
-                                                            <div class="tree-children" style="">
+                                                            <div class="tree-children tree-children-no-padding" >
                                                                 <tree-node-collection>
                                                                     <div style="margin-top: 0px;">
                                                                         <tree-node>
-                                                                            <div
-                                                                                class="tree-node-level-3 tree-node tree-node-leaf tree-node-active tree-node-focused">
+                                                                            <div class="tree-node-level-3 tree-node tree-node-leaf">
                                                                                 <tree-node-drop-slot>
-                                                                                    <div class="node-drop-slot">
-                                                                                    </div>
+                                                                                    <div class="node-drop-slot"></div>
                                                                                 </tree-node-drop-slot>
 
                                                                                 <tree-node-wrapper>
-                                                                                    <div class="node-wrapper"
-                                                                                         style="padding-left: 0px;">
+                                                                                    <div class="node-wrapper" style="padding-left: 40px;">
                                                                                         <tree-node-expander>
-																	<span class="toggle-children-placeholder">
-																	</span>
+                                                                                            <span class="toggle-children-placeholder"></span>
                                                                                         </tree-node-expander>
-                                                                                        <div
-                                                                                            class="node-content-wrapper node-content-wrapper-active node-content-wrapper-focused">
+                                                                                        <div class="node-content-wrapper">
                                                                                             <tree-node-content>
-                                                                                                <div>
-                                                                                                    <div
-                                                                                                        class="tree-item-container">
-                                                                                                        <div>
-                                                                                                            <img
-                                                                                                                height="47"
-                                                                                                                width="85"
-                                                                                                                src="/assets/style/tmpImg/detail-.png">
-                                                                                                        </div>
-                                                                                                        <div>
-                                                                                                            <span></span>
-                                                                                                            <span>模板名称(asset模板)1</span>
-                                                                                                            <span></span>
-                                                                                                            <span>2017-08-04 14:44:49</span>
-                                                                                                        </div>
+                                                                                                <div class="tree-item-container">
+                                                                                                    <div class="tree-img-box">
+                                                                                                        <img height="47" width="85" src="null">
+                                                                                                    </div>
+                                                                                                    <div class="tree-msg-box">
+                                                                                                        <span class="_type"><i class=""></i> </span>
+                                                                                                        <span class="_content"></span>
+                                                                                                        <span class="_time"></span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <span class="tree-title-content"></span>
+                                                                                                <div class="tree-item-container">
+                                                                                                    <div class="tree-img-box">
+                                                                                                        <img height="47" width="85" src="/assets/style/tmpImg/detail-p1.png">
+                                                                                                    </div>
+                                                                                                    <div class="tree-msg-box">
+                                                                                                        <span class="_type"><i class="fa fa-cube"></i> 资产</span>
+                                                                                                        <span class="_content">模板名称(asset模板)1</span>
+                                                                                                        <span class="_time">2017-08-04 14:44:49</span>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </tree-node-content>
@@ -129,13 +121,16 @@
                                                             </div>
                                                         </tree-node-children>
 
+
                                                         <tree-node-drop-slot>
                                                             <div class="node-drop-slot">
                                                             </div>
                                                         </tree-node-drop-slot>
                                                     </div>
+
                                                 </tree-node>
                                             </div>
+
                                         </tree-node-collection>
                                     </div>
                                 </tree-node-children>
@@ -148,12 +143,8 @@
 
                         </tree-node>
                     </div>
-
                 </tree-node-collection>
-
             </div>
-
         </div>
-
     </tree-viewport>
 </tree-root>

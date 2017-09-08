@@ -25,6 +25,9 @@ import { AllComponentComponent } from './all-com/all-com.component';
 import { MouseSelectComponent } from './mouse-select/mouse-select.component';
 import {MosueSelectDirective} from './mouse-select/mouse-select.directive';
 
+import { TreeModule } from 'angular-tree-component';
+import { MyTreeComponent } from './my-tree/my-tree.component';
+
 const appRoutes: Routes = [
 
   {
@@ -38,6 +41,10 @@ const appRoutes: Routes = [
   {
     path: 'select',
     component: MouseSelectComponent
+  },
+  {
+    path: 'my-tree',
+    component: MyTreeComponent
   },
   {
     path: '',
@@ -61,12 +68,14 @@ const appRoutes: Routes = [
     LayoutComponent,
     AllComponentComponent,
     MouseSelectComponent,
-    MosueSelectDirective
+    MosueSelectDirective,
+    MyTreeComponent,
     //HighlightDirective
   ],
   imports: [
     BrowserModule,
     MyDatePickerModule,ReactiveFormsModule, FormsModule,
+    TreeModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

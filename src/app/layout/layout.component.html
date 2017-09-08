@@ -1,12 +1,93 @@
 <div class="ll-layout">
     <div class="ll-header-box">
-
-        <!-- <main-nav></main-nav> -->
+        <div class="topbar-container">
+            <div class="ll-brand">LLGUN</div>
+            <div class="_navbar">
+                <ul class="_main-box">
+                    <li><a routerLink="inbox"><i class="fa fa-inbox"></i>收件箱</a></li>
+                    <li><a routerLink="inbox"><i class="fa fa-tasks"></i>我的任务</a></li>
+                    <li><a routerLink="inbox"><i class="fa fa-video-camera"></i>项目<i class="fa fa-caret-down"></i></a></li>
+                    <li><a class="active" routerLink="inbox"><i class="fa fa-sliders"></i>设置</a></li>
+                    <li><a routerLink="inbox"><i class="fa fa-newspaper-o"></i>公告</a></li>
+                    <li><a routerLink="inbox"><i class="fa fa-wrench"></i>自定义</a></li>
+                </ul>
+                <ul class="_user-box">
+                    <li><a routerLink="inbox">自定义</a></li>
+                    <li class="_user">
+                        <a routerLink="inbox">
+                            <div class="_avatar"></div>英俊<i class="fa fa-caret-down"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="ll-page-nav-box"></div>
-    <div class="ll-tools-box"></div>
+
+    <div class="ll-page-nav-box">
+        <div class="project-bar-container">
+            <div class="project-title">恐龙特级克塞</div>
+            <div class="_nav-box">
+                <ul>
+                    <li><a>项目主页</a></li>
+                    <li><a class="active">任务</a></li>
+                    <li><a>资产</a></li>
+                    <li><a>镜头</a></li>
+                    <li><a>版本</a></li>
+                    <li><a>序列</a></li>
+                </ul>
+            </div>
+            <div class="_tools-box">
+                <div class="search-box" [class.active]="isActive"><i class="fa fa-search"></i><input type="text" (focus)="isActive=true" (blur)="isActive=false"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ll-page-title-box">
+        <div class="page-bar-container clearfix">
+            <div class="_current-title">项目资产</div>
+            <div class="_tools-box">
+                <a routerLink="/layout"><i class="fa fa-table"></i></a>
+                <a routerLink="/layout"><i class="fa fa-th"></i></a>
+                <a routerLink="/layout" class="active"><i class="fa fa-list"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ll-tools-box">
+        <div class="tools-bar-container">
+            <div class="_btn">
+                <a routerLink="/home"><i class="fa fa-sort-alpha-asc icon-blue"></i>排序<i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="_btn">
+                <a routerLink="/home"><i class="fa fa-sort-alpha-asc icon-blue"></i>高级分组<i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="_btn _no-icon">
+                <a routerLink="/home">字段选择<i class="fa fa-angle-down"></i></a>
+            </div>
+        </div>
+    </div>
+
     <div class="ll-main-box">
-        <div class="ll-left-container"></div>
+        <div class="ll-left-container">
+            <tree-root class="ll-side-tree" #tree id="treeDetail" [focused]="true" [nodes]="treeDataSource" [options]="treeOptions">
+                <ng-template #treeNodeTemplate let-node let-index="index">
+                    <span (click)="node.toggleActivated(true)" *ngIf="node.data.name" class="tree-title-content">{{ node.data.name }} <span style="font-weight: normal; margin-left: 1em;">( 10 )</span></span>
+                    <div *ngIf="node.data.name == undefined">
+                        <div class="tree-item-container">
+                            <div class="tree-img-box">
+                                <img style="width: 99px; height: 55px;" [src]="node.data.imgUrl" />
+                            </div>
+                            <div class="tree-msg-box">
+                                <span class="_type"><i class="{{node.data.entity_type_icon}}"></i> {{node.data.entity_type}}</span>
+                                <span class="_content">{{node.data.content}}</span>
+                                <span class="_time">{{node.data.created_at}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </ng-template>
+            </tree-root>
+        </div>
         <div class="ll-main-container">
             <div class="detail-container">
                 <div class="detail-top-container">图片、名字。。。</div>

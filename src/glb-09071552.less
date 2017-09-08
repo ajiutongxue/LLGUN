@@ -27,15 +27,10 @@ button {
 }
 
 input[type="text"],
-input[type="password"],
 select,
 textarea {
     outline: none;
     ime-mode: disabled;
-}
-
-.icon-blue {
-    color: @color-active;
 }
 
 .input-active {
@@ -46,8 +41,7 @@ textarea {
         border: none;
         box-shadow: none;
         
-        input[type="text"],
-        input[type="password"]{
+        input[type="text"] {
             border-color: @color-active !important;
             box-shadow: 0 0 3px @color-active;
         }
@@ -196,21 +190,19 @@ td {
 
 .ll-page-nav-box {
     flex: 0 1 32px;
-    border-bottom: 1px solid #B0BECC;
-    background: #CAD3DC;
-    .ll-page-nav-box-shadow();
+    border-bottom: 1px solid #D1D8DE;
+    background: #EBEDEF;
 }
 
 .ll-page-title-box {
-    flex: 0 1 42px;
+    flex: 0 1 45px;
     background: #fff;
-    border-bottom: 1px solid #DEE4E9;
 }
 
 .ll-tools-box {
-    flex: 0 1 33px;
-    background: #F5F5F5;
-    border-bottom: 1px solid #8C9CA5;
+    flex: 0 1 32px;
+    background: @normal-border;
+    border-bottom: 1px solid @normal;
 }
 
 .ll-main-box {
@@ -249,14 +241,14 @@ td {
     line-height: @_height;
     
     .ll-brand {
-        flex: 0 1 130px;
-        margin-left: 15px;
+        flex: 0 1 200px;
+        margin-left: 30px;
         font-size: 24px;
         font-family: "Arial Black", sans-serif;
         color: #D9D9D9;
         box-sizing: border-box;
     
-        &:hover{
+        &:hover {
             color: #fff;
             text-shadow: 0 0 4px @color-active;
         }
@@ -268,10 +260,6 @@ td {
         
         a {
             color: #b4b9bb;
-            
-            .fa-caret-down {
-                margin-left: 5px;
-            }
         }
         
         ._main-box,
@@ -294,23 +282,24 @@ td {
                     cursor: pointer;
                     
                     &:hover,
-                    &.active {
+                    &:active {
                         background: #2F363D;
                         border-color: #000;
                         
-                        .fa:not(.fa-caret-down) {
+                        .fa-inbox,
+                        .fa-tasks {
                             color: @color-active;
                         }
                     }
                     
-                    .fa:not(.fa-caret-down) {
+                    .fa-tasks,
+                    .fa-inbox {
                         transform: scale(1.3);
                         margin-right: 7px;
+                    }
     
-                        &.fa-tasks,
-                        &.fa-newspaper-o {
-                            transform: scale(1.1);
-                        }
+                    .fa-tasks {
+                        transform: scale(1.1);
                     }
                 }
             }
@@ -320,27 +309,6 @@ td {
             position: absolute;
             right: 0;
             top: 0;
-            
-            ._user {
-                position: relative;
-                
-                > a {
-                    padding-left: 45px;
-                }
-                
-                ._avatar {
-                    @_size: 24px;
-    
-                    position: absolute;
-                    left: 15px;
-                    top: (@_height - @_size) / 2;
-                    width: @_size;
-                    height: @_size;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    background: pink;
-                }
-            }
         }
     }
 }
@@ -362,11 +330,11 @@ td {
     .project-title {
         //display: inline-block;
         //flex: 1 1 1px;
-        margin-left: 15px;
+        margin-left: 30px;
         margin-right: 30px;
         font-size: 18px;
         //font-weight: 600;
-        color: #111;
+        color: #313D4E;
     }
     
     ._nav-box {
@@ -387,7 +355,7 @@ td {
                 > a {
                     display: inline-block;
                     padding: 0 15px;
-                    color: #111;
+                    color: #313D4E;
                     border: 1px solid transparent;
                     border-width: 0 1px;
                     cursor: pointer;
@@ -395,9 +363,8 @@ td {
                     
                     &:hover,
                     &.active {
-                        background-color: #d8e0ea;
-                        border-color: #b8c5d0;
-                        .ll-page-nav-box-shadow();
+                        background-color: #F0F2F5;
+                        border-color: #d3dae0;
                     }
                 }
             }
@@ -406,162 +373,28 @@ td {
     
     ._tools-box {
         position: absolute;
-        right: 15px;
-        top: 6px;
-    }
-    
-    .search-box {
-        position: relative;
-        font-size: 12px;
-        height: 20px;
-        line-height:20px;
-        border: 1px solid #b2bfca;
-        border-radius: 10px;
-        overflow: hidden;
-        
-        &.active {
-            border-color: @color-active;
-            box-shadow: 0 0 3px @color-active;
-    
-            .fa-search {
-                color: @color-active;
-            }
-    
-            input[type="text"] {
-                color: @color-strongest;
-            }
-        }
-        
-        input[type="text"] {
-            height: 20px;
-            padding-left: 20px;
-            border: none;
-            color: @color-less;
-        }
-        
-        .fa-search {
-            position: absolute;
-            left: 5px;
-            top: 3px;
-            color: @color-less;
-        }
+        right: 0;
+        top: 0;
     }
 }
 //  *** end ***
 
 
-
 // ****************************************
-// 顶部第三行 当前页标题行 page-bar-container
+// 当前页标题行 page-bar-container
 // ****************************************
 .page-bar-container {
-    @_height: 42px;
+    @_height: 40px;
     
     height: @_height;
     line-height: @_height;
     
     ._current-title {
-        float: left;
-        margin-left: 15px;
-        margin-right: 30px;
-        font-size: 20px;
+        margin-left: 30px;
+        font-size: 24px;
         font-weight: 200;
     }
-    
-    ._tools-box {
-        float: left;
-        display: flex;
-        height: 20px;
-        width: 82px;
-        line-height: 20px;
-        margin-top: (@_height - 20px) /  2;
-        border-radius: 4px;
-        background: #E0E5EA;
-        overflow: hidden;
-        
-        a {
-            flex: 1 1 24px;
-            padding: 0 2px;
-            font-size: 12px;
-            color: @dark-blue;
-            text-align: center;
-            
-            &:first-child {
-                padding-left: 6px;
-            }
-            &:last-child {
-                padding-right: 6px;
-            }
-            
-            &:hover,
-            &.active {
-                color: #fff;
-                background: @color-active;
-            }
-        }
-    }
 }
-// *** end ***
-
-
-
-
-
-
-// ********************************
-// 顶部第四行 工具按钮行 tools-bar-container
-// ********************************
-.tools-bar-container {
-    @_height: 32px;
-    
-    height: @_height;
-    line-height: @_height - 4;
-    
-    a {
-        text-decoration: none;
-    }
-    
-    ._btn {
-        display: inline-block;
-        height: 22px;
-        line-height:22px;
-        font-size: 12px;
-        
-        &._no-icon {
-            a {
-                padding-left: 10px;
-            }
-        }
-        
-        a {
-            display: inline-block;
-            height: 22px;
-            background: #fff;
-            border: 1px solid #E1E4E8;
-            border-radius: 4px;
-            padding: 0 5px;
-            color: @dark-blue;
-            
-            .fa {
-                margin: 0 5px;
-            }
-            
-            &:hover {
-                //border-color: @normal-border;
-                border-color: #CCCFD1;
-                
-                .fa-angle-down {
-                    color: @color-active;
-                }
-            }
-        }
-        
-        &:first-child {
-            margin-left: 15px;
-        }
-    }
-}
-// *** end ***
 
 
 // *************
@@ -595,13 +428,6 @@ td {
 }
 
 // *** end ***
-
-
-
-
-
-
-
 
 // ************
 // 详情
@@ -796,7 +622,7 @@ td {
             margin-top: 5px;
         }
         
-        &:last-child {
+        &::last-child {
             margin-bottom: 3px;
         }
     }
@@ -1502,7 +1328,6 @@ td {
         color: @color-strongest;
         
         & + input[type="text"],
-        & + input[type="password"],
         & + span { // 这个span就是不显示input只显示内容的时候用的
             // padding-left: 25px;
             padding-left: 20px;
@@ -1522,8 +1347,7 @@ td {
         }
     }
     
-    > input[type="text"],
-    > input[type="password"] {
+    > input[type="text"] {
         display: block;
         width: 100%;
         height: inherit;
@@ -1629,8 +1453,7 @@ td {
         background: transparent;
     }
     
-    input[type="text"],
-    input[type="password"]{
+    input[type="text"] {
         // width: calc(~"100% + 2px");
         // margin-left: -1px;
         // margin-bottom: -1px;

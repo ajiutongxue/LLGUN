@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .flex-box {
+            display: flex;
+            outline: 3px solid blue;
+        }
+        .flex-left {
+            flex: 0 0 100px;
+            background: grey;
+        }
+        .flex-right {
+            flex: auto;
+            background: brown;
+            position: relative;
+        }
+
+        .flex-right > div {
+            position: absolute;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 300px;">
+    <div class="flex-box">
+        <div class="flex-left">24323</div>
+        <div class="flex-right">
+            <div>搭建网络层与主机层的纵深防御搭建网络层与主机层的纵深防御搭建网络层与主机层的纵深防御 护航网站安全</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

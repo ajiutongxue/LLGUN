@@ -18,4 +18,7 @@ export class AppComponent {
 
     rowsize: number;
 
+    myopt = {
+      inline: true
+    }
 }

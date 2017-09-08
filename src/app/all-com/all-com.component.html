@@ -1,3 +1,99 @@
+<hr style="margin-top:100px;">
+<div class="range-container" style="text-align: center">
+    <button class="_minus"><i class="fa fa-minus"></i></button>
+    <input type="range" min="1" max="2.5" step="0.1">
+    <button class="_plus"><i class="fa fa-plus"></i></button>
+</div>
+
+<hr>
+<table class="table-fixed form-row select-row">
+    <tbody>
+        <tr>
+            <td class="row-title">查找选择框</td>
+            <td>
+                <div class="select-box">
+                    <div class="input-box">
+                        <i class="fa fa-play"></i>
+                        <input type="text" />
+                    </div>
+                    <div *ngIf="false" class="modal-flatest-container put-down" style="width: 150px; height: 130px;">
+                        <my-date-picker [options]="myopt"></my-date-picker>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<div style="display:inline-block; position:relative">
+
+        <!-- yingjun 在div上加了z-index，因为新建里阴影遮住了div，以后改好删掉 -->
+        <div *ngIf="false" #div1 class="modal-flatest-container" style="z-index:9; height: 200px; width: 160px; margin-left: 100px; margin-top: 100px;">
+          <div class="select-content common-content">
+            <div class="content-group">
+              <div class="group-title" id="wtd2">高级字段选择</div>
+              <table class="table-fixed">
+                <tr>
+                  <td class="check-td"><i class="fa fa-check fa-fw"></i></td>
+                  <td>开始时间</td>
+                </tr>
+                <tr>
+                  <td class="check-td"><i></i></td>
+                  <td>开始时间</td>
+                </tr>
+                <tr class="more-right-triangle" pipelineDisplay="false" (mouseenter)="pipelineDisplay = true" (mouseleave)="pipelineDisplay = false">
+                  <td class="check-td"><i class="fa fa-check fa-fw"></i></td>
+                  <td>开始时间
+                        <div #pplDiv class="modal-flatest-container" *ngIf="pipelineDisplay" style="position:fixed; left: 262px;top: 160px;height: 50px; width: 150px;">
+                            <div id='pipeline' class="select-content common-content">
+                                <table class="table-fixed ppl-body">
+                                    <tr>
+                                        <td class="check-td"><i class="fa fa-check fa-fw"></i></td>
+                                        <td class="ppl-color"><i style="background: green"></i></td>
+                                        <td>ppl 颜色</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                  </td>
+                </tr>
+                <!-- <tr class="more-right-triangle" *ngIf="false">
+                  <td id='xtd1' class="check-td"><i [class]="itemCheck(false)"></i></td>
+                  <td id="xtd2">{{ 'page.step-field' | translate}}
+                    <div #pplDiv class="modal-flatest-container" [style.display]="pipeLineDisplay" style="position:fixed">
+                      <div id='pipeline' class="select-content common-content">
+                        <table class="table-fixed ppl-body">
+                          <tr *ngFor="let item of pipeLineSource; let i = index;" (click)="onClickForPPL(i)">
+                            <td [id]='i' class="check-td"><i [class]="itemCheck(item.visible)"></i></td>
+                            <td [id]='i+1' class="ppl-color"><i [style.background]="item.color"></i></td>
+                            <td [id]='i+2'>{{item.description | translate}}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </td>
+                </tr> -->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+<hr>
+<h2>context menu</h2>
+<div *ngIf="false" class="modal-context-container" style="height: 300px; left: 200px; top: 200px;">
+    <div class="cmenu-item">新建一个用户新建一个用户新建一个用户</div>
+    <div class="cmenu-item">新建一个用户</div>
+    <div class="cmenu-item cannt-click">新建一个用户</div>
+    <div class="cmenu-item">新建一个用户</div>
+    <hr class="line-separator">
+    <div class="cmenu-item"><i class="fa fa-file fa-fw"></i> 新建一个用户</div>
+    <div class="cmenu-item"><i class="fa fa-remove fa-fw"></i> 新建一个用户</div>
+</div>
+<hr>
+
 <button #btn type="button" (click)="showData()">shwo</button>
 <div #div1 class="modal-flatest-container" *ngIf="showChild" style="height: 200px;">
   <div class="select-content common-content">
@@ -46,6 +142,7 @@
                     </div>
 <hr>
 <h2>thumbnail</h2>
+<thumbnail></thumbnail>
 <thumbnail></thumbnail>
 <hr>
 <h2>详情</h2>
@@ -165,7 +262,7 @@
                                         <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
                                     </span>
                                 </div>
-                                <input type="text">  
+                                <input type="text">
                             </div>
 
                         </div>
@@ -204,7 +301,7 @@
                 <tr>
                     <td></td>
                     <td><div class="error-msg"><i class="fa fa-info-circle"></i> 错误信息</div></td>
-                </tr> 
+                </tr>
             </tbody>
         </table>
         <table class="table-fixed form-row error-row">
@@ -222,19 +319,29 @@
                 <tr>
                     <td></td>
                     <td><div class="error-msg"><i class="fa fa-info-circle"></i> 错误信息</div></td>
-                </tr> 
+                </tr>
             </tbody>
         </table>
     </div>
 </div>
 
+<span class="fa-stack fa-lg">
+    <i class="fa fa-file-o fa-stack-2x"></i>
+    <i class="fa fa-check-circle fa-stack-1x fa-inverse"></i>
+</span>
 
 
 <hr>
 <h2>modal - jqxWindow</h2>
 <button class="btn btn-primary" showJqWindow="false" (click)="showJqWindow = !showJqWindow">show it!</button>
 <jqxWindow [width]="500" [height]="300" [isModal]="true" [resizable]="false" *ngIf="showJqWindow">
-    <div class="ll-modal-header">新建资产</div>
+    <div class="ll-modal-header">
+        <span class="fa-stack ll-modal-header-icon icon-combo">
+            <i class="fa fa-list-alt fa-stack-1x icon-combo-main"></i>
+            <i class="fa fa-plus-circle fa-stack-1x icon-combo-symbol"></i>
+        </span>
+        <i class="fa fa-check-circle ll-modal-header-icon" style="display:none;"></i>新建资产
+    </div>
     <div class="ll-modal-main">
         <div class="ll-modal-body">
                 <table class="table-fixed form-row">
@@ -339,8 +446,40 @@
                 <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
             </span>
         </div>
-        <input type="text"> 
+        <input type="text">
     </div>
+    <div *ngIf="false" class="modal-flatest-container put-down" style="width: 150px; height: 130px;">
+            <div class="select-content common-content">
+                <table class="table-fixed status-body status-col-3">
+                    <tr>
+                        <td><i class="fa fa-fw fa-stop"></i></td>
+                        <td>stp</td>
+                        <td>暂停</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-fw fa-play"></i></td>
+                        <td>pl</td>
+                        <td>进行中</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-fw fa-undo"></i></td>
+                        <td>fin</td>
+                        <td>完成</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-fw fa-play"></i></td>
+                        <td>pl</td>
+                        <td>进行中</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-fw fa-undo"></i></td>
+                        <td>fin</td>
+                        <td>完成</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
 </div>
 
 <hr>
@@ -409,13 +548,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </td>
             </tr>
              <tr>
                 <td></td>
                 <td><div class="error-msg"><i class="fa fa-info"></i> 错误信息</div></td>
-            </tr> 
+            </tr>
         </tbody>
     </table>
 </div>
@@ -463,7 +602,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </td>
         </tr>
     </tbody>
@@ -562,7 +701,7 @@
     </div>
     <div class="modal-flatest-container put-down" style="width: 180px; height: 230px; left: 500px; /*top: 200px;*/">
         <div class="select-content common-content pipeline-content">
-            
+
             <div class="content-group">
                 <div class="group-title">阿童木大战阿拉丁</div>
                 <table class="table-fixed pipeline-body">
@@ -615,7 +754,7 @@
 
     <div class="modal-flatest-container put-down" style="width: 180px; height: 230px; left: 300px;">
         <div class="select-content common-content pipeline-content">
-            
+
                 <table class="table-fixed pipeline-body">
                     <tr>
                         <td><span></span></td>

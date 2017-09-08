@@ -1,0 +1,28 @@
+<h2>this is bug tree</h2>
+
+<tree-root [nodes]="nodes" [options]="options">
+    <ng-template #treeNodeTemplate let-node let-index="index">
+
+        <div class="node-wrapper" [style.padding-left]="node.getNodePadding()">
+            <tree-node-expander [node]="node" style="display:none;"></tree-node-expander>
+            <!-- <h1>{{ node.isActive}} ----  {{ llShow }}</h1> -->
+            <div class="node-content-wrapper">
+
+                <h3 (click)="showData(node.data.data)">XXXXX{{ node.data.data }}</h3>
+                <!-- {{ node.data.data['size'] }} -->
+                <thumbnail></thumbnail>
+                <thumbnail></thumbnail>
+                <thumbnail></thumbnail>
+                <thumbnail></thumbnail>
+                <thumbnail></thumbnail>
+                <thumbnail></thumbnail>
+                <!-- <tree-node-content [node]="node" [index]="index">
+                    sfadfad·fds
+                    <h3>{{ node.data.size }}</h3>
+                    <thumbnail></thumbnail>
+                </tree-node-content> -->
+            </div>
+        </div>
+
+    </ng-template>
+</tree-root> 
