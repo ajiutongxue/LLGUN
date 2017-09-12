@@ -177,16 +177,19 @@ td {
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex;
-    flex-direction: column;
+    //display: flex;
+    //flex-direction: column;
 }
 
 .ll-header-box {
-    flex: 0 1 34px;
+    position: relative;
+    height: 36px;
+    //flex: 0 1 34px;
     background: #24292E;
     border: 1px solid #000;
     border-left: none;
     border-right: none;
+    z-index: 400;
     
     a {
         color: #f0f0f0;
@@ -195,37 +198,65 @@ td {
 }
 
 .ll-page-nav-box {
-    flex: 0 1 32px;
+    position: relative;
+    z-index:390;
+    //flex: 0 1 32px;
+    height: 32px;
     border-bottom: 1px solid #B0BECC;
     background: #CAD3DC;
     .ll-page-nav-box-shadow();
 }
 
 .ll-page-title-box {
-    flex: 0 1 42px;
+    position: relative;
+    //flex: 0 1 42px;
+    height: 42px;
     background: #fff;
     border-bottom: 1px solid #DEE4E9;
+    z-index:380;
 }
 
 .ll-tools-box {
-    flex: 0 1 33px;
+    position: relative;
+    z-index: 370;
+    //flex: 0 1 33px;
+    height: 32px;
     background: #F5F5F5;
     border-bottom: 1px solid #8C9CA5;
 }
 
 .ll-main-box {
+    position: absolute;
+    top: 142px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
-    flex: 1 1 auto;
+    //flex: 1 1 auto;
     // flex-direction: row;
     background: #fff;
 }
 
 .ll-left-container {
+    position: relative;
     flex: 0 1 300px;
     border-right: 1px solid @color-input-border;
-    overflow: auto;
-    overflow-x: hidden;
+    //overflow: auto;
+    overflow: hidden;
     background: @bg-weak;
+    
+    .ll-drag-line {
+        position: absolute;
+        right: -1px;
+        width: 3px;
+        background: transparent;
+        border-right: 1px solid @color-strongest;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+        cursor: col-resize;
+        opacity: 0;
+    }
 }
 
 .ll-main-container {
@@ -472,7 +503,7 @@ td {
         float: left;
         display: flex;
         height: 20px;
-        width: 82px;
+        //width: 82px;
         line-height: 20px;
         margin-top: (@_height - 20px) /  2;
         border-radius: 4px;
@@ -481,16 +512,16 @@ td {
         
         a {
             flex: 1 1 24px;
-            padding: 0 2px;
+            padding: 0 6px;
             font-size: 12px;
             color: @dark-blue;
             text-align: center;
             
             &:first-child {
-                padding-left: 6px;
+                padding-left: 8px;
             }
             &:last-child {
-                padding-right: 6px;
+                padding-right: 8px;
             }
             
             &:hover,
@@ -505,9 +536,6 @@ td {
 
 
 
-
-
-
 // ********************************
 // 顶部第四行 工具按钮行 tools-bar-container
 // ********************************
@@ -516,6 +544,7 @@ td {
     
     height: @_height;
     line-height: @_height - 4;
+    padding-left: 15px;
     
     a {
         text-decoration: none;
@@ -523,6 +552,7 @@ td {
     
     ._btn {
         display: inline-block;
+        position: relative;
         height: 22px;
         line-height:22px;
         font-size: 12px;
@@ -556,7 +586,7 @@ td {
             }
         }
         
-        &:first-child {
+        &._first {
             margin-left: 15px;
         }
     }
@@ -583,9 +613,53 @@ td {
 }
 
 .detail-tabs {
-    flex: 0 1 50px;
-    border-top: 1px solid red;
-    border-bottom: 1px solid red;
+    flex: 0 1 32px;
+    border-top: 1px solid @normal-border;
+    border-bottom: 1px solid @normal-border;
+}
+
+.detail-tabs-container {
+    @_height: 32px;
+    
+    height: @_height;
+    line-height: @_height;
+    
+    a {
+        text-decoration: none;
+    }
+    
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        font-size: 0;
+        
+        li {
+            display: inline-block;
+            font-size: 14px;
+            
+            &:first-child {
+                margin-left: 30px;
+                
+                a {
+                    //border-left: 1px solid @normal-border;
+                }
+            }
+            
+            a {
+                display: inline-block;
+                padding: 0 15px;
+                color: @color-strongest;
+                //border-right: 1px solid @normal-border;
+                
+                &:hover,
+                &.active {
+                    background: @color-active;
+                    color: #fff;
+                }
+            }
+        }
+    }
 }
 
 .detail-main-container {
@@ -595,11 +669,6 @@ td {
 }
 
 // *** end ***
-
-
-
-
-
 
 
 
@@ -690,7 +759,70 @@ td {
     }
 }
 
+.detail-top-content {
+    @_l: 30px;
+    
+    position: relative;
+    padding: 30px 0 0 @_l;
+    font-size: 0;
+
+    ._thumbnail {
+        //display: inline-block;
+        position: absolute;
+        left: @_l;
+        top: 30px;
+        height:160px;
+        
+        .thumbnail-container {
+            margin: 0 !important;
+            font-size: 14px;
+        }
+    }
+    
+    .thumbnial-msg {
+        height: 160px;
+        margin-top:10px;
+        margin-left: 310px;
+        font-size: 14px;
+        
+        ._title {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 200;
+            line-height:1.2em;
+            
+            a {
+                color: @color-strongest;
+                
+                &:hover {
+                    color: @color-active;
+                    text-decoration: none;
+                }
+            }
+        }
+        
+        ._msg {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: @normal;
+            
+            &._type {
+                .fa {
+                    margin-right: 5px;
+                }
+            }
+    
+            .ll-label {
+                padding-right: 5px;
+                border-color: @normal-border;
+            }
+        }
+    }
+}
+
 // *** end ***
+
+
 
 // *************
 // 拟态框工具定义
@@ -1332,6 +1464,12 @@ td {
             border-top: 1px solid @normal-border;
             color: @color-stronger;
             background: @bg-weak;
+            
+            ._btn {
+                position: relative;
+                display: inline-block;
+                margin-right: 15px;
+            }
             
             &:after {
                 position: absolute;
@@ -2019,3 +2157,7 @@ td {
     }
 }
 //*** end ***
+
+
+
+
