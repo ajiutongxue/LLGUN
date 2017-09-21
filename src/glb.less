@@ -34,6 +34,13 @@ textarea {
     ime-mode: disabled;
 }
 
+._avatar {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: lightsteelblue;
+}
+
 .icon-blue {
     color: @color-active;
 }
@@ -197,6 +204,7 @@ td {
     }
 }
 
+
 .ll-page-nav-box {
     position: relative;
     z-index:390;
@@ -266,9 +274,14 @@ td {
     
 }
 
+
 // *** end ***
 
-
+.ll-header-box-modal-shadow() {
+    //box-shadow: 0 3px 8px rgba(0, 0, 0, .13),
+    //            0 7px 16px rgba(0, 0, 0, .25);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.13), 0 10px 26px rgba(0, 0, 0, 0.25);
+}
 // *******************************************
 // 最顶部导航条  - .topbar-container
 // *******************************************
@@ -314,6 +327,7 @@ td {
             list-style: none;
             
             > li {
+                position: relative;
                 display: inline-block;
                 font-size: 14px;
                 
@@ -369,11 +383,188 @@ td {
                     height: @_size;
                     border-radius: 50%;
                     overflow: hidden;
-                    background: pink;
+                    //background: pink;
                 }
             }
         }
     }
+}
+
+.top-nav-mask {position: fixed; left: 0; right: 0; top: 0; bottom: 0; background:rgba(0,0,0,.4); z-index:391;}
+
+.modal-normal-container {
+    //.modal-set(0 0px 3px 0 rgba(0, 0, 0, .13), 0 5px 12px 0 rgba(0, 0, 0, .25), fixed);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 140px;
+    //min-height: 260px;
+    min-height: 160px;
+    max-height: 500px;
+    //background: #f5f7f9;
+    background: #fff;
+    border: 1px solid #80898E;
+    border-bottom-color: #5a6469;
+    
+    hr.line-separator {
+        height: 1px;
+        border: none;
+        margin: 0 0 5px 0;
+        background: @normal-border;
+    }
+
+    .ll-header-box-modal-shadow();
+    
+    .topbar-container & {
+        border-radius: 4px;
+        
+        &._project {
+            //width: 260px;
+            width: auto;
+            min-width: 150px;
+            max-width: 400px;
+            
+            .scroll-box {
+                max-height: 400px;
+                min-height: 220px;
+                overflow: auto;
+                overflow-x: hidden;
+            }
+            
+            .modal-normal-container {
+                position: fixed;
+                //left: 400px;
+                //top: 300px;
+                ///// 需要页面上去算
+            }
+            
+            ._avatar {
+                position: absolute;
+                left: 15px;
+                top: (52px - 36px) / 2;
+                width: 64px;
+                height: 36px;
+                //border-radius: 100%;
+                //background: lightpink;
+            }
+            
+            a._all-project {
+                display: block;
+                line-height:28px;
+                height: 28px;
+                padding-left: 15px;
+                margin-bottom: 5px;
+                color: @color-strongest;
+                
+                &:hover {
+                    color: #fff;
+                    background: @color-active;
+                }
+            }
+            
+            // li
+            ._project-item {
+                height: 52px;
+                
+                &:hover {
+                    color: #fff;
+                    background: @color-active;
+                }
+                
+                a._title {
+                    //display: table-cell;
+                    padding-left: 90px;
+                    //line-height: 1.3em;
+                    line-height: 52px;
+                    //padding-top: 10px;
+                    padding-right: 24px;
+                    color: inherit;
+                    background: none;
+                    height: inherit;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+    
+                ._sub-btn {
+                    position: absolute;
+                    right: 10px;
+                    top: 20px;
+                }
+            }
+        }
+    
+        &._root-level {
+        }
+    
+        &._sub-level {
+            left: 100%;
+            top: -6px;
+            width: auto;
+            min-width: 140px;
+            max-width: 240px;
+            height: auto;
+            min-height: 20px;
+            max-height: 400px;
+        }
+    
+        ul {
+            padding: 5px 0;
+            margin: 0;
+            list-style: none;
+    
+            &._normal {
+                @_h: 28px;
+                
+                > li {
+                    line-height: @_h;
+                    height: @_h;
+                    //padding-left: 15px;
+                }
+                
+                a {
+                    display: block;
+                    height: inherit;
+                    padding-left: 15px;
+                    padding-right: 24px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    
+                    ._sub-btn {
+                        position: absolute;
+                        right: 10px;
+                        top: 6px !important;
+                    }
+                    
+                    &:hover,
+                    &.active {
+                        color: #fff;
+                        background: @color-active;
+                    }
+                }
+            }
+            
+            // may have sub-ul-container
+            li {
+                position: relative;
+            }
+            
+            a {
+                color: @color-strongest;
+            }
+        }
+    }
+    
+    ._user-box & {
+        &._root-level {
+            right: 0;
+            left: unset;
+            height: auto;
+            min-height: 0;
+        }
+    }
+    
 }
 // *** end ***
 
@@ -426,8 +617,8 @@ td {
                     
                     &:hover,
                     &.active {
-                        background-color: #d8e0ea;
-                        border-color: #b8c5d0;
+                        background-color: #97a7bb;
+                        border-color: #8396a7;
                         .ll-page-nav-box-shadow();
                     }
                 }
@@ -586,9 +777,9 @@ td {
             }
         }
         
-        &._first {
-            margin-left: 15px;
-        }
+        //&._first {
+        //    margin-left: 15px;
+        //}
     }
 }
 // *** end ***
@@ -823,62 +1014,6 @@ td {
 // *** end ***
 
 
-
-// *************
-// 拟态框工具定义
-// *************
-.put-up {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-}
-
-.put-down {
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
-}
-
-.modal-set(@shadow-front, @shadow-back, @position:absolute) {
-    position: @position;
-    // position: fixed;
-    //border-bottom: 1px solid rgba(104, 110, 113, 89);
-    // border-radius: 0 0 4px 4px;
-    // min-width: 150px;
-    width: 210px;
-    border-radius: 4px;
-    background: #fff;
-    box-sizing: content-box;
-    
-    &:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: inherit;
-        background: #fff;
-        z-index: -1;
-    }
-    
-    &:before {
-        content: '';
-        position: absolute;
-        top: -1px;
-        right: -1px;
-        bottom: -1px;
-        left: -1px;
-        z-index: -2;
-        border-radius: inherit;
-        // border-bottom: 1px solid rgba(104, 110, 113, 89);
-        // @color-normal的颜色被应俊改成了更深的颜色了
-        // border-bottom: 1px solid @color-normal;
-        border-bottom: 1px solid #81878B;
-        background: linear-gradient(#D0D0D0, #A1A8AC 30px, #A1A8AC 80%, #B3B9BD);
-        box-shadow: @shadow-front, @shadow-back;
-    }
-}
-
-// *** end ***
 
 // *******************
 // 右键菜单，中等浮起的拟态框
@@ -1450,6 +1585,45 @@ td {
             padding: 25px 30px 25px 0;
             overflow: auto;
             overflow-x: hidden;
+    
+    
+            &.sort-modal {
+                left: 30px;
+        
+                .table-fixed {
+                    width: 100%;
+                    
+                    tr {
+                        &._header {
+                            font-weight: bold;
+                            border-bottom: 1px solid @color-input-border;
+                        }
+                        
+                        &:hover {
+                            background: @bg-selected;
+                        }
+                    }
+                    
+                    ._td1 {
+                        width: 18px;
+                        padding-left: 5px;
+                        
+                        i.fa {
+                            cursor: move;
+                            transform: scale(.8);
+                            
+                            &:hover {
+                                color: @color-active;
+                            }
+                        }
+                    }
+                    ._td2 {
+                        width: 30px;
+                        padding-right: 5px;
+                        text-align: right;
+                    }
+                }
+            }
         }
         
         .ll-modal-footer {
@@ -1985,9 +2159,21 @@ td {
     
     
     .node-content-wrapper {
+        position: relative;
         width: 100%;
         padding: 0;
         border: none;
+        
+        .tree-title-content {
+            position: absolute;
+            display: block;
+            left: 0;
+            top: 0;
+            right: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
         //border-radius: 0;
     }
     
@@ -2053,6 +2239,8 @@ td {
             position: relative;
             
             > img {
+                width: 85px;
+                height: 47px;
                 .absoluteMiddleCenter();
             }
         }
@@ -2156,6 +2344,79 @@ td {
         }
     }
 }
+//*** end ***
+
+
+
+
+// ********************************************************
+// input range
+// ********************************************************
+.alert-box {
+    position: fixed;
+    z-index: 99999;
+    height: 20px;
+    line-height:20px;
+    text-align: center;
+    width: 400px;
+    left: 50%;
+    margin-left: -200px;
+    background: @color-succes;
+    color: #fff;
+    border-radius: 12px;
+    margin-top: 1px;
+    font-size: 12px;
+    
+    ._msg {
+        opacity: .8;
+    }
+    
+    ._undo {
+        text-decoration: underline;
+        margin-left: 10px;
+    }
+    
+    
+    ._close {
+        position: absolute;
+        right: 5px;
+        display: inline-block;
+        border-radius: 100%;
+        height: 1em;
+        width: 1em;
+        top: 4px;
+        line-height:1em;
+        
+        &:hover {
+            background: #fff;
+            color: @color-succes;
+        }
+    }
+    
+    &.alert-undo {}
+    
+    &.alert-error {
+        color: #fff;
+        background: @color-warning;
+        
+        ._msg {
+            opacity: 1;
+            
+            .fa {
+                color: #ffd253;
+            }
+        }
+        
+        ._close {
+            
+            &:hover {
+                background: #fff;
+                color: @color-warning;
+            }
+        }
+    }
+}
+
 //*** end ***
 
 

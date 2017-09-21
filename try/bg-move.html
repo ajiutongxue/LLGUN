@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../src/assets/jqwidgets/jquery.js"></script>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 100px;
+        }
+
+        li {
+            width: 280px;
+            height:45px;
+            background: #909090;
+            border: 1px solid #444;
+        }
+
+        li:hover,
+        li.active {
+            background: pink;
+        }
+
+        li.move {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: pink;
+            opacity: 0;
+        }
+
+        li.move:hover {
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<ul style="position:relative;">
+    <li class="active"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li class="move"></li>
+</ul>
+
+<script>
+    $('li').each(function(i, item) {
+        $(item).attr('data-index', i);
+    });
+
+    var oldActive = 0;
+    var curActive = 0;
+
+    $('li').on('activeit', function() {
+        $('li').eq(curActive).addClass('active');
+    });
+
+    function moveBg() {
+        $('.active').removeClass('active');
+        $('.move').css({
+            'opacity': 0.8,
+            'top': $('li').eq(oldActive).offset().top - $('ul').offset().top + 'px'
+        }).animate({
+            'top': $('li').eq(curActive).offset().top - $('ul').offset().top + 'px'
+        }, function() {
+            $('li').trigger('activeit');
+            $('.move').css('opacity', 0.3);
+        })
+    }
+
+
+    $('li').on('click', function() {
+        oldActive = $('.active').data('index');
+        curActive = $(this).data('index');
+        moveBg();
+    });
+
+    $(window).on('keydown', function (e) {
+        // down
+        if (e.keyCode == 40) {
+            oldActive = curActive;
+            curActive = curActive < 4 ? curActive + 1 : 0;
+            moveBg();
+        }
+        if (e.keyCode == 38) {
+            oldActive = curActive;
+            curActive = curActive > 0 ? curActive - 1 : 4;
+            moveBg();
+        }
+    })
+
+
+</script>
+</body>
+</html>
