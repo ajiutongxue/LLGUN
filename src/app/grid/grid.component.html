@@ -217,76 +217,16 @@
     </div>
 
     <div class="ll-main-box">
-        <div class="ll-left-container">
-            <div class="ll-drag-line" appDragSetWidth></div>
-            <div style="position: absolute; left:0; top: 0; right: 0; bottom: 0;">
-                <tree-root class="ll-side-tree" #tree id="treeDetail" [focused]="true" [nodes]="treeDataSource" [options]="treeOptions">
-                    <ng-template #treeNodeTemplate let-node let-index="index">
-                        <span (click)="node.toggleActivated(true)" *ngIf="node.data.name" class="tree-title-content">{{ node.data.name }} <span style="font-weight: normal; margin-left: 1em;">( 10 )</span></span>
-                        <div *ngIf="node.data.name == undefined">
-                            <div class="tree-item-container">
-                                <div class="tree-img-box">
-                                    <img [src]="node.data.imgUrl" />
-                                </div>
-                                <div class="tree-msg-box">
-                                    <span class="_type"><i class="{{node.data.entity_type_icon}}"></i> {{node.data.entity_type}}</span>
-                                    <span class="_content">{{node.data.content}}</span>
-                                    <span class="_time">{{node.data.created_at}}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </ng-template>
-                </tree-root>
-            </div>
-        </div>
         <div class="ll-main-container">
-            <div class="detail-container">
-                <div class="detail-top-container">
-                    <div class="detail-top-content">
-                        <div class="_thumbnail">
-                            <thumbnail [notShowThumFiels]="true"></thumbnail>
-                        </div>
-                        <div class="thumbnial-msg">
-                            <div class="_title"><a href="javascript:;">奥特曼大战蜘蛛侠</a></div>
-                            <div class="_msg _type"><i class="fa fa-cube"></i>资产</div>
-                            <div class="_msg clearfix">
-                                <span class="ll-label">
-                                    <i class="fa fa-user"></i>
-                                    <span>刘大宝</span>
-                                </span>
-                                <span class="ll-label">
-                                    <i class="fa fa-user"></i>
-                                    <span>刘大宝</span>
-                                </span>
-                                <span class="ll-label">
-                                    <i class="fa fa-user"></i>
-                                    <span>刘大宝</span>
-                                </span>
-                                <span class="ll-label">
-                                    <i class="fa fa-user"></i>
-                                    <span>刘大宝</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="detail-tabs">
-                    <div class="detail-tabs-container">
-                        <ul>
-                            <li><a class="active" href="javascript:;">资产详情</a></li>
-                            <li><a href="javascript:;">任务列表</a></li>
-                            <li><a href="javascript:;">版本</a></li>
-                            <li><a href="javascript:;">关联镜头</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="detail-main-container">
-                    一行一行的内容
-                </div>
-            </div>
+            <ag-grid-angular style="position:absolute; left: 0; top: 0; right: 0;bottom: 30px;" class="ag-fresh" [gridOptions]="gridOptions"
+                             [columnDefs]="columnDefs"
+                             [rowData]="rowData" rowSelection="multiple" (cellValueChanged)="onCellValueChanged($event)">
+            </ag-grid-angular>
         </div>
     </div>
 
     <div *ngIf="showproject" class="top-nav-mask"></div>
 </div>
+
+
+

@@ -62,14 +62,14 @@
                 </tr>
                 <!-- <tr class="more-right-triangle" *ngIf="false">
                   <td id='xtd1' class="check-td"><i [class]="itemCheck(false)"></i></td>
-                  <td id="xtd2">{{ 'page.step-field' | translate}}
+                  <td id="xtd2">{{ 'page.step-field'}}
                     <div #pplDiv class="modal-flatest-container" [style.display]="pipeLineDisplay" style="position:fixed">
                       <div id='pipeline' class="select-content common-content">
                         <table class="table-fixed ppl-body">
                           <tr *ngFor="let item of pipeLineSource; let i = index;" (click)="onClickForPPL(i)">
                             <td [id]='i' class="check-td"><i [class]="itemCheck(item.visible)"></i></td>
                             <td [id]='i+1' class="ppl-color"><i [style.background]="item.color"></i></td>
-                            <td [id]='i+2'>{{item.description | translate}}</td>
+                            <td [id]='i+2'>{{item.description}}</td>
                           </tr>
                         </table>
                       </div>
@@ -367,6 +367,174 @@
         </div>
     </div>
 </jqxWindow>
+
+<hr>
+<h2>modal - jqxWindow</h2>
+<button class="btn btn-primary" (click)="showJqWindow2 = !showJqWindow2">show it!</button>
+<jqxWindow [width]="500" [height]="300" [isModal]="true" [resizable]="false" *ngIf="showJqWindow2">
+    <div class="ll-modal-header">
+        <span class="fa-stack ll-modal-header-icon icon-combo">
+            <i class="fa fa-list-alt fa-stack-1x icon-combo-main"></i>
+            <i class="fa fa-plus-circle fa-stack-1x icon-combo-symbol"></i>
+        </span>
+        <i class="fa fa-check-circle ll-modal-header-icon" style="display:none;"></i>新建资产
+    </div>
+    <div class="ll-modal-main">
+        <div class="ll-modal-body sort-modal">
+            <div *ngIf="false">
+                <table class='table-fixed' appSortTableContainer>
+                    <tr class="_header">
+                        <td class="_td1"><i class="fa fa-list"></i></td>
+                        <td class="_td2"><label><input #ckAD type="checkbox" [checked]="selectedAllData" /></label></td>
+                        <td class="_td3">全选</td>
+                    </tr>
+                    <tr *ngFor="let item of params.dataSource; let i = index;" appDNDSortTable (click)="onSelectedDataItem(i)">
+                        <td class="_td1"><i class="fa fa-list"></i></td>
+                        <td class="_td2"><label><input [disabled]="!item.nullable" type="checkbox" [checked]="item.visible" /></label></td>
+                        <td class="_td3">字段</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div *ngIf="true">
+                <!--<label>{{ 'page.step-field'}}</label>-->
+                <table class='table'>
+                    <!--<tr (click)="onSelectAllPPL()">-->
+                        <!--<td class="td1"><i class="fa fa-list"></i></td>-->
+                        <!--<td class="td2"><label><input #ckAPPL type="checkbox" [checked]='selectedAllPPL'/></label></td>-->
+                        <!--<td class="td3">{{ 'page.selectAll'}}</td>-->
+                    <!--</tr>-->
+                    <tr *ngFor="let item of params.pipeLineSource; let i = index;" (click)="onSelectedPPLItem(i)">
+                        <td class="td4"><i class="fa fa-list"></i></td>
+                        <!-- <td class="td2"><label><input type="checkbox" [checked]="item.setting.visible" /></label></td> -->
+                        <td class="td2"><label><input type="checkbox" [checked]="item.visible" /></label></td>
+                        <td class="td3">{{item.description}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="ll-modal-footer">
+            <button class="btn btn-primary"><i class="fa fa-check"></i> 确定</button>
+            <button class="btn btn-default"><i class="fa fa-reply"></i> 取消</button>
+        </div>
+    </div>
+</jqxWindow>
+
+<hr>
+<h2>modal - jqxWindow</h2>
+<button class="btn btn-primary" (click)="showJqWindow3 = !showJqWindow3">show it!</button>
+<jqxWindow [width]="540" [height]="600" [isModal]="true" [resizable]="false" *ngIf="showJqWindow3">
+    <div class="ll-modal-header">
+        <span class="fa-stack ll-modal-header-icon icon-combo">
+            <i class="fa fa-list-alt fa-stack-1x icon-combo-main"></i>
+            <i class="fa fa-plus-circle fa-stack-1x icon-combo-symbol"></i>
+        </span>
+        <i class="fa fa-check-circle ll-modal-header-icon" style="display:none;"></i>新建资产
+    </div>
+    <div class="ll-modal-main">
+        <div class="ll-modal-body" style="padding-right:44px">
+            <div style="padding-bottom:20px">
+                <table class="table-fixed form-row" id="entity-1" style="display: table;">
+                <tbody><tr>
+                    <td class="row-title" id="label1">连接类型</td>
+                    <td id="select1">
+                        <div class="select-box" id="general-select">
+                            <div class="input-box">
+                                <input id="general-input" type="text" class="ng-pristine ng-valid ng-touched">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody></table>
+                <!----><table class="table-fixed form-row" id="entity-3">
+                    <tbody><tr>
+                        <td class="row-title" id="label3">连接任务</td>
+                        <td id="select3">
+                            <div class="select-box" id="group-select">
+                                <div class="input-box ll-label-box">
+                                    <!---->
+                                    <input id="group-input" type="text" class="ng-untouched ng-pristine ng-valid">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody></table>
+                <table class="table-fixed form-row" id="description" style="display: table;">
+                <tbody><tr>
+                    <td class="row-title" id="label">描述</td>
+                    <td id="input">
+                        <div class="input-box" id="string-input">
+                            <input id="str-input" type="text" class="ng-untouched ng-pristine ng-valid">
+                        </div>
+                    </td>
+                </tr>
+                </tbody></table>
+                <table class="table-fixed form-row" id="status_list" style="display: table;">
+                <tbody><tr>
+                    <td class="row-title" id="label">状态</td>
+                    <td id="dictionary">
+                        <div class="select-box" id="general-select">
+                            <div class="input-box">
+                                <!---->
+                                <input id="general-input" type="text" class="ng-untouched ng-pristine ng-valid">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody></table>
+            </div>
+
+
+                <div style="padding-left:44px">
+                    <div class="well my-drop-zone" ng2filedrop="">
+                        <i class="fa fa-paperclip"></i> 点击选择文件或拖放文件
+
+
+                        <div style="margin-bottom: 40px">
+                            <p>文件个数: 1</p>
+                            <table style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th width="50%">文件名</th>
+                                    <th>大小</th>
+                                    <th>进度</th>
+                                    <th colspan="2" style="text-align:center">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="table-body">
+                                <tr>
+                                    <td><strong>fus.rar</strong></td>
+                                    <td nowrap="">2.329 KB</td>
+                                    <td>
+                                        <div class="progress" style="width:90%; margin-bottom:0; background-color:lightgray">
+                                            <div class="progress-bar" role="progressbar" style="background-color: yellowgreen; width: 0%;">0%</div>
+                                        </div>
+                                    </td>
+                                    <td style="width:120px">
+                                        <select style="width:98%">
+                                            <option value="0">添加新版本</option>
+                                            <!----><option value="1">file.txt</option><option value="2">info.txt</option>
+                                        </select>
+                                    </td>
+                                    <td nowrap="" style="width:30px">
+                                        <button style="height:18pt"> 移除</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <input multiple="" ng2fileselect="" style="display:none" type="file">
+                </div>
+        </div>
+        <div class="ll-modal-footer">
+            <button class="btn btn-primary"><i class="fa fa-check"></i> 确定</button>
+            <button class="btn btn-default"><i class="fa fa-reply"></i> 取消</button>
+        </div>
+    </div>
+</jqxWindow>
 <hr>
 
 
@@ -514,9 +682,8 @@
                         <div class="input-box">
                             <i class="fa fa-play"></i>
                             <input type="text" value="进行中" show01="false" (click)="show01 = !show01" />
-                            <!-- <p><i class="fa fa-info"></i> 错误信息</p> -->
                         </div>
-                        <div *ngIf="show01" class="modal-flatest-container put-down" style="width: 150px; height: 130px;">
+                        <div *ngIf="true" class="modal-flatest-container put-down" style="width: 150px; height: 130px;">
                             <div class="select-content common-content">
                                 <table class="table-fixed status-body status-col-3">
                                     <tr>

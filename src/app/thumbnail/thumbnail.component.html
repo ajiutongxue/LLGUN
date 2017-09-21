@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="thumbnail-fields-box">
+    <div class="thumbnail-fields-box" *ngIf="!notShowThumFiels">
         <div class="fields-item" *ngFor="let item of dataSource; let i = index;">
             <div *ngIf="item.show == '1'">
                 <i class="fa fa-square"></i><span>{{ item?.name }}:</span>{{ item?.value }}

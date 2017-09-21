@@ -2,12 +2,16 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-layout',
-    templateUrl: './layout.component.html'
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.less']
 })
 
 export class LayoutComponent {
     // contextDisplay = 'block';
     isActive = false;
+
+    hideMsg = true;
+    hideErr = true;
 
     treeDataSource = [{
         id: 82741,
