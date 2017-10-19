@@ -174,51 +174,23 @@
     <div class="ll-tools-box">
         <div class="tools-bar-container">
             <div class="_btn">
-                <a routerLink="/home"><i class="fa fa-sort-alpha-asc icon-blue"></i>排序<i class="fa fa-angle-down"></i></a>
+                <a routerLink="/grid"><i class="fa fa-sort-alpha-asc icon-blue"></i>排序<i class="fa fa-angle-down"></i></a>
             </div>
             <div class="_btn">
-                <a routerLink="/home"><i class="fa fa-sort-alpha-asc icon-blue"></i>高级分组<i class="fa fa-angle-down"></i></a>
+                <a routerLink="/grid"><i class="fa fa-sort-alpha-asc icon-blue"></i>高级分组<i class="fa fa-angle-down"></i></a>
             </div>
             <div showmingzi class="_btn _no-icon">
-                <a (click)="showmingzi = !showmingzi" routerLink="/home">名字<i class="fa fa-angle-down"></i></a>
-                <div *ngIf="showmingzi" class="modal-flatest-container put-down" style="width: 150px; height: 130px;">
-                    <div class="select-content common-content">
-                        <table class="table-fixed status-body status-col-3">
-                            <tr>
-                                <td><i class="fa fa-fw fa-stop"></i></td>
-                                <td>stp</td>
-                                <td>暂停</td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa fa-fw fa-play"></i></td>
-                                <td>pl</td>
-                                <td>进行中</td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa fa-fw fa-undo"></i></td>
-                                <td>fin</td>
-                                <td>完成</td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa fa-fw fa-play"></i></td>
-                                <td>pl</td>
-                                <td>进行中</td>
-                            </tr>
-                            <tr>
-                                <td><i class="fa fa-fw fa-undo"></i></td>
-                                <td>fin</td>
-                                <td>完成</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                <a routerLink="/grid">名字<i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="_tools-box">
+                <div class="search-box" [class.active]="isActive"><i class="fa fa-search"></i><input type="text" (focus)="isActive=true" (blur)="isActive=false"></div>
             </div>
         </div>
     </div>
 
     <div class="ll-main-box">
         <div class="ll-main-container">
-            <ag-grid-angular style="position:absolute; left: 0; top: 0; right: 0;bottom: 30px;" class="ag-fresh" [gridOptions]="gridOptions"
+            <ag-grid-angular class="ag-fresh ll-ag-grid" [gridOptions]="gridOptions"
                              [columnDefs]="columnDefs"
                              [rowData]="rowData" rowSelection="multiple" (cellValueChanged)="onCellValueChanged($event)">
             </ag-grid-angular>

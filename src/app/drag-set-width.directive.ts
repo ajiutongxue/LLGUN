@@ -27,6 +27,9 @@ export class DragSetWidthDirective {
             } else {
                 this.theParent.style.flexBasis = e.pageX - this.theLeft + 'px';
             }
+
+            console.log(this.theParent.style.flexBasis);
+
         });
 
         this.lineUpFn = this.renderer.listen('document', 'mouseup', (e) => {

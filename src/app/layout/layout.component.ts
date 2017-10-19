@@ -10,6 +10,8 @@ export class LayoutComponent {
     // contextDisplay = 'block';
     isActive = false;
 
+    showConfirm = false;
+
     hideMsg = true;
     hideErr = true;
 
@@ -109,7 +111,7 @@ export class LayoutComponent {
                 entity_type: '资产',
                 user: '刘大宝',
                 entity_type_icon: 'fa fa-cube',
-                imgUrl: '/assets/style/images/thumbnail-default-shot.png',
+                imgUrl: '/assets/style/images/img2.jpg',
             }, {
                 assign_id: null,
                 assign_date: '',
@@ -119,7 +121,7 @@ export class LayoutComponent {
                 entity_type: '资产',
                 user: '刘大宝',
                 entity_type_icon: 'fa fa-cube',
-                imgUrl: '/assets/style/images/thumbnail-default-shot.png',
+                imgUrl: '/assets/style/images/img3.jpg',
             }],
     }];
 
@@ -129,7 +131,7 @@ export class LayoutComponent {
         displayField: 'content',
         animateExpand: true,
         animateSpeed: 15,
-        levelPadding: 15,
+        // levelPadding: 15,
         animateAcceleration: 1.5,
         actionMapping: {
             // mouse: {

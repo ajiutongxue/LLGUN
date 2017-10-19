@@ -37,8 +37,26 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { AgGridModule } from 'ag-grid-angular/main';
 import { GridComponent } from './grid/grid.component';
 
+import { GridStringRenderer } from './grid/string-renderer';
+import { GridStringInput } from './grid/input.component';
+import { NormalStringRendererComponent } from './grid/normal-string-renderer';
+
+import { GridUserComponent } from './grid/_users/user.component';
+import { GridUserRender } from './grid/_users/user-renderer';
+
+import { AbstractComponent } from './sort-table-directive/abstract.component.ts';
+import { SortTableContainerDirective, SortTableDirective } from './sort-table-directive/sort-table.directive';
+import { SortRowComponent } from './sort-row/sort-row.component';
+// import {DragDropSortTableService, DragDropService} from './sort-table-directive/sort-table.service';
+import { DragDropConfig } from './sort-table-directive/dnd.config';
+import { LoginComponent } from './login/login.component';
+
 const appRoutes: Routes = [
 
+    {
+        path: 'login',
+        component: LoginComponent
+    },
     {
         path: 'layout',
         component: LayoutComponent
@@ -62,6 +80,10 @@ const appRoutes: Routes = [
     {
         path: 'grid',
         component: GridComponent
+    },
+    {
+        path: 'sort',
+        component: SortRowComponent
     },
     {
         path: '',
@@ -92,6 +114,16 @@ const appRoutes: Routes = [
         ImgsAsMovComponent,
         PaintFrameDirective,
         GridComponent,
+        GridStringRenderer,
+        GridStringInput,
+        GridUserComponent,
+        GridUserRender,
+        NormalStringRendererComponent,
+        // AbstractComponent,
+        SortTableContainerDirective,
+        SortTableDirective,
+        SortRowComponent,
+        LoginComponent,
         // HighlightDirective
     ],
     imports: [
@@ -99,11 +131,11 @@ const appRoutes: Routes = [
         MyDatePickerModule, ReactiveFormsModule, FormsModule,
         TreeModule,
         FileUploadModule,
-        AgGridModule.withComponents([],
+        AgGridModule.withComponents([GridStringRenderer, GridStringInput, NormalStringRendererComponent, GridUserComponent, GridUserRender],
         ),
         RouterModule.forRoot(appRoutes)
     ],
-    providers: [],
+    providers: [DragDropConfig],
     bootstrap: [AppComponent]
 })
 export class AppModule {

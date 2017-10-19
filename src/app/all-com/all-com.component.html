@@ -4,7 +4,16 @@
     <input type="range" min="1" max="2.5" step="0.1">
     <button class="_plus"><i class="fa fa-plus"></i></button>
 </div>
-
+<hr>
+<br>
+<h3>
+    <i class="fa fa-calendar-check-o"></i>
+    <i class="fa fa-id-badge"></i>
+    <i class="fa fa-group"></i>
+    <i class="fa fa-sitemap"></i>
+    <i class="fa fa-street-view"></i>
+</h3>
+<br>
 <hr>
 <table class="table-fixed form-row select-row">
     <tbody>
@@ -83,13 +92,15 @@
       </div>
 <hr>
 <h2>context menu</h2>
-<div *ngIf="false" class="modal-context-container" style="height: 300px; left: 200px; top: 200px;">
+<div *ngIf="true" class="modal-context-container" style=" left: 200px; top: 200px;">
     <div class="cmenu-item">新建一个用户新建一个用户新建一个用户</div>
     <div class="cmenu-item">新建一个用户</div>
     <div class="cmenu-item cannt-click">新建一个用户</div>
     <div class="cmenu-item">新建一个用户</div>
     <hr class="line-separator">
-    <div class="cmenu-item"><i class="fa fa-file fa-fw"></i> 新建一个用户</div>
+    <div class="cmenu-item">
+
+        <i class="fa fa-sort-alpha-asc fa-fw my-fa-cancel"></i> 新建一个用户</div>
     <div class="cmenu-item"><i class="fa fa-remove fa-fw"></i> 新建一个用户</div>
 </div>
 <hr>
@@ -536,6 +547,69 @@
     </div>
 </jqxWindow>
 <hr>
+<hr>
+<h2>modal - jqxWindow---高级排序</h2>
+<button class="btn btn-primary" (click)="showJqWindow6 = !showJqWindow6">show it!</button>
+<jqxWindow [width]="540" [height]="600" [isModal]="true" [resizable]="false" *ngIf="showJqWindow6">
+    <div class="ll-modal-header">
+        <span class="fa-stack ll-modal-header-icon icon-combo">
+            <i class="fa fa-list-alt fa-stack-1x icon-combo-main"></i>
+            <i class="fa fa-plus-circle fa-stack-1x icon-combo-symbol"></i>
+        </span>
+        <i class="fa fa-check-circle ll-modal-header-icon" style="display:none;"></i>新建资产
+    </div>
+    <div class="ll-modal-main">
+        <div class="ll-modal-body advanced-modal">
+            <table class="table-fixed">
+                <tr>
+                    <td class="_long-box">
+                        <div class="input-box select-signed">
+                            <input type="text">
+                            <i class="fa fa-angle-down"></i>
+                        </div>
+                    </td>
+                    <td class="_short-box">
+                        <div class="input-box select-signed">
+                            <input type="text">
+                            <i class="fa fa-angle-down"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <a href='javascript:;'><i class='fa fa-chevron-circle-up'></i></a>
+                        <a href='javascript:;'><i class='fa fa-chevron-circle-down'></i></a>
+                        <a href='javascript:;'><i class='fa fa-plus-square'></i></a>
+                        <a href='javascript:;'><i class='fa fa-minus-square'></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="_long-box">
+                        <div class="input-box">
+                            <input type="text">
+                            <i class="fa fa-angle-down select-signed"></i>
+                        </div>
+                    </td>
+                    <td class="_short-box">
+                        <div class="input-box">
+                            <input type="text">
+                            <i class="fa fa-angle-down select-signed"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <a href='javascript:;'><i class='fa fa-chevron-circle-up'></i></a>
+                        <a href='javascript:;'><i class='fa fa-chevron-circle-down'></i></a>
+                        <a href='javascript:;'><i class='fa fa-plus-square'></i></a>
+                        <a href='javascript:;'><i class='fa fa-minus-square'></i></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="ll-modal-footer">
+            <button class="btn btn-primary"><i class="fa fa-check"></i> 确定</button>
+            <button class="btn btn-default"><i class="fa fa-reply"></i> 取消</button>
+        </div>
+    </div>
+</jqxWindow>
+<hr>
 
 
 
@@ -656,7 +730,8 @@
 <p>input-box, form-row, table-fixed ，需要改变宽度时，在外部添加容器以限制宽度</p>
 <div style="width: 300px;">
     <div class="input-box">
-        <input type="text">
+        <input type="text" placeholder="asdfjasfs">
+        <i class="fa fa-angle-down select-signed"></i>
     </div>
 </div>
 <div style="width: 300px; margin-top: 20px;">
@@ -785,9 +860,10 @@
             <td>
 
                 <div class="select-box" style="margin-top: 200px;">
-                    <div class="input-box">
+                    <div class="input-box select-signed">
                         <i class="input-ppl-color" style="background: yellow"></i>
                         <input type="text" />
+                        <i class="fa-angle-down fa"></i>
                     </div>
                     <div class="modal-flatest-container put-down" style="width: 180px; height: 230px; left: 100px; /*top: 200px;*/">
                         <div class="select-content common-content pipeline-content">
@@ -1017,6 +1093,7 @@
                     <td>完成</td>
                 </tr>
             </table>
+            <button class="btn btn-primary">确定</button>
         </div>
     </div>
 </div>
