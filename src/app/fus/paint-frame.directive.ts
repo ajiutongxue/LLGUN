@@ -50,6 +50,13 @@ export class PaintFrameDirective {
         // });
     }
 
+    @HostListener('mouseleave', ['$event']) mouseleave(event) {
+        if (this.ele.nativeElement.getElementsByTagName('canvas').length) {
+            this.ele.nativeElement.removeChild(this.theCanvas);
+            // this.ele.nativeElement.append(this.thediv);
+        }
+    }
+
     setCurrentFrameX(pos_x, one_w = this.theOneWidth, small_one_w = this._boxWidth / this._count) {
         this._x = Math.floor(pos_x / small_one_w) * one_w;
     }

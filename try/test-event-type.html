@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">event</button>
+<textarea id="ta"></textarea>
+
+<script>
+    document.getElementById('btn').onclick = function(e) {
+        e = e || event;
+        alert(e instanceof MouseEvent);
+//        debugger;
+//        alert(typeof e);
+    };
+
+    document.getElementById('ta').addEventListener('keypress', getKeypressEvent.bind(this, event));
+
+    function getKeypressEvent(e) {
+        alert(typeof event);
+        alert('KeyboardEvent: ' + e instanceof KeyboardEvent);
+        alert('MouseEvent: ' + e instanceof MouseEvent);
+        alert('Event: ' + e instanceof Event);
+    }
+
+</script>
+</body>
+</html>

@@ -50,6 +50,10 @@ import { SortRowComponent } from './sort-row/sort-row.component';
 // import {DragDropSortTableService, DragDropService} from './sort-table-directive/sort-table.service';
 import { DragDropConfig } from './sort-table-directive/dnd.config';
 import { LoginComponent } from './login/login.component';
+import { MyTaskComponent } from './my-task/my-task.component';
+import { MyPlayerComponent } from './my-player/my-player.component';
+import { VideoPlayerDirective } from './my-player/video-player.directive';
+import { ShowComponentComponent } from './show-component/show-component.component';
 
 const appRoutes: Routes = [
 
@@ -78,12 +82,24 @@ const appRoutes: Routes = [
         component: MyFnComponent
     },
     {
+        path: 'my-task',
+        component: MyTaskComponent
+    },
+    {
+        path: 'my-player',
+        component: MyPlayerComponent
+    },
+    {
         path: 'grid',
         component: GridComponent
     },
     {
         path: 'sort',
         component: SortRowComponent
+    },
+    {
+        path: 'show',
+        component: ShowComponentComponent
     },
     {
         path: '',
@@ -124,6 +140,10 @@ const appRoutes: Routes = [
         SortTableDirective,
         SortRowComponent,
         LoginComponent,
+        MyTaskComponent,
+        MyPlayerComponent,
+        VideoPlayerDirective,
+        ShowComponentComponent,
         // HighlightDirective
     ],
     imports: [
