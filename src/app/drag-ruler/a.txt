@@ -1,0 +1,48 @@
+    drawList() {
+        const cw = this.cellWidth;
+        const cvs = this.cvs;
+        const c = this.ctx;
+        const lh = this.rowHeight;
+        const x = this.scrollWidth2listWidth(this.scrollBar.left);  // offset = 0
+        const offset = Math.floor(x / cw);
+        const pl = this.playlist;
+
+        // console.log(`offset x: ${x}`);
+        this.clearList();
+        this.drawGrid();
+
+        c.strokeStyle = '#444';
+        c.strokeWidth = 1;
+        for (let i = offset; i < pl.length; i++) {
+            const y = (pl[i].type) * lh;
+            // const y = (pl[i].type - 1) * lh;
+            if (-x + i * cw > cvs.width) return;
+            // c.globalAlpha = 1;
+
+            if (this.getRowMeta(pl[i].type).color !== 'transparent') c.fillStyle = this.getRowMeta(pl[i].type).color;
+            else {
+                c.fillStyle = 'rgba(255, 255, 255, .1)';
+                c.strokeRect(-x + i * cw + 1.5, 1.5, cw - 2, lh - 2);
+                c.strokeRect(-x + i * cw + 1.5, y + 1.5, cw - 2, lh - 2);
+            }
+            c.fillRect(-x + i * cw + 1, 1, cw - 1, lh - 1);
+            // c.globalAlpha = 0.6;
+            c.fillRect(-x + i * cw + 1, y + 1, cw - 1, lh - 1);
+
+            this.allRect.push({
+                x: -x + i * cw,
+                y: 1,
+                // y: y,
+                w: cw,
+                h: lh,
+                i: i
+            });
+            this.allRect.push({
+                x: -x + i * cw,
+                y: y,
+                w: cw,
+                h: lh,
+                i: i
+            });
+        }
+    }

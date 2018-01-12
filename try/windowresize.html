@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="cc">resize!!</button>
+<script>
+    window.onresize = function() {
+        console.log('>>>>>');
+    };
+
+    document.getElementById('cc').addEventListener('click', function() {
+        window.resizeTo(900, 400);
+    });
+</script>
+</body>
+</html>

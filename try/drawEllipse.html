@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align: center; margin-top: 100px;">
+    <div>
+        <button id="btn">draw!</button>
+    </div>
+    <br>
+    <canvas width="800" height="600" style="border: 3px solid red;" id="cvs"></canvas>
+</div>
+
+<script>
+    drawEllipse = function (ctx, x, y, a, b) {
+        ctx.save();
+        const r = (a > b) ? a : b;
+        const ratioX = a / r;
+        const ratioY = b / r;
+        ctx.scale(ratioX, ratioY);
+        ctx.beginPath();
+        ctx.arc(x / ratioX, y / ratioY, r, 0, 2 * Math.PI, false);
+        ctx.closePath();
+        ctx.restore();
+        ctx.fill();
+    };
+
+    document.getElementById('btn').onclick = function () {
+        drawEllipse(document.getElementById('cvs').getContext('2d'), 250, 100, 500 / 2, 200 / 2);
+    };
+</script>
+</body>
+</html>

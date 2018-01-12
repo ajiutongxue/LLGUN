@@ -1,0 +1,108 @@
+<div class="ll-player">
+    <div class="ll-player-container">
+        <div class="ll-player-content">
+            <div class="player-header">
+                <div class="_title">资产02faasdf</div>
+            </div>
+            <div *ngIf="qcMode" [ngStyle]="isZoomOrMove? toolsBoxStyle:''" class="player-tools-box">
+                <div class="more-tools-box">
+                    <div class="_more-qc-tools">
+                        <a class="_tool-btn" [ngClass]="qcModeType == 'pencil' ? 'active': ''"
+                           (click)="setQcModeType('pencil')"><i class="fa fa-pencil"></i></a>
+                        <a class="_tool-btn" [ngClass]="qcModeType == 'arrow' ? 'active': ''"
+                           (click)="setQcModeType('arrow')"><i class="fa fa-long-arrow-up"></i></a>
+                        <a class="_tool-btn" [ngClass]="qcModeType == 'round' ? 'active': ''"
+                           (click)="setQcModeType('round')"><i class="ll-icon-round"></i></a>
+                        <a class="_tool-btn" [ngClass]="qcModeType == 'rect' ? 'active': ''"
+                           (click)="setQcModeType('rect')"><i class="ll-icon-rect"></i></a>
+                        <a class="_tool-btn" [ngClass]="qcModeType == 'eraser' ? 'active': ''"
+                           (click)="setQcModeType('eraser')"><i class="fa fa-eraser"></i></a>
+                        <a class="_tool-btn" [ngClass]="qcModeType == 'words' ? 'active': ''"
+                           (click)="setQcModeType('words')"><i class="fa fa-text-width"></i></a>
+                    </div>
+                    <div class="_sub-tools _for-pencil">
+                        <!--<span>画笔选项</span>-->
+                        <span class="_size-box">
+                            <a class="_size _thin" [ngClass]="currentPencilWidthIndex == 0 ? 'active' : ''"
+                               (click)="currentPencilWidthIndex = 0"></a>
+                            <a class="_size _regular" [ngClass]="currentPencilWidthIndex == 1 ? 'active' : ''"
+                               (click)="currentPencilWidthIndex = 1"></a>
+                            <a class="_size _medium" [ngClass]="currentPencilWidthIndex == 2 ? 'active' : ''"
+                               (click)="currentPencilWidthIndex = 2"></a>
+                        </span>
+                        <span class="_color-box">
+                            <a class="_color" *ngFor="let c of pencilColor; let i = index"
+                               [ngClass]="currentPencilColorIndex == i ? 'active' : ''" [style.background]="c"
+                               (click)="currentPencilColorIndex = i"></a>
+                        </span>
+                    </div>
+                    <div class="_history-tools">
+                        <a class="_btn" (click)="undoDrawn($event)"><i class="fa fa-reply"></i> 撤销</a>
+                        <a class="_btn" (click)="clearDrawn($event)"><i class="fa fa-refresh"></i> 清除</a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="scaleMsg" class="scale-msg">
+                <span>{{scaleMsg}}</span></div>
+            <div class="player-video-box">
+                <video [autoplay]="isPlaying" [loop]="!isPlayInList"></video>
+            </div>
+            <div class="player-ctrl-box">
+                <div class="_progress-box">
+                    <span [style.width]="playPercent" class="_progress"></span>
+                    <div class="_progress-ctrl-bar" (click)="gotoAndPlay($event)">
+                        <!--<div class="qc-signed" style="left: 14%;"></div>-->
+                        <!--<div class="qc-signed" style="left: 34%;"></div>-->
+                        <!--<div class="qc-signed" style="left: 64%;"></div>-->
+                        <div class="qc-signed" *ngFor="let s of qcSingedList"
+                             [ngClass]="META.currentFrame === s.frame ? 'active' : ''"
+                             (click)="gotoAndStop($event, s.frame)" [style.left]="s.left"></div>
+                    </div>
+                </div>
+                <div class="_ctrl-box">
+                    <a class="ctrl-btn _play" *ngIf="!isPlaying" (click)="vdoPlay()"><i class="fa fa-play"></i></a>
+                    <a class="ctrl-btn _pause" *ngIf="isPlaying" (click)="vdoPause()"><i class="fa fa-pause"></i></a>
+                    <span class="play-time">{{vdo.currentTime.toFixed(2)}} / {{META.duration.toFixed(2)}}</span>
+                    <span class="play-time">{{META.currentFrame}} / {{META.frames}}</span>
+
+                    <div class="advanced-tools-box">
+                        <a class="advanced-btn _qc-btn" [ngClass]="qcMode ? 'active': ''"
+                           (click)="setCurrentMode('qcMode')"><i [class]="qcTypeIcon"></i></a>
+                        <a class="advanced-btn _zoom-btn" [ngClass]="zoomMode ? 'active': ''"
+                           (click)="setCurrentMode('zoomMode')"><i class="fa fa-search"></i></a>
+                        <a class="advanced-btn _move-btn" [ngClass]="moveMode ? 'active': ''"
+                           (click)="setCurrentMode('moveMode')"><i class="fa fa-arrows"></i></a>
+                        <a class="_vol-btn" [ngClass]="volumeOn ? 'active' : ''" (click)="toggleVolume()"><i
+                            class="fa fa-volume-up"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="msg-toggle-btn" (click)="toggleMsgBox()"><i class="ll-icon-sidebar"
+                                                                  [ngClass]="isShowMsgBox ? 'active' : ''"></i></a>
+        </div>
+        <div class="ll-player-msg" [style.flexBasis]="isShowMsgBox ? msgBoxDefaultWidth : '0'">
+            <div *ngIf="isShowMsgBox">
+                <div class="_sub-title"><i class="fa fa-comments-o"></i> 批注</div>
+            </div>
+        </div>
+    </div>
+    <div class="ll-player-playlist">
+        <div class="_sub-title"><i class="fa fa-film"></i> 播放列表</div>
+        <div class="playlist-container">
+            <a class="_pre-btn"><i class="fa fa-angle-left"></i></a>
+            <a class="_next-btn"><i class="fa fa-angle-right"></i></a>
+            <div class="playlist-content">
+                <ul>
+                    <!--<li><a (click)="changeVdoSrc(1)"><img src="../../assets/style/tmpImg/detail-p1.png"></a></li>-->
+                    <!--<li class="active"><img src="../../assets/style/tmpImg/detail-p1.png"></li>-->
+
+
+                    <li *ngFor="let v of vdoList; let i = index;" [ngClass]="currentVdoIndex==i ? 'active':''"><a (click)="changeVdoSrc(i)"><img src="../../assets/style/tmpImg/detail-p1.png"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

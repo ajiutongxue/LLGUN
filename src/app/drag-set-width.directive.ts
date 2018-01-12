@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostListener, Renderer2, Input} from '@angular/core';
 
 @Directive({
     selector: '[appDragSetWidth]'
@@ -6,11 +6,28 @@ import {Directive, ElementRef, HostListener, Renderer2} from '@angular/core';
 export class DragSetWidthDirective {
 
     theParent;
-    theLeft = 0;        // 默认最左边div用这个
-    minWidth = 200;
-    maxWidth = 460;
+    theOffset = 0;        // 默认最左边div用这个
     lineMovFn: Function;
     lineUpFn: Function;
+
+    _direction = 1;  //  hor：水平拖， ver：垂直拖
+    @Input() set direction(dir: number) {
+        this._direction = dir || this._direction;
+    }
+
+    _minWidth = 200;
+    _minHeight = 200;
+
+    @Input() set minSize(min: number) {
+        this._direction === 1 ? this._minWidth = min || this._minWidth : this._minHeight = min || this._minHeight;
+    }
+
+    _maxWidth = 460;
+    _maxHeight = 460;
+
+    @Input() set maxSize(max: number) {
+        this._direction === 1 ? this._maxWidth = max || this._maxWidth : this._maxHeight = max || this._maxHeight;
+    }
 
     constructor(private _ele: ElementRef, private renderer: Renderer2) {
     }
@@ -20,16 +37,11 @@ export class DragSetWidthDirective {
         this._ele.nativeElement.style.opacity = 1;
 
         this.lineMovFn = this.renderer.listen('document', 'mousemove', (e) => {
-            if ((e.pageX - this.theLeft) > this.maxWidth) {
-                this.theParent.style.flexBasis = this.maxWidth + 'px';
-            } else if ((e.pageX - this.theLeft) < this.minWidth) {
-                this.theParent.style.flexBasis = this.minWidth + 'px';
-            } else {
-                this.theParent.style.flexBasis = e.pageX - this.theLeft + 'px';
-            }
+            const dis = (this._direction === 1 ? e.pageX : ($(window).height() - e.pageY)) - this.theOffset;
+            const _max = this._direction === 1 ? this._maxWidth : this._maxHeight;
+            const _min = this._direction === 1 ? this._minWidth : this._minHeight;
 
-            console.log(this.theParent.style.flexBasis);
-
+            this.theParent.style.flexBasis = (dis > _max ? _max : dis < _min ? _min : dis) + 'px';
         });
 
         this.lineUpFn = this.renderer.listen('document', 'mouseup', (e) => {

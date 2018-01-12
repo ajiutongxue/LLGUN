@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style=" width: 500px; height: 500px; background:pink;" id="div"></div>
+
+<script>
+    const div = document.querySelector('#div');
+
+    function moveHandler() {
+        console.log('move>>');
+    }
+    function upHandler() {
+        window.removeEventListener('mousemove', moveHandler);
+        window.removeEventListener('mouseup', upHandler);
+        console.log('up>>');
+    }
+    div.addEventListener('mousedown', function () {
+        console.log('down>>');
+
+        window.addEventListener('mousemove',moveHandler);
+
+        window.addEventListener('mouseup', upHandler);
+    });
+
+</script>
+</body>
+</html>

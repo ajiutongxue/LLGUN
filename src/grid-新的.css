@@ -1,0 +1,108 @@
+.put-up {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.put-down {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.ll-tools-box {
+  border-bottom: 1px solid #cdcfd2;
+}
+.ag-fresh.ll-ag-grid {
+  line-height: inherit;
+}
+.ag-fresh.ll-ag-grid div {
+  outline: none;
+}
+.ag-fresh.ll-ag-grid .ag-root {
+  border: none;
+}
+.ag-fresh.ll-ag-grid .ag-header {
+  background: #f5f5f5;
+  border-bottom: 1px solid #cdcfd2;
+}
+.ag-fresh.ll-ag-grid .ag-header-group-cell-with-group,
+.ag-fresh.ll-ag-grid .ag-header-cell {
+  padding: 0;
+}
+.ag-fresh.ll-ag-grid .ag-header-group-cell-with-group:hover,
+.ag-fresh.ll-ag-grid .ag-header-cell:hover {
+  background: #fff;
+}
+.ag-fresh.ll-ag-grid .ag-header-group-cell-label {
+  padding: 0;
+  text-align: center;
+  color: #fff;
+}
+.ag-fresh.ll-ag-grid .ag-header-group-cell-with-group {
+  border-bottom: 1px solid #cdcfd2;
+  background: #8495a5;
+}
+.ag-fresh.ll-ag-grid .ag-header-group-cell-with-group:hover {
+  background: #526373;
+}
+.ag-fresh.ll-ag-grid .ag-header-cell-label {
+  padding-left: 5px;
+  color: #14323A;
+}
+.ag-fresh.ll-ag-grid .ag-header-select-all,
+.ag-fresh.ll-ag-grid .ag-header-cell-menu-button {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+.ag-fresh.ll-ag-grid .ag-ltr .ag-header-group-cell,
+.ag-fresh.ll-ag-grid .ag-ltr .ag-header-cell {
+  border-right: 1px solid #cdcfd2;
+}
+.ag-fresh.ll-ag-grid .ag-body {
+  background: #e5e5e5;
+}
+.ag-fresh.ll-ag-grid .ag-row > div:first-child {
+  background: url("assets/style/images/check-row.png") 50% 8px no-repeat transparent;
+}
+.ag-fresh.ll-ag-grid .ag-cell {
+  padding: 0;
+  overflow: unset;
+}
+.ag-fresh.ll-ag-grid .ag-cell:hover {
+  background: #e4eefb;
+}
+.ag-fresh.ll-ag-grid .ag-row-selected {
+  background: #c3d9ef;
+}
+.ag-fresh.ll-ag-grid .ag-row-selected > div:first-child {
+  background: url("assets/style/images/checked-row.png") 50% 8px no-repeat #50A6E1;
+}
+.ag-fresh.ll-ag-grid .ag-cell-focus {
+  border-color: #50A6E1;
+  box-shadow: 0 0 3px #50A6E1;
+}
+.ag-fresh.ll-ag-grid .ag-cell-focus.ag-cell-inline-editing {
+  border: none;
+  box-shadow: none;
+}
+.ag-fresh.ll-ag-grid .ll-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ag-fresh.ll-ag-grid .ll-cell.label-cell {
+  font-size: 0;
+}
+.ag-fresh.ll-ag-grid .ll-cell.label-cell .label-cell-content {
+  width: auto;
+}
+.ag-fresh.ll-ag-grid .ll-cell.label-cell .label-cell-content .ll-label {
+  float: none;
+  display: inline-block;
+  margin-right: 0;
+  margin-left: 4px;
+}
+.ag-fresh .grid-label-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}

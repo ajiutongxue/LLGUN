@@ -1,0 +1,3 @@
+<ul appSortTableContainer [sortableData]="dataSource">
+    <li *ngFor="let d of dataSource; let i = index" appDNDSortTable [index]="i">{{ d.description }}</li>
+</ul>

@@ -1,0 +1,35 @@
+
+<div style="margin: 150px auto 0 auto; width: 950px; height: 400px; border: 10px solid pink">
+    <div class="ll-player-layer-box">
+        <div class="ruler-row">
+            <div class="total-time" [style.width.px]="listTitleWidth">总时长：{{times}} -- <span class="_time">23:12:09</span></div>
+            <div class="list-number-ruler" [style.left.px]="listTitleWidth">
+                <canvas class="number-ruler"></canvas>
+            </div>
+        </div>
+        <div class="play-list-row">
+            <div [style.width.px]="listTitleWidth" class="play-list-title">
+                <div class="_row" *ngFor="let item of rows; let i = index">
+                    <div class="_color" [style.background]="item.color"></div>
+                    {{ item.name }}
+                    <!--<input type="checkbox" checked>-->
+                    <input type="radio" name="ppl">
+                    <div class="_radio"></div>
+                    <!--<i class="fa fa-eye"></i>-->
+                </div>
+            </div>
+            <div [style.left.px]="listTitleWidth" class="play-process-list">
+                <canvas class="process-list" (click)="showOne()" (dblclick)="showTwo()"></canvas>
+            </div>
+        </div>
+        <div class="scroll-bar-box">
+            <div class="scroll-bar">
+                <div class="resize-bar-left"></div>
+                <div class="resize-bar-right"></div>
+            </div>
+        </div>
+        <div class="vernier" [style.left.px]="vernierLeft">
+            <div class="drag-vernier-handle"></div>
+        </div>
+    </div>
+</div>

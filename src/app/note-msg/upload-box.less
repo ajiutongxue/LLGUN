@@ -1,0 +1,113 @@
+@import "../../base";
+@bc: #d1d1d1; // border-color
+.upload-box {
+    border: 1px solid @bc;
+    border-top: none;
+    background: #fff;
+    padding: 15px;
+    
+    .select-file-btns {
+        margin: 10px 0 20px 0;
+        position: relative;
+        
+        ._btn {
+            position: relative;
+            display: inline-block;
+            padding: 0 10px;
+            line-height: 24px;
+            border-radius: 4px;
+            background: @color-active;
+            color: #fff;
+            text-align: center;
+            
+            &._upload-it {
+                position: absolute;
+                right: 0;
+                top: 0;
+                
+                &.cannt-click {
+                    background: @color-less;
+                    cursor: not-allowed;
+                    
+                    &:hover {
+                        background: @color-less;
+                    }
+                }
+            }
+            
+            i.fa {
+                transform: scale(1.25);
+            }
+            
+            &:hover {
+                background: @color-active - 20;
+            }
+            
+            //.webuploader-container {
+            //    position: absolute;
+            //    opacity: 0;
+            //    left: 0;
+            //    top: 0;
+            //    right: 0;
+            //    bottom: 0;
+            //    overflow: hidden;
+            //
+            //    .webuploader-pick + div {
+            //        left: 0 !important;
+            //        right: 0 !important;
+            //        top: 0 !important;
+            //        bottom: 0 !important;
+            //        width: 100% !important;
+            //        height: 100% !important;
+            //    }
+            //}
+        }
+    }
+}
+
+.reply-footer {
+    @_h: 30px;
+    
+    background: @normal-border;
+    background: #e8ecef;
+    height: @_h;
+    border: 1px solid @bc;
+    border-top: none;
+    font-size: 0;
+    position: relative;
+    text-align: right;
+    
+    ._btn {
+        display: inline-block;
+        border: 1px solid @bc;
+        border-top: none;
+        border-bottom: none;
+        font-size: 12px;
+        height: @_h;
+        line-height: @_h;
+        padding: 0 10px;
+        
+        &:hover {
+            background: @color-active;
+            color: #fff;
+        }
+        
+        &:last-child {
+            border: none;
+        }
+        
+        &._show-file,
+        &._cut-vdo {
+            float: left;
+            //position: absolute;
+            //left: 0;
+            //top: 0;
+            border-left: none;
+            
+            i.fa {
+                transform: scale(1.25);
+            }
+        }
+    }
+}
+

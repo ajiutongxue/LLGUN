@@ -1,0 +1,323 @@
+<div class="ll-layout">
+    <div class="ll-header-box">
+        <div class="topbar-container">
+            <div class="ll-brand" style="text-transform: uppercase; flex: 0 1 170px;">WHIRLIGIG</div>
+            <div class="_navbar">
+                <ul class="_main-box">
+                    <li><a routerLink="inbox"><i class="fa fa-inbox"></i>收件箱</a></li>
+                    <li><a routerLink="my-task" class="active" routerLink="inbox"><i class="fa fa-tasks"></i>我的任务</a></li>
+                    <li showproject>
+                        <a><i class="fa fa-video-camera"></i>项目<i class="fa fa-caret-down"></i></a>
+                    </li>
+                    <li><a routerLink="inbox"><i class="fa fa-sliders"></i>设置</a></li>
+                    <li><a routerLink="inbox"><i class="fa fa-newspaper-o"></i>公告</a></li>
+                    <li><a routerLink="inbox"><i class="fa fa-wrench"></i>自定义</a></li>
+                </ul>
+                <ul class="_user-box">
+                    <li><a routerLink="inbox">自定义</a></li>
+                    <li showlogout class="_user">
+                        <a (click)="showlogout = !showlogout" routerLink="inbox">
+                            <div class="_avatar" style="background-image('/assets/style/tmpImg/detail-p1.png');"></div>英俊<i class="fa fa-caret-down"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="ll-page-nav-box">
+        <div class="project-bar-container">
+            <div class="project-title">我的任务</div>
+        </div>
+    </div>
+
+
+
+    <div class="ll-main-box">
+        <div *ngIf="currentTab=='waiting'" class="ll-main-container">
+            <div class="task-page-title-container">
+                <div class="data">2017 年 12 月 22 日</div>
+                <div class="status-msg">目前为止，您还有这些任务没有开始</div>
+            </div>
+            <div class="finished-list-container waiting-list">
+                <div class="_header">
+                    <div>状态</div>
+                    <div>项目名</div>
+                    <div>对象名</div>
+                    <div>任务名</div>
+                    <div>预计用时</div>
+                    <div></div>
+                </div>
+                <ul class="_list">
+                    <li *ngFor="let t of finishedList">
+                        <div><i class="fa fa-pause"></i>待开始</div>
+                        <div>{{t.name}}</div>
+                        <div>镜头232-125</div>
+                        <div>{{t.task}}</div>
+                        <div>{{t.thinkTime}}</div>
+                        <div><button class="task-btn btn-more"><i class="fa fa-play"></i>开始</button></div>
+                    </li>
+                </ul>
+                <div class="_footer">
+                    <span>21 个任务等待开始</span>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="currentTab=='tasks'" class="ll-main-container">
+            <div class="task-page-title-container">
+                <div class="data">2017 年 12 月 22 日</div>
+                <div class="status-msg">您今天的工作安排</div>
+            </div>
+            <div class="flip flip-up">
+                <a *ngIf="currentRow > 0" (click)="changeRow(-1)"><i class="fa fa-angle-double-up"></i></a>
+            </div>
+            <div class="clip-container">
+                <div class="top-mask" [style.height.px]="maskHeight"></div>
+                <div [style.top.px]="taskListContainerTop" class="today-task-list-container">
+                        <div *ngFor="let c of taskCards; let i = index" class="task-card-item" [style.opacity]="ifInShowRow(i) ? '1' : '0.5'"
+                             [ngClass]="{'_pause': c.status=='暂停', '_doing': c.status=='进行中', '_finished': c.status=='完成','kong-card': c.type=='kong', 'shot-card': c.type == 'shot', 'sequence-card': c.type=='sequence', 'asset-card': c.type=='asset' }">
+                            <div class="_header">
+                                <div class="_title">Shot 绑定</div>
+                                <span class="_date">2014/ 12 / 12</span>
+                                <div class="_status">
+                                    <i class="fa" [ngClass]="{'fa-pause': c.status=='暂停', 'fa-hourglass-start': c.status=='进行中', 'fa-check-circle': c.status=='完成' }"></i>
+                                    <span>{{ c.status }}</span>
+                                </div>
+                            </div>
+                            <div class="task-process-bar">
+                                <div [style.width]="c.process" class="task-process-completed"></div>
+                            </div>
+                            <div class="task-content">
+                                <div>
+                                    <span class="field-name">项目名:</span>
+                                    <span class="field-content">恐龙特级克塞好</span>
+                                </div>
+                                <div>
+                                    <span class="field-name">对象名:</span>
+                                    <span class="field-content">镜头234-124235</span>
+                                </div>
+                                <div>
+                                    <span class="field-name">预计时间:</span>
+                                    <span class="field-content">25 h</span>
+                                </div>
+                            </div>
+
+                            <div *ngIf="i == 1" class="tasks-clock">
+                                <div class="_title">任务已用时：</div>
+                                <div class="hours" data-hour="983">
+                                    <div class="number-box">
+                                        <div class="number hb" [class.top72]="numberList[0].move">
+                                            <div>{{ numberList[0].val }}</div>
+                                            <div>{{ (numberList[0].val + 1) > 9 ? 0 : (numberList[0].val + 1) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="number-box">
+                                        <div class="number hs" [class.top72]="numberList[1].move">
+                                            <div>{{ numberList[1].val }}</div>
+                                            <div>{{ (numberList[1].val + 1) > 9 ? 0 : (numberList[1].val + 1) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="number-box">
+                                        <div class="number hg" [class.top72]="numberList[2].move">
+                                            <div>{{ numberList[2].val }}</div>
+                                            <div>{{ (numberList[2].val + 1) > 9 ? 0 : (numberList[2].val + 1) }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="minutes" data-minute="32">
+                                    <div class="number-box">
+                                        <div class="number ms" [class.top72]="numberList[3].move">
+                                            <div>{{ numberList[3].val }}</div>
+                                            <div>{{ (numberList[3].val + 1) > 5 ? 0 : (numberList[3].val + 1) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="number-box">
+                                        <div class="number mg" [class.top72]="numberList[4].move">
+                                            <div>{{ numberList[4].val }}</div>
+                                            <div>{{ (numberList[4].val + 1) > 9 ? 0 : (numberList[4].val + 1) }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="task-card-btns">
+                                <button (click)="editing = true" *ngIf="c.status=='暂停'" class="task-btn task-btn-start"><i class="fa fa-play"></i>开始</button>
+                                <button (click)="editing = true" *ngIf="c.status=='进行中'" class="task-btn task-btn-pause"><i class="fa fa-pause"></i>暂停</button>
+                                <button (click)="editing = true" *ngIf="c.status=='进行中'" class="task-btn task-btn-finished"><i class="fa fa-check"></i>结束</button>
+                                <button (click)="editing = true" *ngIf="c.status=='完成'" class="task-btn task-btn-start"><i class="fa fa-pencil"></i>修改</button>
+                            </div>
+
+
+
+                    </div>
+                </div>
+                <div class="bottom-mask" [style.height.px]="maskHeight"></div>
+            </div>
+            <div class="flip flip-down">
+                <a *ngIf="currentRow < listRows - 1" (click)="changeRow(1)"><i class="fa fa-angle-double-down"></i></a>
+            </div>
+        </div>
+
+        <div *ngIf="currentTab=='finished'" class="ll-main-container">
+            <div class="task-page-title-container">
+                <div class="data">2017 年 12 月 22 日</div>
+                <div class="status-msg finished-msg"><i class="fa fa-check-circle"></i> 目前为止，您已经完成了这些工作</div>
+            </div>
+            <div class="finished-list-container">
+                <div class="_header">
+                    <div>状态</div>
+                    <div>项目名</div>
+                    <div>对象名</div>
+                    <div>任务名</div>
+                    <div>预计用时</div>
+                    <div>实际用时</div>
+                    <div></div>
+                </div>
+                <ul class="_list">
+                    <li *ngFor="let t of finishedList">
+                        <div><i class="fa fa-check-circle"></i>完成</div>
+                        <div>{{t.name}}</div>
+                        <div>镜头232-125</div>
+                        <div>{{t.task}}</div>
+                        <div>{{t.thinkTime}}</div>
+                        <div>{{t.time}}</div>
+                        <div><button class="task-btn btn-more"><i class="fa fa-search-plus"></i>详情</button></div>
+                    </li>
+                </ul>
+                <div class="_footer">
+                    <span>21 个任务已经完成</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer-container">
+        <div class="tab-btn-content">
+            <button class="tab-btn" [ngClass]="{'active': currentTab == 'waiting'}" (click)="currentTab = 'waiting'">未开始</button>
+            <button class="tab-btn" [ngClass]="{'active': currentTab == 'tasks'}" (click)="currentTab = 'tasks'">今日任务</button>
+            <button class="tab-btn" [ngClass]="{'active': currentTab == 'finished'}" (click)="currentTab = 'finished'">已完成</button>
+        </div>
+    </div>
+
+    <div *ngIf="editing" class="task-edit-mask"></div>
+    <div *ngIf="editing" class="task-edit-container" [ngClass]="{'edit-out': outing, 'edit-in': !outing}">
+        <a (click)="setDlgVis()" class="close-btn"><i class="fa fa-fw fa-remove"></i></a>
+        <div class="task-msg">
+            <div class="_item">
+                <span class="_name">任务名：</span>
+                <span class="_content">Layout 绑定Layout 绑定Layout 绑定Layout 绑定Layout 绑定</span>
+            </div>
+            <div class="_item">
+                <span class="_name">项目名：</span>
+                <span class="_content">啊发达大战奥特曼</span>
+            </div>
+            <div class="_item">
+                <span class="_name">对象名：</span>
+                <span class="_content">镜头22424-12</span>
+            </div>
+            <div class="_item">
+                <span class="_name">预计用时：</span>
+                <span class="_content">24 h</span>
+            </div>
+        </div>
+        <div class="edit-container">
+            <div class="_title">编辑您的任务信息</div>
+            <span class="_date">2015 / 12 / 12</span>
+            <div class="edit-list">
+                <div class="_item">
+                    <table class="table-fixed form-row">
+                        <tr>
+                            <td class="row-title">用时：</td>
+                            <td>
+                                <div class="input-box">
+                                    <input type="text" value="12">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <span class="_unit" style="">小时</span>
+                </div>
+                <div class="_item _z2">
+                    <table class="table-fixed form-row">
+                        <tr>
+                            <td class="row-title">状态：</td>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box">
+                                        <input type="text" value="进行中" (focus)="showMenu = true" (blur)="showMenu = false" />
+                                    </div>
+                                    <div *ngIf="showMenu" class="modal-flatest-container put-down">
+                                        <div class="select-content common-content">
+                                            <table class="table-fixed status-body status-col-2">
+                                                <tr>
+                                                    <td><i class="fa fa-fw fa-stop"></i></td>
+                                                    <td>暂停</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-fw fa-play"></i></td>
+                                                    <td>开始</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-fw fa-undo"></i></td>
+                                                    <td>完成</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--<span class="_name">状态：</span>-->
+                    <!--<div class="select-box">-->
+                        <!--<div class="input-box">-->
+                            <!--<input type="text" value="进行中" (focus)="showMenu = true" (blur)="showMenu = false" />-->
+                        <!--</div>-->
+                        <!--<div *ngIf="showMenu" class="modal-flatest-container put-down">-->
+                            <!--<div class="select-content common-content">-->
+                                <!--<table class="table-fixed status-body status-col-2">-->
+                                    <!--<tr>-->
+                                        <!--<td><i class="fa fa-fw fa-stop"></i></td>-->
+                                        <!--<td>暂停</td>-->
+                                    <!--</tr>-->
+                                    <!--<tr>-->
+                                        <!--<td><i class="fa fa-fw fa-play"></i></td>-->
+                                        <!--<td>开始</td>-->
+                                    <!--</tr>-->
+                                    <!--<tr>-->
+                                        <!--<td><i class="fa fa-fw fa-undo"></i></td>-->
+                                        <!--<td>完成</td>-->
+                                    <!--</tr>-->
+                                <!--</table>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <span class="_unit"><i class="fa fa-angle-down"></i></span>
+                </div>
+                <div class="_item">
+                    <table class="table-fixed form-row">
+                        <tr>
+                            <td class="row-title">完成度：</td>
+                            <td>
+                                <div class="input-box">
+                                    <input type="text" value="99">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--<span class="_name">完成度：</span>-->
+                    <!--<input type="text"  value="57">-->
+                    <span class="_unit">%</span>
+                </div>
+            </div>
+        </div>
+        <div class="btn-box">
+            <button class="task-btn edit-submit">确定</button>
+            <button (click)="setDlgVis()" class="task-btn edit-cancel">取消</button>
+        </div>
+    </div>
+
+</div>

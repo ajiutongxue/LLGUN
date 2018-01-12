@@ -1,0 +1,232 @@
+.qc-msg-item {
+    position: relative;
+    padding-left: 25px;
+    
+    &._editor {
+        height: 80px;
+    }
+    
+    &.qc-reply-item {
+        padding-left: 80px;
+    }
+    
+    &:nth-child(even) {
+        background: rgba(255, 255, 255, .05);
+    }
+    
+    .qc-writer {
+        position: relative;
+        height: 60px;
+        padding-left: 55px;
+        padding-top: 10px;
+        
+        .avatar {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        
+        ._name {
+            margin-top: 2px;
+            font-size: 14px;
+            color: #777;
+            line-height: 20px;
+            
+            span {
+                color: #ccc;
+            }
+        }
+        ._date {
+            font-size: 10px;
+            line-height: 20px;
+            color: #777;
+            
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+    
+    .btn {
+        position: absolute;
+        right: 25px;
+        height: 22px;
+        top: 50 - 22px;
+        background: #29862d;
+        color: #eaeaea;
+        padding: 0 10px;
+        font-size: 12px;
+        
+        &:hover {
+            background: #29862d + 30;
+        }
+    }
+    
+    .qc-content {
+        position: relative;
+        padding-left: 55px;
+        padding-right: 25px;
+        min-height: 24px;
+        
+        p {
+            padding-bottom: 1em;
+            font-size: 14px;
+            margin: 5px 0;
+            
+            img,
+            video {
+                width: 105px;
+                height: auto;
+            }
+        }
+    }
+    
+    .qc-msg-last {
+        padding-bottom: 20px;
+    }
+    
+}
+
+.reply-qc-btn {
+    margin-top: -25px;
+    float: right;
+    margin-right: 25px;
+    clear: right;
+    background: none;
+    color: #999;
+    position: relative;
+    z-index: 100;
+    
+    &:hover {
+        color: #CCCCCC;
+        outline: none;
+    }
+}
+
+// player 页面的设置
+.ll-player-msg {
+    .qc-msg-item {
+        position: relative;
+        padding-left: 25px;
+        
+        &._editor {
+            height: 80px;
+        }
+        
+        &.qc-reply-item {
+            padding-left: 80px;
+        }
+        
+        &:nth-child(even) {
+            background: rgba(255, 255, 255, .05);
+        }
+        
+        .qc-writer {
+            position: relative;
+            height: 60px;
+            padding-left: 55px;
+            padding-top: 10px;
+            
+            .avatar {
+                position: absolute;
+                left: 0;
+                top: 10px;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                overflow: hidden;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            
+            ._name {
+                margin-top: 2px;
+                font-size: 14px;
+                color: #777;
+                line-height: 20px;
+                
+                span {
+                    color: #ccc;
+                }
+            }
+            ._date {
+                font-size: 10px;
+                line-height: 20px;
+                color: #777;
+                
+                span {
+                    font-weight: 600;
+                }
+            }
+        }
+        
+        .btn {
+            position: absolute;
+            right: 25px;
+            height: 22px;
+            top: 50 - 22px;
+            background: #29862d;
+            color: #eaeaea;
+            padding: 0 10px;
+            font-size: 12px;
+            
+            &:hover {
+                background: #29862d + 30;
+            }
+        }
+        
+        .qc-content {
+            position: relative;
+            padding-left: 55px;
+            padding-right: 25px;
+            min-height: 24px;
+            
+            p {
+                padding-bottom: 1em;
+                font-size:      14px;
+                margin:         5px 0;
+                
+                img,
+                video {
+                    width: 105px;
+                    height: auto;
+                }
+            }
+        }
+        
+        .qc-msg-last {
+            padding-bottom: 20px;
+        }
+        
+    }
+    .reply-qc-btn {
+        margin-top: -25px;
+        float: right;
+        margin-right: 25px;
+        clear: right;
+        background: none;
+        color: #999;
+        position: relative;
+        z-index: 100;
+        
+        &:hover {
+            color: #CCCCCC;
+            outline: none;
+        }
+    }
+    
+}

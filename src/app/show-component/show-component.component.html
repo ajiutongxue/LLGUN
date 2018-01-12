@@ -1,0 +1,284 @@
+<h2>新建版本 - modal - jqxWindow</h2>
+<button class="btn btn-primary" (click)="isCreateHistory = !isCreateHistory">新建版本</button>
+<jqxWindow [width]="600" [height]="550" [isModal]="true" [resizable]="false" *ngIf="!isCreateHistory">
+    <div class="ll-modal-header">
+        <span class="fa-stack ll-modal-header-icon icon-combo">
+            <i class="fa fa-list-alt fa-stack-1x icon-combo-main"></i>
+            <i class="fa fa-plus-circle fa-stack-1x icon-combo-symbol"></i>
+        </span>
+        <i class="fa fa-check-circle ll-modal-header-icon" style="display:none;"></i>新建资产
+    </div>
+    <div class="ll-modal-main">
+        <div class="ll-modal-body" [ngStyle]="isCatchFile ? {'overflow': 'hidden'} : ''">
+            <div *ngIf="isCatchFile" class="drop-file-layer">
+                <div class="_text"><i class="fa fa-paperclip"></i> 将文件放到这里</div>
+            </div>
+
+            <app-editor-string-input [rowLength]="4"></app-editor-string-input>
+
+
+            <div *ngIf="isStepOne" style="padding-left:44px">
+                <div class="selected-version-file">
+                    <i class="fa fa-link"></i> 上级版本引用
+                    <button class="btn remove-all-parent-version"><i class="fa fa-times"></i> 删除全部</button>
+                </div>
+                <table class="parent-version-link-list">
+                    <thead>
+                    <tr>
+                        <th>版本</th>
+                        <th>引用文件</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                </table>
+                <div *ngIf="isHaveParent">
+                    <table class="parent-version-link-list">
+                        <tr>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box">
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box">
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </td>
+                            <td><a><i class="fa fa-plus"></i></a><a><i class="fa fa-times"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box">
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box">
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </td>
+                            <td><a><i class="fa fa-plus"></i></a><a><i class="fa fa-times"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box">
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box">
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </td>
+                            <td><a><i class="fa fa-plus"></i></a><a><i class="fa fa-times"></i></a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div *ngIf="!isHaveParent" class="selected-file-none">
+                    当前没有可引用版本
+                </div>
+            </div>
+
+
+            <div *ngIf="!isStepOne" style="padding-left:44px">
+                <!--<div *ngIf="!uploader.isUploading && !videoCompressing" ng2FileDrop-->
+                <!--[ngClass]="{'nv-file-over': hasBaseDropZoneOver}"-->
+                <!--(fileOver)="fileOverBase($event)"-->
+                <!--[uploader]="uploader"-->
+                <!--class="well my-drop-zone"-->
+                <!--(click)="selectFile()">-->
+                <!--<i class="fa fa-paperclip"></i>-->
+                <!--{{'page.click-or-dragdrop' | translate}}-->
+                <!--</div>-->
+
+                <!--<div class="selected-version-file">-->
+                    <!--<button class="select-btn">选择文件</button>-->
+                    <!--或拖拽上传文件-->
+                    <!--<span *ngIf="selectedFile" class="seleted-msg"><i class="fa fa-paperclip"></i> 共有 {{ uploader?.queue?.length }}2 个文件</span>-->
+                <!--</div>-->
+                <div class="my-drop-zone"><button class="select-btn">选择文件</button>
+                    或拖拽上传文件</div>
+                <div><span *ngIf="selectedFile"><i class="fa fa-paperclip"></i> 共有 {{ uploader?.queue?.length }}2 个文件</span></div>
+                <!--<div *ngIf="uploader.isUploading || videoCompressing" style="width:520px; height:100px; font-weight:bold; font-size:12pt">-->
+                <!--<div *ngIf="uploader.isUploading">{{'page.uploading' | translate}}</div>-->
+                <!--<div *ngIf="videoCompressing">{{'page.compressing-video' | translate}}</div>-->
+                <!--</div>-->
+
+                <!--<input type="file" #multiple style="display:none" ng2FileSelect [uploader]="uploader" (change)="getvl()"  multiple />-->
+
+                <table class="add-version-uploadfile-list">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>文件名称</th>
+                        <th>大小</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                </table>
+
+                <div *ngIf="selectedFile">
+                    <table class="add-version-uploadfile-list">
+                        <tr>
+                            <td>
+                                <div class="_progress-bar">
+                                    <div style="width: 50%;" class="_uploaded"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>238282035223238282035223238282035223238282035223(3).jpg</div>
+                            </td>
+                            <td>342k</td>
+                            <td><a><i class="fa fa-times"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="_progress-bar">
+                                    <div style="width: 20%;" class="_uploaded"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>238282035223(3).jpg</div>
+                            </td>
+                            <td>342k</td>
+                            <td><a><i class="fa fa-times"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="_progress-bar">
+                                    <div style="width: 90%" class="_uploaded"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>238282035223238282035223(3).jpg</div>
+                            </td>
+                            <td>342k</td>
+                            <td><a><i class="fa fa-times"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="_progress-bar">
+                                    <div style="width: 73%" class="_uploaded"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>238282035223(3).jpg</div>
+                            </td>
+                            <td>342k</td>
+                            <td><a><i class="fa fa-times"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="_progress-bar">
+                                    <div class="_uploaded"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div>238282035223(3).jpg</div>
+                            </td>
+                            <td>342k</td>
+                            <td><a><i class="fa fa-times"></i></a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div *ngIf="!selectedFile" class="selected-file-none">
+                    当前没有文件上传
+                </div>
+                <!--
+                <div class="col-md-9" style="margin-bottom: 40px">
+                    <p>{{'page.files' | translate}}: {{ uploader?.queue?.length }}</p>
+                    <table *ngIf="uploader?.queue?.length" class="table" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th width="50%">{{'page.file-name' | translate}}</th>
+                            <th>{{'page.file-size' | translate}}</th>
+                            <th>{{'page.progress' | translate}}</th>
+                            <th style="text-align:center">{{'page.operation' | translate}}</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table-body">
+                        <tr *ngFor="let item of uploader.queue">
+                            <td><strong>{{ item?.file?.name }}</strong></td>
+                            <td nowrap>{{ item?.file?.size/1024 | number:'.0-0' }} KB</td>
+                            <td>
+                                <div class="progress" style="width:90%; margin-bottom:0; background-color:lightgray">
+                                    <div class="progress-bar" style="background-color:yellowgreen" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }">{{item.progress}}%</div>
+                                </div>
+                            </td>
+                            <td nowrap style="width:30px">
+                                <button style="height:18pt" (click)="item.remove()" [disabled]="uploader.isUploading"> {{'page.remove' | translate}}</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="noFile" id="file-message" style="color:#E30000">
+                        <i class="fa fa-info-circle"></i>
+                        {{'page.must-upload-file' | translate}}
+                    </div>
+                </div>
+                -->
+            </div>
+
+
+        </div>
+        <div class="ll-modal-footer">
+            <div class="checkbox-row">
+                <label>
+                    <input type="checkbox">
+                    <span>不关闭窗口，继续创建</span>
+                </label>
+            </div>
+            <button class="btn btn-primary"><i class="fa fa-check"></i> 确定</button>
+            <button class="btn btn-default"><i class="fa fa-reply"></i> 取消</button>
+        </div>
+    </div>
+</jqxWindow>
+
+
+
+<jqxWindow [width]="700" [height]="550" [isModal]="true" [resizable]="false">
+    <div class="ll-modal-header">
+        <span class="fa-stack ll-modal-header-icon icon-combo">
+            <i class="fa fa-list-alt fa-stack-1x icon-combo-main"></i>
+            <i class="fa fa-plus-circle fa-stack-1x icon-combo-symbol"></i>
+        </span>
+        <i class="fa fa-check-circle ll-modal-header-icon" style="display:none;"></i>新建资产
+    </div>
+    <div class="ll-modal-main">
+
+        <div class="ll-modal-body note-modal-body">
+            <!--<div class="btn-row">-->
+                <div class="scroll-note-list">
+                    <div class="textlink-row">
+                        <div class="_btn _no-expand">
+                            <a><i class="fa fa-plus"></i>新建</a>
+                        </div>
+                    </div>
+                    <app-note-msg></app-note-msg>
+                </div>
+
+        </div>
+        <div class="ll-modal-footer">
+            <div class="checkbox-row">
+                <label>
+                    <input type="checkbox">
+                    <span>不关闭窗口，继续创建</span>
+                </label>
+            </div>
+            <button class="btn btn-primary"><i class="fa fa-check"></i> 确定</button>
+            <button class="btn btn-default"><i class="fa fa-reply"></i> 取消</button>
+        </div>
+    </div>
+</jqxWindow>

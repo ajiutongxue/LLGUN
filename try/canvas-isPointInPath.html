@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<h1 id="status"></h1>
+<canvas id="cvs" width="800" height="600"></canvas>
+
+<script>
+    const h1 = document.getElementById('status');
+
+    const cvs = document.getElementById('cvs');
+    const ctx = cvs.getContext('2d');
+
+//    ctx.strokeRect(300, 300, 100, 100);
+    ctx.fillRect(300, 300, 100, 100);
+    document.onclick = function(e) {
+        h1.innerHTML = e.clientX + ', ' + e.clientY + ', 当前状态：' + ctx.isPointInPath(e.clientX, e.clientY);
+        h1.innerHTML += '<br>' + ctx.isPointInPath(e.clientX - cvs.getBoundingClientRect().left, e.clientY - cvs.getBoundingClientRect().top)
+    };
+</script>
+</body>
+</html>

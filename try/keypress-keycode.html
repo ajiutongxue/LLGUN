@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 style="text-align: center"></h1>
+
+<script>
+    const h1 = document.querySelector('h1');
+    window.addEventListener('keydown', function(e) {
+        h1.innerHTML += (e.keyCode + '、');
+//        return false;
+    });
+</script>
+</body>
+</html>

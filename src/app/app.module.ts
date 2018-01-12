@@ -54,6 +54,8 @@ import { MyTaskComponent } from './my-task/my-task.component';
 import { MyPlayerComponent } from './my-player/my-player.component';
 import { VideoPlayerDirective } from './my-player/video-player.directive';
 import { ShowComponentComponent } from './show-component/show-component.component';
+import { DragRulerComponent } from './drag-ruler/drag-ruler.component';
+import { NoteMsgComponent } from './note-msg/note-msg.component';
 
 const appRoutes: Routes = [
 
@@ -102,6 +104,10 @@ const appRoutes: Routes = [
         component: ShowComponentComponent
     },
     {
+        path: 'ruler',
+        component: DragRulerComponent
+    },
+    {
         path: '',
         redirectTo: '/all',
         pathMatch: 'full' // 这个full是必须的
@@ -144,6 +150,8 @@ const appRoutes: Routes = [
         MyPlayerComponent,
         VideoPlayerDirective,
         ShowComponentComponent,
+        DragRulerComponent,
+        NoteMsgComponent,
         // HighlightDirective
     ],
     imports: [

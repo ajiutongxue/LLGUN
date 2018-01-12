@@ -1,0 +1,25 @@
+
+<div style="margin: 150px auto 0 auto; width: 950px; height: 400px; border: 10px solid pink">
+    <div class="ll-player-layer-box">
+        <div class="ruler-row">
+            <div class="total-time" [style.width.px]="listTitleWidth">总时长：</div>
+            <div class="player-time-ruler-box" [style.left.px]="listTitleWidth">
+                <canvas class="time-ruler"></canvas>
+            </div>
+        </div>
+        <div class="play-list-row">
+            <div [style.width.px]="listTitleWidth" class="play-list-title">
+                <div class="_row"></div>
+            </div>
+            <div [style.left.px]="listTitleWidth" class="play-process-list">
+                <canvas class="process-list"></canvas>
+            </div>
+        </div>
+        <div class="scroll-bar-box">
+            <div class="scroll-bar">
+                <div class="resize-bar-left"></div>
+                <div class="resize-bar-right"></div>
+            </div>
+        </div>
+    </div>
+</div>

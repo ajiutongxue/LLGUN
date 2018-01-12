@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas width="800" height="600" id="cvs"></canvas>
+
+<script>
+    drawArrow(
+        document.getElementById('cvs').getContext('2d'),
+        200,
+        200,
+        45,
+        500,
+        10);
+    /**
+     * 画箭头
+     * @param  ctx    canvas绘画上下文
+     * @param  dx     线段终点x坐标
+     * @param  dy     线段终点y坐标
+     * @param  angle  箭头角度
+     * @param  sizeL  箭头长度
+     * @param  sizeW  箭头宽度
+     */
+    function drawArrow(ctx,dx,dy,angle,sizeL,sizeW,color){
+        var al = sizeL / 2;
+        var aw = sizeW / 2;
+        ctx.save();
+        ctx.translate(dx,dy);
+        ctx.rotate(angle);
+        ctx.translate(-al,-aw);
+
+        ctx.beginPath();
+        ctx.moveTo(0,0);
+        ctx.lineTo(al,aw); // 画箭头
+        ctx.lineTo(0,sizeW); // 画箭头
+        ctx.strokeStyle = color;
+        ctx.stroke();
+        ctx.close();
+
+        ctx.restore();
+    }
+</script>
+</body>
+</html>

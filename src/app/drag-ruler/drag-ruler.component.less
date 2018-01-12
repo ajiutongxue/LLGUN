@@ -1,0 +1,310 @@
+@import '../../base';
+//html {
+//    height: 100%;
+//}
+
+.ll-player-layer-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #28292A;
+    user-select: none;
+    
+    .vernier {
+        position: absolute;
+        left: 100px;
+        width: 1px;
+        top: 32px;
+        bottom: 21px;
+        //height: 6px;
+        background: @color-active;
+        z-index: 600;
+        transition: left .1s;
+        
+        &:hover {
+            background: @color-active + 20;
+    
+            &::before {
+                background: @color-active + 20;
+            }
+            &::after {
+                border-top-color: @color-active + 20;
+            }
+        }
+        
+        &.active {
+            background: @color-active + 50;
+            cursor: move;
+    
+            &::before {
+                background: @color-active + 50;
+            }
+            &::after {
+                border-top-color: @color-active + 50;
+            }
+        }
+        
+        .drag-vernier-handle {
+            position: absolute;
+            left: -4px;
+            height: 10px;
+            width: 9px;
+            top: 0;
+            background: rgba(0,0,0,0);
+        }
+        
+        &::before {
+            display: block;
+            content: '';
+            width: 9px;
+            height: 7px;
+            margin-left: -4px;
+            background: @color-active;
+        }
+        
+        &::after {
+            display: block;
+            content: '';
+            width: 1px;
+            margin-left: -4px;
+            border: 4px solid transparent;
+            border-top-color: @color-active;
+        }
+    }
+    
+    
+    .ruler-row {
+        position: relative;
+        //display: flex;
+        height: 52px;
+        line-height: 40px;
+        border-bottom: 12px solid #28292A;
+        
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            border-top: 1px solid #363636;
+        }
+        
+        .total-time {
+            //font-size: 16px;
+            color: #ccc;
+            font-size: 14px;
+            padding-left: 15px;
+            
+            ._time {
+                color: #fff;
+                font-size: 18px;
+            }
+            
+        }
+        
+    }
+    
+    .player-time-ruler-box {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 52px;
+        line-height: 52px;
+        background: #666;
+        
+        // canvas
+        .time-ruler {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+    
+    .scroll-bar-box {
+        @_h: 20px;
+        
+        position: absolute;
+        height: @_h;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: #171717;
+        border-top: 1px solid #000;
+        box-sizing: content-box;
+        
+        .scroll-bar {
+            box-sizing: border-box;
+            position: absolute;
+            //left: 50px;
+            top: 0;
+            //min-width: 30px;
+            height: @_h;
+            border-left: 15px solid #3E4041;
+            border-right: 15px solid #3E4041;
+            background: #353637;
+            //cursor: move;
+        }
+        
+        .resize-bar-left,
+        .resize-bar-right {
+            //cursor: col-resize;
+            position: absolute;
+            top: 0;
+            width: 15px;
+            height: inherit;
+            background: rgba(255,255,255, 0);
+            
+            &:hover {
+                background: rgba(255,255,255, 0.1);
+            }
+        }
+        
+        .resize-bar-left {
+            left: -15px;
+        }
+        .resize-bar-right {
+            right: -15px;
+        }
+        
+        /*.ctr-bar() {
+            position: absolute;
+            top: 0;
+            width: 15px;
+            background: #3E4041;
+            height: @_h;
+            cursor: col-resize;
+            
+            &:hover {
+                background: #3E4041 + 30;
+            }
+        }
+        
+        .left-bar {
+            .ctr-bar();
+            left: 0;
+            border-right: 1px solid #2E2F30;
+        }
+        .right-bar {
+            .ctr-bar();
+            right: 0;
+            border-left: 1px solid #2E2F30;
+        }
+    
+        .center-bar {
+            background: #353637;
+            height: @_h;
+    
+        }*/
+    }
+    
+    .play-list-row {
+        position: absolute;
+        top: 52px;
+        left: 0;
+        right: 0;
+        bottom: 20px;
+        //background: #555;
+        overflow: auto;
+        overflow-x: hidden;
+        background: #28292A;
+    }
+    
+    .play-list-title {
+        line-height: 30px;
+        box-sizing: content-box;
+        background: #2E2F30;
+        
+        ._row {
+            position: relative;
+            height: 30px;
+            color: #ccc;
+            line-height: 30px;
+            border-left: 1px solid #363636;
+            border-bottom: 1px solid #363636;
+            padding-left: 35px;
+            font-size: 14px;
+            
+            &:first-child {
+                background: #28292A;
+                margin-top: 1px;
+            }
+        }
+        ._color {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 10px;
+            height: 29px;
+        }
+        
+        //.fa,
+        input[type="checkbox"]{
+            position: absolute;
+            right: 25px;
+            top: 8px;
+            //line-height: inherit;
+            //cursor: pointer;
+        }
+        input[type='radio'] {
+            position: absolute;
+            right: 25px;
+            height: 10px;
+            top: 9px;
+            width: 10px;
+            box-sizing: border-box;
+            opacity: 0;
+            z-index: 2;
+        }
+    
+        ._radio {
+            position: absolute;
+            right: 25px;
+            height: 10px;
+            top: 9px;
+            width: 10px;
+            border: 1px solid #888;
+            background: #555;
+            border-radius: 2px;
+            z-index: 1;
+        }
+    
+        input:checked + ._radio {
+            background: @color-active;
+            border-color: @color-active;
+    
+            &:after {
+                position: absolute;
+                top: -11px;
+                right: -3px;
+                font-family: FontAwesome;
+                content: '\f00c';
+                color: #fff;
+                font-size: 8px;
+            }
+        }
+    }
+    .play-process-list {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow: hidden;
+        // canvas
+        .process-list {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+}
+
+.list-number-ruler {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 42px;
+}
+
+.no-color {
+    background: rgba(0,0,0,0);
+    border: 1px solid #666;
+}

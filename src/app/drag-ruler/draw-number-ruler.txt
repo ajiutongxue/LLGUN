@@ -1,0 +1,36 @@
+    drawRulerNumber() {
+        const cw = this.cellWidth;
+        const cvs = this.rCvs;
+        const c = this.rCtx;
+        const x = this.scrollWidth2listWidth(this.scrollBar.left);  // offset = 0
+        const offset = Math.floor(x / cw);
+        const pl = this.playlist; // 取最长的那个子数组
+        const ml = 最大对长度
+        const step = this.rStep;
+
+        c.clearRect(0, 0, cvs.width, cvs.height);
+        c.font = '10px sans-serif';
+        c.fillStyle = '#999';
+        c.strokeWidth = 1;
+        c.strokeStyle = '#555';
+        c.textAlign = 'center';
+        c.save();
+        c.fillStyle = '#555';
+        c.fillRect(0, 40, cvs.width, 2);
+        c.restore();
+        c.beginPath();
+        for (let i = offset; i < ml; i++) {
+            if (-x + i * cw > cvs.width) return;
+            if (i % step === 0) {
+                c.moveTo(-x + i * cw + cw * 0.5 + 0.5, 32);
+                c.lineTo(-x + i * cw + cw * 0.5 + 0.5, 42);
+                c.stroke();
+                c.fillText(i + 1, -x + i * cw + cw * 0.5, 26);
+            } else {
+                c.moveTo(-x + i * cw + cw * 0.5 + 0.5, 36);
+                c.lineTo(-x + i * cw + cw * 0.5 + 0.5, 42);
+                c.stroke();
+            }
+        }
+        c.closePath();
+    }

@@ -1,0 +1,145 @@
+html {
+    height: 100%;
+}
+
+.ll-player-layer-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #444;
+    
+    .ruler-row {
+        position: relative;
+        //display: flex;
+        height: 52px;
+        line-height: 52px;
+        
+        .total-time {
+            font-size: 16px;
+            color: #ccc;
+        }
+    }
+    
+    .player-time-ruler-box {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 40px;
+        background: #666;
+        
+        // canvas
+        .time-ruler {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+    
+    .scroll-bar-box {
+        @_h: 20px;
+        
+        position: absolute;
+        height: @_h;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: #171717;
+        border-top: 1px solid #000;
+        box-sizing: content-box;
+        
+        .scroll-bar {
+            box-sizing: border-box;
+            position: absolute;
+            //left: 50px;
+            top: 0;
+            //min-width: 30px;
+            height: @_h;
+            border-left: 15px solid #3E4041;
+            border-right: 15px solid #3E4041;
+            background: #353637;
+        }
+        
+        .resize-bar-left,
+        .resize-bar-right {
+            position: absolute;
+            top: 0;
+            width: 15px;
+            height: inherit;
+            background: rgba(200, 50, 50, .3);
+        }
+    
+        .resize-bar-left {
+            left: -15px;
+        }
+        .resize-bar-right {
+            right: -15px;
+        }
+        
+        
+            /*.ctr-bar() {
+                position: absolute;
+                top: 0;
+                width: 15px;
+                background: #3E4041;
+                height: @_h;
+                cursor: col-resize;
+                
+                &:hover {
+                    background: #3E4041 + 30;
+                }
+            }
+            
+            .left-bar {
+                .ctr-bar();
+                left: 0;
+                border-right: 1px solid #2E2F30;
+            }
+            .right-bar {
+                .ctr-bar();
+                right: 0;
+                border-left: 1px solid #2E2F30;
+            }
+        
+            .center-bar {
+                background: #353637;
+                height: @_h;
+        
+            }*/
+    }
+    
+    
+    .play-list-row {
+        position: absolute;
+        top: 40px;
+        left: 0;
+        right: 0;
+        bottom: 20px;
+        //background: #555;
+        overflow: auto;
+        overflow-x: hidden;
+    
+    }
+    
+    .play-list-title {
+        line-height: 30px;
+        box-sizing: content-box;
+        background: #2E2F30;
+        
+        ._row {
+            height: 30px;
+            border-bottom: 1px solid #363636;
+        }
+    }
+    .play-process-list {
+        position: absolute;
+        right: 0;
+        top: 0;
+        // canvas
+        .process-list {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+}

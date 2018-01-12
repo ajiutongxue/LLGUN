@@ -2,8 +2,8 @@
 <input hidden type="range" min="1" max="2.5" step="0.1" [(ngModel)]="curRange" name="thumbRange" >
 <div class="thumbnail-container"  [style.width]="curRange * 180 + 'px'">
     <div class="thumbnail-img-box"  [style.height]="'calc(' + curRange * 180 * 9 / 16  + 'px)'">
-        <div *ngIf="false" class="thumbnail-img-content" if="有图片"><img src="http://localhost:4200/assets/style/images/img2.jpg" alt="这个是图片"></div>
-        <div class="thumbnail-noimg-content" if="没图片"><span><i class="fa fa-upload"></i><br>上传图片</span></div>
+        <div *ngIf="true" class="thumbnail-img-content" if="有图片"><img src="http://localhost:4200/assets/style/images/img2.jpg" alt="这个是图片"></div>
+        <div *ngIf="false" class="thumbnail-noimg-content" if="没图片"><span><i class="fa fa-upload"></i><br>上传图片</span></div>
         <div class="thumbnail-tools active">
             <i class="fa fa-bars"></i>
             <div class="modal-flatest-container">

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div style="text-align: center">
+    <canvas id="cvs" width="500" height="400" style="margin: 50px auto; border: 1px solid #ccc"></canvas>
+    <br>
+    <br>
+    <button id="btn">show</button>
+</div>
+<script>
+    const cvs = document.getElementById('cvs');
+    const ctx = cvs.getContext('2d');
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function() {
+        console.log('asf');
+        ctx.font = '14px sans-serif';
+        ctx.fillText('asdfasf', 30, 20);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid red;
+            width: 300px;
+        }
+        div {
+            text-align: left;
+        }
+        #textarea,
+        #shadow {
+            border: none;
+            background: rgba(0, 50, 200, .4);
+            font-size: 20px;
+            color: #555;
+            line-height: 1.2em;
+            text-align: left;
+            border-radius: 2px;
+            border: 0;
+            font-family: inherit;
+            font-weight: inherit;
+            margin: 0;
+            outline: none;
+            overflow: hidden;
+            padding: 4px 6px;
+            resize: none;
+        }
+
+        #shadow {
+            position: absolute;
+            left: 50px;
+            top: 100px;
+            display: inline-block;
+            min-width: 20px;
+            max-width: 100px;
+            min-height: 24px;
+            max-height: 400px;
+            word-break: break-all;
+            height: auto;
+        }
+    </style>
+</head>
+<body style="text-align: center; padding-top: 100px;">
+<canvas id="cvs"></canvas>
+<span id="shadow"></span>
+<textarea id="textarea" rows="1"
+          style="width: 20px; min-width: 20px; max-width: 100px; height: 24px; min-height: 24px; max-height: 400px;"></textarea>
+<button id="btn">show</button>
+<script>
+    const textarea = document.querySelector('#textarea');
+    const sp = document.querySelector('#shadow');
+    textarea.addEventListener('keypress', typeInTa);
+    const cvs = document.getElementById('cvs');
+    const ctx = cvs.getContext('2d');
+    cvs.width = 600;
+    cvs.height = 400;
+
+    document.getElementById('btn').onclick = function() {
+        const maxWidth = 100;
+        const text = textarea.value.split('\n');
+        const lineHeight = 24 * 1.2;
+        const formattedTextList = [];
+        console.log('text: ' + text + ' lenght=' + text.length);
+        for (var i = 0; i < text.length; i++) {
+            ctx.font = '20px serif';
+
+            if (ctx.measureText(text[i]).width > maxWidth) {
+                var tmp_words = '';
+                var tmp_old = '';
+                for(var j = 0; j < text[i].length; j++) {
+                    tmp_words = tmp_old + text[i][j];
+                    if (ctx.measureText(tmp_words).width > maxWidth) {
+                        formattedTextList.push(tmp_old);
+                        tmp_old = text[i][j];
+                    } else {
+                        tmp_old = tmp_words;
+                    }
+                }
+                // 拆分超长文字后的最后一行
+                if (tmp_old) {
+                    formattedTextList.push(tmp_old);
+                }
+            } else {
+                formattedTextList.push(text[i]);
+            }
+            console.info(ctx.measureText(tmp_words));
+        }
+
+        // draw words to canvas
+        for(var k = 0; k < formattedTextList.length; k++) {
+            ctx.fillStyle = 'blue';
+            ctx.font = '20px serif';
+            ctx.fillText(formattedTextList[k], 100, 50 + lineHeight * k);
+        }
+    };
+
+    function typeInTa(e) {
+        e = e || event;
+        sp.innerHTML = textarea.value.replace(/\b/g, '&nbsp;').replace(/\n/g, '<br>&nbsp;');
+        textarea.style.width = sp.getBoundingClientRect().width + 'px';
+        textarea.style.height = sp.getBoundingClientRect().height + 'px';
+    }
+</script>
+</body>
+</html>
