@@ -23,6 +23,61 @@
     vertical-align: middle;
 }
 
+.pointer-cursor {
+    cursor: pointer
+}
+
+// 小标组展开收起按钮
+.posr {
+    position: relative;
+}
+.rb-expand-link {
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    color: @color-active;
+    cursor: pointer;
+
+    &:hover {
+        color: @color-active - 30;
+    }
+}
+
+.btn-select-container {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    height: 22px;
+    line-height: 22px;
+    font-size: 14px;
+    margin-top: -1px;
+
+    input[type="button"] {
+        cursor: pointer;
+        vertical-align: middle;
+        display: inline-block;
+        height: 22px;
+        border: 1px solid #cbd0d6;
+        border-radius: 4px;
+        padding: 0 20px 0 10px;
+        color: #3F5767;
+        margin-left: 0;
+        font-size: 12px;
+        background: none;
+
+        & + i {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+
+        &:hover {
+            border-color: #B3B6B9;
+            background: #fff;
+        }
+    }
+}
+
 .my-fa-cancel {
     position: relative;
     
@@ -36,6 +91,12 @@
         border-left: 2px solid red;
         left: 50%;
         //background: red;
+    }
+
+    .cmenu-item:hover & {
+        &::after {
+            background: @color-active;
+        }
     }
 }
 
@@ -360,6 +421,14 @@ td {
 
 .ll-main-box {
     
+    &._homepage {
+        top: 68px;
+        bottom: 0;
+        display: block;
+        overflow:auto;
+        overflow-x: hidden;
+    }
+    
     &.has-rooter {
         bottom: 30px;
     }
@@ -404,7 +473,35 @@ td {
     position: relative;
     flex: 1 1 auto;
     // overflow: auto;
-    
+
+    &._homepage {
+        // flex: 0 0 500px;
+        flex: 0 0 auto;
+    }
+
+    .ll-drag-line {
+        position: absolute;
+        right: -1px;
+        width: 3px;
+        background: transparent;
+        border-right: 1px solid @color-strongest;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+        cursor: col-resize;
+        opacity: 0;
+    }
+}
+
+.ll-right-container {
+    position: relative;
+    // flex: 0 1 450px;
+    flex: 1 1 auto;
+    border-left: 1px solid @color-input-border;
+    overflow: hidden;
+    background: @bg-weak;
+    z-index: 19;
+
 }
 
 // *** end ***
@@ -432,6 +529,8 @@ td {
         font-family: "Arial Black", sans-serif;
         color: #D9D9D9;
         box-sizing: border-box;
+        overflow: hidden;
+        white-space: nowrap;
         
         &:hover {
             color: #fff;
@@ -1181,6 +1280,264 @@ td {
     position: relative;
 }
 
+// *** end ***
+
+// *************
+// 项目首页结构
+// *************
+@homepage_pic_height: 240px;
+
+.homepage-main-pic-box {
+    position: relative;
+    height: @homepage_pic_height;
+    background:#ccc;
+    
+    .avatar {
+        position: absolute;
+        z-index:1;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        left: 25px;
+        bottom: 30px;
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, .65);
+        box-sizing: content-box;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    
+    .project-name {
+        position: absolute;
+        left: 150px;
+        bottom: 50px;
+        font-size: 42px;
+        height: 56px;
+        line-height: 56px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #fff;
+        right: 30px;
+        text-shadow: 2px 2px rgba(0, 0, 0, .8);
+    }
+    
+    &:hover {
+        .change-face {
+            display: block;
+        }
+    }
+    
+    .change-face {
+        display: none;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        padding: 3px 10px;
+        background: rgba(255, 255, 255, .3);
+        border-radius: 6px;
+        cursor: pointer;
+        
+        &:hover {
+            background: rgba(255, 255, 255, .8);
+            color: @color-active;
+        }
+    }
+}
+.homepage-main-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.homepage-main-content-box {
+    display: flex;
+    height: auto;
+}
+
+.homepage-container {
+    background: #fff;
+}
+
+.homepage-tabs {
+    position:absolute;
+    border-bottom: 1px solid @normal-border;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 9;
+}
+
+.homepage-tabs-container {
+    @_height: 32px;
+    
+    height: @_height;
+    line-height: @_height;
+    background: #fff;
+    
+    a {
+        text-decoration: none;
+    }
+    
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        font-size: 0;
+        
+        li {
+            display: inline-block;
+            //font-size: 14px;
+            font-size: 12px;
+            
+            &:first-child {
+                margin-left: 30px;
+                
+                a {
+                    //border-left: 1px solid @normal-border;
+                }
+            }
+            
+            a {
+                display: inline-block;
+                padding: 0 15px;
+                color: @color-strongest;
+                cursor: pointer;
+                //border-right: 1px solid @normal-border;
+                
+                //&:hover,
+                &.active {
+                    background: @color-active;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+.homepage-main-container {
+    background: @bg-weak;
+    position: relative;
+    margin-top: 33px;
+}
+
+.homepage-content {
+    padding: 30px;
+}
+
+
+.right-content-box {
+    z-index: 19;
+    background: @bg-weak;
+    border-left: 1px solid @color-input-border;
+    margin-left: -1px;
+}
+.right-item-box {
+    padding: 10px 30px;
+    ._title {
+        position: relative;
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        
+        a {
+            position: absolute;
+            cursor: pointer;
+            right: 0;
+            top: 6px;
+            height: 22px;
+            line-height: 22px;
+            border: 1px solid #cbd0d6;
+            border-radius: 4px;
+            padding: 0 10px;
+            color: #3F5767;
+            //margin-left: 0;
+            font-size: 12px;
+            background: none;
+            
+            &:hover {
+                border-color: #B3B6B9;
+                background: #fff;
+            }
+        }
+    }
+    
+    ._list {
+        font-size: 0;
+        ._item {
+            margin-right: 8px;
+        }
+        
+        &._media {
+            .media-item {
+                position: relative;
+                display: inline-block;
+                width: 99px;
+                height: 56px;
+                background: #999;
+
+                > img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+        
+        &._people {
+            .people-item {
+                display: inline-block;
+                width: 48px;
+                height: 48px;
+                background: pink;
+                border-radius: 50%;
+                overflow: hidden;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        
+        .detail-content {
+            margin: 0;
+            max-width: 2000px;
+            
+            .row-title {
+                text-align: left;
+            }
+        }
+    }
+    
+    .text-link {
+        position: relative;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+    
+        .pull-left {
+            position: absolute;
+            left: 0;
+        }
+    
+        a {
+            cursor: pointer;
+            color: @color-active;
+    
+            &:hover {
+                color: @color-active - 30;
+            }
+        }
+    }
+}
 // *** end ***
 
 // ************
@@ -3350,6 +3707,28 @@ thumbnail-view {
     
     .range-container {
         line-height: @_h;
+    }
+
+    .total-items {
+        position: absolute; 
+        left: 15px;
+    }
+
+    .flip-link {
+        cursor: pointer;
+        margin-left: 15px;
+        margin-right: 15px;
+
+        &:hover {
+            color: @color-active;
+        }
+    }
+
+    .flip-to {
+        width: 30px; 
+        padding: 0; 
+        text-align: center; 
+        height: 22px;
     }
 }
 

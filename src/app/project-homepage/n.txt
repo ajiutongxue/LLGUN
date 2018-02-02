@@ -1,0 +1,69 @@
+siderContainer = null;
+
+
+
+ngOnInit () {
+    this.siderContainer = $('.ll-right-container')[0];
+}
+
+initDom() {
+        $('.homepage-content').css('minHeight', $('.ll-right-container').height() - this.$tabsBox.height());
+        this.initWidth = $(window).width() - 480;
+        this.siderHeight = this.$siderBox.height();
+
+        this.$scrollBox.on('scroll', () => {
+            this.bindScrollHandle();
+        });
+    }
+
+bindScrollHandle() {
+    if (this.$scrollBox[0].scrollTop > this.scrollBarBoundaryTop) {
+        this.$tabsBox.css({
+            'position': 'fixed',
+            'top': this.boundaryTop + 'px',
+            'right': this.$scrollBox.width() - (this.siderContainer.getBoundingClientRect().left + this.siderContainer.getBoundingClientRect().width)        
+            // 'right': $(window).width() - $('.ll-main-container._homepage').width() + 'px'
+        });
+
+        // siderbox
+        if ($(window).height() > (this.siderHeight + this.boundaryTop)) {
+            this.$siderBox.css({
+                'position': 'fixed',
+                'top': this.boundaryTop + 'px',
+                'bottom': 'unset',
+                'left': this.siderContainer.getBoundingClientRect().left,
+                'right': this.$scrollBox.width() - (this.siderContainer.getBoundingClientRect().left + this.siderContainer.getBoundingClientRect().width)        
+            });
+        } else {
+            this.$siderBox.css({
+                'position': 'static',
+            });
+            if ((this.$scrollBox.height() + this.$scrollBox[0].scrollTop - 240) > this.siderHeight) {
+                this.$siderBox.css({
+                    'position': 'fixed',
+                    'top': 'unset',
+                    'bottom': 0,
+                    'left': this.siderContainer.getBoundingClientRect().left,
+                    'right': this.$scrollBox.width() - (this.siderContainer.getBoundingClientRect().left + this.siderContainer.getBoundingClientRect().width)        
+                });
+            } else {
+                this.$siderBox.css({
+                    'top': 'unset',
+                    'bottom': this.siderHeight - (this.$scrollBox.height() + this.$scrollBox[0].scrollTop - 240) + 'px',
+                    'left': this.siderContainer.getBoundingClientRect().left,
+                    'right': this.$scrollBox.width() - (this.siderContainer.getBoundingClientRect().left + this.siderContainer.getBoundingClientRect().width)        
+                });
+            }
+        }
+
+    } else {
+        this.$tabsBox.css({
+            'position': 'absolute',
+            'top': 0,
+            'right': 0
+        });
+        this.$siderBox.css({
+            'position': 'static',
+        });
+    }
+}

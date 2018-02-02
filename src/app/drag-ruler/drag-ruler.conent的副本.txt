@@ -60,11 +60,11 @@ export class DragRulerComponent implements OnInit {
 
     playlist = [
         {
-            type: 3,
+            type: 1,
             duration: 2600,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1260,
             active: false,
         }, {
@@ -72,51 +72,51 @@ export class DragRulerComponent implements OnInit {
             duration: 600,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 588,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 3888,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1564,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 500,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 3566,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 7086,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 13426,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 21236,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 2326,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 556,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 2600,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1260,
             active: false,
         }, {
@@ -124,51 +124,51 @@ export class DragRulerComponent implements OnInit {
             duration: 600,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 588,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 3888,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1564,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 500,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 3566,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 7086,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 13426,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 21236,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 2326,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 556,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 2600,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1260,
             active: false,
         }, {
@@ -176,51 +176,51 @@ export class DragRulerComponent implements OnInit {
             duration: 600,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 588,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 3888,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1564,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 500,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 3566,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 7086,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 13426,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 21236,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 2326,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 556,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 2600,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1260,
             active: false,
         }, {
@@ -228,51 +228,51 @@ export class DragRulerComponent implements OnInit {
             duration: 600,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 588,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 3888,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1564,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 500,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 3566,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 7086,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 13426,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 21236,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 2326,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 556,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 2600,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1260,
             active: false,
         }, {
@@ -280,51 +280,51 @@ export class DragRulerComponent implements OnInit {
             duration: 600,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 588,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 3888,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1564,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 500,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 3566,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 7086,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 13426,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 21236,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 2326,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 556,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 2600,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1260,
             active: false,
         }, {
@@ -332,51 +332,51 @@ export class DragRulerComponent implements OnInit {
             duration: 600,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 588,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 3888,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1564,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 500,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 3566,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 7086,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 13426,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 21236,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 2326,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 556,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 2600,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1260,
             active: false,
         }, {
@@ -384,43 +384,43 @@ export class DragRulerComponent implements OnInit {
             duration: 600,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 588,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 3888,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 1564,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 500,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 3566,
             active: false,
         }, {
-            type: 3,
+            type: 5,
             duration: 7086,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 13426,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 21236,
             active: false,
         }, {
-            type: 3,
+            type: 2,
             duration: 2326,
             active: false,
         }, {
-            type: 3,
+            type: 1,
             duration: 556,
             active: false,
         },
@@ -515,7 +515,7 @@ export class DragRulerComponent implements OnInit {
             this.scrollBar.meta.boundaryLeft = this.getBoxSize('.scroll-bar-box').left;
             this.scrollBar.meta.boundaryRight = this.scrollBar.meta.boundaryLeft + this.getBoxSize('.scroll-bar-box').width;
             if (this.isScrollActive) {
-                this.resizeScrollBar({
+                // this.resizeScrollBar({
                     lx: 0,
                     w: this.cvs.width / (this.playlist.length * this.cellWidth) * this.scrollBar.parentWidth,
                     rx: null
@@ -680,7 +680,7 @@ export class DragRulerComponent implements OnInit {
         const rects = this.allRect;
         if (tar) {
             this.setVernierLeft(tar);
-            return; 
+            return;
         }
 
         current = current ? current : rects[0].i;
@@ -785,8 +785,6 @@ export class DragRulerComponent implements OnInit {
         const iconWidth = cw >= 12 ? 10 : cw - 2;
         const _l = [];
 
-        this.offsetLeftLenght = x === 0 ? 0 : x / cw;
-        console.log(`getDrawData 中设置的 this.offsetLeftLenght: ${this.offsetLeftLenght}`);
         this.clearList();
 
         for (let i = offset; i < pl.length; i++) {
@@ -821,15 +819,14 @@ export class DragRulerComponent implements OnInit {
             _l.push(item);
             // console.log(`push to _l is: ${item}, list is: ${_l}`);
 
-            // 第一行数据
-            // this.allRect.push({
-            //     x: -x + i * cw,
-            //     y: 1,
-            //     w: cw,
-            //     h: lh,
-            //     i: i,
-            //     active: item.active
-            // });
+            this.allRect.push({
+                x: -x + i * cw,
+                y: 1,
+                w: cw,
+                h: lh,
+                i: i,
+                active: item.active
+            });
             this.allRect.push({
                 x: -x + i * cw,
                 y: item.y,
@@ -915,7 +912,7 @@ export class DragRulerComponent implements OnInit {
             c.strokeStyle = v.strokeStyle;
             c.strokeWidth = v.strokeWidth;
 
-            // c.fillRect(v.x + 1, 1, v.w - 1, v.h - 1);
+            c.fillRect(v.x + 1, 1, v.w - 1, v.h - 1);
             // c.globalAlpha = 0.6;
             c.fillRect(v.x + 1, v.y + 1, v.w - 1, v.h - 1);
             c.save();
@@ -1142,41 +1139,27 @@ export class DragRulerComponent implements OnInit {
 
         this.setCanvasSize(this.rCvs, this.$rContainer.width(), 42);
         this.setCanvasSize(this.cvs, this.$container.width(), this.rows.length * this.rowHeight + this.rows.length);
-        this.scrollBar.parentWidth = $('.scroll-bar-box').first().width();
-        this.scrollBar.meta.boundaryLeft = this.getBoxSize('.scroll-bar-box').left;
-        this.scrollBar.meta.boundaryRight = this.scrollBar.meta.boundaryLeft + this.getBoxSize('.scroll-bar-box').width;
-
 
         // 单元格宽度不变，填满画布需要的格子数量
         let nl = Math.ceil(this.cvs.width / cw);   // need length
-        console.log(`need length nl=${nl}， all rect 最后一个i is： ${ar[ar.length - 1].i}`);
+        console.log(`need length nl=${nl}， all rect length is： ${ar.length}`);
         // 判断变大了还是变小了
         // if (nl > ar.length) {
         if (nl > (ar[ar.length - 1].i - ar[0].i)) {
             // 需要的比原来的多，变宽了
             
             // 判断剩下的数据够不够显示
-            if ((pl.length - ar[0].i) > nl) {
+            if ((ar[ar.length - 1].i - ar[0].i) > nl) {
                 console.log(`数据够显示了`);
                 // 起始位置是 allRect 第一个元素 在 playlist里面对应的位置，也就是  ar[0].i，
                 // 剩下的数据够显示
                 // do: 偏移量不变，重新整理数据，一直凑够 nl 个
                 this.resetDrawData(ar[0].i, nl);
-                let scrollWidth = this.scrollBar.parentWidth * (this.cvs.width / (this.cellWidth * this.playlist.length));
-                // let scrollLeft = this.scrollBar.parentWidth * (this.offsetLeftLenght * this.cellWidth) / (this.cellWidth * this.playlist.length);
-                
-                this.resizeScrollBar({ lx: this.scrollBar.left, rx: null, w: scrollWidth }, false);
-    
-            } else if (nl < pl.length) {
-                console.log(`用整个列表的数据够显示`);                
+            } else if (nl < ar[ar.length - 1].i) {
+                console.log(`用上整个列表数据才够显示`);                
                 // 剩下的数据不够，但是整个播放列表的数据够了
                 // do: 从最后一个开始数，一直凑够 nl 个
                 this.resetDrawData(pl.length - nl, nl);
-                let scrollWidth = this.scrollBar.parentWidth * (this.cvs.width / (this.cellWidth * this.playlist.length));
-                // let scrollLeft = this.scrollBar.parentWidth * (this.offsetLeftLenght * this.cellWidth) / (this.cellWidth * this.playlist.length);
-                
-                this.resizeScrollBar({ lx: null, rx: 0, w: scrollWidth }, false);
-
             } else {
                 console.log(`不够显示了`);                
                 // 整个播放列表的数据都不够显示的·
@@ -1193,8 +1176,6 @@ export class DragRulerComponent implements OnInit {
                     'right': 0
                 });
             }
-                    // console.log(`******** this.offsetLeftLenght is: ${this.offsetLeftLenght}`);
-
         } else {
             console.log('变窄了');
             // 变窄了
@@ -1203,23 +1184,27 @@ export class DragRulerComponent implements OnInit {
             // 粗暴解决：截掉多余数据
             ar.length = nl;
             // do: 重新绘制开始
-            let scrollWidth = this.scrollBar.parentWidth * (this.cvs.width / (this.cellWidth * this.playlist.length));
-            // let scrollLeft = this.scrollBar.parentWidth * (this.offsetLeftLenght * this.cellWidth) / (this.cellWidth * this.playlist.length);
-            // console.log(`scrollWidth: ${scrollWidth}, scrollLeft: ${scrollLeft}`);
-            this.resizeScrollBar({ lx: this.scrollBar.left, rx: null, w: scrollWidth }, false);
-
         }
         this.drawList();        
         this.drawRulerNumber();
-        this.setVernierLeft(this.tmpCurrentPlay);
+
+        let scrollWidth = this.scrollBar.parentWidth * (this.cvs.width / this.cellWidth * this.playlist.length);
+        let scrollLeft = (this.offsetLeftLenght * this.cellWidth) / (this.cellWidth * this.playlist.length) * this.scrollBar.parentWidth;
+        this.resizeScrollBar({ lx: scrollLeft, w: scrollWidth }, false);
     }
 
+    // 向现有rects数组中追加数据
+    // addDrawData(start, count) {
+    //     for (let i = 0; i < count; i++) {
+    //         this.allRect.push();
+    //     }
+    // }
 
     /**
      * @ start: 画出来的第一个格子在整个playlist中对应的index =》allRect[0].i
      * @ count: 要画的格子数量
      */
-    resetDrawData(start, count) {
+    resetDrawData(start, count, isEnough=false, isNeedAllList=false, isNotEnough=false) {
         const cw = this.cellWidth;
         const cvs = this.cvs;
         const lh = this.rowHeight;
@@ -1231,8 +1216,8 @@ export class DragRulerComponent implements OnInit {
         const _l = [];
 
         this.clearList();
-        this.offsetLeftLenght = start === 0 ? 0 : start + (x / cw - offset); // 取小数部分
-console.log(`!!!!!!!!!!!!offsetLeftLenght: ${this.offsetLeftLenght},,,, start: ${start}`);
+        this.offsetLeftLenght = start + (x / cw - offset); // 取小数部分
+
         for (let i = start; i < count; i++) {
             const item = {
                 x: 0,
@@ -1265,15 +1250,14 @@ console.log(`!!!!!!!!!!!!offsetLeftLenght: ${this.offsetLeftLenght},,,, start: $
             _l.push(item);
             // console.log(`push to _l is: ${item}, list is: ${_l}`);
 
-            // 第一行数据
-            // this.allRect.push({
-            //     x: -x + i * cw,
-            //     y: 1,
-            //     w: cw,
-            //     h: lh,
-            //     i: i,
-            //     active: item.active
-            // });
+            this.allRect.push({
+                x: -x + i * cw,
+                y: 1,
+                w: cw,
+                h: lh,
+                i: i,
+                active: item.active
+            });
             this.allRect.push({
                 x: -x + i * cw,
                 y: item.y,
@@ -1284,6 +1268,7 @@ console.log(`!!!!!!!!!!!!offsetLeftLenght: ${this.offsetLeftLenght},,,, start: $
             });
         }
 
+        
         return _l;
     }
 

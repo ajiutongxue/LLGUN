@@ -1,0 +1,419 @@
+<div class="ll-layout">
+    <div class="ll-header-box">
+        <div class="topbar-container">
+            <div class="ll-brand" style="text-transform: uppercase; flex: 0 1 170px;">陀螺</div>
+            <div class="_navbar">
+                <ul class="_main-box">
+                    <li>
+                        <a routerLink="inbox">
+                            <i class="fa fa-inbox"></i>收件箱</a>
+                    </li>
+                    <li>
+                        <a routerLink="inbox">
+                            <i class="fa fa-tasks"></i>我的任务</a>
+                    </li>
+                    <li>
+                        <a routerLink="inbox">
+                            <i class="fa fa-video-camera"></i>项目
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="active" routerLink="inbox">
+                            <i class="fa fa-sliders"></i>设置</a>
+                    </li>
+                    <li>
+                        <a routerLink="inbox">
+                            <i class="fa fa-newspaper-o"></i>公告</a>
+                    </li>
+                    <li>
+                        <a routerLink="inbox">
+                            <i class="fa fa-wrench"></i>自定义</a>
+                    </li>
+                </ul>
+                <ul class="_user-box">
+                    <li>
+                        <a routerLink="inbox">自定义</a>
+                    </li>
+                    <li class="_user">
+                        <a routerLink="inbox">
+                            <div class="_avatar" style="background-image('/assets/style/tmpImg/detail-p1.png');"></div>
+                            英俊
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="ll-page-nav-box">
+        <div class="project-bar-container">
+            <div class="project-title">恐龙特级克塞</div>
+            <div class="_nav-box">
+                <ul>
+                    <li>
+                        <a class="active">
+                            <i class="fa fa-home"></i> 项目主页</a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-cube"></i> 资产管理</a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-film"></i> 镜头管理</a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-history"></i> 版本管理</a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-list"></i> 序列管理</a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-tasks"></i> 任务管理</a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-clock-o"></i> 时间记录管理</a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="fa fa-ticket"></i> 通知单管理</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="_tools-box">
+                <div class="search-box" [class.active]="isActive">
+                    <i class="fa fa-search"></i>
+                    <input type="text" (focus)="isActive=true" (blur)="isActive=false">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ll-main-box _homepage">
+        <!-- <div class="ll-left-container">
+            <div class="ll-drag-line" appDragSetWidth></div>
+            <div style="position: absolute; left:0; top: 0; right: 0; bottom: 0;">
+
+            </div>
+        </div> -->
+        <div title="项目主题图div" class="homepage-main-pic-box">
+            <img class="homepage-main-pic" src="/assets/style/tmpImg/detail-p1.png">
+            <div class="avatar"><img src="/assets/style/tmpImg/detail-p1.png"></div>
+            <div class="project-name"><span>恐龙特级克塞好</span></div>
+            <a class="change-face"><i class="fa fa-pencil"></i> 更改封面</a>
+        </div>
+        <div class="homepage-main-content-box">
+            <div class="ll-main-container _homepage" [style.flexBasis.px]="initWidth">
+                <div class="ll-drag-line" [minSize]="400" [maxSize]="2900" appDragSetWidth></div>
+
+                <div class="homepage-container">
+                    <div class="homepage-tabs">
+                        <div class="homepage-tabs-container">
+                            <ul>
+                                <li>
+                                    <a class="active" href="javascript:;">全部</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">任务列表</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">版本</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">关联镜头</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="homepage-main-container">
+
+                        <div class="homepage-content">
+                            <p>afasf</p>
+                            <p>afasf</p>
+                            <p>afasf</p>
+                            <p>afasf</p>
+                            <p>afasf</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ll-right-container">
+                <div class="right-content-box">
+                    <div title="media 形式" class="right-item-box">
+                        <div class="_title"><span>Media</span><a><i class="fa fa-plus"></i> 添加</a></div>
+                        <div class="_list _media">
+                            <div class="media-item _item"><img src=""></div>
+                            <div class="media-item _item"><img src=""></div>
+                            <div class="media-item _item"><img src=""></div>
+                            <div class="media-item _item"><img src=""></div>
+                        </div>
+                        <div class="text-link"><a class="pull-left">show less</a><a>全部Media</a></div>
+                    </div>
+                    <div title="people 形式" class="right-item-box">
+                        <div class="_title"><span>People</span><a><i class="fa fa-plus"></i> 添加</a></div>
+                        <div class="_list _people">
+                            <div class="people-item _item"></div>
+                            <div class="people-item _item"></div>
+                            <div class="people-item _item"></div>
+                            <div class="people-item _item"></div>
+                        </div>
+                        <div class="text-link"><a>全部Media</a></div>
+                    </div>
+                    <div title="info 形式" class="right-item-box">
+                        <div class="_title"><span>Info</span><a><i class="fa fa-gear"></i> 设置</a></div>
+                        <div class="_list">
+                            <div class="detail-content">
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table-fixed form-row">
+                                    <tbody>
+                                    <tr>
+                                        <td class="row-title">查找选择框 <i class="fa fa-pencil"></i></td>
+                                        <td>
+                                            <div class="select-box">
+                                                <div class="input-box only-showing">
+                                                    <i class="fa fa-star"></i>
+                                                    <span>整个地方不是input了</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

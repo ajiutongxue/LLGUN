@@ -56,12 +56,17 @@ import { VideoPlayerDirective } from './my-player/video-player.directive';
 import { ShowComponentComponent } from './show-component/show-component.component';
 import { DragRulerComponent } from './drag-ruler/drag-ruler.component';
 import { NoteMsgComponent } from './note-msg/note-msg.component';
+import { ProjectHomepageComponent } from './project-homepage/project-homepage.component';
 
 const appRoutes: Routes = [
 
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'home',
+        component: ProjectHomepageComponent
     },
     {
         path: 'layout',
@@ -152,6 +157,7 @@ const appRoutes: Routes = [
         ShowComponentComponent,
         DragRulerComponent,
         NoteMsgComponent,
+        ProjectHomepageComponent,
         // HighlightDirective
     ],
     imports: [

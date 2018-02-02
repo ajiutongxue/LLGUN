@@ -728,6 +728,25 @@
                     //border: 1px solid @color-less;
                     //height: auto;
                 }
+
+                &.movie-cell {
+                    > span {
+                        background: url('./assets/style/images/movie-bg.png') 0 0 no-repeat;
+                        background-size: 100%;
+                        border: none;
+                    } 
+
+                    img {
+                        object-fit: contain;
+                        width: ~'calc(100% - 17px)';
+                        height: ~'calc(100% - 2px)';
+                        background: #111;
+                        border-left: #111 2px solid;
+                        border-right: #111 2px solid;
+                        margin-top: 1px;
+                        margin-right: 2px;
+                    }
+                }
             }
             
             &:focus {

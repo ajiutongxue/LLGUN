@@ -294,6 +294,9 @@ export class MyPlayerComponent implements OnInit {
     }
 
 
+
+
+
     changeVdoSrc = function (vdoIndex) {
         if (!this.$mediaList.length) {
             this.$playListContent = $('.playlist-content');
@@ -361,6 +364,11 @@ export class MyPlayerComponent implements OnInit {
         }
     }
 
+    toggleVdoPlay (event) {
+        this.isPlaying = !this.isPlaying;
+        this.isPlaying ? this.vdoPlay(event) : this.vdoPlay(event);
+    }
+
     @HostListener('window:keydown', ['$event']) onkeydown(e) {
         // alert(e.keyCode)
         // 按下 r
@@ -376,6 +384,10 @@ export class MyPlayerComponent implements OnInit {
             if (this.isTyping) {
                 this.drawText();
             }
+        }
+
+        if (e.keyCode == 32) {
+            this.toggleVdoPlay (e);
         }
     }
 

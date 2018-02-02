@@ -450,6 +450,21 @@
   height: 100%;
   background: #ccc;
 }
+.ag-fresh.ll-ag-grid .ll-cell.img-cell.movie-cell > span {
+  background: url('assets/style/images/movie-bg.png') 0 0 no-repeat;
+  background-size: 100%;
+  border: none;
+}
+.ag-fresh.ll-ag-grid .ll-cell.img-cell.movie-cell img {
+  object-fit: contain;
+  width: calc(100% - 17px);
+  height: calc(100% - 2px);
+  background: #111;
+  border-left: #111 2px solid;
+  border-right: #111 2px solid;
+  margin-top: 1px;
+  margin-right: 2px;
+}
 .ag-fresh.ll-ag-grid .ll-cell:focus {
   border: 1px solid #50A6E1 !important;
   box-shadow: 0 0 3px #50A6E1;

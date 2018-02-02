@@ -125,6 +125,22 @@ export class LayoutComponent {
             }],
     }];
 
+// treeDataSource = {
+//     id: 82741,
+//     name: '名ASF就爱上了',
+//     children: [{
+//         assign_id: null,
+//         assign_date: '',
+//         content: '模板名称板名称(asset模板)1',
+//         created_at: '2017-08-04 14:44:49',
+//         created_by_id: 6,
+//         entity_type: '资产',
+//         user: '刘大宝',
+//         entity_type_icon: 'fa fa-cube',
+//         imgUrl: '/assets/style/images/thumbnail-default-task.png',
+//     }]
+// };
+
     treeOptions = {
         useVirtualScroll: true,
         nodeHeight: 24,
