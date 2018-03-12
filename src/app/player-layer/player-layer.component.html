@@ -1,0 +1,91 @@
+<div style="height: 600px;">
+    <button class="btn btn-primary" (click)="unitLengthChanged(-2)">unitLength -2</button>
+    <button class="btn btn-primary" (click)="unitLengthChanged(2)">unitLength +2</button>
+
+    <div class="layer-container" style="height: inherit;">
+        <div class="timeline-box">
+            <div class="left-section">
+                <div class="time-box">{{formatRulerShowTime(totalDuration)}}
+                </div>
+                <div class="change-view-btns">
+                    <a class="active"><i class="fa fa-film"></i></a>
+                    <a><i class="fa fa-gears"></i></a>
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="ruler-box">
+                    <div class="ruler-content">
+                        <canvas id="ruler-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shot-box">
+            <div class="left-section">
+                <div class="layer-control">
+                    <div class="ctr-row" *ngFor="let ctr of controlList; let rowIndex of index;">
+                        <div class="_title">
+                            {{ctr.title}}
+                        </div>
+                        <div class="_top-line-tools">
+                            <div class="checkbox-like like-eye">
+                                <input type="checkbox" (change)="showStatusChanged(rowIndex)" [(ngModel)]="ctr.isShow" checked>
+                                <div class="_surface"></div>
+                            </div>
+                            <div class="checkbox-like like-img">
+                                <input type="checkbox" (change)="showStatusChanged(rowIndex)" [(ngModel)]="ctr.isShowPic" checked>
+                                <div class="_surface"></div>
+                            </div>
+                            <div class="_spe"></div>
+                            <a class="link-icon _rm">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </div>
+                        <div class="range-box">
+                            <input type="range" max="100" min="0" step="10" [(ngModel)]="ctr.opacity">
+                            <label>{{ctr.opacity}} %</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="right-section">
+                <canvas id="version-canvas" (click)="clickHandle($event)"></canvas>
+            </div>
+        </div>
+        <div class="bottom-toolbar">
+            <div class="left-section">
+                <div class="_top-line-tools">
+                    <span class="link-icon _add fa-stack icon-combo">
+                        <i class="fa fa-list fa-stack-1x icon-combo-main"></i>
+                        <i class="fa fa-plus-circle fa-stack-1x icon-combo-symbol"></i>
+                    </span>
+                    <!-- <a class="link-icon _add">
+                        <i class="fa fa-trash"></i>
+                    </a> -->
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="scrollbar-box">
+                    <div class="scrollbar">
+                        <div class="resize-left"></div>
+                        <div class="resize-right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <h1>
+            <i class="fa fa-eye"></i>
+            <i class="fa fa-image"></i>
+        </h1>
+    </div>
+    <div style="display: none">
+        <canvas id="shadow-ruler"></canvas>
+        <canvas id="shadow-version"></canvas>
+    </div>
+    <!--<canvas id="ruler"></canvas>-->
+
+</div>

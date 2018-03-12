@@ -38,7 +38,8 @@ export class ProjectHomepageComponent implements OnInit {
     }
 
     initDom() {
-        $('.homepage-content').css('minHeight', $('.ll-right-container').height() - this.$tabsBox.height());
+        // $('.homepage-content').css('minHeight', $('.ll-right-container').height() - this.$tabsBox.height());
+        $('.homepage-content').css('minHeight', $(window).height() - this.$tabsBox.height() - this.boundaryTop - this.scrollBarBoundaryTop - 1);
         this.initWidth = $(window).width() - 480;
         this.siderHeight = this.$siderBox.height();
 

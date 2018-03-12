@@ -215,6 +215,15 @@ textarea {
 .cmpt {
 }
 
+.ll-label {
+    user-select: none;
+}
+.select-content {
+    td {
+        user-select: none;
+    }
+}
+
 .input-active {
     border-color: @color-active !important;
     box-shadow: 0 0 3px @color-active;
@@ -1427,6 +1436,11 @@ td {
 
 .homepage-content {
     padding: 30px;
+
+    &.has-grid {
+        position: relative;
+        padding: 0;
+    }
 }
 
 
@@ -1572,6 +1586,10 @@ td {
         .ll-main-box {
             top: 32px;
             bottom: 0;
+        }
+
+        &.homepage-content {
+            padding: 0;
         }
         
         .ll-label {
@@ -3281,6 +3299,16 @@ td {
                 background: @color-active;
             }
             
+            ._cell {
+                color: #fff !important;
+
+                .ll-label {
+                    color: @stronger !important;
+                    background: #fff;
+                    border-color: #fff;
+                }
+            }
+            
             ._type {
                 color: @color-weak;
             }
@@ -3479,6 +3507,55 @@ td {
             padding-left: 10px;
             line-height: 18px;
             position: relative;
+            
+            &.flexable {
+                display: flex;
+                flex-direction: column;
+                
+                ._row {
+                    display: flex;
+                    flex-direction: row;
+                    flex: 1 1 30%;
+                    //outline: 1px solid blue;
+                }
+                
+                ._cell {
+                    flex: 1 1 50%;
+                    //outline: 1px solid pink;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    .ll-label {
+                        float: none;
+                        display: inline-block;
+                        max-width: 80px;
+                        margin-right: 0;
+                        text-overflow: ellipsis;
+                        padding-right: 5px;    
+                    }
+                }
+                
+                ._stronger {
+                    font-weight: 600;
+                }
+                ._bluegary {
+                    color: @stronger;
+                }
+                ._smaller {
+                    font-size: 12px;
+                }
+                ._smallest {
+                    font-size: 10px;
+                    //transform: scale(.85);
+                }
+                ._gray {
+                    color: @normal;
+                }
+                ._pull-right {
+                    text-align: right;
+                }
+            }
             
             > span {
                 display: block;
@@ -3710,7 +3787,7 @@ thumbnail-view {
     }
 
     .total-items {
-        position: absolute; 
+        position: absolute;
         left: 15px;
     }
 
@@ -3725,9 +3802,9 @@ thumbnail-view {
     }
 
     .flip-to {
-        width: 30px; 
-        padding: 0; 
-        text-align: center; 
+        width: 30px;
+        padding: 0;
+        text-align: center;
         height: 22px;
     }
 }
@@ -4533,18 +4610,24 @@ table.parent-version-link-list {
                     
                 }
                 
-                img,
-                video {
-                    max-width: 100%;
-                    height: auto;
-                }
+                // img,
+                // video {
+                //     max-width: 100%;
+                //     height: auto;
+                // }
             }
             
         }
     }
     
 }
-
+.qc-content {
+    img,
+    video {
+        max-width: 100%;
+        height: auto;
+    }
+}
 .detail-content ._date .select-box .modal-flatest-container {
     left: 0;
 }

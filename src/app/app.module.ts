@@ -57,6 +57,8 @@ import { ShowComponentComponent } from './show-component/show-component.componen
 import { DragRulerComponent } from './drag-ruler/drag-ruler.component';
 import { NoteMsgComponent } from './note-msg/note-msg.component';
 import { ProjectHomepageComponent } from './project-homepage/project-homepage.component';
+import { MyNewPlayerComponent } from './my-new-player/my-new-player.component';
+import { PlayerLayerComponent } from './player-layer/player-layer.component';
 
 const appRoutes: Routes = [
 
@@ -65,8 +67,16 @@ const appRoutes: Routes = [
         component: LoginComponent
     },
     {
+        path: 'player-layer',
+        component: PlayerLayerComponent
+    },
+    {
         path: 'home',
         component: ProjectHomepageComponent
+    },
+    {
+        path: 'new',
+        component: MyNewPlayerComponent
     },
     {
         path: 'layout',
@@ -158,6 +168,8 @@ const appRoutes: Routes = [
         DragRulerComponent,
         NoteMsgComponent,
         ProjectHomepageComponent,
+        MyNewPlayerComponent,
+        PlayerLayerComponent,
         // HighlightDirective
     ],
     imports: [

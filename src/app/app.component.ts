@@ -14,7 +14,7 @@ export class AppComponent {
   title = 'app';
 
     inputList = ['序列号', '资产名称', '创建时间', '资产简介', '创建人', '资产描述', '修改时间', '所属类别', '状态', '资产名称'];
-    ides = this.inputList[Math.floor(Math.random()*10)];
+    ides = this.inputList[Math.floor(Math.random() * 10)];
 
     rowsize: number;
 

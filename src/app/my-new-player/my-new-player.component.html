@@ -1,0 +1,14 @@
+<div class="video-container">
+    <div class="video-box" *ngFor="let v of pl; let i = index" [style.opacity]="opacitys[i] / 100"
+         [style.zIndex]="100 - i">
+        <video :src="{{v.src}}" width="100%" height="100%" autoplay></video>
+    </div>
+
+</div>
+<!-- for test -->
+<div>
+    <div *ngFor="let o of opacitys; let i = index">
+        <input :name="{{'o' + i}}" type="range" min="10" max="100" step="10" [(ngModel)]="opacitys[i]">
+    </div>
+    <button (click)="pause()" style="width: 60px; background:pink; cursor:pointer;">stop!!!</button>
+</div>
