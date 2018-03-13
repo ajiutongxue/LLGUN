@@ -11,7 +11,7 @@ const _row: Version[] = [
 ];
 
 const _row1: Version[] = [
-    {duration: 2000, title: 'newititle', movie: new Movie('正文三闾大夫就啊书法家', 1800, '/assets/style/tmpImg/long-pic/123.png', null, null)},
+    {duration: 2000, title: '这么大的中文看得清楚么', movie: new Movie('正文三闾大夫就啊书法家', 1800, '/assets/style/tmpImg/long-pic/123.png', null, null)},
     {duration: 3000, title: 'newititle', movie: new Movie('mov1asf.aslfjsl.223', 2900, '/assets/style/tmpImg/long-pic/342.png', null, null)},
     {duration: 2400, title: 'newititle', movie: new Movie('mov1-asd-asdf-asf.mov', 2400, '/assets/style/tmpImg/long-pic/534.png', null, null)},
     {duration: 2000, title: 'newititle', movie: new Movie('mov1.nva.asd.er', 2000, '/assets/style/tmpImg/long-pic/655.png', null, null)},
@@ -21,7 +21,7 @@ const _row1: Version[] = [
 
 
 export const VERSION_LISTS: VersionList[] = [
-    {title: 'abcd01.mov', data: _row},
+    {title: '这么大的中文看得清楚么', data: _row},
     {title: 'abcd02.mov', data: _row1},
     {title: 'abcd03.mov', data: _row},
     {title: 'abcd04.mov', data: _row},
