@@ -1,0 +1,53 @@
+<div style="height: 600px;">
+    <button class="btn btn-primary" (click)="unitLengthChanged(-2)">unitLength -2</button>
+    <button class="btn btn-primary" (click)="unitLengthChanged(2)">unitLength +2</button>
+
+    <div class="layer-container" style="height: inherit;">
+        <div class="timeline-box">
+            <div class="left-section">
+                <div class="time-box">{{formatRulerShowTime(totalDuration)}}
+                </div>
+                <div class="change-view-btns">
+                    <a class="active">
+                        <i class="fa fa-film"></i>
+                    </a>
+                    <a>
+                        <i class="fa fa-gears"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="ruler-box">
+                    <div class="ruler-content">
+                        <canvas id="ruler-canvas"></canvas>
+                        <canvas id="shadow-ruler"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shot-box">
+            <div style="width: 100%; height: inherit;" *ngFor="let track of trackList; let rowIndex of index;">
+                <app-single-track [track]="track" [row]="rowIndex" [unitLength]="unitLength" [unitDuration]="unitDuration" [rectHeight]="rectHeight" [offsetLeft]="offsetLeft"></app-single-track>
+            </div>
+        </div>
+        <div class="bottom-toolbar">
+            <div class="left-section">
+                <div class="_tools-box">
+                    <span class="link-icon _add fa-stack icon-combo">
+                        <i class="fa fa-list fa-stack-1x icon-combo-main"></i>
+                        <i class="fa fa-plus-circle fa-stack-1x icon-combo-symbol"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="scrollbar-box">
+                    <div class="scrollbar">
+                        <div class="resize-left"></div>
+                        <div class="resize-right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

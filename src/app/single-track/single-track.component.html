@@ -1,0 +1,34 @@
+<div class="track-row">
+    <div class="left-section">
+        <div class="layer-control">
+            <div class="ctr-row">
+                <div class="_title">
+                    {{track.ctrl.title}}
+                </div>
+                <div class="_top-line-tools">
+                    <div class="checkbox-like like-eye">
+                        <input type="checkbox" (change)="reDrawTheRow()" [(ngModel)]="track.ctrl.isShow" checked>
+                        <div class="_surface"></div>
+                    </div>
+                    <div class="checkbox-like like-img">
+                        <input type="checkbox" (change)="reDrawTheRow()" [(ngModel)]="track.ctrl.isShowPic" checked>
+                        <div class="_surface"></div>
+                    </div>
+                    <div class="_spe"></div>
+                    <a class="link-icon _rm">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </div>
+                <div class="range-box">
+                    <input type="range" max="100" min="0" step="10" [(ngModel)]="track.ctrl.opacity">
+                    <label>{{track.ctrl.opacity}} %</label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="right-section">
+        <canvas #cvs></canvas>
+        <canvas #shadowCvs class="shadow-cvs"></canvas>
+    </div>
+</div>

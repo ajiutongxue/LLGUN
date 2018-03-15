@@ -1,0 +1,181 @@
+@import '../../base';
+//@topBoxHeight: 80px;
+@rulerLayerHeight: 52px;
+
+
+.layer-container {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: 30px auto 0;
+    border: 2px solid goldenrod;
+    background: #28292a;
+}
+
+// 带时间轴的整个通的一行
+.timeline-box {
+    display: flex;
+    flex: 0 0 @rulerLayerHeight;
+}
+
+// 通的一行，里面将要放 多个 single-track
+.shot-box {
+    // display: flex;
+    // flex: 1 1 auto;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+// 通的一行，最下面的
+.bottom-toolbar {
+    display: flex;
+    flex: 0 0 50px;
+    border-top: 1px solid #101010;
+}
+
+// 通用设置
+.left-section {
+    flex: 0 0 260px;
+    border-right: 1px solid #101010;
+    background: #2e2f30;
+    color: #c0c2c3;
+
+    .bottom-toolbar & {
+        position: relative;
+
+        ._tools-box {
+            position: absolute;
+            right: 15px;
+            width: 80px;
+            top: 5px;
+            text-align: right;
+        }
+    }
+}
+
+.right-section {
+    flex: 1 1 auto;
+    position: relative;
+    border-left: 1px solid #363636;
+}
+
+.time-box {
+    font-size: 18px;
+    padding-left: 20px;
+    padding-top: 8px;
+    margin-bottom: 2px;
+}
+
+.change-view-btns {
+    padding-left: 20px;
+
+    > a {
+        cursor: pointer;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        text-align: center;
+        border-radius: 2px;
+
+        &:hover,
+        &.active {
+            // color: #fff;
+            // background: @color-active;
+            color: @color-active;
+        }
+    }
+}
+
+.ruler-box {
+    position: relative;
+    height: @rulerLayerHeight;
+}
+
+.ruler-content {
+    position: absolute;
+    top: @rulerLayerHeight - 30px;
+    left: 0;
+    height: 30px; //background: orchid;
+}
+
+.scrollbar-box {
+    @_h: 17px; //position: absolute;
+    position: absolute;
+    height: @_h;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #171717;
+    border-top: 1px solid #000;
+    box-sizing: content-box;
+    .scrollbar {
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: @_h;
+        border-left: 15px solid #3e4041;
+        border-right: 15px solid #3e4041;
+        background: #353637;
+        width: 80px;
+    }
+    .resize-left,
+    .resize-right {
+        position: absolute;
+        top: 0;
+        width: 15px;
+        height: inherit;
+        background: rgba(255, 255, 255, 0);
+        &:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    }
+    .resize-bar-left {
+        left: -15px;
+    }
+    .resize-bar-right {
+        right: -15px;
+    }
+}
+::-webkit-scrollbar {
+    background: #313030;
+    width: 16px;
+}
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 2px;
+}
+
+.link-icon {
+    font-size: 14px;
+    cursor: pointer;
+    transition: .5s;
+
+    // 特殊处理
+    &._add {
+        // margin-right: 15px;
+        // margin-top: 5px;
+        font-size: 12px;
+        width: 12px;
+        height: 12px;
+        line-height: 1em;
+
+        .icon-combo-symbol {
+            transform: scale(0.75);
+            color: @color-active;
+            left: 6px;
+            bottom: -6px;
+        }
+
+        &:hover {
+            color: @color-active;
+        }
+    }
+}
+
+#shadow-ruler {
+    display: none;
+}
+
+

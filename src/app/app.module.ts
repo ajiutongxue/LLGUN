@@ -59,6 +59,8 @@ import { NoteMsgComponent } from './note-msg/note-msg.component';
 import { ProjectHomepageComponent } from './project-homepage/project-homepage.component';
 import { MyNewPlayerComponent } from './my-new-player/my-new-player.component';
 import { PlayerLayerComponent } from './player-layer/player-layer.component';
+import { SingleTrackComponent } from './single-track/single-track.component';
+import { MultipleTrackComponent } from './multiple-track/multiple-track.component';
 
 const appRoutes: Routes = [
 
@@ -69,6 +71,10 @@ const appRoutes: Routes = [
     {
         path: 'player-layer',
         component: PlayerLayerComponent
+    },
+    {
+        path: 'track',
+        component: MultipleTrackComponent
     },
     {
         path: 'home',
@@ -170,6 +176,8 @@ const appRoutes: Routes = [
         ProjectHomepageComponent,
         MyNewPlayerComponent,
         PlayerLayerComponent,
+        MultipleTrackComponent,
+        SingleTrackComponent,
         // HighlightDirective
     ],
     imports: [
