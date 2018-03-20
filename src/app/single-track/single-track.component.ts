@@ -20,7 +20,7 @@ export class SingleTrackComponent implements OnInit, OnChanges {
     WORDSHEIGHT = 16
     RECTFONT = '10px sans-serif'
 
-    @Input() unitLength
+    @Input() unitWidth
     @Input() unitDuration
 
     @Input() rectHeight
@@ -56,7 +56,7 @@ export class SingleTrackComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         if (
-            (changes.unitLength && !changes.unitLength.isFirstChange()) ||
+            (changes.unitWidth && !changes.unitWidth.isFirstChange()) ||
             (changes.offsetLeft && !changes.offsetLeft.isFirstChange())
         ) {
             this.reDrawTheRow()
@@ -225,7 +225,7 @@ export class SingleTrackComponent implements OnInit, OnChanges {
     }
 
     duration2Width(duration) {
-        return duration * this.unitLength / this.unitDuration // 1000ms 一个单位长度
+        return duration * this.unitWidth / this.unitDuration // 1000ms 一个单位长度
     }
 
     isInFrontCvs(rect) {

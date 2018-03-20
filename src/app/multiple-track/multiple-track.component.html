@@ -1,8 +1,14 @@
-<div style="height: 600px;">
-    <button class="btn btn-primary" (click)="unitLengthChanged(-2)">unitLength -2</button>
-    <button class="btn btn-primary" (click)="unitLengthChanged(2)">unitLength +2</button>
+<div style="height: 460px;">
+    <button class="btn btn-primary" (click)="unitWidthChanged(-2)">unitWidth -2</button>
+    <button class="btn btn-primary" (click)="unitWidthChanged(2)">unitWidth +2</button>
+    <button class="btn btn-primary" (click)="pause()"><i class="fa fa-pause"></i></button>
+    <button class="btn btn-primary" (click)="play()"><i class="fa fa-play"></i></button>
+    <button class="btn btn-primary" (click)="reset()"><i class="fa fa-refresh"></i></button>
+    <button class="btn btn-primary">{{ currentFrame }}</button>
+    <button class="btn btn-primary" (click)="setVernierLeft(null, 0, true)">show msg</button>
 
-    <div class="layer-container" style="height: inherit;">
+
+    <div class="layer-container" style="height: inherit; position: relative;">
         <div class="timeline-box">
             <div class="left-section">
                 <div class="time-box">{{formatRulerShowTime(totalDuration)}}
@@ -26,8 +32,8 @@
             </div>
         </div>
         <div class="shot-box">
-            <div style="width: 100%; height: inherit;" *ngFor="let track of trackList; let rowIndex of index;">
-                <app-single-track [track]="track" [row]="rowIndex" [unitLength]="unitLength" [unitDuration]="unitDuration" [rectHeight]="rectHeight" [offsetLeft]="offsetLeft"></app-single-track>
+            <div style="width: 100%;" *ngFor="let track of trackList; let rowIndex of index;">
+                <app-single-track [track]="track" [row]="rowIndex" [unitWidth]="unitWidth" [unitDuration]="unitDuration" [rectHeight]="rectHeight" [offsetLeft]="offsetLeft"></app-single-track>
             </div>
         </div>
         <div class="bottom-toolbar">
@@ -47,6 +53,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="vernier" [style.left.px]="vernierLeft">
+            <div class="drag-vernier-handle"></div>
         </div>
 
     </div>
