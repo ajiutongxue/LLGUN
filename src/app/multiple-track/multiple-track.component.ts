@@ -28,6 +28,7 @@ class ControlPanel {
     title: string
     isShow: boolean
     isShowPic: boolean
+    // isShowText: boolean
     opacity: number
     copyFinished: boolean
 }
@@ -52,7 +53,7 @@ export class MultipleTrackComponent implements OnInit {
     unitWidth = 30 // 1000ms 对应的像素长度
     unitDuration = 1000
     unitFrameWidth = 0
-    rectHeight = 70
+    rectHeight = 85
     $scrollbar = null
     scrollbarBoxContentWidth = 0
     offsetLeft = 0  // 画布偏移量
@@ -89,6 +90,8 @@ export class MultipleTrackComponent implements OnInit {
     vernierBoundaryRight = 0 // 代表的是这个元素的最大的 left 属性的值
 
     playTimer = null
+
+    isShowText = true
 
     constructor() {}
 
@@ -231,7 +234,7 @@ export class MultipleTrackComponent implements OnInit {
             this.setCurrentFrame()
         }
     }
-
+ 
     setUnitFrameWidth() {
         // this.unitFrameWidth = Math.floor(this.unitWidth / this.FRAMES)
         this.unitFrameWidth = this.unitWidth / this.FRAMES
@@ -454,7 +457,14 @@ export class MultipleTrackComponent implements OnInit {
         fc.drawImage(sc, start, 0, w, h, 0, 0, w, h)
     }
 
+    // 单行控制状态时候 添加参数 text = false
     updateTrackList() {
+        // if (text) {
+        //     this.trackList.forEach(track => {
+        //         track.ctrl.isShowText = this.isShowText
+        //     })
+        //     return 
+        // }
         this.trackList.forEach(track => {
             let row = track.data
             let ol = 0
@@ -470,6 +480,13 @@ export class MultipleTrackComponent implements OnInit {
         })
     }
 
+    // toggleText() {
+    //     // this.isShowText = !this.isShowText
+    //     this.updateTrackList(true)
+    //     // this.drawShadowRuler()
+    //     // this.copyShadowRuler2FrontCvs()
+    // }
+
     setTrackList() {
         // TODO: 数据不要每次清空重新整理，取到的数据不改变时，只进行内部值的重新计算，需要改下结构，把图片文件存进来
         const lh = this.rectHeight
@@ -484,6 +501,7 @@ export class MultipleTrackComponent implements OnInit {
                 title: row.title,
                 isShow: true,
                 isShowPic: index !== 3,
+                // isShowText: true,
                 opacity: 100,
                 copyFinished: false
             }

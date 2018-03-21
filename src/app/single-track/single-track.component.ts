@@ -10,7 +10,6 @@ import {
 
 declare const PxLoader: any, PxLoaderImage: any
 
-
 @Component({
     selector: 'app-single-track',
     templateUrl: './single-track.component.html',
@@ -27,6 +26,7 @@ export class SingleTrackComponent implements OnInit, OnChanges {
     @Input() offsetLeft
     @Input() track
     @Input() row
+    @Input() isShowText
 
     @ViewChild('cvs', { read: ViewContainerRef })
     private cvsRef: ViewContainerRef
@@ -57,7 +57,8 @@ export class SingleTrackComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges) {
         if (
             (changes.unitWidth && !changes.unitWidth.isFirstChange()) ||
-            (changes.offsetLeft && !changes.offsetLeft.isFirstChange())
+            (changes.offsetLeft && !changes.offsetLeft.isFirstChange()) ||
+            (changes.isShowText && !changes.isShowText.isFirstChange())
         ) {
             this.reDrawTheRow()
         }
@@ -98,8 +99,9 @@ export class SingleTrackComponent implements OnInit, OnChanges {
 
     drawShadowRectsTheRow(rowData, c) {
         // this.drawShadowWords(r)
-        if (rowData.ctrl.isShowPic) {
-            rowData.data.forEach(r => {
+        // if (rowData.ctrl.isShowPic) {
+        rowData.data.forEach(r => {
+            if (rowData.ctrl.isShowPic) {
                 if (r.picObj === null) {
                     const loader = new PxLoader()
                     const img = loader.addImage(r.version.movie.picUrl)
@@ -127,7 +129,6 @@ export class SingleTrackComponent implements OnInit, OnChanges {
                         if (rowData.ctrl.copyFinished && this.isInFrontCvs(r)) {
                             this.drawFrontCvs()
                         }
-
                     })
                     loader.start()
                 } else {
@@ -149,27 +150,31 @@ export class SingleTrackComponent implements OnInit, OnChanges {
                         r.pic.h - 2
                     )
                 }
+            }
+
+            if (this.isShowText) {
                 this.drawShadowWords(r)
-                // 立体边框线
-                c.save()
-                // c.strokeStyle = '#fff'
-                c.strokeStyle = '#333'
-                c.lineWidth = 1
-                c.beginPath()
-                c.moveTo(r.x + 1, r.h)
-                c.lineTo(r.x + 1, 1)
-                c.lineTo(r.x + r.w, 1)
-                c.stroke()
-                // c.strokeStyle = '#8399a2'
-                c.strokeStyle = '#111'
-                c.beginPath()
-                c.moveTo(r.x + r.w, 1)
-                c.lineTo(r.x + r.w, r.h)
-                c.lineTo(r.x + 1, r.h)
-                c.stroke()
-                c.restore()
-            })
-        }
+            }
+            // 立体边框线
+            c.save()
+            // c.strokeStyle = '#fff'
+            c.strokeStyle = '#333'
+            c.lineWidth = 1
+            c.beginPath()
+            c.moveTo(r.x + 1, r.h)
+            c.lineTo(r.x + 1, 1)
+            c.lineTo(r.x + r.w, 1)
+            c.stroke()
+            // c.strokeStyle = '#8399a2'
+            c.strokeStyle = '#111'
+            c.beginPath()
+            c.moveTo(r.x + r.w, 1)
+            c.lineTo(r.x + r.w, r.h)
+            c.lineTo(r.x + 1, r.h)
+            c.stroke()
+            c.restore()
+        })
+        // }
 
         // })
     }

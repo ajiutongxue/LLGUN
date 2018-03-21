@@ -244,3 +244,43 @@
     }
 }
 
+.checkbox-like {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    transition: .5s;
+    display: inline-block;
+    > input,
+    > ._surface {
+        position: absolute;
+        left: 0;
+        top: -1px;
+        width: inherit;
+        height: inherit;
+    }
+    input {
+        opacity: 0;
+        z-index: 2;
+        cursor: pointer;
+        &:checked + ._surface {
+            color: @color-active;
+            // color: #ccc;
+        }
+    }
+    ._surface {
+        position: absolute;
+        z-index: 1;
+        font-size: 14px;
+        // color: #B3B6B8;
+        color: #666;
+        &:after {
+            font-family: FontAwesome;
+            content: '\f00c';
+        }
+    }
+    &.like-font {
+        ._surface:after {
+            content: '\f031';
+        }
+    }
+}

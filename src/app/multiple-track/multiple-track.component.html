@@ -5,7 +5,6 @@
     <button class="btn btn-primary" (click)="play()"><i class="fa fa-play"></i></button>
     <button class="btn btn-primary" (click)="reset()"><i class="fa fa-refresh"></i></button>
     <button class="btn btn-primary">{{ currentFrame }}</button>
-    <button class="btn btn-primary" (click)="setVernierLeft(null, 0, true)">show msg</button>
 
 
     <div class="layer-container" style="height: inherit; position: relative;">
@@ -17,9 +16,10 @@
                     <a class="active">
                         <i class="fa fa-film"></i>
                     </a>
-                    <a>
-                        <i class="fa fa-gears"></i>
-                    </a>
+                    <div class="checkbox-like like-font">
+                        <input type="checkbox" [(ngModel)]="isShowText" checked>
+                        <div class="_surface"></div>
+                    </div>
                 </div>
             </div>
             <div class="right-section">
@@ -33,7 +33,7 @@
         </div>
         <div class="shot-box">
             <div style="width: 100%;" *ngFor="let track of trackList; let rowIndex of index;">
-                <app-single-track [track]="track" [row]="rowIndex" [unitWidth]="unitWidth" [unitDuration]="unitDuration" [rectHeight]="rectHeight" [offsetLeft]="offsetLeft"></app-single-track>
+                <app-single-track [track]="track" [row]="rowIndex" [isShowText]="isShowText" [unitWidth]="unitWidth" [unitDuration]="unitDuration" [rectHeight]="rectHeight" [offsetLeft]="offsetLeft"></app-single-track>
             </div>
         </div>
         <div class="bottom-toolbar">

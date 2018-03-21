@@ -3,7 +3,8 @@
 .track-row {
     display: flex;
     width: 100%;
-    height: 70px;;
+    // height: 70px;;
+    height: 85px;
 }
 
 .left-section {
@@ -26,10 +27,12 @@
             height: 70px;
             border-top: 1px solid #191919;
 
+            @rightToolsWidth: 90px;
+
             ._title {
                 position: absolute;
                 left: 20px;
-                right: 70px;
+                right: @rightToolsWidth + 10;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -41,7 +44,7 @@
             ._top-line-tools {
                 position: absolute;
                 right: 15px;
-                width: 80px;
+                width: @rightToolsWidth;
                 top: 5px;
                 text-align: right;
                 .checkbox-like {
@@ -60,8 +63,7 @@
                     // transform: scale(0.75) translateX(-15px) translateY(-5px);
                     appearance: none;
                     background: none;
-                    outline: none;
-                    
+                    outline: none;                    
 
                     &:active,
                     &:hover {
@@ -204,6 +206,12 @@
     &.like-img {
         ._surface:after {
             content: '\f03e';
+            font-size: 12px;
+        }
+    }
+    &.like-version {
+        ._surface:after {
+            content: "\f085";
             font-size: 12px;
         }
     }
