@@ -27,6 +27,7 @@ export class SingleTrackComponent implements OnInit, OnChanges {
     @Input() track
     @Input() row
     @Input() isShowText
+    @Input() totalDuration
 
     @ViewChild('cvs', { read: ViewContainerRef })
     private cvsRef: ViewContainerRef
@@ -64,11 +65,11 @@ export class SingleTrackComponent implements OnInit, OnChanges {
         }
     }
 
-    getTotalDuration() {
-        return this.track.data.reduce((prev, cur) => {
-            return prev + cur.version.duration
-        }, 0)
-    }
+    // getTotalDuration() {
+    //     return this.track.data.reduce((prev, cur) => {
+    //         return prev + cur.version.duration
+    //     }, 0)
+    // }
 
     initCanvases() {
         this.cvs = this.cvsRef.element.nativeElement
@@ -78,7 +79,7 @@ export class SingleTrackComponent implements OnInit, OnChanges {
         this.cvs.width = $(this.cvs)
             .parent()
             .width()
-        this.shadowCvs.width = this.duration2Width(this.getTotalDuration())
+        this.shadowCvs.width = this.duration2Width(this.totalDuration, true)
 
         this.ctx = this.cvs.getContext('2d')
         this.shadowCtx = this.shadowCvs.getContext('2d')
@@ -225,11 +226,16 @@ export class SingleTrackComponent implements OnInit, OnChanges {
     }
 
     reDrawTheRow() {
+        this.shadowCvs.width = this.duration2Width(this.totalDuration, true)
         this.drawShadowCvs()
         this.drawFrontCvs()
     }
 
-    duration2Width(duration) {
+    duration2Width(duration, log=false) {
+        // if(log) {
+        //     console.log(`In single track ==== \n  unitWidth: ${this.unitWidth}, unitDuration: ${this.unitDuration}`)
+        //     console.log(`current return width: ${duration * this.unitWidth / this.unitDuration}`)
+        // }
         return duration * this.unitWidth / this.unitDuration // 1000ms 一个单位长度
     }
 

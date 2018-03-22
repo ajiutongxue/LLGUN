@@ -50,12 +50,14 @@ export class MultipleTrackComponent implements OnInit {
     rulerCvs = null
     rulerCtx = null
     // 单位长度和单位时间段关系： 单位长度 / canvas长度 = 单位时间段 / canvas显示的时间段长度
-    unitWidth = 30 // 1000ms 对应的像素长度
+    unitWidth = 60 // 1000ms 对应的像素长度
     unitDuration = 1000
     unitFrameWidth = 0
     rectHeight = 85
     $scrollbar = null
     scrollbarBoxContentWidth = 0
+    $scrollbarHandlerLeft = null
+    $scrollbarHandlerRight = null
     offsetLeft = 0  // 画布偏移量
 
     totalDuration = 0
@@ -99,6 +101,8 @@ export class MultipleTrackComponent implements OnInit {
         this.$vernier = $('.vernier')
         this.shadowRulerCvs = document.querySelector('#shadow-ruler')
         this.$scrollbar = $('.scrollbar:first')
+        this.$scrollbarHandlerLeft = this.$scrollbar.find('.resize-left:first')
+        this.$scrollbarHandlerRight = this.$scrollbar.find('.resize-right:first')
         this.totalDuration = this.version_lists[0].data.reduce((prev, cur) => {
             return prev + cur.duration
         }, 0)
@@ -124,6 +128,7 @@ export class MultipleTrackComponent implements OnInit {
         this.shownDuration = Math.floor(this.totalDuration * 0.3)
         this.unitDuration =
             this.shownDuration / (this.rulerCvs.width / this.unitWidth)
+        console.log(`unit duration is: ${this.unitDuration}`)
         this.setUnitFrameWidth()
 
         // this.initShadow()
@@ -169,6 +174,51 @@ export class MultipleTrackComponent implements OnInit {
             })
         })
 
+        this.$scrollbarHandlerRight.on('mousedown', e => {
+            e.stopPropagation()
+            const x = e.pageX
+            const w = this.$scrollbar.width()
+            const minWidth = 20
+            const maxWidth = this.rulerCvs.width - parseInt(this.$scrollbar.css('left')) - 30
+
+            $(document).on('mousemove.forSr', e => {
+                let width = w + e.pageX - x
+                if (width > maxWidth) width = maxWidth
+                if (width < minWidth) width = minWidth
+                this.$scrollbar.width(width)
+                this.setOffsetLeft()
+                this.resizeShownDuration()
+            })
+            $(document).on('mouseup.forSr', () => {
+                $(document).off('.forSr')
+            })
+        })
+
+        this.$scrollbarHandlerLeft.on('mousedown', e => {
+            e.stopPropagation()
+            const x = e.pageX
+            const w = this.$scrollbar.width()
+            const l = parseInt(this.$scrollbar.css('left'))
+            const minWidth = 20
+            const maxWidth = w + l
+
+            $(document).on('mousemove.forSl', e => {
+
+                let width = w + (x - e.pageX)
+                if (width > maxWidth) width = maxWidth
+                if (width < minWidth) width = minWidth
+                // this.offsetLeft = this.offsetLeft + width - w
+                this.$scrollbar.css('left', l - width + w)
+                this.$scrollbar.width(width)
+                this.setOffsetLeft()
+                this.resizeShownDuration()
+            })
+            $(document).on('mouseup.forSl', () => {
+                $(document).off('.forSl')
+                // this.offsetLeft = parseInt(this.$scrollbar.css('left'))
+            })
+        })
+
         this.$vernier.on('mousedown', e => {
             this.$vernier.parent().addClass('active')
             $('body').css('cursor', 'move')
@@ -199,12 +249,6 @@ export class MultipleTrackComponent implements OnInit {
         this.setVernierLeft(null, 0, true)
     }
 
-    // showVernierMsg() {
-    //     console.log(
-    //         'f2w: ' + this.frame2Width(this.currentFrame) +
-    //         'offsetleft: ' + this.offsetLeft 
-    //     )
-    // }
     setVernierLeft(e, moveWidth = 0, ifMoveToCurrentFrame = false) {
         if (this.vernierLeft < this.vernierBoundaryLeft || this.vernierLeft > this.vernierBoundaryRight) {
             this.$vernier.css('display', 'none')
@@ -219,18 +263,16 @@ export class MultipleTrackComponent implements OnInit {
         } 
 
         if (ifMoveToCurrentFrame) {
-            // console.log(`offsetleft: ${this.offsetLeft}, left section width: ${$('.left-section:first').width()}, frame to width: ${this.frame2Width(this.currentFrame)}`);
-            // this.showVernierMsg()
             this.vernierLeft = this.frame2Width(this.currentFrame) - this.offsetLeft + $('.left-section:first').width()
             return
         }
         
         if (moveWidth !== 0) {
+            console.log(`set vernier left, unitFrameWidth: ${moveWidth}`)
             this.vernierLeft += moveWidth
             if (this.vernierLeft > this.vernierBoundaryRight) {
                 this.stop()
             }
-            // console.log(`vernier left: ${this.vernierLeft}`)
             this.setCurrentFrame()
         }
     }
@@ -238,6 +280,7 @@ export class MultipleTrackComponent implements OnInit {
     setUnitFrameWidth() {
         // this.unitFrameWidth = Math.floor(this.unitWidth / this.FRAMES)
         this.unitFrameWidth = this.unitWidth / this.FRAMES
+        console.log(`set unit frame width: ${this.unitFrameWidth}`)
     }
 
     vernierMove2NextFrame() {
@@ -289,7 +332,7 @@ export class MultipleTrackComponent implements OnInit {
                     this.playNextVersion()
                 }, 1000)
             }
-        }, 1000 / 30)
+        }, 1000 / 1)
     }
 
     stop() {
@@ -314,14 +357,6 @@ export class MultipleTrackComponent implements OnInit {
 
     setCurrentDurationFrame(version) {
         version = version || this.whichVersionPlaying(this.currentFrame)
-        // console.log(
-        //     'set duration frame, current : ' +
-        //         version.index +
-        //         'start & end: ' +
-        //         version.version.startFrame +
-        //         ' ' +
-        //         version.version.endFrame
-        // )
 
         this.currentDurationFrame.start = version.version.startFrame
         this.currentDurationFrame.end = version.version.endFrame
@@ -371,6 +406,28 @@ export class MultipleTrackComponent implements OnInit {
         )
     }
 
+    resizeShownDuration() {
+        this.shownDuration = this.totalDuration * this.$scrollbar.width() / this.rulerCvs.width
+        this.shadowRulerCvs.width = this.getLatestTotalCvsWidth()
+        this.drawShadowRuler()
+        this.copyShadowRuler2FrontCvs()
+        this.updateTrackList()
+        this.unitWidth = this.unitDuration * this.rulerCvs.width / this.shownDuration 
+        this.setUnitFrameWidth()
+        this.setVernierLeft(null, 0, true)
+    }
+    
+
+    // resizeScrollbar(leftHandler = 0, rightHandler = 0) {}
+    // resizeScrollbarWithLeftHandler(width) {
+    //     const leftBoundary = -15 - this.getScrollbarOffsetLeft()
+    //     // const rightBoundary = 
+    // }
+    // resizeScrollbarWithRightHandler(e) {
+
+    // }
+
+
     // ok
     formatRulerShowTime(time) {
         const h = Math.floor(time / 3600000)
@@ -408,8 +465,18 @@ export class MultipleTrackComponent implements OnInit {
             c.moveTo(x, y)
             c.lineTo(x, 30)
             c.stroke()
-            if (i % 10 === 0) {
-                c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
+            if (stepWidth < 10) {
+                if (i % 30 === 0) {
+                    c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
+                }    
+            }else if (stepWidth > 20) {
+                if (i % 5 === 0) {
+                    c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
+                }    
+            } else {
+                if (i % 10 === 0) {
+                    c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
+                }    
             }
         }
         c.fillStyle = '#979797'
@@ -440,9 +507,9 @@ export class MultipleTrackComponent implements OnInit {
         this.offsetLeft =
             left === 0
                 ? 0
-                : left /
-                  this.scrollbarBoxContentWidth *
-                  this.getLatestTotalCvsWidth()
+                : left / this.scrollbarBoxContentWidth * this.getLatestTotalCvsWidth()
+                // FIXME: 感觉这个参数有问题啊  好像算的不对
+                //   this.shadowRulerCvs.width
         // this.setCurrentFrame()
     }
 

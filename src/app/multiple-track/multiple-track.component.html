@@ -33,7 +33,7 @@
         </div>
         <div class="shot-box">
             <div style="width: 100%;" *ngFor="let track of trackList; let rowIndex of index;">
-                <app-single-track [track]="track" [row]="rowIndex" [isShowText]="isShowText" [unitWidth]="unitWidth" [unitDuration]="unitDuration" [rectHeight]="rectHeight" [offsetLeft]="offsetLeft"></app-single-track>
+                <app-single-track [totalDuration]="totalDuration" [track]="track" [row]="rowIndex" [isShowText]="isShowText" [unitWidth]="unitWidth" [unitDuration]="unitDuration" [rectHeight]="rectHeight" [offsetLeft]="offsetLeft"></app-single-track>
             </div>
         </div>
         <div class="bottom-toolbar">
