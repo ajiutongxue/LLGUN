@@ -46,26 +46,28 @@ class Track {
 export class MultipleTrackComponent implements OnInit {
     version_lists = VERSION_LISTS
 
-    FRAMES = 30
+    private readonly FRAMES = 30
     rulerCvs = null
     rulerCtx = null
     // 单位长度和单位时间段关系： 单位长度 / canvas长度 = 单位时间段 / canvas显示的时间段长度
-    unitWidth = 60 // 1000ms 对应的像素长度
+    // unitWidth = 60 // 1000ms 对应的像素长度
     unitDuration = 1000
-    unitFrameWidth = 0
+
+    // unit frame width: 默认的 1 倍的 1 帧的显示像素值
+    unitFrameWidth = 1
     rectHeight = 85
     $scrollbar = null
     scrollbarBoxContentWidth = 0
     $scrollbarHandlerLeft = null
     $scrollbarHandlerRight = null
-    offsetLeft = 0  // 画布偏移量
+    offsetLeft = 0 // 画布偏移量
 
     totalDuration = 0
-    totalCvsWidth = 0
+    totalCvsWidth = 0 // single 里面的shadowcvs的width
     currentFrame = 0
     ifNextVersion = true
     // currentVersion = null
-    // currentVersionIndex = 0
+    currentVersionIndex = 0
     currentDurationFrame = {
         start: 0,
         end: 0
@@ -102,7 +104,9 @@ export class MultipleTrackComponent implements OnInit {
         this.shadowRulerCvs = document.querySelector('#shadow-ruler')
         this.$scrollbar = $('.scrollbar:first')
         this.$scrollbarHandlerLeft = this.$scrollbar.find('.resize-left:first')
-        this.$scrollbarHandlerRight = this.$scrollbar.find('.resize-right:first')
+        this.$scrollbarHandlerRight = this.$scrollbar.find(
+            '.resize-right:first'
+        )
         this.totalDuration = this.version_lists[0].data.reduce((prev, cur) => {
             return prev + cur.duration
         }, 0)
@@ -119,17 +123,18 @@ export class MultipleTrackComponent implements OnInit {
                 ? this.rulerCvs.width - 16
                 : this.rulerCvs.width
 
-        this.vernierBoundaryLeft =
-            $(this.rulerCvs).offset().left - $('.layer-container').offset().left
+        this.vernierBoundaryLeft = $(this.rulerCvs).offset().left
+           // $(this.rulerCvs).offset().left - $('.layer-container').offset().left 改成全屏了  左边没有空了
         this.vernierBoundaryRight =
             this.vernierBoundaryLeft + this.trackListBoxWidth
 
         // todo: 暂时不判断设为显示30%的时间段
-        this.shownDuration = Math.floor(this.totalDuration * 0.3)
-        this.unitDuration =
-            this.shownDuration / (this.rulerCvs.width / this.unitWidth)
-        console.log(`unit duration is: ${this.unitDuration}`)
-        this.setUnitFrameWidth()
+        // this.shownDuration = Math.floor(this.totalDuration * 0.3)
+        this.shownDuration = this.frame2Duration(this.trackListBoxWidth / this.unitFrameWidth)
+        // this.unitDuration =
+        //     this.shownDuration / (this.rulerCvs.width / this.unitWidth)
+        // console.log(`unit duration is: ${this.unitDuration}`)
+        // this.setUnitFrameWidth()
 
         // this.initShadow()
         this.setTrackList()
@@ -140,6 +145,9 @@ export class MultipleTrackComponent implements OnInit {
         this.copyShadowRuler2FrontCvs()
 
         this.initScrollbar()
+        this.setCurrentFrame()
+        this.currentVersionIndex = this.whichVersionPlaying(this.currentFrame).index
+        // console.log(`init currentversion index: ${this.currentVersionIndex}`)
         this.$scrollbar.on('mousedown', event => {
             const x = event.clientX
             const scrollbarOffsetLeft = parseInt(
@@ -179,7 +187,8 @@ export class MultipleTrackComponent implements OnInit {
             const x = e.pageX
             const w = this.$scrollbar.width()
             const minWidth = 20
-            const maxWidth = this.rulerCvs.width - parseInt(this.$scrollbar.css('left')) - 30
+            const maxWidth =
+                this.rulerCvs.width - parseInt(this.$scrollbar.css('left')) - 30
 
             $(document).on('mousemove.forSr', e => {
                 let width = w + e.pageX - x
@@ -203,7 +212,6 @@ export class MultipleTrackComponent implements OnInit {
             const maxWidth = w + l
 
             $(document).on('mousemove.forSl', e => {
-
                 let width = w + (x - e.pageX)
                 if (width > maxWidth) width = maxWidth
                 if (width < minWidth) width = minWidth
@@ -222,20 +230,36 @@ export class MultipleTrackComponent implements OnInit {
         this.$vernier.on('mousedown', e => {
             this.$vernier.parent().addClass('active')
             $('body').css('cursor', 'move')
+            let isPlaying = false
+
+            if (this.playTimer) {
+                isPlaying = true
+                this.stop()
+            }
 
             $(window).on('mousemove.drag', e => {
                 this.setVernierLeft(e)
+                this.setCurrentFrame()
+                this.currentVersionIndex = this.whichVersionPlaying(this.currentFrame).index
 
                 $(window).on('mouseup.drag', e => {
                     this.$vernier.parent().removeClass('active')
                     $(window).off('.drag')
                     $('body').css('cursor', 'default')
+                    this.setCurrentDurationFrame({version: this.trackList[0].data[this.currentVersionIndex], index: this.currentVersionIndex})
+                    if (isPlaying) {
+                        this.playing()
+                    }
                 })
             })
         })
 
-        this.setCurrentDurationFrame(null)
+        // this.setCurrentDurationFrame(null)
+        this.setCurrentDurationFrame({version: this.trackList[0].data[this.currentVersionIndex], index: this.currentVersionIndex})
+
         this.playing()
+
+        // console.log('total cvswidth: ' + this.totalCvsWidth)
     }
 
     getScrollbarBoundaryRight() {
@@ -250,7 +274,10 @@ export class MultipleTrackComponent implements OnInit {
     }
 
     setVernierLeft(e, moveWidth = 0, ifMoveToCurrentFrame = false) {
-        if (this.vernierLeft < this.vernierBoundaryLeft || this.vernierLeft > this.vernierBoundaryRight) {
+        if (
+            this.vernierLeft < this.vernierBoundaryLeft ||
+            this.vernierLeft > this.vernierBoundaryRight
+        ) {
             this.$vernier.css('display', 'none')
         } else {
             this.$vernier.css('display', 'block')
@@ -258,30 +285,42 @@ export class MultipleTrackComponent implements OnInit {
 
         if (e) {
             this.vernierLeft = e.pageX - $('.layer-container').offset().left
+            // if (this.vernierLeft % this.unitFrameWidth) {
+            //     this.vernierLeft -= this.vernierLeft % this.unitFrameWidth
+            // }
             this.setCurrentFrame()
-            return
-        } 
-
-        if (ifMoveToCurrentFrame) {
-            this.vernierLeft = this.frame2Width(this.currentFrame) - this.offsetLeft + $('.left-section:first').width()
+            this.setCurrentDurationFrame(null)
             return
         }
-        
+
+        if (ifMoveToCurrentFrame) {
+            console.log(`offset left: ${this.offsetLeft}`)
+            console.log(`frame: ${this.currentFrame}`)
+            console.log(`width: ${this.frame2Width(this.currentFrame)}`)
+            this.vernierLeft =
+                this.frame2Width(this.currentFrame) -
+                this.offsetLeft +
+                $('.left-section:first').width()
+            // if (this.vernierLeft % this.unitFrameWidth) {
+            //     this.vernierLeft -= this.vernierLeft % this.unitFrameWidth
+            // }
+            return
+        }
+
         if (moveWidth !== 0) {
-            console.log(`set vernier left, unitFrameWidth: ${moveWidth}`)
+            // console.log(`set vernier left, unitFrameWidth: ${moveWidth}`)
             this.vernierLeft += moveWidth
             if (this.vernierLeft > this.vernierBoundaryRight) {
                 this.stop()
             }
-            this.setCurrentFrame()
+            // if (this.vernierLeft % this.unitFrameWidth) {
+            //     this.vernierLeft -= this.vernierLeft % this.unitFrameWidth
+            // }
+            // this.setCurrentFrame()
         }
     }
- 
-    setUnitFrameWidth() {
-        // this.unitFrameWidth = Math.floor(this.unitWidth / this.FRAMES)
-        this.unitFrameWidth = this.unitWidth / this.FRAMES
-        console.log(`set unit frame width: ${this.unitFrameWidth}`)
-    }
+
+
 
     vernierMove2NextFrame() {
         // this.setCurrentFrame(1)
@@ -289,34 +328,43 @@ export class MultipleTrackComponent implements OnInit {
         // if (!this.ifNextVersion) return
         this.setVernierLeft(null, this.unitFrameWidth)
 
-        if (parseInt(this.$scrollbar.css('left'), 10) < this.getScrollbarBoundaryRight()) {
+        if ( parseInt(this.$scrollbar.css('left'), 10) < this.getScrollbarBoundaryRight() ) {
             if (this.vernierLeft > this.vernierBoundaryRight - 30) {
-                let left = parseInt(this.$scrollbar.css('left'), 10) + this.$scrollbar.width() / 2
+                let left =
+                    parseInt(this.$scrollbar.css('left'), 10) +
+                    this.$scrollbar.width() / 2
 
-                this.setScrollbarLeft(left <= this.getScrollbarBoundaryRight() ? left : this.getScrollbarBoundaryRight())
-                
+                this.setScrollbarLeft(
+                    left <= this.getScrollbarBoundaryRight()
+                        ? left
+                        : this.getScrollbarBoundaryRight()
+                )
+
                 // this.setVernierLeft(null, 0, true)
                 // this.stop()
             }
         }
-        
+        this.currentFrame += 1
     }
 
     playNextVersion() {
         if (!this.ifNextVersion) return
         // this.vernierMove2NextFrame()
-        this.setCurrentDurationFrame({
-            version: this.trackList[0].data[
-                this.whichVersionPlaying(this.currentFrame).index + 1
-            ],
-            index: this.whichVersionPlaying(this.currentFrame).index + 1
-        })
+        // this.setCurrentDurationFrame({
+        //     version: this.trackList[0].data[
+        //         this.whichVersionPlaying(this.currentFrame).index + 1
+        //     ],
+        //     index: this.whichVersionPlaying(this.currentFrame).index + 1
+        // })
+        this.currentVersionIndex += 1
+        this.setCurrentDurationFrame({version: this.trackList[0].data[this.currentVersionIndex], index: this.currentVersionIndex})
         // this.setCurrentFrame()
         this.currentFrame = this.currentDurationFrame.start
         this.setVernierLeft(null, 0, true)
-        console.log(`current is: ${this.currentFrame}`);
+        console.log(`current is: ${this.currentVersionIndex}\n title: ${this.trackList[0].data[this.currentVersionIndex].version.title}`)
+        console.log(` start: ${this.currentDurationFrame.start}\n end: ${this.currentDurationFrame.end}`)
         this.playing()
-        console.log('playing');
+        console.log('playing')
         // this.setCurrentDurationFrame()
     }
 
@@ -332,12 +380,13 @@ export class MultipleTrackComponent implements OnInit {
                     this.playNextVersion()
                 }, 1000)
             }
-        }, 1000 / 1)
+        }, 1000 / 5)
     }
 
     stop() {
         window.clearInterval(this.playTimer)
         this.playTimer = null
+        console.log(`stop=========================`)
     }
 
     setCurrentFrame(step = 0) {
@@ -352,9 +401,14 @@ export class MultipleTrackComponent implements OnInit {
                 $('.left-section:first').width()
         )
         this.currentFrame = this.duration2Frame(offsetLeftDuration)
-        this.setCurrentDurationFrame(null)
+        // this.setCurrentDurationFrame(null)
     }
 
+    /* 
+     * 设置当前播放的版本的进入帧及结束帧
+     * 当currentFrame > 结束帧的时候，就证明这个版本播放完了
+     * 同时加了个是否有下一个版本的判断
+    */
     setCurrentDurationFrame(version) {
         version = version || this.whichVersionPlaying(this.currentFrame)
 
@@ -367,7 +421,6 @@ export class MultipleTrackComponent implements OnInit {
             this.ifNextVersion = false
         }
     }
-
 
     whichVersionPlaying(frame) {
         const track = this.trackList[0].data
@@ -393,7 +446,12 @@ export class MultipleTrackComponent implements OnInit {
         this.playing()
     }
     reset() {
+        if(this.playTimer) this.stop()
         this.vernierLeft = this.vernierBoundaryLeft
+        this.$scrollbar.css('left', 0)
+        this.currentFrame = 0
+        this.currentVersionIndex = 0
+        this.setCurrentDurationFrame(null)
     }
 
     // ok
@@ -404,29 +462,48 @@ export class MultipleTrackComponent implements OnInit {
                 this.trackListBoxWidth /
                 this.getLatestTotalCvsWidth()
         )
+
+        console.log(`[init] showDuration: ${this.shownDuration}`)
     }
 
     resizeShownDuration() {
-        this.shownDuration = this.totalDuration * this.$scrollbar.width() / this.rulerCvs.width
+        this.shownDuration = //this.frame2Duration()
+            this.totalDuration * this.$scrollbar.width() / this.scrollbarBoxContentWidth
+        this.setUnitFrameWidth()
+        // this.initScrollbar()
         this.shadowRulerCvs.width = this.getLatestTotalCvsWidth()
         this.drawShadowRuler()
         this.copyShadowRuler2FrontCvs()
         this.updateTrackList()
-        this.unitWidth = this.unitDuration * this.rulerCvs.width / this.shownDuration 
-        this.setUnitFrameWidth()
-        this.setVernierLeft(null, 0, true)
+        // console.log(`[resize] showDuration: ${this.shownDuration}`)
+
+        // this.shadowRulerCvs.width = this.getLatestTotalCvsWidth()
+        // this.drawShadowRuler()
+        // this.copyShadowRuler2FrontCvs()
+        // this.updateTrackList()
+        // // this.unitWidth = this.unitDuration * this.rulerCvs.width / this.shownDuration
+        // this.setUnitFrameWidth()
+        // this.setVernierLeft(null, 0, true)
     }
-    
+    setUnitFrameWidth() {
+        // this.unitFrameWidth = Math.floor(this.unitWidth / this.FRAMES)
+        // this.unitFrameWidth = this.unitWidth / this.FRAMES
+        // this.unitFrameWidth = 10
+        this.unitFrameWidth =
+            this.trackListBoxWidth / this.shownDuration * 1000 / this.FRAMES
+
+        // this.unitFrameWidth = this.totalCvsWidth / (this.totalDuration / (1000 / this.FRAMES))
+        // console.log(`set unit frame width: ${this.unitFrameWidth}`)
+    }
 
     // resizeScrollbar(leftHandler = 0, rightHandler = 0) {}
     // resizeScrollbarWithLeftHandler(width) {
     //     const leftBoundary = -15 - this.getScrollbarOffsetLeft()
-    //     // const rightBoundary = 
+    //     // const rightBoundary =
     // }
     // resizeScrollbarWithRightHandler(e) {
 
     // }
-
 
     // ok
     formatRulerShowTime(time) {
@@ -468,15 +545,15 @@ export class MultipleTrackComponent implements OnInit {
             if (stepWidth < 10) {
                 if (i % 30 === 0) {
                     c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
-                }    
-            }else if (stepWidth > 20) {
+                }
+            } else if (stepWidth > 20) {
                 if (i % 5 === 0) {
                     c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
-                }    
+                }
             } else {
                 if (i % 10 === 0) {
                     c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
-                }    
+                }
             }
         }
         c.fillStyle = '#979797'
@@ -490,8 +567,15 @@ export class MultipleTrackComponent implements OnInit {
         return this.totalCvsWidth
     }
 
+    /* 
+     * 测试用，改变 unitFrameWidth 的值 
+     */
     unitWidthChanged(step) {
-        this.unitWidth += step
+        // this.unitWidth += step
+        step > 0
+            ? (this.unitFrameWidth *= step)
+            : (this.unitFrameWidth /= -step)
+        if (this.unitFrameWidth < 1) this.unitFrameWidth = 1
         this.initScrollbar()
         this.drawShadowRuler()
         this.copyShadowRuler2FrontCvs()
@@ -507,9 +591,11 @@ export class MultipleTrackComponent implements OnInit {
         this.offsetLeft =
             left === 0
                 ? 0
-                : left / this.scrollbarBoxContentWidth * this.getLatestTotalCvsWidth()
-                // FIXME: 感觉这个参数有问题啊  好像算的不对
-                //   this.shadowRulerCvs.width
+                : left /
+                  this.scrollbarBoxContentWidth *
+                  this.getLatestTotalCvsWidth()
+        // FIXME: 感觉这个参数有问题啊  好像算的不对
+        //   this.shadowRulerCvs.width
         // this.setCurrentFrame()
     }
 
@@ -530,21 +616,31 @@ export class MultipleTrackComponent implements OnInit {
         //     this.trackList.forEach(track => {
         //         track.ctrl.isShowText = this.isShowText
         //     })
-        //     return 
+        //     return
         // }
+        console.log(`updateTrackList 现在的 unitFrameWidth: ${this.unitFrameWidth}`)
+
         this.trackList.forEach(track => {
             let row = track.data
             let ol = 0
 
             row.forEach(rect => {
                 rect.x = ol
-                rect.w = this.duration2Width(rect.version.duration)
-                rect.pic.w = this.duration2Width(
-                    rect.version.movie.getActualDuration()
-                )
+                // rect.w = this.duration2Width(rect.version.duration)
+                rect.w = this.frame2Width(Math.ceil(this.duration2Frame(rect.version.duration)))
+                // rect.pic.w = this.duration2Width(
+                //     rect.version.movie.getActualDuration()
+                // )
+                rect.pic.w = this.frame2Width(Math.ceil(this.duration2Frame(rect.version.movie.getActualDuration()))),
+
                 ol += rect.w
             })
         })
+        // console.log('update start ==================')
+        // this.trackList[0].data.forEach((rect, index) => {
+        //     console.log(`[${index}] duration: ${rect.version.duration}, width: ${rect.w}, unitFrameWidth: ${this.unitFrameWidth}`)
+        // })
+        // console.log('update end ====================')
     }
 
     // toggleText() {
@@ -556,6 +652,8 @@ export class MultipleTrackComponent implements OnInit {
 
     setTrackList() {
         // TODO: 数据不要每次清空重新整理，取到的数据不改变时，只进行内部值的重新计算，需要改下结构，把图片文件存进来
+        console.log(`setTrackList 现在的 unitFrameWidth: ${this.unitFrameWidth}`)
+        
         const lh = this.rectHeight
         const version_lists = this.version_lists
         const shadowRects = []
@@ -580,7 +678,8 @@ export class MultipleTrackComponent implements OnInit {
                 const item = row.data[i]
 
                 const pic: Pic = {
-                    w: this.duration2Width(item.movie.getActualDuration()),
+                    // w: this.duration2Width(item.movie.getActualDuration()),
+                    w: this.frame2Width(Math.ceil(this.duration2Frame(item.movie.getActualDuration()))),
                     h: lh - this.WORDSHEIGHT * 2,
                     oh: 0,
                     ow: 0,
@@ -590,17 +689,18 @@ export class MultipleTrackComponent implements OnInit {
                 const rect: Rect = {
                     x: ol,
                     y: 0,
-                    w: this.duration2Width(item.duration),
+                    // w: this.duration2Width(item.duration),
+                    w: this.frame2Width(Math.ceil(this.duration2Frame(item.duration))),
                     h: lh,
                     text: item.movie.title,
                     version: item,
                     pic: pic,
                     picObj: null,
                     startFrame: frames,
-                    endFrame: frames + this.duration2Frame(item.duration)
+                    endFrame: frames + Math.ceil(this.duration2Frame(item.duration))
                 }
 
-                frames += this.duration2Frame(item.duration)
+                frames += Math.ceil(this.duration2Frame(item.duration))
                 shadowRects[index].push(rect)
                 ol += rect.w
             }
@@ -613,20 +713,28 @@ export class MultipleTrackComponent implements OnInit {
     }
 
     duration2Width(duration) {
-        return duration * this.unitWidth / this.unitDuration // 1000ms 一个单位长度
+        // return duration * this.unitWidth / this.unitDuration // 1000ms 一个单位长度
+        return duration / (1000 / this.FRAMES) * this.unitFrameWidth
     }
 
     width2Duration(width) {
-        return width * this.unitDuration / this.unitWidth
+        // return width * this.unitDuration / this.unitWidth
+        return width / this.unitFrameWidth * (1000 / this.FRAMES)
     }
 
     duration2Frame(duration) {
-        return Math.ceil(duration / this.FRAMES)
+        // return Math.ceil(duration / this.FRAMES)
+        return duration / (1000 / this.FRAMES)
+    }
+
+    frame2Duration(frame) {
+        return frame * (1000 / this.FRAMES)
     }
 
     frame2Width(frame) {
         // console.log('f2w: ' + this.unitFrameWidth * frame);
-        return this.duration2Width(this.FRAMES * frame)
-        // return frame / this.FRAMES * this.unitWidth 
+        // return this.duration2Width(this.FRAMES * frame)
+        // return frame / this.FRAMES * this.unitWidth
+        return frame * this.unitFrameWidth
     }
 }

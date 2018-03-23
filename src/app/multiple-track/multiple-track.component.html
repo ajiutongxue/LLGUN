@@ -1,4 +1,4 @@
-<div style="height: 460px;">
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
     <button class="btn btn-primary" (click)="unitWidthChanged(-2)">unitWidth -2</button>
     <button class="btn btn-primary" (click)="unitWidthChanged(2)">unitWidth +2</button>
     <button class="btn btn-primary" (click)="pause()"><i class="fa fa-pause"></i></button>
@@ -7,7 +7,7 @@
     <button class="btn btn-primary">{{ currentFrame }}</button>
 
 
-    <div class="layer-container" style="height: inherit; position: relative;">
+    <div class="layer-container" style="position: relative; height: calc(100% - 24px)">
         <div class="timeline-box">
             <div class="left-section">
                 <div class="time-box">{{formatRulerShowTime(totalDuration)}}
@@ -33,7 +33,16 @@
         </div>
         <div class="shot-box">
             <div style="width: 100%;" *ngFor="let track of trackList; let rowIndex of index;">
-                <app-single-track [totalDuration]="totalDuration" [track]="track" [row]="rowIndex" [isShowText]="isShowText" [unitWidth]="unitWidth" [unitDuration]="unitDuration" [rectHeight]="rectHeight" [offsetLeft]="offsetLeft"></app-single-track>
+                <app-single-track 
+                    [totalDuration]="totalDuration" 
+                    [track]="track" 
+                    [row]="rowIndex" 
+                    [isShowText]="isShowText" 
+                    [unitDuration]="unitDuration" 
+                    [rectHeight]="rectHeight" 
+                    [unitFrameWidth]="unitFrameWidth"
+                    [offsetLeft]="offsetLeft">
+                </app-single-track>
             </div>
         </div>
         <div class="bottom-toolbar">

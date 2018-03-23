@@ -1,0 +1,157 @@
+<div class="ll-player">
+  <div class="ll-player-container">
+      <div class="ll-player-content">
+
+          <div *ngIf="qcMode" [ngStyle]="isZoomOrMove? toolsBoxStyle:''" class="player-tools-box">
+              <div class="more-tools-box">
+                  <div class="_more-qc-tools">
+                      <a class="_tool-btn" [ngClass]="qcModeType == 'pencil' ? 'active': ''"
+                         (click)="setQcModeType($event, 'pencil')"><i class="fa fa-pencil"></i></a>
+                      <a class="_tool-btn" [ngClass]="qcModeType == 'arrow' ? 'active': ''"
+                         (click)="setQcModeType($event, 'arrow')"><i class="fa fa-long-arrow-up"></i></a>
+                      <a class="_tool-btn" [ngClass]="qcModeType == 'round' ? 'active': ''"
+                         (click)="setQcModeType($event, 'round')"><i class="ll-icon-round"></i></a>
+                      <a class="_tool-btn" [ngClass]="qcModeType == 'rect' ? 'active': ''"
+                         (click)="setQcModeType($event, 'rect')"><i class="ll-icon-rect"></i></a>
+                      <a class="_tool-btn" [ngClass]="qcModeType == 'eraser' ? 'active': ''"
+                         (click)="setQcModeType($event, 'eraser')"><i class="fa fa-eraser"></i></a>
+                      <a class="_tool-btn" [ngClass]="qcModeType == 'words' ? 'active': ''"
+                         (click)="setQcModeType($event, 'words')"><i class="fa fa-text-width"></i></a>
+                  </div>
+                  <div *ngIf="qcModeType != 'words'" class="_sub-tools _for-pencil">
+                      <!--<span class="_tools_title">画笔</span>-->
+                      <span class="_size-box">
+                          <a class="_size _thin" [ngClass]="borderWidthLevel == 0 ? 'active' : ''"
+                             (click)="borderWidthLevel = 0"></a>
+                          <a class="_size _regular" [ngClass]="borderWidthLevel == 1 ? 'active' : ''"
+                             (click)="borderWidthLevel = 1"></a>
+                          <a class="_size _medium" [ngClass]="borderWidthLevel == 2 ? 'active' : ''"
+                             (click)="borderWidthLevel = 2"></a>
+                      </span>
+                      <span class="_color-box">
+                          <a class="_color" *ngFor="let c of colorList; let i = index"
+                             [ngClass]="colorIndex == i ? 'active' : ''" [style.background]="c"
+                             (click)="colorIndex = i"></a>
+                      </span>
+                      <span *ngIf="qcModeType=='rect' || qcModeType=='round'" class="_for-rect _tools_title">透明度</span>
+                      <span *ngIf="qcModeType=='rect' || qcModeType=='round'" class="_color-box _for-rect">
+                          <a class="_color opacity" [style.opacity]="opacityLevel / 10"></a>
+                      </span>
+                      <span *ngIf="qcModeType=='rect' || qcModeType=='round'" class="_opacity-box">
+                          <input [(ngModel)]="opacityLevel" type="range" step="1" min="1" max="10">
+                      </span>
+                  </div>
+
+                  <div *ngIf="qcModeType=='words'" class="_sub-tools _for-pencil">
+                      <span class="_size-box _font-size">
+                          <a class="_size _s" [ngClass]="fontsizeLevel == 0 ? 'active' : ''"
+                             (click)="fontsizeLevel = 0"><span>A</span></a>
+                          <a class="_size _m" [ngClass]="fontsizeLevel == 1 ? 'active' : ''"
+                             (click)="fontsizeLevel = 1"><span>A</span></a>
+                          <a class="_size _l" [ngClass]="fontsizeLevel == 2 ? 'active' : ''"
+                             (click)="fontsizeLevel = 2"><span>A</span></a>
+                      </span>
+                      <span class="_color-box">
+                          <a class="_color" *ngFor="let c of colorList; let i = index"
+                             [ngClass]="colorIndex == i ? 'active' : ''" [style.background]="c"
+                             (click)="colorIndex = i"></a>
+                      </span>
+                      <span class="_tools_title _for-font">文字背景</span>
+                      <span class="_color-box _bg">
+                          <a class="_color" *ngFor="let c of bgColorList; let i = index"
+                             [ngClass]="bgColorIndex == i ? 'active' : ''" [style.background]="c"
+                             (click)="bgColorIndex = i"></a>
+                      </span>
+                  </div>
+
+                  <div class="_history-tools">
+                      <a class="_btn" (click)="undoDrawn($event)"><i class="fa fa-reply"></i> 撤销</a>
+                      <a class="_btn" (click)="clearDrawn($event)"><i class="fa fa-refresh"></i> 清除</a>
+                  </div>
+              </div>
+          </div>
+          <div *ngIf="scaleMsg" class="scale-msg">
+              <span>{{scaleMsg}}</span>
+          </div>
+          <div class="player-video-box">
+              <video [autoplay]="isPlaying" [loop]="!isPlayInList"></video>
+              <video [autoplay]="isPlaying" [loop]="!isPlayInList"></video>
+              <video [autoplay]="isPlaying" [loop]="!isPlayInList"></video>
+              <video [autoplay]="isPlaying" [loop]="!isPlayInList"></video>
+              <canvas class="pic-cvs" style="width: 100%; height: 100%;"></canvas>
+              <canvas class="main-cvs" style="width: 100%; height: 100%;"></canvas>
+              <canvas class="top-cvs" style="width: 100%; height: 100%;" [style.zIndex]="tmpCvsIndex"></canvas>
+          </div>
+          <div class="player-ctrl-box">
+              <div class="_progress-box">
+                  <span [style.width]="playPercent" class="_progress"></span>
+                  <div class="_progress-ctrl-bar" (click)="gotoAndPlay($event)">
+                      <div class="qc-signed" *ngFor="let s of qcSingedList"
+                           [ngClass]="META.currentFrame === s.frame ? 'active' : ''"
+                           (click)="gotoAndStop($event, s.frame)" [style.left]="s.left"></div>
+                      <a href="#" target="_blank"></a>
+                  </div>
+              </div>
+              <div class="_ctrl-box">
+                  <div class="_title">资产02faasdf</div>
+                  <div class="ctrl-btn-box" style="">
+                      <a class="ctrl-btn _play" *ngIf="!isPlaying" (click)="vdoPlay($event)"><i class="fa fa-play"></i></a>
+                      <a class="ctrl-btn _pause" *ngIf="isPlaying" (click)="vdoPause($event)"><i class="fa fa-pause"></i></a>
+                      <span *ngIf="!isShowFrame" class="play-time">{{vdo.currentTime.toFixed(2)}} / {{META.duration.toFixed(2)}}</span>
+                      <span *ngIf="isShowFrame" class="play-time">{{META.currentFrame}} / {{META.frames}}</span>
+                  </div>
+
+                  <div class="advanced-tools-box">
+                      <a class="advanced-btn _qc-btn" [ngClass]="qcMode ? 'active': ''"
+                         (click)="setCurrentMode($event, 'qcMode')"><i [class]="qcTypeIcon"></i></a>
+                      <a class="advanced-btn _zoom-btn" [ngClass]="zoomMode ? 'active': ''"
+                         (click)="setCurrentMode($event, 'zoomMode')"><i class="fa fa-search"></i></a>
+                      <a class="advanced-btn _move-btn" [ngClass]="moveMode ? 'active': ''"
+                         (click)="setCurrentMode($event, 'moveMode')"><i class="fa fa-arrows"></i></a>
+                      <a class="_vol-btn" [ngClass]="volumeOn ? 'active' : ''" (click)="toggleVolume()"><i
+                          class="fa fa-volume-up"></i></a>
+                  </div>
+                  <div class="change-source"><a>高清</a><div class="source-list"><div class="_item">流畅</div></div></div>
+                  <div class="fullscreen-btn" (click)="toggleFullScreen()">
+                      <a *ngIf="!isFullscreen" class="ll-icon-fullscreen">
+                          <i></i>
+                          <i></i>
+                      </a>
+                      <a *ngIf="isFullscreen" class="ll-icon-fullscreen _compress">
+                          <i></i>
+                          <i></i>
+                      </a>
+                  </div>
+              </div>
+
+          </div>
+
+          <a class="msg-toggle-btn" (click)="toggleMsgBox()"><i class="ll-icon-sidebar"
+                                                                [ngClass]="isShowMsgBox ? 'active' : ''"></i></a>
+      </div>
+      <div class="ll-player-msg" [style.flexBasis]="isShowMsgBox ? msgBoxDefaultWidth : '0'">
+          <div>
+              <div class="_sub-title"><i class="fa fa-comments-o"></i> 批注</div>
+
+              <div class="note-modal-body">
+                  <div class="btn-row">
+                      <div class="_btn _no-expand">
+                          <a><i class="fa fa-plus"></i>新建</a>
+                      </div>
+                  </div>
+                  <div class="scroll-note-list">
+                      
+                  </div>
+              </div>
+              
+          </div>
+      </div>
+  </div>
+
+  <div class="ll-player-panel">
+      <div class="ll-drag-line-ver" (mouseup)="resizeVdoBox()" [direction]="2" [maxSize]="400" [minSize]="60" appDragSetWidth></div>
+
+      <app-multiple-track></app-multiple-track>
+  </div>
+
+</div>

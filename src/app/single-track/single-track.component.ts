@@ -18,9 +18,11 @@ declare const PxLoader: any, PxLoaderImage: any
 export class SingleTrackComponent implements OnInit, OnChanges {
     WORDSHEIGHT = 16
     RECTFONT = '10px sans-serif'
+    private readonly FRAMES = 30
 
-    @Input() unitWidth
+    // @Input() unitWidth
     @Input() unitDuration
+    @Input() unitFrameWidth
 
     @Input() rectHeight
     @Input() offsetLeft
@@ -57,7 +59,7 @@ export class SingleTrackComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         if (
-            (changes.unitWidth && !changes.unitWidth.isFirstChange()) ||
+            (changes.unitFrameWidth && !changes.unitFrameWidth.isFirstChange()) ||
             (changes.offsetLeft && !changes.offsetLeft.isFirstChange()) ||
             (changes.isShowText && !changes.isShowText.isFirstChange())
         ) {
@@ -79,7 +81,7 @@ export class SingleTrackComponent implements OnInit, OnChanges {
         this.cvs.width = $(this.cvs)
             .parent()
             .width()
-        this.shadowCvs.width = this.duration2Width(this.totalDuration, true)
+        this.shadowCvs.width = this.duration2Width(this.totalDuration)
 
         this.ctx = this.cvs.getContext('2d')
         this.shadowCtx = this.shadowCvs.getContext('2d')
@@ -226,17 +228,22 @@ export class SingleTrackComponent implements OnInit, OnChanges {
     }
 
     reDrawTheRow() {
-        this.shadowCvs.width = this.duration2Width(this.totalDuration, true)
+        this.shadowCvs.width = this.duration2Width(this.totalDuration)
         this.drawShadowCvs()
         this.drawFrontCvs()
     }
 
-    duration2Width(duration, log=false) {
-        // if(log) {
-        //     console.log(`In single track ==== \n  unitWidth: ${this.unitWidth}, unitDuration: ${this.unitDuration}`)
-        //     console.log(`current return width: ${duration * this.unitWidth / this.unitDuration}`)
-        // }
-        return duration * this.unitWidth / this.unitDuration // 1000ms 一个单位长度
+    // duration2Width(duration, log=false) {
+    //     // if(log) {
+    //     //     console.log(`In single track ==== \n  unitWidth: ${this.unitWidth}, unitDuration: ${this.unitDuration}`)
+    //     //     console.log(`current return width: ${duration * this.unitWidth / this.unitDuration}`)
+    //     // }
+    //     return duration * this.unitWidth / this.unitDuration // 1000ms 一个单位长度
+    // }
+
+    duration2Width(duration) {
+        // return duration * this.unitWidth / this.unitDuration // 1000ms 一个单位长度
+        return duration / (1000 / this.FRAMES) * this.unitFrameWidth
     }
 
     isInFrontCvs(rect) {

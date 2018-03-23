@@ -1,7 +1,8 @@
 
-<nav style="position: fixed; left: 0; bottom: 0; width: 100%; height: 30px; text-align: center; z-index: 99999;">
+<nav *ngIf="showThis" style="position: fixed; left: 0; top: 0; width: 100%; height: 30px; text-align: center; z-index: 99999;">
     <a routerLink="/login">login</a> /
     <a routerLink="/track">track</a> /
+    <a routerLink="/media">media</a> /
     <a routerLink="/player-layer">player layer</a> /
     <a routerLink="/home">home</a> /
     <a routerLink="/layout">layout</a> /
@@ -16,7 +17,7 @@
     <a routerLink="/ruler">drag ruler</a> /
     <a routerLink="/sort">sort</a>
 </nav>
-
+<button (click)="showThis = !showThis" style="position: fixed; left: 2px; bottom: 2px; font-size: 36px; z-index: 99999"><i class="fa fa-eye"></i></button>
 <router-outlet></router-outlet>
 
 

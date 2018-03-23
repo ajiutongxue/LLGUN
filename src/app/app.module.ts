@@ -61,12 +61,17 @@ import { MyNewPlayerComponent } from './my-new-player/my-new-player.component';
 import { PlayerLayerComponent } from './player-layer/player-layer.component';
 import { SingleTrackComponent } from './single-track/single-track.component';
 import { MultipleTrackComponent } from './multiple-track/multiple-track.component';
+import { MediaComponent } from './media/media.component';
 
 const appRoutes: Routes = [
 
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'media',
+        component: MediaComponent
     },
     {
         path: 'player-layer',
@@ -178,6 +183,7 @@ const appRoutes: Routes = [
         PlayerLayerComponent,
         MultipleTrackComponent,
         SingleTrackComponent,
+        MediaComponent,
         // HighlightDirective
     ],
     imports: [
