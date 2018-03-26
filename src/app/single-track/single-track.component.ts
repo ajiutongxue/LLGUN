@@ -112,11 +112,7 @@ export class SingleTrackComponent implements OnInit, OnChanges {
                         r.picObj = img
                         r.pic.oh = img.naturalHeight
                         r.pic.ow =
-                            r.pic.oh *
-                            this.duration2Width(
-                                r.version.movie.getActualDuration()
-                            ) /
-                            r.pic.h
+                            r.pic.oh * this.duration2Width( r.version.movie.getActualDuration() ) / r.pic.h
                         c.drawImage(
                             r.picObj,
                             0,
@@ -124,10 +120,14 @@ export class SingleTrackComponent implements OnInit, OnChanges {
                             r.pic.ow,
                             r.pic.oh,
                             r.x + 1,
-                            this.WORDSHEIGHT + 1,
+                            // this.WORDSHEIGHT + 1,
+                            1,
                             r.pic.w - 2,
                             r.pic.h - 2
                         )
+                        if (this.isShowText) {
+                            this.drawShadowWords(r)
+                        }
 
                         if (rowData.ctrl.copyFinished && this.isInFrontCvs(r)) {
                             this.drawFrontCvs()
@@ -148,16 +148,22 @@ export class SingleTrackComponent implements OnInit, OnChanges {
                         r.pic.ow,
                         r.pic.oh,
                         r.x + 1,
-                        this.WORDSHEIGHT + 1,
+                        // this.WORDSHEIGHT + 1,
+                        1,
                         r.pic.w - 2,
                         r.pic.h - 2
                     )
+                    if (this.isShowText) {
+                        this.drawShadowWords(r)
+                    }
+                }
+            } else {
+                if (this.isShowText) {
+                    this.drawShadowWords(r)
                 }
             }
 
-            if (this.isShowText) {
-                this.drawShadowWords(r)
-            }
+
             // 立体边框线
             c.save()
             // c.strokeStyle = '#fff'
@@ -192,6 +198,17 @@ export class SingleTrackComponent implements OnInit, OnChanges {
         c.textBaseline = 'top'
         c.textAlign = 'left'
         wordsList.forEach((words, index) => {
+            /* 画文字背景颜色 */
+            c.save()
+            c.fillStyle = 'rgba(0,0,0,.7)'
+            c.fillRect(
+                r.x + 1,
+                index === 0 ? 0 : this.rectHeight - this.WORDSHEIGHT,
+                r.w,
+                this.WORDSHEIGHT
+            )
+            c.restore()
+            
             c.fillText(
                 words,
                 r.x + 16,

@@ -680,7 +680,8 @@ export class MultipleTrackComponent implements OnInit {
                 const pic: Pic = {
                     // w: this.duration2Width(item.movie.getActualDuration()),
                     w: this.frame2Width(Math.ceil(this.duration2Frame(item.movie.getActualDuration()))),
-                    h: lh - this.WORDSHEIGHT * 2,
+                    // h: lh - this.WORDSHEIGHT * 2,
+                    h: lh,
                     oh: 0,
                     ow: 0,
                     url: item.movie.picUrl
