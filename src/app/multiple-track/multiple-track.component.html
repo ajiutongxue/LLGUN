@@ -64,7 +64,7 @@
         </div>
 
         <div class="vernier" *ngIf="isDrawPic" [style.left.px]="vernierLeft">
-            <div class="drag-vernier-handle"></div>
+            <div class="drag-vernier-handle" (mousedown)="vernierMousedown(event)"></div>
         </div>
 
     </div>

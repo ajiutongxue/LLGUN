@@ -229,6 +229,11 @@ export class SingleTrackComponent implements OnInit, OnChanges {
         const start = singleCacheWidth * index
         const end = start + singleCacheWidth
 
+        const linear = c.createLinearGradient(0, 0, 0, this.rectHeight)
+        // linear.addColorStop(0, 'rgba(0,0,0,0)')
+        linear.addColorStop(0.4, '#008724')
+        linear.addColorStop(1, '#4AC8A8')
+
         track.data.forEach(r => {
             if (r.x > end || (r.x + r.w) < start) return
 
@@ -236,13 +241,19 @@ export class SingleTrackComponent implements OnInit, OnChanges {
             if ( !this.isDrawPic ) {
                 c.save()
                 // TODO: 这个回头试试改成渐变色效果
-                c.fillStyle = 'rgb(90, 156, 95)'
+                // c.fillStyle = linear
+                c.fillStyle = '#CC94FF'
                 c.fillRect(
                     _x - 0.5,
-                    0,
+                    0 + 30,
                     r.pic.w + 0.5,
-                    r.pic.h - 2
+                    r.pic.h - 2 - 60
                 )
+                // c.strokeStyle = '#4AC8A8'
+                // c.beginPath()
+                // c.moveTo(_x - 0.5, 4)
+                // c.lineTo(_x + r.pic.w, 4)
+                // c.stroke()
                 c.restore()
             } else {
                 if (track.ctrl.isShowPic) {

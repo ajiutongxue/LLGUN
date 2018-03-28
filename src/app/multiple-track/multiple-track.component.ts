@@ -98,6 +98,7 @@ export class MultipleTrackComponent implements OnInit {
     trackListBoxWidth = 0 // 带滚动条的div
 
     $vernier = null
+    $vernierHandler = null
     vernierLeft = 400
     vernierBoundaryLeft = 0
     vernierBoundaryRight = 0 // 代表的是这个元素的最大的 left 属性的值
@@ -113,6 +114,7 @@ export class MultipleTrackComponent implements OnInit {
 
     ngOnInit() {
         this.$vernier = $('.vernier')
+        this.$vernierHandler = this.$vernier.find('.drag-vernier-handle')
         this.shadowRulerCvs = document.querySelector('#shadow-ruler')
         this.$scrollbar = $('.scrollbar:first')
         this.$scrollbarHandlerLeft = this.$scrollbar.find('.resize-left:first')
@@ -190,8 +192,9 @@ export class MultipleTrackComponent implements OnInit {
         this.shadowRulerCvs.width = this.getLatestTotalCvsWidth()
         this.shadowRulerCvs.height = 30
         this.shadowRulerCtx = this.shadowRulerCvs.getContext('2d')
-        this.drawShadowRuler()
-        this.copyShadowRuler2FrontCvs()
+        this.drawRuler()
+        // this.drawShadowRuler()
+        // this.copyShadowRuler2FrontCvs()
 
         this.initScrollbar()
         this.setCurrentFrame()
@@ -280,39 +283,39 @@ export class MultipleTrackComponent implements OnInit {
             })
         })
 
-        this.$vernier.on('mousedown', e => {
-            this.$vernier.parent().addClass('active')
-            $('body').css('cursor', 'move')
-            let isPlaying = false
+        // this.$vernierHandler.on('mousedown', e => {
+        //     this.$vernier.parent().addClass('active')
+        //     $('body').css('cursor', 'move')
+        //     let isPlaying = false
 
-            if (this.playTimer) {
-                isPlaying = true
-                this.stop()
-            }
+        //     if (this.playTimer) {
+        //         isPlaying = true
+        //         this.stop()
+        //     }
 
-            $(window).on('mousemove.drag', e => {
-                this.setVernierLeft(e)
-                this.setCurrentFrame()
-                this.currentVersionIndex = this.whichVersionPlaying(
-                    this.currentFrame
-                ).index
+        //     $(window).on('mousemove.drag', e => {
+        //         this.setVernierLeft(e)
+        //         // this.setCurrentFrame()
+        //         this.currentVersionIndex = this.whichVersionPlaying(
+        //             this.currentFrame
+        //         ).index
 
-                $(window).on('mouseup.drag', e => {
-                    this.$vernier.parent().removeClass('active')
-                    $(window).off('.drag')
-                    $('body').css('cursor', 'default')
-                    this.setCurrentDurationFrame({
-                        version: this.trackList[0].data[
-                            this.currentVersionIndex
-                        ],
-                        index: this.currentVersionIndex
-                    })
-                    if (isPlaying) {
-                        this.playing()
-                    }
-                })
-            })
-        })
+        //         $(window).on('mouseup.drag', e => {
+        //             this.$vernier.parent().removeClass('active')
+        //             $(window).off('.drag')
+        //             $('body').css('cursor', 'default')
+        //             this.setCurrentDurationFrame({
+        //                 version: this.trackList[0].data[
+        //                     this.currentVersionIndex
+        //                 ],
+        //                 index: this.currentVersionIndex
+        //             })
+        //             if (isPlaying) {
+        //                 this.playing()
+        //             }
+        //         })
+        //     })
+        // })
 
         // this.setCurrentDurationFrame(null)
         this.setCurrentDurationFrame({
@@ -324,6 +327,55 @@ export class MultipleTrackComponent implements OnInit {
 
         // console.log('total cvswidth: ' + this.totalCvsWidth)
     }
+
+    vernierMousedown(e) {
+        // let isDown = true
+        let isPlaying = false
+        this.$vernier.parent().addClass('active')
+        $('body').css('cursor', 'move')
+        console.log('down====')
+
+        if (this.playTimer) {
+            isPlaying = true
+            this.stop()
+        }
+
+        $(window).on('mousemove.drag', e => {
+            this.setVernierLeft(e)
+            // this.setCurrentFrame()
+            this.currentVersionIndex = this.whichVersionPlaying(
+                this.currentFrame
+            ).index
+
+        })
+            
+        $(window).on('mouseup.drag', e => {
+            this.$vernier.parent().removeClass('active')
+            $(window).off('.drag')
+            $('body').css('cursor', 'default')
+            this.setCurrentDurationFrame({
+                version: this.trackList[0].data[
+                    this.currentVersionIndex
+                ],
+                index: this.currentVersionIndex
+            })
+            if (isPlaying) {
+                this.playing()
+            }
+        })
+    }
+
+
+    /* 
+     * 画面向前走一屏
+     * */
+    flipPrev() {}
+
+    /* 
+     * 画面向后走一屏
+     * */
+    flipNext() {}
+    
 
     // setScreenIndex() {
     //     this.screenIndex = Math.floor(this.currentFrame / this.duration2Frame(this.shownDuration))
@@ -337,7 +389,8 @@ export class MultipleTrackComponent implements OnInit {
     setScrollbarLeft(left) {
         this.$scrollbar.css('left', left)
         this.setOffsetLeft()
-        this.copyShadowRuler2FrontCvs()
+        this.drawRuler()
+        // this.copyShadowRuler2FrontCvs()
         this.setVernierLeft(null, 0, true)
     }
 
@@ -352,7 +405,15 @@ export class MultipleTrackComponent implements OnInit {
         }
 
         if (e) {
-            this.vernierLeft = e.pageX - $('.layer-container').offset().left
+            const l = e.pageX - $('.layer-container').offset().left
+            if ( l > this.vernierBoundaryRight ) {
+                this.vernierLeft = this.vernierBoundaryRight
+            } else if (l < this.vernierBoundaryLeft) {
+                this.vernierLeft = this.vernierBoundaryLeft 
+            } else {
+                this.vernierLeft = l 
+            }
+            // console.log(`vernier down: x: ${e.pageX}`)
             // if (this.vernierLeft % this.unitFrameWidth) {
             //     this.vernierLeft -= this.vernierLeft % this.unitFrameWidth
             // }
@@ -433,18 +494,18 @@ export class MultipleTrackComponent implements OnInit {
         // this.setCurrentFrame()
         this.currentFrame = this.currentDurationFrame.start
         this.setVernierLeft(null, 0, true)
-        console.log(
-            `current is: ${this.currentVersionIndex}\n title: ${
-                this.trackList[0].data[this.currentVersionIndex].version.title
-            }`
-        )
-        console.log(
-            ` start: ${this.currentDurationFrame.start}\n end: ${
-                this.currentDurationFrame.end
-            }`
-        )
+        // console.log(
+        //     `current is: ${this.currentVersionIndex}\n title: ${
+        //         this.trackList[0].data[this.currentVersionIndex].version.title
+        //     }`
+        // )
+        // console.log(
+        //     ` start: ${this.currentDurationFrame.start}\n end: ${
+        //         this.currentDurationFrame.end
+        //     }`
+        // )
         this.playing()
-        console.log('playing')
+        // console.log('playing')
         // this.setCurrentDurationFrame()
     }
 
@@ -573,7 +634,7 @@ export class MultipleTrackComponent implements OnInit {
      * 判断是否满足绘制缩略图的条件
      * */
     setIsDrawPic() {
-        this.isDrawPic = this.unitFrameWidth >= 1
+        this.isDrawPic = this.unitFrameWidth >= 0.5
     }
 
     /* 
@@ -602,8 +663,9 @@ export class MultipleTrackComponent implements OnInit {
         this.setUnitFrameWidth()
         // this.initScrollbar()
         this.shadowRulerCvs.width = this.getLatestTotalCvsWidth()
-        this.drawShadowRuler()
-        this.copyShadowRuler2FrontCvs()
+        this.drawRuler()
+        // this.drawShadowRuler()
+        // this.copyShadowRuler2FrontCvs()
         this.updateTrackList()
         // console.log(`[resize] showDuration: ${this.shownDuration}`)
 
@@ -666,84 +728,84 @@ export class MultipleTrackComponent implements OnInit {
     //     })
     // }
 
-    initCache() {
-        this.cacheMaxCount = Math.ceil(
-            this.getLatestTotalCvsWidth() / this.rulerCvs.width
-        )
-        const len = this.cacheMaxCount > 3 ? 3 : this.cacheMaxCount
-        this.cache = []
+    // initCache() {
+    //     this.cacheMaxCount = Math.ceil(
+    //         this.getLatestTotalCvsWidth() / this.rulerCvs.width
+    //     )
+    //     const len = this.cacheMaxCount > 3 ? 3 : this.cacheMaxCount
+    //     this.cache = []
 
-        for(let i = 0; i < len; i++) {
-            const cvs = document.createElement('canvas')
-            const ctx = cvs.getContext('2d')
+    //     for(let i = 0; i < len; i++) {
+    //         const cvs = document.createElement('canvas')
+    //         const ctx = cvs.getContext('2d')
 
-            if (i < this.cacheMaxCount - 1) {
-                cvs.width = this.rulerCvs.width
-            } else {
-                let _lastWidth = this.totalCvsWidth % this.rulerCvs.width
-                cvs.width = _lastWidth === 0 ? this.rulerCvs.width : _lastWidth
-            }
-            cvs.height = 30
-            this.cache.push({
-                c: cvs,
-                t: ctx
-            })
-        }
+    //         if (i < this.cacheMaxCount - 1) {
+    //             cvs.width = this.rulerCvs.width
+    //         } else {
+    //             let _lastWidth = this.totalCvsWidth % this.rulerCvs.width
+    //             cvs.width = _lastWidth === 0 ? this.rulerCvs.width : _lastWidth
+    //         }
+    //         cvs.height = 30
+    //         this.cache.push({
+    //             c: cvs,
+    //             t: ctx
+    //         })
+    //     }
 
-        /* 
-         * 绘制缓存
-         * */
-        // 从 0 开始
-        const screenIndex = Math.floor(this.currentFrame / this.duration2Frame(this.shownDuration))
-        let startIndex = screenIndex > 0 ? screenIndex - 1 : 0
-        this.cache.forEach((cache, index) => {
-            this.drawOneCache(cache, startIndex + index)
-        })
-    }
+    //     /* 
+    //      * 绘制缓存
+    //      * */
+    //     // 从 0 开始
+    //     const screenIndex = Math.floor(this.currentFrame / this.duration2Frame(this.shownDuration))
+    //     let startIndex = screenIndex > 0 ? screenIndex - 1 : 0
+    //     this.cache.forEach((cache, index) => {
+    //         this.drawOneCache(cache, startIndex + index)
+    //     })
+    // }
 
-    drawOneCache(cache, index) {
-        const cvs = cache.c
-        const c = cache.t
+    // drawOneCache(cache, index) {
+    //     const cvs = cache.c
+    //     const c = cache.t
 
-    }
+    // }
 
     // ok
-    drawShadowRuler() {
-        const cvs = this.shadowRulerCvs
-        const c = this.shadowRulerCtx
-        const stepTime = 200 // todo: 暂时写死 200ms 一个小刻度
-        const stepWidth = Math.round(this.duration2Width(stepTime))
+    // drawShadowRuler() {
+    //     const cvs = this.shadowRulerCvs
+    //     const c = this.shadowRulerCtx
+    //     const stepTime = 200 // todo: 暂时写死 200ms 一个小刻度
+    //     const stepWidth = Math.round(this.duration2Width(stepTime))
 
-        c.clearRect(0, 0, cvs.width, cvs.height)
+    //     c.clearRect(0, 0, cvs.width, cvs.height)
 
-        c.font = '10px sans-serif'
-        c.fillStyle = '#979797'
-        c.strokeStyle = '#979797'
-        c.lineWidth = 1
-        c.beginPath()
-        for (let i = 0, x = 0.5; x < cvs.width; i++, x += stepWidth) {
-            const y = i % 10 === 0 ? 18 : 23
-            c.moveTo(x, y)
-            c.lineTo(x, 30)
-            c.stroke()
-            if (stepWidth < 10) {
-                if (i % 30 === 0) {
-                    c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
-                }
-            } else if (stepWidth > 20) {
-                if (i % 5 === 0) {
-                    c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
-                }
-            } else {
-                if (i % 10 === 0) {
-                    c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
-                }
-            }
-        }
-        c.fillStyle = '#979797'
-        c.fillRect(0, 30 - 2, cvs.width, 2)
-        c.closePath()
-    }
+    //     c.font = '10px sans-serif'
+    //     c.fillStyle = '#979797'
+    //     c.strokeStyle = '#979797'
+    //     c.lineWidth = 1
+    //     c.beginPath()
+    //     for (let i = 0, x = 0.5; x < cvs.width; i++, x += stepWidth) {
+    //         const y = i % 10 === 0 ? 18 : 23
+    //         c.moveTo(x, y)
+    //         c.lineTo(x, 30)
+    //         c.stroke()
+    //         if (stepWidth < 10) {
+    //             if (i % 30 === 0) {
+    //                 c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
+    //             }
+    //         } else if (stepWidth > 20) {
+    //             if (i % 5 === 0) {
+    //                 c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
+    //             }
+    //         } else {
+    //             if (i % 10 === 0) {
+    //                 c.fillText(this.formatRulerShowTime(i * stepTime), x, 14)
+    //             }
+    //         }
+    //     }
+    //     c.fillStyle = '#979797'
+    //     c.fillRect(0, 30 - 2, cvs.width, 2)
+    //     c.closePath()
+    // }
 
     // ok
     getLatestTotalCvsWidth() {
@@ -767,8 +829,9 @@ export class MultipleTrackComponent implements OnInit {
             this.unitFrameWidth = w
         }
         this.initScrollbar()
-        this.drawShadowRuler()
-        this.copyShadowRuler2FrontCvs()
+        this.drawRuler()
+        // this.drawShadowRuler()
+        // this.copyShadowRuler2FrontCvs()
         this.updateTrackList()
     }
 
@@ -787,6 +850,53 @@ export class MultipleTrackComponent implements OnInit {
         // FIXME: 感觉这个参数有问题啊  好像算的不对
         //   this.shadowRulerCvs.width
         // this.setCurrentFrame()
+    }
+
+    /* 
+     * 绘制时间轴
+     * */
+    drawRuler () {
+        const cvs = this.rulerCvs
+        const c = this.rulerCtx
+        const stepTime = 200 // todo: 暂时写死 200ms 一个小刻度
+        const stepWidth = Math.round(this.duration2Width(stepTime))
+
+        const start = Math.round(this.offsetLeft % this.duration2Width(stepTime))
+        let currentCount = Math.floor(this.offsetLeft / stepWidth)
+
+        c.clearRect(0, 0, cvs.width, cvs.height)
+
+        c.font = '10px sans-serif'
+        c.fillStyle = '#979797'
+        c.strokeStyle = '#979797'
+        c.lineWidth = 1
+        c.beginPath()
+        
+        for (let x = start + 0.5; x < cvs.width; currentCount++, x += stepWidth) {
+            let y = 23
+            if (stepWidth < 10) {
+                if (currentCount % 30 === 0) {
+                    c.fillText(this.formatRulerShowTime(currentCount * stepTime), x - 40, 14)
+                    y = 18
+                }
+            } else if (stepWidth > 20) {
+                if (currentCount % 5 === 0) {
+                    c.fillText(this.formatRulerShowTime(currentCount * stepTime), x - 40, 14)
+                    y = 18
+                }
+            } else {
+                if (currentCount % 10 === 0) {
+                    c.fillText(this.formatRulerShowTime(currentCount * stepTime), x - 40, 14)
+                    y = 18
+                }
+            }
+            c.moveTo(x, y)
+            c.lineTo(x, 30)
+            c.stroke()
+        }
+        c.fillStyle = '#979797'
+        c.fillRect(0, 30 - 2, cvs.width, 2)
+        c.closePath()
     }
 
     copyShadowRuler2FrontCvs() {
@@ -849,9 +959,9 @@ export class MultipleTrackComponent implements OnInit {
 
     setTrackList() {
         // TODO: 数据不要每次清空重新整理，取到的数据不改变时，只进行内部值的重新计算，需要改下结构，把图片文件存进来
-        console.log(
-            `setTrackList 现在的 unitFrameWidth: ${this.unitFrameWidth}`
-        )
+        // console.log(
+        //     `setTrackList 现在的 unitFrameWidth: ${this.unitFrameWidth}`
+        // )
 
         const lh = this.rectHeight
         const version_lists = this.version_lists
