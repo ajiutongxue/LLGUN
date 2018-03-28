@@ -38,6 +38,8 @@
                     [unitDuration]="unitDuration" 
                     [rectHeight]="rectHeight" 
                     [unitFrameWidth]="unitFrameWidth"
+                    [isDrawPic]="isDrawPic"
+                   
                     [offsetLeft]="offsetLeft">
                 </app-single-track>
             </div>
@@ -61,7 +63,7 @@
             </div>
         </div>
 
-        <div class="vernier" [style.left.px]="vernierLeft">
+        <div class="vernier" *ngIf="isDrawPic" [style.left.px]="vernierLeft">
             <div class="drag-vernier-handle"></div>
         </div>
 

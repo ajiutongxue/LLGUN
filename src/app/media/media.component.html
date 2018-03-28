@@ -94,7 +94,7 @@
               </div>
               <div class="_ctrl-box">
                   <div class="_title">资产02faasdf</div>
-                  <div class="ctrl-btn-box" style="">
+                  <div class="ctrl-btn-box">
                       <a class="ctrl-btn _play" *ngIf="!isPlaying" (click)="vdoPlay($event)"><i class="fa fa-play"></i></a>
                       <a class="ctrl-btn _pause" *ngIf="isPlaying" (click)="vdoPause($event)"><i class="fa fa-pause"></i></a>
                       <span *ngIf="!isShowFrame" class="play-time">{{vdo.currentTime.toFixed(2)}} / {{META.duration.toFixed(2)}}</span>
