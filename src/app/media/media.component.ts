@@ -487,7 +487,7 @@ export class MediaComponent implements OnInit {
   setVdoPos = function (vdo, getVdoPos, rt) {
       const styles = getVdoPos(vdo, rt);
       rt.setCss(vdo, styles);
-      console.log(`vdo style = ${vdo.style.cssText}`);
+    //   console.log(`vdo style = ${vdo.style.cssText}`);
       if (rt.picCvs) {
           rt.picCvs.style.cssText = vdo.style.cssText;
       }

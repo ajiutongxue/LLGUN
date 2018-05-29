@@ -1,3 +1,44 @@
+<h2 style="padding-bottom: 300px;">context menu</h2>
+<div class="modal-context-container" style=" height: 100px; left: 200px; top: 10px;">
+<div class="select-content common-content tr-not-focus">
+    <table class="table-fixed">
+        <tr class="ad-sort">
+            <td class="check-td">
+            </td>
+            <td>
+                <span class="fa-stack my-fa-remove icon-combo">
+                    <i class="fa fa-filter fa-stack-1x icon-combo-main"></i>
+                    <i class="fa fa-remove fa-stack-1x icon-combo-symbol"></i>
+                </span>
+                删除筛选
+            </td>
+        </tr>
+        <tr class="ad-sort">
+            <td class="check-td">
+            </td>
+            <td>
+                <span class="fa-stack my-fa-plus icon-combo">
+                    <i class="fa fa-filter fa-stack-1x icon-combo-main"></i>
+                    <i class="fa fa-plus fa-stack-1x icon-combo-symbol"></i>
+                </span>
+                新建筛选
+            </td>
+        </tr>
+    </table>
+    <hr class="line-separator">
+    <table class="table-fixed">
+        <tr>
+            <td class="check-td"><i class="fa fa-check"></i></td>
+            <td><div class="content-wrapper">this is filter name</div></td>
+            <td class="op-btns">
+                <span class="_edit"><i class="fa fa-pencil"></i></span>
+                <span class="_remove"><i class="fa fa-remove"></i></span>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+
 <hr>
 <div class="btn-select-container" title="btn-select">
     <input type="button" class="btn" value="本周">
@@ -55,7 +96,6 @@
 
 
 <div style="display:inline-block; position:relative">
-
         <!-- yingjun 在div上加了z-index，因为新建里阴影遮住了div，以后改好删掉 -->
         <div *ngIf="false" #div1 class="modal-flatest-container" style="z-index:9; height: 200px; width: 160px; margin-left: 100px; margin-top: 100px;">
           <div class="select-content common-content">

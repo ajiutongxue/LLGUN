@@ -1,10 +1,12 @@
 <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
-    <button class="btn btn-primary" (click)="unitWidthChanged(-2)">unitWidth -2</button>
-    <button class="btn btn-primary" (click)="unitWidthChanged(2)">unitWidth +2</button>
+    <button class="btn btn-primary" (click)="unitWidthChanged(-1)">rate -1</button>
+    <button class="btn btn-primary" (click)="unitWidthChanged(1)">rate +1</button>
     <button class="btn btn-primary" (click)="pause()"><i class="fa fa-pause"></i></button>
     <button class="btn btn-primary" (click)="play()"><i class="fa fa-play"></i></button>
     <button class="btn btn-primary" (click)="reset()"><i class="fa fa-refresh"></i></button>
-    <button class="btn btn-primary">{{ currentFrame }}</button>
+    <button class="btn btn-primary">unitScale：{{ unitScale }}</button>
+    <button class="btn btn-primary">currentFrame：{{ currentFrame }}</button>
+    <!-- <button class="btn btn-primary">offsetLeft: {{ offsetLeft|slice:0:2 }}</button> -->
 
 
     <div class="layer-container" style="position: relative; height: calc(100% - 24px)">
@@ -22,9 +24,10 @@
             <div class="right-section">
                 <div class="ruler-box">
                     <div class="ruler-content">
-                        <canvas id="ruler-canvas"></canvas>
-                        <canvas id="shadow-ruler"></canvas>
+                        <canvas id="ruler-canvas" (dblclick)="addInfo($event)"></canvas>
+                        <!-- <canvas id="shadow-ruler"></canvas> -->
                     </div>
+                    <div *ngFor="let info of infos" class="lable-info" [style.left.px]="info.left"><div>{{info.title}}</div></div>
                 </div>
             </div>
         </div>
@@ -33,13 +36,12 @@
                 <app-single-track 
                     [totalDuration]="totalDuration" 
                     [track]="track" 
-                    [row]="rowIndex" 
                     [isShowText]="isShowText" 
                     [unitDuration]="unitDuration" 
                     [rectHeight]="rectHeight" 
                     [unitFrameWidth]="unitFrameWidth"
                     [isDrawPic]="isDrawPic"
-                   
+                    [unitScale]="unitScale"
                     [offsetLeft]="offsetLeft">
                 </app-single-track>
             </div>

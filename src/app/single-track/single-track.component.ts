@@ -23,11 +23,12 @@ export class SingleTrackComponent implements OnInit, OnChanges {
     // @Input() unitWidth
     @Input() unitDuration
     @Input() unitFrameWidth
+    @Input() unitScale
 
     @Input() rectHeight
     @Input() offsetLeft
     @Input() track
-    @Input() row
+    // @Input() row
     @Input() isShowText
     @Input() isDrawPic
     @Input() totalDuration
@@ -86,7 +87,8 @@ export class SingleTrackComponent implements OnInit, OnChanges {
         }
 
         if (
-            (changes.unitFrameWidth && !changes.unitFrameWidth.isFirstChange()) 
+            // (changes.unitFrameWidth && !changes.unitFrameWidth.isFirstChange()) 
+            (changes.unitScale && !changes.unitScale.isFirstChange()) 
             // (changes.offsetLeft && !changes.offsetLeft.isFirstChange()) ||
         ) {
             this.totalWidth = this.duration2Width(this.totalDuration)
@@ -136,6 +138,8 @@ export class SingleTrackComponent implements OnInit, OnChanges {
             }
             cvs.height = this.rectHeight
             cvs.style.display = 'none'
+
+            cvs.setAttribute('cacheIndex', (startIndex + i) + '')
 
             $cacheParent.append(cvs)
             this.cache.push({
@@ -200,6 +204,10 @@ export class SingleTrackComponent implements OnInit, OnChanges {
         }
         cvs.height = this.rectHeight
         cvs.style.display = 'none'
+
+        cvs.setAttribute('cacheIndex', (isIncrease ? this.screenIndex + 1 : this.screenIndex - 1) + '')
+
+
         $cacheParent.append(cvs)
         return {
             i: isIncrease ? this.screenIndex + 1 : this.screenIndex - 1,
@@ -517,7 +525,7 @@ export class SingleTrackComponent implements OnInit, OnChanges {
             fc.drawImage(cache.c, 0, 0, w, h, cache.i * w - start, 0, w, h)
         })
 
-        this.row.ctrl.copyFinished = true
+        this.track.ctrl.copyFinished = true
     }
 
     // copyShadow2FrontCvs() {
@@ -568,8 +576,17 @@ export class SingleTrackComponent implements OnInit, OnChanges {
 
     duration2Width(duration) {
         // return duration * this.unitWidth / this.unitDuration // 1000ms 一个单位长度
-        return duration / (1000 / this.FRAMES) * this.unitFrameWidth
+        return duration / (1000 / this.FRAMES) * this.getFrameWidth()
     }
+
+
+    /* 
+     * 获取缩放比例后的单个frame的宽度
+     * */
+    getFrameWidth () {
+        return this.unitFrameWidth * this.unitScale
+    }
+
 
     /* 
      * 判断指定rect是否绘制在当前屏幕上

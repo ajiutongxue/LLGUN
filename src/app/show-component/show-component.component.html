@@ -1,6 +1,6 @@
 <h2>新建版本 - modal - jqxWindow</h2>
 <button class="btn btn-primary" (click)="isCreateHistory = !isCreateHistory">新建版本</button>
-<jqxWindow [width]="600" [height]="550" [isModal]="true" [resizable]="false" *ngIf="!isCreateHistory">
+<jqxWindow [width]="600" [height]="550" [isModal]="true" [resizable]="false" *ngIf="isCreateHistory">
     <div class="ll-modal-header">
         <span class="fa-stack ll-modal-header-icon icon-combo">
             <i class="fa fa-list-alt fa-stack-1x icon-combo-main"></i>
@@ -13,6 +13,31 @@
             <div *ngIf="isCatchFile" class="drop-file-layer">
                 <div class="_text"><i class="fa fa-paperclip"></i> 将文件放到这里</div>
             </div>
+
+            <table class="table-fixed form-row">
+                <tr>
+                    <td class="row-title">时长</td>
+                    <td>
+                        <div class="time-input-box">
+                            <div class="input-box">
+                                <input type="text">
+                            </div>
+                            <span>:</span>
+                            <div class="input-box">
+                                <input type="text">
+                            </div>
+                            <span>:</span>                            
+                            <div class="input-box">
+                                <input type="text">
+                            </div>
+                            <span>:</span>                            
+                            <div class="input-box">
+                                <input type="text">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
 
             <app-editor-string-input [rowLength]="4"></app-editor-string-input>
 
@@ -86,13 +111,13 @@
                         </tr>
                     </table>
                 </div>
-                <div *ngIf="!isHaveParent" class="selected-file-none">
+                <div *ngIf="isHaveParent" class="selected-file-none">
                     当前没有可引用版本
                 </div>
             </div>
 
 
-            <div *ngIf="!isStepOne" style="padding-left:44px">
+            <div *ngIf="isStepOne" style="padding-left:44px">
                 <!--<div *ngIf="!uploader.isUploading && !videoCompressing" ng2FileDrop-->
                 <!--[ngClass]="{'nv-file-over': hasBaseDropZoneOver}"-->
                 <!--(fileOver)="fileOverBase($event)"-->
@@ -247,7 +272,6 @@
 </jqxWindow>
 
 
-
 <jqxWindow [width]="700" [height]="550" [isModal]="true" [resizable]="false">
     <div class="ll-modal-header">
         <span class="fa-stack ll-modal-header-icon icon-combo">
@@ -268,6 +292,354 @@
                     </div>
                     <app-note-msg></app-note-msg>
                 </div>
+
+        </div>
+        <div class="ll-modal-footer">
+            <div class="checkbox-row">
+                <label>
+                    <input type="checkbox">
+                    <span>不关闭窗口，继续创建</span>
+                </label>
+            </div>
+            <button class="btn btn-primary"><i class="fa fa-check"></i> 确定</button>
+            <button class="btn btn-default"><i class="fa fa-reply"></i> 取消</button>
+        </div>
+    </div>
+</jqxWindow>
+
+
+
+
+<button class="btn btn-primary" (click)="isShow3In1 = !isShow3In1">show 3个显示在一行</button>
+
+<jqxWindow [width]="600" [height]="450" [isModal]="true" [resizable]="false" *ngIf="isShow3In1">
+    <div class="ll-modal-header">
+        <span class="fa-stack ll-modal-header-icon icon-combo">
+            <i class="fa fa-list-alt fa-stack-1x icon-combo-main"></i>
+            <i class="fa fa-plus-circle fa-stack-1x icon-combo-symbol"></i>
+        </span>
+        <i class="fa fa-check-circle ll-modal-header-icon" style="display:none;"></i>新建资产
+    </div>
+    <div class="ll-modal-main">
+        <div class="ll-modal-body" style="padding: 30px 2em;">
+
+            <div class="filter-group-row">
+                <div class="filter-name">
+                    <table class="table-fixed form-row">
+                        <tbody>
+                            <tr>
+                                <td class="row-title">筛选名称</td>
+                                <td>
+                                    <div class="input-box"><input type="text"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="filter-group-row">
+                <div>Show Tasks which match</div>
+                <div class="select">
+                    <table class="table-fixed form-row">
+                        <tbody>
+                            <tr>
+                                <td class="row-title"></td>
+                                <td>
+                                    <div class="input-box"><input type="text"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div> of the following conditions:</div>
+                <div class="op-msg">[+] Add new filter group</div>
+            </div>
+            <div>
+                    <!-- 应该是组件filter-row，这里为了省事，使用样式代替 -->
+                    <div class="filter-row">
+                        <div>
+                            <input type="checkbox">
+                        </div>
+                        <div class="single-filter">
+                            <table class="table-fixed form-row">
+                                <tbody>
+                                    <tr>
+                                        <td class="row-title"></td>
+                                        <td>
+                                            <div class="input-box"><input type="text"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="single-filter">
+                            <table class="table-fixed form-row">
+                                <tbody>
+                                    <tr>
+                                        <td class="row-title"></td>
+                                        <td>
+                                            <div class="input-box"><input type="text"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="comb-filter">
+                            <table class="table-fixed form-row">
+                                <tr>
+                                    <td class="row-title"></td>
+                                    <td>
+                                        <div class="select-box">
+                                            <div class="input-box"><input type="text"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <span style="padding-left: 8px;">to</span>
+                            <table class="table-fixed form-row">
+                                <tr>
+                                    <td class="row-title"></td>
+                                    <td>
+                                        <div class="select-box">
+                                            <div class="input-box"><input type="text"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="ctrls">
+                            <a class="plus-btn"><i class="fa fa-plus"></i></a>
+                            <a class="remove-btn"><i class="fa fa-minus"></i></a>
+                        </div>
+                    </div>
+                    <!-- 应该是组件filter-row，这里为了省事，使用样式代替 -->
+                    <div class="filter-row">
+                        <div>
+                            <input type="checkbox">
+                        </div>
+                        <div class="single-filter">
+                            <table class="table-fixed form-row">
+                                <tbody>
+                                    <tr>
+                                        <td class="row-title"></td>
+                                        <td>
+                                            <div class="input-box"><input type="text"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="single-filter">
+                            <table class="table-fixed form-row">
+                                <tbody>
+                                    <tr>
+                                        <td class="row-title"></td>
+                                        <td>
+                                            <div class="input-box"><input type="text"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="comb-filter">
+                            <table class="table-fixed form-row">
+                                <tr>
+                                    <td class="row-title"></td>
+                                    <td>
+                                        <div class="select-box">
+                                            <div class="input-box"><input type="text"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <span style="padding-left: 8px;">to</span>
+                            <table class="table-fixed form-row">
+                                <tr>
+                                    <td class="row-title"></td>
+                                    <td>
+                                        <div class="select-box">
+                                            <div class="input-box"><input type="text"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="ctrls">
+                            <a class="plus-btn"><i class="fa fa-plus"></i></a>
+                            <a class="remove-btn"><i class="fa fa-minus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- 这个是group 的组件 -->
+            <div class="filter-group-row">
+                <div class="op-msg">[+] Add new filter group</div>
+            </div>
+            <div class="filter-group">
+                <div class="filter-group-row">
+                    <div>Match</div>
+                    <div class="select">
+                        <table class="table-fixed form-row">
+                            <tbody>
+                                <tr>
+                                    <td class="row-title"></td>
+                                    <td>
+                                        <div class="input-box"><input type="text"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div> of the following conditions:</div>
+                </div>
+
+                <!-- <a class="plus-btn"><i class="fa fa-plus-square"></i></a> -->
+                <div>
+                    <!-- 应该是组件filter-row，这里为了省事，使用样式代替 -->
+                    <div class="filter-row">
+                        <!-- <div>
+                            <input type="checkbox">
+                        </div>
+                        <div class="single-filter">
+                            <table class="table-fixed form-row">
+                                <tbody>
+                                    <tr>
+                                        <td class="row-title"></td>
+                                        <td>
+                                            <div class="input-box"><input type="text"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="single-filter">
+                            <table class="table-fixed form-row">
+                                <tbody>
+                                    <tr>
+                                        <td class="row-title"></td>
+                                        <td>
+                                            <div class="input-box"><input type="text"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="comb-filter">
+                            <table class="table-fixed form-row">
+                                <tr>
+                                    <td class="row-title"></td>
+                                    <td>
+                                        <div class="select-box">
+                                            <div class="input-box"><input type="text"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <span style="padding-left: 8px;">to</span>
+                            <table class="table-fixed form-row">
+                                <tr>
+                                    <td class="row-title"></td>
+                                    <td>
+                                        <div class="select-box">
+                                            <div class="input-box"><input type="text"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div> -->
+                        <div class="ctrls">
+                            <a class="plus-btn"><i class="fa fa-plus"></i></a>
+                            <!-- <a class="remove-btn"><i class="fa fa-minus"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+                <button class="remove-filter"><i class="fa fa-remove"></i></button>
+            </div>
+            
+
+            <!-- 这个是group 的组件 -->
+            <div class="filter-group">
+                <!-- <div class="filter-group-row">
+                    <div>Match  of the following conditions:</div>
+                </div> -->
+                <div class="filter-group-row">
+                    <div>Match</div>
+                    <div class="select">
+                        <table class="table-fixed form-row">
+                            <tbody>
+                                <tr>
+                                    <td class="row-title"></td>
+                                    <td>
+                                        <div class="input-box"><input type="text"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div> of the following conditions:</div>
+                </div>
+                <div>
+                    <!-- 应该是组件filter-row，这里为了省事，使用样式代替 -->
+                    <div class="filter-row">
+                        <div>
+                            <input type="checkbox">
+                        </div>
+                        <div class="single-filter">
+                            <table class="table-fixed form-row">
+                                <tbody>
+                                    <tr>
+                                        <td class="row-title"></td>
+                                        <td>
+                                            <div class="input-box"><input type="text"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="single-filter">
+                            <table class="table-fixed form-row">
+                                <tbody>
+                                    <tr>
+                                        <td class="row-title"></td>
+                                        <td>
+                                            <div class="input-box"><input type="text"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="comb-filter">
+                            <table class="table-fixed form-row">
+                                <tr>
+                                    <td class="row-title"></td>
+                                    <td>
+                                        <div class="select-box">
+                                            <div class="input-box"><input type="text"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <span style="padding-left: 8px;">to</span>
+                            <table class="table-fixed form-row">
+                                <tr>
+                                    <td class="row-title"></td>
+                                    <td>
+                                        <div class="select-box">
+                                            <div class="input-box"><input type="text"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="ctrls">
+                            <a class="plus-btn"><i class="fa fa-plus"></i></a>
+                            <a class="remove-btn"><i class="fa fa-minus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <button class="remove-filter"><i class="fa fa-remove"></i></button>
+            </div>
+            
 
         </div>
         <div class="ll-modal-footer">
