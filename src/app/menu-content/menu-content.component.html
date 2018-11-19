@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="scroll-container">
+        <div class="content" *ngIf="cols === 3">
+            <div class="item" *ngFor="let row of data;">
+                <span class="icon">
+                    <i class="fa fa-align-center" [ngClass]="row.i"></i>
+                </span>
+                <span class="acronym">{{row.a}}</span>
+                <span class="text">{{row.t}}</span>
+            </div>
+        </div>
+
+        <div class="content" *ngIf="cols === 2">
+            <div class="item cannot-click" *ngFor="let row of data;">
+                <span class="icon">
+                    <i class="fa" [ngClass]="row.i"></i>
+                </span>
+                <span class="text">{{row.t}}</span>
+            </div>
+            <div class="item">
+                <span class="icon">
+                    <i class="fa fa-adn"></i>
+                </span>
+                <span class="text">镜头尽头劲头</span>
+                <span class="parent">
+                    <span class="icon">
+                        <i class="fa fa-adn fa-fw"></i>
+                    </span>
+                    <span class="text">镜头尽头劲头</span>
+                </span>
+            </div>
+            <div class="item">
+                <span class="square" style="background: pink"></span>
+                <span class="text">镜头尽头劲头</span>
+            </div>
+        </div>
+
+        <div class="content" *ngIf="cols === 1">
+            <div class="item" *ngFor="let row of data;">
+                <span class="text">{{row.t}}</span>
+            </div>
+        </div>
+        <hr *ngIf="cols === 1" class="spc">
+        <div class="content-group" *ngIf="cols === 1">
+            <div class="group-title">content title</div>
+            <div class="content">
+                <div class="item selected" *ngFor="let row of data;">
+                    <span class="text">{{row.t}}</span>
+                </div>
+                <div class="item">
+                    <span class="square" style="background: pink"></span>
+                    <span class="text">镜头尽头劲头</span>    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="before"></div>
+    <div class="after"></div>
+</div>

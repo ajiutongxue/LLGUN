@@ -1,0 +1,443 @@
+.comment-container {
+    /*====== font =======*/
+    --font-family: 'Microsoft Yahei';
+
+    /*====== words color ======*/
+    /* 主要文字颜色，正常阅读，颜色最深 */
+    --primary-words-color: #14323A;
+    /* 弱一级使用的文字颜色 */
+    --second-words-color: #585d61;
+    /* 最弱的文字颜色 */
+    --third-words-color: #9FA5A8;
+    /* 不易阅读，基本装饰使用的文字颜色 */
+    --less-words-color: #CCCFD1;
+    /* 一般链接 */
+    --link-color: #0071bd;
+    --normal-link-color: rgb(135, 165, 179);
+
+    /*===== border color =======*/
+    --gray-border-color: #d8dbdc;
+    --light-border-color: #eee;
+    --dark-border-color: #ccc;
+    --label-border-color: var(--less-words-color);
+
+    /*====== bg color ======*/
+    --light-bg-color: #f0f0f0;
+    --content-bg-color: #fff;
+    --dark-bg-color: #fff; // 回复的颜色
+
+    /*===== 情景颜色 =======*/
+    --active-color: #15a1ff;
+    --warnging-color: #E30000;
+    --lighter-bg-color: #fafafa;
+
+
+    font: 14px/24px var(--font-family);
+    color: var(--primary-words-color);
+
+    // light
+    &.comment-light-style {
+        background: #f0f0f0;
+    }
+
+    // dark
+    &.comment-dark-style {
+    
+        /* 暗色背景下，颜色设置 */
+        --content-bg-color: hsla(0, 0%, 0%, 0.15);
+        --dark-bg-color: rgba(0,0,0,.1); /* 回复的背景颜色 */
+            
+        /**********************************************************
+        * 覆盖base 
+        **********************************************************/
+        /*====== words color ======*/
+        /* 主要文字颜色，正常阅读，颜色最深 */
+        --primary-words-color: hsl(0, 0%, 90%);
+        /* 弱一级使用的文字颜色 */
+        --second-words-color: hsl(0, 0%, 75%);
+        /* 最弱的文字颜色 */
+        --third-words-color: hsl(0, 0%, 51%);
+        /* !! 不易阅读，基本装饰使用的文字颜色 */
+        /* --less-words-color: hsl(0, 0%, 29%); */
+        /* 一般链接 */
+        --link-color: #4e98ca;
+        --normal-link-color: rgba(107, 148, 167, 0.9);
+
+        /*===== border color =======*/
+        --gray-border-color: hsl(0, 0%, 30%);
+        /* --light-border-color: #464646; */
+        --light-border-color: #444;
+        --dark-border-color: rgba(255,255,255,.1);
+        --label-border-color: var(--dark-border-color);
+
+        /*====== bg color ======*/
+        --light-bg-color: rgba(255,255,255,.1);
+
+        /*===== 情景颜色 =======*/
+        --active-color: #15a1ff;
+        --warnging-color: #E30000;
+        --lighter-bg-color: #fafafa;
+
+        /* dark editor */
+        --editor-outer-border-color: #111;
+        --editor-border-color: #ccc;
+        --editor-words-color: #14323A;
+        --editor-tools-bg-color: var(--lighter-bg-color);
+
+        // ===
+        background: hsl(0, 0%, 25%);
+    }
+
+}
+
+.margintop0 {
+    margin-top: 0!important;
+}
+
+// 通用
+.logined-edit {
+    position: absolute;
+    left: -20px;
+    color: var(--third-words-color);
+    font-size: 14px!important;
+    line-height: inherit!important;
+}
+.relative {
+    position: relative;
+}
+
+.comment {
+    max-width: 600px;
+    margin: 10px auto;
+    background: var(--content-bg-color);
+    border: 1px solid var(--gray-border-color);
+    border-radius: 4px;
+    padding-bottom:  30px;
+    position: relative;
+}
+
+
+.subject {
+    padding: 30px 30px 0px;
+    position:  relative;
+    
+    .writer .date + div {
+        /* line-height: 24px; */
+        clear: both;
+    }
+}
+
+.writer {
+    position: relative;
+    height: 55px;
+    padding-left: 60px;
+
+    .avatar {
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 40px;
+        height: 40px;
+
+    }
+    .name {
+        /* float: left; */
+        line-height: 16px;
+    }
+    .date {
+        /* float: left; */
+        /* margin-left: 15px; */
+        line-height: 16px;
+    }
+}
+.avatar {
+    border-radius: 100%;
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+}
+
+.reply {
+    border-top: 1px solid var(--light-border-color);
+    margin: 0 30px;
+    padding: 14px 20px 10px;
+    border: 1px solid var(--light-border-color);
+    background: var(--dark-bg-color);
+    & + .reply {
+        border-top: none;
+    }
+
+    .writer {
+        padding-left: 42px;
+        padding-top: 5px;
+        height: 35px;
+    }
+
+    .editor {
+        margin: 0;
+    }
+    .date,
+    .name {
+        float: left;
+    }
+    .date {
+        margin-left: 10px;
+    }
+} 
+
+.name {
+    display: inline-block;
+    color: var(--second-words-color);
+    /* font-weight: 600; */
+}
+.date {
+    font-size: 12px;
+    color: var(--third-words-color);
+}
+
+.state {
+    color: var(--second-words-color);
+    font-size: 12px;
+    margin-bottom:  10px;
+    position:  absolute;
+    right: 15px;
+    top: 6px;
+}
+
+.op-btn {
+    position:absolute;
+    right: 0;
+    top: 2px;
+    background: var(--active-color);
+    color: #fff;
+    padding: 0 1em;
+    border-radius:4px;
+    font-size: 13px;
+    height: 30px;
+    line-height: 30px;
+}
+
+
+.label-box {
+    margin: 5px 0 20px;
+    &.contain-label-string {
+        margin-left: -20px;
+    }
+}
+.label-box.download {
+    border: 1px solid var(--light-border-color);
+    border-width:  1px 0;
+    padding: 10px 0;
+    margin: 10px 0;
+    margin-bottom: -10px;
+    font-size: 12px;
+    color: var(--third-words-color);
+    border-top: 0;
+}
+.label {
+    display: inline-block;
+    background: var(--light-bg-color);
+    border-radius: 10px;
+    font-size: 12px;
+    height: 16px;
+    line-height: 14px;
+    padding: 0 5px;
+    border: 1px solid var(--label-border-color);
+    color: var(--normal-link-color);
+    cursor: pointer;
+    min-width: 80px;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+        border-color: var(--active-color);
+        background: var(--active-color);
+        color: #fff;
+    }
+}
+
+.read-more {
+    color: var(--link-color);
+    margin-left: .5em;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+        color: var(--active-color)
+    }
+}
+.some-links {
+    position: relative;
+    margin-top: 20px;
+    font-size: 12px;
+
+    a {
+        color: var(--normal-link-color);
+        cursor: pointer;
+
+        & + a {
+            margin-left: 20px;
+        }
+
+        &:hover {
+            color: var(--active-color);
+        }
+
+        &.toggle-content {
+            position: absolute;
+            right: 0;
+        }
+        &.remove:hover {
+            color: var(--warnging-color);
+        }
+    }
+}
+
+.reply {
+    .avatar {
+        width: 25px;
+        height: 25px;
+    }
+    .op-btn {
+        top: -3px;
+    }
+}
+
+.title {
+    font-size: 20px;
+    line-height: 1.4em;
+    cursor: pointer;
+    // for label-string-input
+    margin-left: -20px;
+}
+.content {
+    line-height: 1.8em;
+}
+.content-thumbnail {
+    float: left;
+    width: 152px;
+    height: 89px;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-top: 6px;
+    img {
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
+    }
+}
+
+.reply-content:not(.has-thumbnail) img, 
+.content:not(.has-thumbnail) img, 
+.editor-content img {
+    display: block;
+    margin: 1em auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.reply {
+
+}
+
+
+.subject + .reply {
+    margin-top: 10px;
+}
+
+.no-links {
+    padding-bottom: 20px;
+    &.has-up {
+        padding-bottom: 35px;
+    }
+}
+
+
+.editor {
+    border: 1px solid var(--dark-border-color);
+    margin: 10px 30px;
+}
+.editor-content {
+    height: 70px;
+}
+.editor-tools {
+    height: 28px;
+    border-top: 1px solid var(--dark-border-color);
+    line-height:  28px;
+    background: var(--lighter-bg-color);
+    font-size:  12px;
+    position:  relative;
+    > div {
+        position: absolute;
+        border: 1px solid var(--dark-border-color);
+        cursor:  pointer;
+    }
+    .paperclip {
+        left: 0;
+        padding: 0 10px;
+        border: 0;
+    }
+    .cut {
+        left: 29px;
+        padding: 0 10px;
+        border-width: 0 1px;
+    }
+    .cancel {
+        right: 60px;
+        border-width:  0 0 0 1px;
+        padding: 0 10px;
+    }
+    .submit {
+        right: 0;
+        padding: 0 10px;
+        border-width: 0;
+        background: var(--active-color);
+        color: #fff;
+    }
+}
+
+// .reply .editor, 
+// #comment-edit .editor {
+//     margin: 0;
+// }
+// #reply-modify .reply .editor-content, #comment-edit .editor-content {
+//     height: 400px;
+//     overflow: auto;
+//     padding: 10px;
+// }
+// #reply-modify .reply .editor-content {
+//     height: 100px;
+// }
+
+/* 翻页组件，以后可能会抽取公用 */
+.pagination-box {
+    border: 1px solid var(--light-border-color);
+    border-top: none;
+    margin: 0 30px;
+    height: 40px;
+    text-align: center;
+    line-height:  40px;
+    a {
+        color: var(--link-color);
+        margin: 0 5px;
+        font-size:  12px;
+
+        &:not(.current-pagination):hover {
+            color: var(--active-color);
+            cursor: pointer;
+        }
+
+        &.current-pagination {
+            color: var(--third-words-color);
+        }
+    }
+}
+
+
+

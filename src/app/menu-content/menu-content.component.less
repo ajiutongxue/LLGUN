@@ -1,0 +1,205 @@
+@import '../../base';
+
+@max-width: 500px;
+@min-width: 120px;
+@acronym-width: 60px;
+
+.container {
+    // font-family: 'Microsoft Yahei';
+
+    // position: relative;
+    position: absolute;
+    // left: 0;
+    // top: 24px;
+    display: inline-block;
+    width: auto;
+    border-radius: 4px;
+    background: #fff;
+    box-sizing: content-box;
+    z-index: 1111;
+    --set-max-width: @max-width;
+
+    &.put-down {
+        border-radius: 0 0 4px 4px;
+        .scroll-container {
+            border-radius: 0 0 4px 4px;
+        }
+    }
+
+    &.put-up {
+        border-radius: 4px 4px 0 0;
+        .scroll-container {
+            border-radius: 4px 4px 0 0;
+        }
+    }
+
+    .scroll-container {
+        overflow: auto;
+        // border-radius: 4px;
+        margin-bottom: 1px;
+    }
+
+    .spc {
+        height: 1px;
+        border: none;
+        margin: 5px 0;
+        background: #D1D8DE;
+
+        & + .content {
+            padding-top: 0;
+        }
+    }
+
+    .content,
+    .content-group {
+        & + .spc {
+            margin-top: 0;
+        }
+    }
+
+    .content {
+        padding: 5px 0;
+    }
+
+    .content-group {
+        .group-title {
+            padding-left: 10px;
+            background: #dedede;
+            color: @stronger;
+            font-weight: bold;
+
+            & + .content {
+                padding-top: 0;
+            }
+        }
+    }
+
+    .item {
+        .font12() {
+            font-size: 12px;
+        }
+
+        height: 20px;
+        line-height: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        word-break: keep-all;
+        white-space: nowrap;
+        cursor: pointer;
+        // min-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0;
+        min-width: @min-width;
+        max-width: ~'var(--set-max-width)';
+
+        &.cannot-click {
+            color: #CCCFD1;
+            cursor: not-allowed;
+        }
+
+        &.selected {
+            background: @bg-selected;
+            cursor: default;
+        }
+
+        &:not(.cannot-click):hover {
+            background: @color-active;
+            color: #fff;
+        }
+
+        > * {
+            .font12();
+        }
+
+        // > span {
+        //     overflow: hidden;
+        // }
+
+        .icon,
+        .acronym,
+        .text,
+        .square {
+            display: inline-block;
+        }
+        // .text {
+        //     text-overflow: ellipsis;
+        // }
+        .square {
+            width: 10px; 
+            height: 10px; 
+            border: 1px solid #fff;
+            margin-right: 10px;
+        }
+
+        .icon {
+            width: 15px;
+            margin-right: 5px;
+        }
+        .acronym {
+            width: @acronym-width;
+            margin-right: 10px;
+            // overflow: hidden;
+        }
+
+        .parent {
+            opacity: .8;
+            font-size: 0;
+            margin-left: 10px;
+
+            .icon { 
+                display: inline; 
+                // width: auto;
+                margin-right: 0;
+            }
+
+            > * {
+                .font12();
+            }
+            &::before {
+                .font12();
+                content: '(';
+                margin-right: 3px;
+            }
+            &::after {
+                .font12();
+                content: ')';
+                margin-left: 3px;
+            }
+        }
+    }
+
+    // &.setted-width {
+    //     .item {
+    //         // max-width: @max-width;
+    //         max-width: ~'var(--set-max-width)';
+    //     }
+    // }
+
+    .before {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        z-index: -2;
+        border-radius: inherit;
+        border-bottom: 1px solid #81878B;
+        background: linear-gradient(#D0D0D0, #A1A8AC 30px, #A1A8AC 80%, #B3B9BD);
+        box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.13), 0 5px 12px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+        background: #fff;
+        z-index: -1;
+    }
+
+
+}
+

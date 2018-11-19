@@ -1,5 +1,12 @@
 @import "../../base";
 @bc: #d1d1d1; // border-color
+
+._edit-area {
+    height: 80px; background:#fff; border: 1px solid #d1d1d1;
+}
+._edit-area-footer {
+    height: 30px; background:#f9f9f9; border: 1px solid #d1d1d1; border-top: none;
+}
 .upload-box {
     border: 1px solid @bc;
     border-top: none;
@@ -42,25 +49,6 @@
             &:hover {
                 background: @color-active - 20;
             }
-            
-            //.webuploader-container {
-            //    position: absolute;
-            //    opacity: 0;
-            //    left: 0;
-            //    top: 0;
-            //    right: 0;
-            //    bottom: 0;
-            //    overflow: hidden;
-            //
-            //    .webuploader-pick + div {
-            //        left: 0 !important;
-            //        right: 0 !important;
-            //        top: 0 !important;
-            //        bottom: 0 !important;
-            //        width: 100% !important;
-            //        height: 100% !important;
-            //    }
-            //}
         }
     }
 }
@@ -99,9 +87,6 @@
         &._show-file,
         &._cut-vdo {
             float: left;
-            //position: absolute;
-            //left: 0;
-            //top: 0;
             border-left: none;
             
             i.fa {

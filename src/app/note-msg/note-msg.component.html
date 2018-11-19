@@ -1,193 +1,448 @@
-<div class="ll-modal-body note-modal-body">
-    <div class="content-group">
-        <div class="_title">
-            <table class="table-fixed form-row select-row">
-                <tr>
-                    <td class="row-title"><i class="fa fa-pencil"></i></td>
-                    <td>
-                        <div class="select-box">
-                            <div class="input-box only-showing"><span>这里是标题</span></div>
-                        </div>
-                    </td>
-                    <td *ngIf="false">
-                        <div class="input-box"><input type="text"></div>
-                    </td>
-                </tr>
-            </table>
-        </div>
 
 
-<!-- 新的样式 -->
-<div class="qc-msg-item">  <!-- qc-msg-item qc-reply-item -->
-    <div class="qc-writer">
-        <div class="avatar"><img src="../../assets/style/images/img.jpg" alt="头像"></div>
-        <div class="_name"><span>刘大宝</span><span class="_data-val">2000-10-10</span></div>
-        <div class="_date">
-
-            <table class="table-fixed form-row select-row">
-                <tbody>
-                <tr>
-                    <td class="row-title"><i class="fa fa-pencil"></i></td>
-                    <td>
-                        <div class="select-box">
-                            <div _ngcontent-c10="" class="input-box only-showing">
-                                <i _ngcontent-c10="" class="fa fa-star"></i>
-
-                                <span _ngcontent-c10="">整个地方不是input了</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td *ngIf="false">
-                        <div class="input-box"><input type="text"></div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        
-    </div>
-    <button class="btn"><i class="fa fa-pencil"></i> 编辑</button>
-    <div class="qc-content">
-        <img src="https://cn.bing.com/az/hprichbg/rb/AustrianAlpineMarmots_ZH-CN10896836289_1920x1080.jpg">
-    </div>
-    <div class="reply-count-msg" title="控制是否显示回复的行"><a>共 <span class="count">3</span> 个回复 <i class="fa fa-angle-double-down"></i></a></div>
-</div>
-<br>
-<!-- end -->
 
 
-        <!--<div class="note-label-row">-->
-            <!--<span class="ll-label">-->
-                <!--<i class="fa fa-user"></i>-->
-                <!--<span>刘大宝</span>-->
-            <!--</span>-->
-            <!--<table class="table-fixed form-row select-row">-->
-                <!--<tbody>-->
-                <!--<tr>-->
-                    <!--<td class="row-title"><i class="fa fa-pencil"></i></td>-->
-                    <!--<td>-->
-                        <!--<div class="select-box">-->
-                            <!--<div _ngcontent-c10="" class="input-box only-showing">-->
-                                <!--<i _ngcontent-c10="" class="fa fa-star"></i>-->
+<div class="ll-modal-body">
+    <div class="content-group note-content-group">
 
-                                <!--<span _ngcontent-c10="">整个地方不是input了</span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</td>-->
-                    <!--<td *ngIf="false">-->
-                        <!--<div class="input-box"><input type="text"></div>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--</tbody>-->
-            <!--</table>-->
-        <!--</div>-->
-        <div class="qc-msg-item">  <!-- qc-msg-item qc-reply-item -->
+        <div class="note-section-top">
             <div class="qc-writer">
-                <div class="avatar"><img src="../../assets/style/images/img.jpg" alt="头像"></div>
-                <div class="_name"><span>刘大宝</span><span class="_data-val">2000-10-10</span></div>
+                <div class="avatar">
+                    <img src="../../assets/style/images/img.jpg" alt="头像">
+                </div>
+                <div class="_name">
+                    <span>刘大宝</span>
+                    <span class="_data-val">2000-10-10</span>
+                </div>
                 <div class="_date">
 
                     <table class="table-fixed form-row select-row">
                         <tbody>
-                        <tr>
-                            <td class="row-title"><i class="fa fa-pencil"></i></td>
-                            <td>
-                                <div class="select-box">
-                                    <div _ngcontent-c10="" class="input-box only-showing">
-                                        <i _ngcontent-c10="" class="fa fa-star"></i>
-
-                                        <span _ngcontent-c10="">整个地方不是input了</span>
+                            <tr>
+                                <td class="row-title">
+                                    <i class="fa fa-pencil"></i>
+                                </td>
+                                <td>
+                                    <div class="select-box">
+                                        <div _ngcontent-c10="" class="input-box only-showing">
+                                            <i _ngcontent-c10="" class="fa fa-circle"></i>
+                                            <span _ngcontent-c10="">关闭</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td *ngIf="false">
-                                <div class="input-box"><input type="text"></div>
-                            </td>
-                        </tr>
+                                </td>
+                                <td *ngIf="false">
+                                    <div class="input-box">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="_obj">
-                    <span class="ll-label">
-                        <i class="fa fa-user"></i>
-                        <span>刘大宝</span>
-                    </span>
-                    <span class="ll-label">
-                        <i class="fa fa-user"></i>
-                        <span>刘大宝</span>
-                    </span>
-                    <span class="ll-label">
-                        <i class="fa fa-user"></i>
-                        <span>刘大宝</span>
-                    </span>
-                    <span class="ll-label">
-                        <i class="fa fa-user"></i>
-                        <span>刘大宝</span>
-                    </span>
-                    <span class="ll-label">
-                        <i class="fa fa-user"></i>
-                        <span>刘大宝</span>
-                    </span>
-                    <span class="ll-label">
-                        <i class="fa fa-user"></i>
-                        <span>刘大宝</span>
-                    </span>
+                <div class="more-btn-box" style="">
+                    <button class="more-btn">操作
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="more-op modal-flatest-container">
+                        <ul>
+                            <li>
+                                <i class="fa fa-fw fa-upload"></i> 编辑</li>
+                            <li>
+                                <i class="fa fa-fw fa-remove"></i> 删除</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <button class="btn"><i class="fa fa-pencil"></i> 编辑</button>
+
+            <div class="_title">
+                <!-- <table _ngcontent-c18="" class="table-fixed form-row error-row">
+                    <tbody _ngcontent-c18="">
+                        <tr _ngcontent-c18="">
+                            <td _ngcontent-c18="" class="row-title">
+                                <i class="fa fa-pencil"></i>
+                            </td>
+                            <td _ngcontent-c18="">
+                                <app-string-input _ngcontent-c18="" _nghost-c19="">
+                                    <div _ngcontent-c19="" class="input-box">
+                                        <input _ngcontent-c19="" type="text">
+                                    </div>
+                                </app-string-input>
+                            </td>
+
+                        </tr>
+                        <tr _ngcontent-c18="">
+                            <td _ngcontent-c18=""></td>
+                            <td _ngcontent-c18="">
+                                <div _ngcontent-c18="" class="error-msg">
+                                    <i _ngcontent-c18="" class="fa fa-info-circle"></i> 错误信息</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                <table class="table-fixed form-row select-row">
+                    <tr>
+                        <td class="row-title">
+                            <i class="fa fa-pencil"></i>
+                        </td>
+                        <td>
+                            <div class="select-box">
+                                <div class="input-box only-showing">
+                                    <span>这里是标题</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td *ngIf="false">
+                            <div class="input-box">
+                                <input type="text">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- <div class="_obj">
+                <span class="ll-label">
+                    <i class="fa fa-user"></i>
+                    <span>刘大宝</span>
+                </span>
+                <span class="ll-label">
+                    <i class="fa fa-user"></i>
+                    <span>刘大宝</span>
+                </span>
+                <span class="ll-label">
+                    <i class="fa fa-user"></i>
+                    <span>刘大宝</span>
+                </span>
+                <span class="ll-label">
+                    <i class="fa fa-user"></i>
+                    <span>刘大宝</span>
+                </span>
+                <span class="ll-label">
+                    <i class="fa fa-user"></i>
+                    <span>刘大宝</span>
+                </span>
+                <span class="ll-label">
+                    <i class="fa fa-user"></i>
+                    <span>刘大宝</span>
+                </span>
+            </div> -->
+            <div class="_obj-container">
+                    <table class="table-fixed form-row select-row">
+                        <tr>
+                            <td class="row-title">
+                                <i class="fa fa-pencil"></i>
+                            </td>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box only-showing">
+                                        <div class="select-box">
+                                            <div class="input-box ll-label-box only-showing">
+                                                <div class="ll-label-content clearfix">
+                                                    <span class="ll-label">
+                                                        <i class="fa fa-user"></i>
+                                                        <span>刘大宝</span>
+                                                        <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+                                                    </span>
+                                                    <span class="ll-label">
+                                                        <i class="fa fa-user"></i>
+                                                        <span>刘大宝</span>
+                                                        <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+                                                    </span>
+                                                    <span class="ll-label">
+                                                        <i class="fa fa-user"></i>
+                                                        <span>刘大宝</span>
+                                                        <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    
+                    </table>
+            </div>
+        </div>
+
+
+        <!-- <hr class="spec-line"> -->
+            <!-- <div class="_obj-container" (dblclick)="inedit = !inedit" [ngClass]="inedit ? 'show-editing' : ''">
+                    <span class="can-edit-icon"><i class="fa fa-pencil"></i></span>
+                    <div class="input-box ll-label-box">
+                    <div class="_obj">
+                        <span class="ll-label">
+                            <i class="fa fa-user"></i>
+                            <span>刘大宝</span>
+                            <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+                        </span>
+                        <span class="ll-label">
+                            <i class="fa fa-user"></i>
+                            <span>刘大宝</span>
+                            <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+                        </span>
+                        <span class="ll-label">
+                            <i class="fa fa-user"></i>
+                            <span>刘大宝</span>
+                            <button class="remove-ll-label"><i class="fa fa-remove"></i></button>
+                        </span>
+                    </div>
+                    <input title="这个是input下拉组件" *ngIf="inedit" type="text" style="display: block; width: calc(100% - 10px);">
+                    </div>
+                
+                </div> -->
+    
+
+        <div class="qc-msg-item">
             <div class="qc-content">
-                <p>定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
-                <p>定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，</p>
+                定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+                <br> 定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N
+                个子元素，
             </div>
-            <div class="reply-count-msg" title="控制是否显示回复的行"><a>共 <span class="count">3</span> 个回复 <i class="fa fa-angle-double-down"></i></a></div>
-        </div>
-        <div title="如果需要控制下面这些回复整体显示隐藏，可以加这个div，原来是没有的">
-            <div class="qc-msg-item qc-reply-item">  <!-- qc-msg-item qc-reply-item -->
-                <div class="qc-writer">
-                    <div class="avatar"><img src="../../assets/style/images/img.jpg" alt="头像"></div>
-                    <div class="_name"><span>刘大宝</span></div>
-                    <div class="_date"><span>2000-10-10</span></div>
-                </div>
-                <button class="btn"><i class="fa fa-pencil"></i> 编辑</button>
-                <div class="qc-content">
-                    <p>asfasf</p>
-                </div>
-            </div>
-            <div class="qc-msg-item qc-reply-item qc-msg-last">  <!-- qc-msg-item qc-reply-item -->
-                <div class="qc-writer">
-                    <div class="avatar"><img src="../../assets/style/images/img.jpg" alt="头像"></div>
-                    <div class="_name"><span>刘大宝</span></div>
-                    <div class="_date"><span>2000-10-10</span></div>
-                </div>
-                <button class="btn"><i class="fa fa-pencil"></i> 编辑</button>
-                <div class="qc-content">
-                    <p>asfasf</p>
-                </div>
+            <div class="reply-count-msg" title="控制是否显示回复的行">
+                <a>共
+                    <span class="count">3</span> 个回复
+                    <i class="fa fa-angle-double-down"></i>
+                </a>
             </div>
         </div>
-        <button class="reply-qc-btn">回复 <i class="fa fa-angle-double-up"></i></button>
-        <div class="_editor">
-            <div title="组件包裹">
-                <div title="富文本编辑器" style="height: 80px; background:#fff; border: 1px solid #d1d1d1;"></div>
-                <div title="富文本footer" style="height: 30px; background:#f9f9f9; border: 1px solid #d1d1d1; border-top: none;"></div>
-                <div title="上传附件部分" class="upload-box" *ngIf="isShowFile">
-                    <div class="select-file-btns">
-                        <div class="_btn _rice-textarea-btn"><i class="fa fa-paperclip"></i> 选择上传文件 <div id="picker" title="这就是他自动来的那个" class="webuploader-container">asdfafdsa</div></div>
-                        <div class="_btn _clip-cvs-btn"><i class="fa fa-cut"></i> 截取当前画面</div>
-                        <div class="_btn _upload-it cannt-click"><i class="fa fa-upload"></i> 上传</div>
+        <div class="qc-reply-item-list" title="如果需要控制下面这些回复整体显示隐藏，可以加这个div，原来是没有的">
+            <div class="qc-msg-item qc-reply-item">
+                <!-- qc-msg-item qc-reply-item -->
+                <div class="qc-writer">
+                    <div class="avatar">
+                        <img src="../../assets/style/images/img.jpg" alt="头像">
+                    </div>
+                    <div class="_name">
+                        <span>刘大宝</span>
+                        <span class="_data-val">2000-10-10</span>
+                    </div>
+                </div>
+                <div class="more-btn-box" style="">
+                    <button class="more-btn">操作
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="more-op modal-flatest-container">
+                        <ul>
+                            <li>
+                                <i class="fa fa-fw fa-upload"></i> 编辑</li>
+                            <li>
+                                <i class="fa fa-fw fa-remove"></i> 删除</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="_editor">
+                        <div title="组件包裹">
+                            <div title="富文本编辑器" class="_edit-area"></div>
+                            <div title="富文本footer" class="_edit-area-footer"></div>
+                            <div title="上传附件部分" class="upload-box" *ngIf="isShowFile">
+                                <div class="select-file-btns">
+                                    <div class="_btn _rice-textarea-btn">
+                                        <i class="fa fa-paperclip"></i> 选择上传文件
+                                        <div id="picker" title="这就是他自动来的那个" class="webuploader-container">asdfafdsa</div>
+                                    </div>
+                                    <div class="_btn _clip-cvs-btn">
+                                        <i class="fa fa-cut"></i> 截取当前画面</div>
+                                    <div class="_btn _upload-it cannt-click">
+                                        <i class="fa fa-upload"></i> 上传</div>
+                                </div>
+            
+                                <div>
+                                    <span>
+                                        <i class="fa fa-paperclip"></i> 共有 2 个文件</span>
+                                </div>
+            
+                                <div>
+                                    <table class="add-version-uploadfile-list">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>文件名称</th>
+                                                <th>大小</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+            
+                                    <div>
+                                        <table class="add-version-uploadfile-list">
+                                            <tr>
+                                                <td>
+                                                    <div class="_progress-bar">
+                                                        <div style="width: 50%;" class="_uploaded"></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>238282035223238282035223238282035223238282035223(3).jpg</div>
+                                                </td>
+                                                <td>342k</td>
+                                                <td>
+                                                    <a>
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="_progress-bar">
+                                                        <div style="width: 20%;" class="_uploaded"></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>238282035223(3).jpg</div>
+                                                </td>
+                                                <td>342k</td>
+                                                <td>
+                                                    <a>
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="_progress-bar">
+                                                        <div style="width: 90%" class="_uploaded"></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>238282035223238282035223(3).jpg</div>
+                                                </td>
+                                                <td>342k</td>
+                                                <td>
+                                                    <a>
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="_progress-bar">
+                                                        <div style="width: 73%" class="_uploaded"></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>238282035223(3).jpg</div>
+                                                </td>
+                                                <td>342k</td>
+                                                <td>
+                                                    <a>
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="_progress-bar">
+                                                        <div class="_uploaded"></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>238282035223(3).jpg</div>
+                                                </td>
+                                                <td>342k</td>
+                                                <td>
+                                                    <a>
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+            
+                                </div>
+            
+                                
+                                
+                            </div>
+                        </div>
+            
+                        <div title="footer部分" class="reply-footer">
+                            <div class="_btn _show-file" (click)="isShowFile = !isShowFile">
+                                <i class="fa fa-paperclip"></i>
+                            </div>
+                            <div class="_btn _cut-vdo">
+                                <i class="fa fa-cut"></i>
+                            </div>
+                            <div class="_btn">取消</div>
+                            <div class="_btn">
+                                <i class="fa fa-paper-plane"></i> 确定</div>
+                        </div>
+                        <div style="border: 1px solid #d1d1d1; border-top: none; background: #f9f9f9; padding: 10px 15px;">
+                            <div class="uploaded-files-title" style="margin-top: 0;">已上传附件</div>
+                            <div class="_obj uploaded-files-box ll-label-content clearfix">
+                                <span class="ll-label"><i class="fa fa-file"></i> ZasdfjiowAEfasdZasdfjiowAEfasd. <span class="remove-ll-label"><i class="fa fa-times"></i></span></span>
+                                <span class="ll-label"><i class="fa fa-file"></i> ZasdfjiowAEfasdZasdfjiowAEfasd. <span class="remove-ll-label"><i class="fa fa-times"></i></span></span>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- <hr class="spec-line"> -->
+                        <div style="border: 1px solid #d1d1d1; background: #f9f9f9; padding: 10px 15px;">
+                            <div class="uploaded-files-title" style="margin-top: 0;">已上传附件</div>
+                            <!-- <div class="_obj uploaded-files-box ll-label-content clearfix _dark"> -->
+                            <div class="_obj uploaded-files-box ll-label-content clearfix label-cannot-rm">
+                                <span class="ll-label"><i class="fa fa-file"></i> ZasdfjiowAEfasdZasdfjiowAEfasd. </span>
+                                <span class="ll-label"><i class="fa fa-file"></i> ZasdfjiowAEfasdZasdfjiowAEfasd. </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                <div class="qc-content">
+                    <p>最好的颜色组合往往来自于自然界。当你想要找寻灵感时，你就环顾一下四周，拍下一张美丽的时刻，然后在这张照片中创建自己的配色方案。</p>
+                </div>
+            </div>
+            <div class="qc-msg-item qc-reply-item qc-msg-last">
+                <!-- qc-msg-item qc-reply-item -->
+                <div class="qc-writer">
+                    <div class="avatar">
+                        <img src="../../assets/style/images/img.jpg" alt="头像">
+                    </div>
+                    <div class="_name">
+                        <span>刘大宝</span>
+                        <span class="_data-val">2000-10-10</span>
                     </div>
 
-                    <div><span><i class="fa fa-paperclip"></i> 共有 2 个文件</span></div>
+                </div>
+                <button class="btn">编辑</button>
+                <div class="qc-content">
+                    <p>最好的颜色组合往往来自于自然界。当你想要找寻灵感时，你就环顾一下四周，拍下一张美丽的时刻，然后在这张照片中创建自己的配色方案。</p>
+                </div>
+            </div>
+        </div>
+        <div class="row-btn-box">
+            <button class="reply-qc-link">回复
+                <i class="fa fa-angle-double-up"></i>
+            </button>
+        </div>
+        <div class="_editor">
+            <div title="组件包裹">
+                <div title="富文本编辑器" class="_edit-area"></div>
+                <div title="富文本footer" class="_edit-area-footer"></div>
+                <div title="上传附件部分" class="upload-box" *ngIf="isShowFile">
+                    <div class="select-file-btns">
+                        <div class="_btn _rice-textarea-btn">
+                            <i class="fa fa-paperclip"></i> 选择上传文件
+                            <div id="picker" title="这就是他自动来的那个" class="webuploader-container">asdfafdsa</div>
+                        </div>
+                        <div class="_btn _clip-cvs-btn">
+                            <i class="fa fa-cut"></i> 截取当前画面</div>
+                        <div class="_btn _upload-it cannt-click">
+                            <i class="fa fa-upload"></i> 上传</div>
+                    </div>
+
+                    <div>
+                        <span>
+                            <i class="fa fa-paperclip"></i> 共有 2 个文件</span>
+                    </div>
 
                     <div>
                         <table class="add-version-uploadfile-list">
                             <thead>
-                            <tr>
-                                <th></th>
-                                <th>文件名称</th>
-                                <th>大小</th>
-                                <th></th>
-                            </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>文件名称</th>
+                                    <th>大小</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                         </table>
 
@@ -203,7 +458,11 @@
                                         <div>238282035223238282035223238282035223238282035223(3).jpg</div>
                                     </td>
                                     <td>342k</td>
-                                    <td><a><i class="fa fa-times"></i></a></td>
+                                    <td>
+                                        <a>
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -215,7 +474,11 @@
                                         <div>238282035223(3).jpg</div>
                                     </td>
                                     <td>342k</td>
-                                    <td><a><i class="fa fa-times"></i></a></td>
+                                    <td>
+                                        <a>
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -227,7 +490,11 @@
                                         <div>238282035223238282035223(3).jpg</div>
                                     </td>
                                     <td>342k</td>
-                                    <td><a><i class="fa fa-times"></i></a></td>
+                                    <td>
+                                        <a>
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -239,7 +506,11 @@
                                         <div>238282035223(3).jpg</div>
                                     </td>
                                     <td>342k</td>
-                                    <td><a><i class="fa fa-times"></i></a></td>
+                                    <td>
+                                        <a>
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -251,64 +522,116 @@
                                         <div>238282035223(3).jpg</div>
                                     </td>
                                     <td>342k</td>
-                                    <td><a><i class="fa fa-times"></i></a></td>
+                                    <td>
+                                        <a>
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
 
                     </div>
 
+                    
+                    
                 </div>
             </div>
 
             <div title="footer部分" class="reply-footer">
-                <div class="_btn _show-file" (click)="isShowFile = !isShowFile"><i class="fa fa-paperclip"></i></div>
-                <div class="_btn _cut-vdo"><i class="fa fa-cut"></i></div>
+                <div class="_btn _show-file" (click)="isShowFile = !isShowFile">
+                    <i class="fa fa-paperclip"></i>
+                </div>
+                <div class="_btn _cut-vdo">
+                    <i class="fa fa-cut"></i>
+                </div>
                 <div class="_btn">取消</div>
-                <div class="_btn"><i class="fa fa-paper-plane"></i> 确定</div>
+                <div class="_btn">
+                    <i class="fa fa-paper-plane"></i> 确定</div>
             </div>
+            <div style="border: 1px solid #d1d1d1; border-top: none; background: #f9f9f9; padding: 10px 15px;">
+                <div class="uploaded-files-title" style="margin-top: 0;">已上传附件</div>
+                <div class="uploaded-files-box ll-label-content clearfix">
+                    <span class="ll-label"><i class="fa fa-file"></i> ZasdfjiowAEfasdZasdfjiowAEfasd. <span class="remove-ll-label"><i class="fa fa-times"></i></span></span>
+                </div>
+            </div>
+            <br>
+            <!-- <hr class="spec-line"> -->
+            <div style="border: 1px solid #d1d1d1; background: #f9f9f9; padding: 10px 15px;">
+                <div class="uploaded-files-title" style="margin-top: 0;">已上传附件</div>
+                <div class="_obj uploaded-files-box ll-label-content clearfix label-cannot-rm">
+                    <span class="ll-label"><i class="fa fa-file"></i> ZasdfjiowAEfasdZasdfjiowAEfasd. </span>
+                </div>
+            </div>
+            
         </div>
     </div>
-    <div class="content-group">
+
+
+    <div class="content-group note-content-group">
         <div class="_title">
             <table class="table-fixed form-row select-row">
                 <tr>
-                    <td class="row-title"><i class="fa fa-pencil"></i></td>
+                    <td class="row-title">
+                        <i class="fa fa-pencil"></i>
+                    </td>
                     <td>
                         <div class="select-box">
-                            <div class="input-box only-showing"><span>这里是标题</span></div>
+                            <div class="input-box only-showing">
+                                <span>这里是标题</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div *ngIf="false" class="input-box"><input type="text"></div>
+                        <div *ngIf="false" class="input-box">
+                            <input type="text">
+                        </div>
                     </td>
                 </tr>
             </table>
         </div>
-        <div class="qc-msg-item">  <!-- qc-msg-item qc-reply-item -->
+        <div class="qc-msg-item">
+            <!-- qc-msg-item qc-reply-item -->
             <div class="qc-writer">
-                <div class="avatar"><img src="../../assets/style/images/img.jpg" alt="头像"></div>
-                <div class="_name"><span>刘大宝</span></div>
-                <div class="_date"><span>2000-10-10</span></div>
+                <div class="avatar">
+                    <img src="../../assets/style/images/img.jpg" alt="头像">
+                </div>
+                <div class="_name">
+                    <span>刘大宝</span>
+                    <span class="_data-val">2000-10-10</span>
+                </div>
+
             </div>
-            <button class="btn"><i class="fa fa-pencil"></i> 编辑</button>
+            <button class="btn">编辑</button>
             <div class="qc-content">
                 <p>定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
-                <p>定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，</p>
+                    <p>定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n)
+                        选择器匹配属于其父元素的第N 个子元素，</p>
             </div>
         </div>
-        <div class="qc-msg-item qc-reply-item qc-msg-last">  <!-- qc-msg-item qc-reply-item -->
+        <div class="qc-msg-item qc-reply-item qc-msg-last">
+            <!-- qc-msg-item qc-reply-item -->
             <div class="qc-writer">
-                <div class="avatar"><img src="../../assets/style/images/img.jpg" alt="头像"></div>
-                <div class="_name">创建人: <span>刘大宝</span></div>
-                <div class="_date"><span>2000-10-10</span></div>
+                <div class="avatar">
+                    <img src="../../assets/style/images/img.jpg" alt="头像">
+                </div>
+                <div class="_name">
+                    <span>刘大宝</span>
+                    <span class="_data-val">2000-10-10</span>
+                </div>
+
             </div>
-            <button class="btn"><i class="fa fa-pencil"></i> 编辑</button>
+            <button class="btn">编辑</button>
             <div class="qc-content">
                 <p>asfasf</p>
             </div>
         </div>
-        <button class="reply-qc-btn">回复 <i class="fa fa-angle-double-up"></i></button>
+        <div class="row-btn-box">
+            <button class="reply-qc-link">回复
+                <i class="fa fa-angle-double-up"></i>
+            </button>
+        </div>
+
         <div class="_editor" *ngIf="false"></div>
     </div>
 </div>

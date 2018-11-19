@@ -1,0 +1,8 @@
+<div class="modal-context-container">
+  <ng-container *ngFor="let item of viewData">
+    <div *ngIf="item.type != 'line'" class="cmenu-item" [ngClass]="item.editable?'cmenu-item':'cmenu-item cannt-click'">
+      <i [class]="item.icon"></i> {{item.name}}
+    </div>
+    <hr *ngIf="item.type == 'line'" class="line-separator">
+  </ng-container>
+</div>

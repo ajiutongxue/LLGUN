@@ -131,11 +131,46 @@
                             <div *ngIf="showlogout" class="modal-normal-container put-down _root-level">
                                 <ul class="_normal">
                                     <li>
-                                        <a routerLink="setting/">退出</a>
+                                        <a routerLink="setting/"><i class="fa fa-sign-out"></i> 退出</a>
                                     </li>
                                 </ul>
                             </div>
                         </a>
+                    </li>
+                    <li>
+                        <span class="note-msg-box" >
+                            <i class="fa fa-bell" (click)="showBell = !showBell" [ngClass]="showBell? 'active': ''" ></i><span class="note-msg">2</span>
+                            <div *ngIf="showBell" class="modal-normal-container put-down _root-level">
+                                <!-- <div class="gray-label"></div> -->
+                                <div class="note-msg-tabs">
+                                    <span class="_tab"><i class="fa fa-list-ul"></i><span class="note-msg">2</span></span>
+                                    <span class="_tab active"><i class="fa fa-envelope"></i><span class="note-msg">2</span></span>
+                                    <span class="_tab"><i class="fa fa-tasks"></i><span class="note-msg">2</span></span>
+                                </div>
+                                <hr class="line-separator">
+                                <ul class="_normal">
+                                    <li class="readed">
+                                        <span>
+                                            <a class="t1">范 嘉斌（fan）</a><span 
+                                            class="t2">2018-06-19 13:33:02</span><span 
+                                            class="t3">修改了</span><span 
+                                            class="t4">镜头</span><a 
+                                            class="t5">v_20180392348</a>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span>退出退出退出退出退出退出退出退出退出退出退出退出退出</span>
+                                    </li>
+                                    <li>
+                                        <span>退出退出退出退出退出退出退出退出退出退出退出退出退出</span>
+                                    </li>
+                                </ul>
+                                <div>
+                                    <hr class="line-separator">
+                                    <a class="_all-project" href="javascript:;">查看全部消息</a>
+                                </div>
+                            </div>
+                        </span>
                     </li>
                 </ul>
             </div>
@@ -171,6 +206,12 @@
                 <a routerLink="/layout"><i class="fa fa-th"></i></a>
                 <a routerLink="/layout" class="active"><i class="fa fa-list"></i></a>
             </div>
+        </div>
+        <div class="ll-page-tools">
+            <a class="ll-page-tools-btn" href="javascript:;"><span class="fa-stack my-fa-clean icon-combo">
+                <i class="fa fa-play fa-stack-1x icon-combo-main"></i>
+                <i class="fa fa-pencil fa-stack-1x icon-combo-symbol"></i>
+            </span> 还原状态</a>
         </div>
     </div>
 
@@ -246,16 +287,22 @@
                                 <!--</div>-->
                                 <div class="tree-msg-box flexable">
                                     <div class="_row">
-                                        <div class="_cell _stronger _bluegary _smaller"><i class="{{node.data.entity_type_icon}}"></i> {{node.data.entity_type}}</div>
-                                        <div class="_cell">{{node.data.created_at}}</div>
+                                        <!-- <div class="_cell _stronger _bluegary _smaller"><i class="{{node.data.entity_type_icon}}"></i> {{node.data.entity_type}}</div> -->
+                                        <div class="_right"><span>{{node.data.created_at}}</span></div>
                                     </div>
                                     <div class="_row">
                                         <div class="_cell">{{node.data.content}}</div>
-                                        <div class="_cell _smallest _gray ">asdfasf</div>
+                                        <div class="_right _smallest _gray ">asdfasf</div>
                                     </div>
                                     <div class="_row">
-                                        <div class="_cell">asdfasf</div>
-                                        <div class="_cell">asdfasf</div>
+                                        <div class="_cell"><span _ngcontent-c1="" class="ll-label">
+                                                <i _ngcontent-c1="" class="fa fa-user"></i>
+                                                <span _ngcontent-c1="">刘大宝</span>
+                                            </span><span _ngcontent-c1="" class="ll-label">
+                                                    <i _ngcontent-c1="" class="fa fa-user"></i>
+                                                    <span _ngcontent-c1="">刘大宝</span>
+                                                </span></div>
+                                        <span class="_right"><span>asdfasf</span></span>
                                     </div>
                                 </div>
                             </div>

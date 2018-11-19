@@ -1,0 +1,801 @@
+<!-- ！！！！！ 注意这行字：comment-light-style 是浅色主题， comment-dark-style 是深色主题（播放器页面用的），两个二选一 -->
+<div class="comment-container comment-light-style">
+    <section class="comment">
+        <div class="subject">
+            <!-- <div class="state"><i class="fa fa-play"></i> 正常</div> -->
+            <div class="state"><label-string-input [commentState]="true"></label-string-input></div>
+
+            <!-- <div class="title">孔雀好像还挺常见，为什么绿孔雀如此濒危？</div> -->
+            <div class="title">
+              <label-string-input [commentTitle]="true"></label-string-input>
+            </div>
+            <!-- !!!! 新增 contain-label-string -->
+            <div class="label-box contain-label-string">
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+
+            <div class="content">
+                中国古代男子有后的概率非常低，才第三代，十个人里面就会有七个人绝后。
+                十代下来，有很大概率一个都不剩。
+                评论中有同学提出，只有帝王和大族才更有机会留下后裔，这自然是对的...
+                <a class="read-more">阅读全文 <i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a>收起回复 (2) <i class="fa fa-angle-up"></i></a>
+                <!-- ！！！！！注意：这个地方的“收起”和向上数大概9行的“阅读全文”，同一时间只显示一个 -->
+                <a class="toggle-content">收起 <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+        <!-- !!!!!! 注意这行字：：在reply上， no-links是在没有内容下面的“编辑”、“删除”的链接时候必须加上的，has-up 是显示“收起”的时候必须加上的 -->
+        <div class="reply no-links">
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">赵大发</div>
+                <div class="date">2018-10-10 12:34:05</div>
+            </div>
+            <div class="editor">
+                <div class="editor-content">
+                    111定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，匹配属于其父元素的...
+                </div>
+                <div class="editor-tools">
+                    <div class="paperclip">
+                        <i class="fa fa-paperclip"></i>
+                    </div>
+                    <div class="cut">
+                        <i class="fa fa-cut"></i>
+                    </div>
+                    <div class="cancel">取消</div>
+                    <div class="submit"><i class="fa fa-paper-plane"></i> 确定</div>
+                </div>
+
+            </div>
+
+            <div class="some-links">
+                <a><i class="fa fa-reply"></i> 取消编辑</a>
+                <a class="remove"><i class="fa fa-trash-o"></i> 删除</a>
+            </div>
+        </div>
+        <div class="reply no-links has-up">
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">六大包</div>
+                <div class="date">2018-10-10 12:34:05</div>
+            </div>
+            <div class="reply-content">
+                111定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+                定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n)
+                选择器匹配属于其父元素的第N 个子元素，
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a class="toggle-content">收起 <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+        <div class="pagination-box">
+            <a>上一页</a>
+            <a>1</a>
+            <a>2</a>
+            <a class="current-pagination">3</a>
+            <a>4</a>
+            <a>5</a>
+            <a>6</a>
+            <a>下一页</a>
+        </div>
+        <div class="editor">
+            <div class="editor-content"></div>
+            <div class="editor-tools">
+                <div class="paperclip">
+                    <i class="fa fa-paperclip"></i>
+                </div>
+                <div class="cut">
+                    <i class="fa fa-cut"></i>
+                </div>
+                <div class="cancel">取消</div>
+                <div class="submit"><i class="fa fa-paper-plane"></i> 确定</div>
+            </div>
+        </div>
+    </section>
+·
+    <!-- 作者用户登陆, 可编辑状态 -->
+    <section id="all-up-logined" class="comment before-label">
+        <div class="subject">
+            <div class="state relative"><i class="fa fa-pencil logined-edit"></i><i class="fa fa-play"></i> 正常</div>
+
+            <div class="title relative"><i class="fa fa-pencil logined-edit"></i>孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box relative">
+                <i class="fa fa-pencil logined-edit"></i>
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+
+            <div class="content">
+                中国古代男子有后的概率非常低，才第三代，十个人里面就会有七个人绝后。
+                十代下来，有很大概率一个都不剩。
+                评论中有同学提出，只有帝王和大族才更有机会留下后裔，这自然是对的...
+                <a class="read-more">阅读全文 <i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a>回复 (2) <i class="fa fa-angle-down"></i></a>
+                <a><i class="fa fa-pencil-square-o"></i> 编辑</a>
+                <a class="remove"><i class="fa fa-trash-o"></i> 删除</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 展开评论 -->
+    <section id="comment-open" class="comment before-label">
+        <div class="subject">
+            <div class="state"><i class="fa fa-play"></i> 正常</div>
+
+            <div class="title">孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box">
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+            <div class="content">
+                <img class="margintop0" src="../images/pic.png">
+                定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+                定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n)
+                选择器匹配属于其父元素的第N 个子元素，
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a>回复 (2) <i class="fa fa-angle-down"></i></a>
+                <a class="toggle-content">收起 <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 展开回复 -->
+    <section id="reply-open" class="comment before-label">
+        <div class="subject">
+            <div class="state"><i class="fa fa-play"></i> 正常</div>
+
+            <div class="title">孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box">
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+
+            <div class="content">
+                中国古代男子有后的概率非常低，才第三代，十个人里面就会有七个人绝后。
+                十代下来，有很大概率一个都不剩。
+                评论中有同学提出，只有帝王和大族才更有机会留下后裔，这自然是对的...
+                <a class="read-more">阅读全文 <i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a>收起回复 (2) <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+        <div class="reply">
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">赵大发</div>
+                <div class="date">2018-10-10 12:34:05</div>
+            </div>
+            <div class="reply-content has-thumbnail clearfix">
+                <div class="content-thumbnail">
+                    <img src="../images/thumbnail.png">
+                </div>
+                中国古代男子有后的概率非常低，才第三代，十个人里面就会有七个人绝后。
+                十代下来，有很大概率一个都不剩。
+                评论中有同学提出，只有帝王和大族才更有机会留下后裔，这自然是对的...
+                <a class="read-more">阅读全文 <i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="some-links">
+                <a><i class="fa fa-pencil-square-o"></i> 编辑</a>
+                <a class="remove"><i class="fa fa-trash-o"></i> 删除</a>
+            </div>
+        </div>
+        <div class="reply no-links has-up">
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">六大包</div>
+                <div class="date">2018-10-10 12:34:05</div>
+            </div>
+            <div class="reply-content">
+                111定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+                定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n)
+                选择器匹配属于其父元素的第N 个子元素，
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a class="toggle-content">收起 <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+        <div class="pagination-box">
+            <a>上一页</a>
+            <a>1</a>
+            <a>2</a>
+            <a class="current-pagination">3</a>
+            <a>4</a>
+            <a>5</a>
+            <a>6</a>
+            <a>下一页</a>
+        </div>
+        <div class="editor">
+            <div class="editor-content"></div>
+            <div class="editor-tools">
+                <div class="paperclip">
+                    <i class="fa fa-paperclip"></i>
+                </div>
+                <div class="cut">
+                    <i class="fa fa-cut"></i>
+                </div>
+                <div class="cancel">取消</div>
+                <div class="submit"><i class="fa fa-paper-plane"></i> 确定</div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 回复修改状态 -->
+    <section id="reply-modify" class="comment before-label">
+        <div class="subject">
+            <div class="state"><i class="fa fa-play"></i> 正常</div>
+
+            <div class="title">孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box">
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+
+            <div class="content">
+                中国古代男子有后的概率非常低，才第三代，十个人里面就会有七个人绝后。
+                十代下来，有很大概率一个都不剩。
+                评论中有同学提出，只有帝王和大族才更有机会留下后裔，这自然是对的...
+                <a class="read-more">阅读全文 <i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a>收起回复 (2) <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+        <div class="reply">
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">赵大发</div>
+                <div class="date">2018-10-10 12:34:05</div>
+            </div>
+            <div class="editor">
+                <div class="editor-content">
+                    111定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，匹配属于其父元素的...
+                </div>
+                <div class="editor-tools">
+                    <div class="paperclip">
+                        <i class="fa fa-paperclip"></i>
+                    </div>
+                    <div class="cut">
+                        <i class="fa fa-cut"></i>
+                    </div>
+                    <div class="cancel">取消</div>
+                    <div class="submit"><i class="fa fa-paper-plane"></i> 确定</div>
+                </div>
+
+            </div>
+
+            <div class="some-links">
+                <a><i class="fa fa-reply"></i> 取消编辑</a>
+                <a class="remove"><i class="fa fa-trash-o"></i> 删除</a>
+            </div>
+        </div>
+        <div class="reply no-links has-up">
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">六大包</div>
+                <div class="date">2018-10-10 12:34:05</div>
+            </div>
+            <div class="reply-content">
+                111定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+                定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n)
+                选择器匹配属于其父元素的第N 个子元素，
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a class="toggle-content">收起 <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+        <div class="pagination-box">
+            <a>上一页</a>
+            <a>1</a>
+            <a>2</a>
+            <a class="current-pagination">3</a>
+            <a>4</a>
+            <a>5</a>
+            <a>6</a>
+            <a>下一页</a>
+        </div>
+        <div class="editor">
+            <div class="editor-content"></div>
+            <div class="editor-tools">
+                <div class="paperclip">
+                    <i class="fa fa-paperclip"></i>
+                </div>
+                <div class="cut">
+                    <i class="fa fa-cut"></i>
+                </div>
+                <div class="cancel">取消</div>
+                <div class="submit"><i class="fa fa-paper-plane"></i> 确定</div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 评论的编辑状态 -->
+    <section id="comment-edit" class="comment before-label">
+        <div class="subject">
+            <div class="state relative"><i class="fa fa-pencil logined-edit"></i><i class="fa fa-play"></i> 正常</div>
+
+            <div class="title relative"><i class="fa fa-pencil logined-edit"></i>孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box relative">
+                <i class="fa fa-pencil logined-edit"></i>
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+
+            <div class="editor">
+                <div class="editor-content">
+                    <img class="margintop0" src="../images/pic.png">
+                    定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+                    定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法.
+                    :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+
+                </div>
+                <div class="editor-tools">
+                    <div class="paperclip">
+                        <i class="fa fa-paperclip"></i>
+                    </div>
+                    <div class="cut">
+                        <i class="fa fa-cut"></i>
+                    </div>
+                    <div class="cancel">取消</div>
+                    <div class="submit"><i class="fa fa-paper-plane"></i> 确定</div>
+                </div>
+
+            </div>
+            <div class="label-box download">
+                已上传附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923... <i class="fa fa-times"></i></div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg <i class="fa fa-times"></i></div>
+            </div>
+            <div class="some-links">
+                <a>回复 (2) <i class="fa fa-angle-down"></i></a>
+                <a><i class="fa fa-reply"></i> 取消编辑</a>
+                <a class="remove"><i class="fa fa-trash-o"></i> 删除</a>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+<div class="comment-container comment-dark-style">
+
+    <!-- 全部收起 -->
+    <section id="all-up" class="comment before-label">
+        <div class="subject">
+            <div class="state"><i class="fa fa-play"></i> 正常</div>
+            <div class="title">孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box">
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+
+            <div class="content has-thumbnail clearfix">
+                <div class="content-thumbnail">
+                    <img src="../images/thumbnail.png">
+                </div>
+                中国古代男子有后的概率非常低，才第三代，十个人里面就会有七个人绝后。
+                十代下来，有很大概率一个都不剩。
+                评论中有同学提出，只有帝王和大族才更有机会留下后裔，这自然是对的...
+                <a class="read-more">阅读全文 <i class="fa fa-angle-down"></i></a>
+            </div>
+
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a>回复 (2) <i class="fa fa-angle-down"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 全部收起, 作者用户登陆 -->
+    <section id="all-up-logined" class="comment before-label">
+        <div class="subject">
+            <div class="state relative"><i class="fa fa-pencil logined-edit"></i><i class="fa fa-play"></i> 正常</div>
+
+            <div class="title relative"><i class="fa fa-pencil logined-edit"></i>孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box relative">
+                <i class="fa fa-pencil logined-edit"></i>
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+
+            <div class="content">
+                中国古代男子有后的概率非常低，才第三代，十个人里面就会有七个人绝后。
+                十代下来，有很大概率一个都不剩。
+                评论中有同学提出，只有帝王和大族才更有机会留下后裔，这自然是对的...
+                <a class="read-more">阅读全文 <i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a>回复 (2) <i class="fa fa-angle-down"></i></a>
+                <a><i class="fa fa-pencil-square-o"></i> 编辑</a>
+                <a class="remove"><i class="fa fa-trash-o"></i> 删除</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 展开评论 -->
+    <section id="comment-open" class="comment before-label">
+        <div class="subject">
+            <div class="state"><i class="fa fa-play"></i> 正常</div>
+
+            <div class="title">孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box">
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+            <div class="content">
+                <img class="margintop0" src="../images/pic.png">
+                定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+                定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n)
+                选择器匹配属于其父元素的第N 个子元素，
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a>回复 (2) <i class="fa fa-angle-down"></i></a>
+                <a class="toggle-content">收起 <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 展开回复 -->
+    <section id="reply-open" class="comment before-label">
+        <div class="subject">
+            <div class="state"><i class="fa fa-play"></i> 正常</div>
+
+            <div class="title">孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box">
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+
+            <div class="content">
+                中国古代男子有后的概率非常低，才第三代，十个人里面就会有七个人绝后。
+                十代下来，有很大概率一个都不剩。
+                评论中有同学提出，只有帝王和大族才更有机会留下后裔，这自然是对的...
+                <a class="read-more">阅读全文 <i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a>收起回复 (2) <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+        <div class="reply">
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">赵大发</div>
+                <div class="date">2018-10-10 12:34:05</div>
+            </div>
+            <div class="reply-content has-thumbnail clearfix">
+                <div class="content-thumbnail">
+                    <img src="../images/thumbnail.png">
+                </div>
+                中国古代男子有后的概率非常低，才第三代，十个人里面就会有七个人绝后。
+                十代下来，有很大概率一个都不剩。
+                评论中有同学提出，只有帝王和大族才更有机会留下后裔，这自然是对的...
+                <a class="read-more">阅读全文 <i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="some-links">
+                <a><i class="fa fa-pencil-square-o"></i> 编辑</a>
+                <a class="remove"><i class="fa fa-trash-o"></i> 删除</a>
+            </div>
+        </div>
+        <div class="reply no-links has-up">
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">六大包</div>
+                <div class="date">2018-10-10 12:34:05</div>
+            </div>
+            <div class="reply-content">
+                111定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+                定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n)
+                选择器匹配属于其父元素的第N 个子元素，
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a class="toggle-content">收起 <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+        <div class="pagination-box">
+            <a>上一页</a>
+            <a>1</a>
+            <a>2</a>
+            <a class="current-pagination">3</a>
+            <a>4</a>
+            <a>5</a>
+            <a>6</a>
+            <a>下一页</a>
+        </div>
+        <div class="editor">
+            <div class="editor-content"></div>
+            <div class="editor-tools">
+                <div class="paperclip">
+                    <i class="fa fa-paperclip"></i>
+                </div>
+                <div class="cut">
+                    <i class="fa fa-cut"></i>
+                </div>
+                <div class="cancel">取消</div>
+                <div class="submit"><i class="fa fa-paper-plane"></i> 确定</div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 回复修改状态 -->
+    <section id="reply-modify" class="comment before-label">
+        <div class="subject">
+            <div class="state"><i class="fa fa-play"></i> 正常</div>
+
+            <div class="title">孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box">
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+
+            <div class="content">
+                中国古代男子有后的概率非常低，才第三代，十个人里面就会有七个人绝后。
+                十代下来，有很大概率一个都不剩。
+                评论中有同学提出，只有帝王和大族才更有机会留下后裔，这自然是对的...
+                <a class="read-more">阅读全文 <i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a>收起回复 (2) <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+        <div class="reply">
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">赵大发</div>
+                <div class="date">2018-10-10 12:34:05</div>
+            </div>
+            <div class="editor">
+                <div class="editor-content">
+                    111定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，匹配属于其父元素的...
+                </div>
+                <div class="editor-tools">
+                    <div class="paperclip">
+                        <i class="fa fa-paperclip"></i>
+                    </div>
+                    <div class="cut">
+                        <i class="fa fa-cut"></i>
+                    </div>
+                    <div class="cancel">取消</div>
+                    <div class="submit"><i class="fa fa-paper-plane"></i> 确定</div>
+                </div>
+
+            </div>
+
+            <div class="some-links">
+                <a><i class="fa fa-reply"></i> 取消编辑</a>
+                <a class="remove"><i class="fa fa-trash-o"></i> 删除</a>
+            </div>
+        </div>
+        <div class="reply no-links has-up">
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">六大包</div>
+                <div class="date">2018-10-10 12:34:05</div>
+            </div>
+            <div class="reply-content">
+                111定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+                定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n)
+                选择器匹配属于其父元素的第N 个子元素，
+            </div>
+            <div class="label-box download">
+                附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923...</div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg</div>
+            </div>
+            <div class="some-links">
+                <a class="toggle-content">收起 <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+        <div class="pagination-box">
+            <a>上一页</a>
+            <a>1</a>
+            <a>2</a>
+            <a class="current-pagination">3</a>
+            <a>4</a>
+            <a>5</a>
+            <a>6</a>
+            <a>下一页</a>
+        </div>
+        <div class="editor">
+            <div class="editor-content"></div>
+            <div class="editor-tools">
+                <div class="paperclip">
+                    <i class="fa fa-paperclip"></i>
+                </div>
+                <div class="cut">
+                    <i class="fa fa-cut"></i>
+                </div>
+                <div class="cancel">取消</div>
+                <div class="submit"><i class="fa fa-paper-plane"></i> 确定</div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 评论的编辑状态 -->
+    <section id="comment-edit" class="comment before-label">
+        <div class="subject">
+            <div class="state relative"><i class="fa fa-pencil logined-edit"></i><i class="fa fa-play"></i> 正常</div>
+
+            <div class="title relative"><i class="fa fa-pencil logined-edit"></i>孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <div class="label-box relative">
+                <i class="fa fa-pencil logined-edit"></i>
+                <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
+                <div class="label"><i class="fa fa-cube"></i> aets-231-b</div>
+            </div>
+            <div class="writer">
+                <div class="avatar"><img src="../../assets/style/images/img.jpg"></div>
+                <div class="name">恭喜发财</div>
+                <div class="date">2018-10-20 12:34:05</div>
+            </div>
+
+            <div class="editor">
+                <div class="editor-content">
+                    <img class="margintop0" src="../images/pic.png">
+                    定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+                    定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法. :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，定义和用法.
+                    :nth-child(n) 选择器匹配属于其父元素的第N 个子元素，
+
+                </div>
+                <div class="editor-tools">
+                    <div class="paperclip">
+                        <i class="fa fa-paperclip"></i>
+                    </div>
+                    <div class="cut">
+                        <i class="fa fa-cut"></i>
+                    </div>
+                    <div class="cancel">取消</div>
+                    <div class="submit"><i class="fa fa-paper-plane"></i> 确定</div>
+                </div>
+
+            </div>
+            <div class="label-box download">
+                已上传附件：
+                <div class="label"><i class="fa fa-download"></i> shot2301-1923... <i class="fa fa-times"></i></div>
+                <div class="label"><i class="fa fa-download"></i> 329374-23-qc.jpg <i class="fa fa-times"></i></div>
+            </div>
+            <div class="some-links">
+                <a>回复 (2) <i class="fa fa-angle-down"></i></a>
+                <a><i class="fa fa-reply"></i> 取消编辑</a>
+                <a class="remove"><i class="fa fa-trash-o"></i> 删除</a>
+            </div>
+        </div>
+    </section>
+
+</div>

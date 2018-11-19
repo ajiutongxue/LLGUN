@@ -1,0 +1,200 @@
+<div style="text-align: center;">
+<div class="step-container clearfix" style="display: inline-block;">
+    <span><a><span class="step">步骤1</span><br>提供导入数据</a></span>
+    <span><i class="fa fa-angle-right"></i></span>
+    <span class="active"><a><span class="step">步骤2</span><br>映射字段</a></span>
+    <span><i class="fa fa-angle-right"></i></span>
+    <span class="forbidden"><a><span class="step">步骤3</span><br>制定键值字段</a></span>
+    <span><i class="fa fa-angle-right"></i></span>
+    <span class="forbidden"><a><span class="step">步骤4</span><br>预览</a></span>
+</div>
+</div>
+
+<span style="margin-left: 40px;" class="fa-stack my-import-icon icon-combo">
+    <i class="fa fa-file-o fa-stack-1x icon-combo-main"></i>
+    <i class="fa fa-long-arrow-right fa-stack-1x icon-combo-symbol"></i>
+</span>
+
+<span style="margin-left: 40px;" class="fa-stack my-export-icon icon-combo">
+    <i class="fa fa-file-o fa-stack-1x icon-combo-symbol"></i>
+    <i class="fa fa-long-arrow-right fa-stack-1x icon-combo-main"></i>
+</span>
+
+
+<h3 style="margin-left: 50px;">step TWO</h3>
+<div title="你应该这里有个model-body/content之类div，限制宽高使用" style="position: relative; height: 200px; margin: 20px 50px;">
+    <div class="drag-tb-container">
+        <div class="tb-header">
+            <div class="dt-row can-drag" [style.width.px]="tw" [style.left.px]="dragTbContainerScrollLeft">
+                <table>
+                    <tr>
+                        <td *ngFor="let th_1 of tbHeaderData_1; let i = index;" [style.width.px]="w[i]"><div class="header-text">{{th_1}}</div><div (mousedown)="dragWidth($event, i)" class="drag-line"></div></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="dt-row can-drag" [style.width.px]="tw" [style.left.px]="dragTbContainerScrollLeft">
+                <table>
+                    <tr>
+                        <td *ngFor="let th_2 of tbHeaderData_2; let i = index;" [style.width.px]="w[i]"><div class="header-text">{{th_2}}</div><div (mousedown)="dragWidth($event, i)" class="drag-line"></div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+        <div class="tb-body">
+            <div *ngFor="let row of tbBodyData;" [style.width.px]="tw" class="dt-row">
+                <table>
+                    <tr>
+                        <td *ngFor="let tb of row; let i = index;" [style.width.px]="w[i]"><div>{{tb}}</div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<h3 style="margin-left: 50px;">step THREE</h3>
+<div title="你应该这里有个model-body/content之类div，限制宽高使用" style="position: relative; height: 200px; margin: 20px 50px;">
+    <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;border: 1px solid #ccc; overflow: auto;">
+        <div class="drag-table-step-3-content">
+            <div class="table-msg"><i class="fa fa-info-circle"></i> 铁菊啊，感冒和你的味觉失灵应该分开看，听你的意思你是在很久之前就味觉失灵了，而感冒也会导致味觉失灵</div>
+            <table class="">
+                <thead>
+                    <tr>
+                        <td>作为主键</td>
+                        <td>字段名</td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>id</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>id</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>id</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>id</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>id</td>
+                </tr>
+            </table>
+        </div>
+        <div class="drag-table-step-3-content">
+            <div class="table-msg"><i class="fa fa-info-circle"></i> 铁菊啊，感冒和你的味觉失灵应该分开看，听你的意思你是在很久之前就味觉失灵了，而感冒也会导致味觉失灵</div>
+            <table class="">
+                <thead>
+                    <tr>
+                        <td>作为主键</td>
+                        <td>字段名</td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>id</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>id</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>id</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>id</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>id</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<h3 style="margin-left: 50px;">step FOUR</h3>
+<div title="你应该这里有个model-body/content之类div，限制宽高使用" style="height: 300px; margin: 20px 50px; ">
+    <div class="step4-content">
+        <ul class="import-data-msg">
+            <li class="red"><i class="square"></i>1 error will be updated.</li>
+            <li class="green"><i class="square"></i>1 error will be updated.</li>
+            <li class="blue"><i class="square"></i>1 error will be updated.</li>
+            <li class="gray"><i class="square"></i>1 error will be updated.</li>
+        </ul>
+        <div class="step4-tb-content">
+            <div class="drag-tb-container">
+                <div class="tb-header">
+                    <div class="dt-row dt-white-row dt-error-msg-row max-zindex" [style.width.px]="tw" [style.left.px]="dragTbContainerScrollLeft">
+                        <table>
+                            <tr>
+                                <td *ngFor="let th_1 of tbHeaderData_1; let i = index;" [style.width.px]="w[i]" [class]="i === 0 ? 'status-col' : ''">
+                                    <div *ngIf="i === 0" class="button-like-select-container">
+                                        <div class="button-like-select">
+                                            <i class="fa fa-angle-down"></i>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="i === 3 || i === 5" class="button-like-select-container">
+                                        <div class="button-like-select" (click)="openSelect = !openSelect">
+                                            <i class="red-square"></i>
+                                            <div class="text-content">1 个错误信息</div>
+                                            <i class="fa fa-angle-down"></i>
+                                        </div>
+                                        <div *ngIf="openSelect" class="modal-context-container put-down" style="height: 100px; width: 200px;">
+                                            <div class="common-content" style="padding-top: 5px;">
+                                                <div class="cmenu-item">显示所有行</div>
+                                                <div class="cmenu-item"><i class="fa fa-check"></i> <i class="red-square"></i>仅显示包含错误的行</div>
+                                                <hr class="line-separator">  
+                                                <div class="cmenu-item">清空错误数据</div>
+                                                <div class="cmenu-item">不导入该列</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="i === 0" class="frozen"></div>
+                                    <div *ngIf="i !== 0" (mousedown)="dragWidth($event, i)" class="drag-line"></div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="dt-row can-drag" [style.width.px]="tw" [style.left.px]="dragTbContainerScrollLeft">
+                        <table>
+                            <tr>
+                                <td *ngFor="let th_2 of tbHeaderData_2; let i = index;" [style.width.px]="w[i]">
+                                    <div class="header-text">{{th_2}}</div>
+                                    <div *ngIf="i === 0" class="frozen"></div>
+                                    <div *ngIf="i !== 0" (mousedown)="dragWidth($event, i)" class="drag-line"></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+        
+                <div class="tb-body">
+                    <div *ngFor="let row of tbBodyData;" [style.width.px]="tw" class = "dt-row">
+                        <table>
+                            <tr>
+                                <td *ngFor="let tb of row; let i = index;" [style.width.px]="w[i]"><div>{{tb}}</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+

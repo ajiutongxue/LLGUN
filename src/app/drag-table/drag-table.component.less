@@ -1,0 +1,427 @@
+@import '../../base';
+
+
+// 数据表导入
+// 数据标tab
+.step-container {
+    font-size: 18px;
+    color: @color-less;
+    line-height: 24px;
+    height: 50px;
+
+    > span {
+        display: block;
+        float: left;
+        text-align: center;
+        height: 50px;
+    }
+
+    .step {
+        font-size: 14px;
+    }
+
+    a {
+        color: @color-active;
+        // font-size: 14px;
+        font-size: 18px;
+        cursor: pointer;
+
+        &:hover {
+            color: @color-active - 30;
+        }
+    }
+
+    i.fa {
+        margin: 1em 2em 0;
+    }
+
+    span.forbidden {
+        &,
+        a {
+            color: @color-less;  
+            cursor: default;  
+        }
+    }
+
+    span.active {
+        
+        &,
+        a {
+            font-size: 18px;
+            color: #111;
+            cursor: default;
+            font-weight: bold;
+
+            &:hover {
+                color: #111;
+            }
+        }
+    }
+}
+
+
+.drag-tb-container {
+    // height: 200px;
+    // margin: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border: 1px solid #ccc;
+    // overflow: auto;
+    overflow: hidden;
+    // position: relative;
+    // padding-top: 50px;
+
+    // > div {
+    //     width: auto;
+    // }
+}
+
+// .show-drag-line {
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     bottom: 0;
+//     width: 2px;
+//     background: #333;
+// }
+
+.dt-row {
+    position: relative;
+    border-bottom: 1px solid #ccc;
+
+    .tb-header & {
+        &:last-child {
+            border-bottom-color: #999;
+        }
+    }
+
+    &.max-zindex {
+        z-index: 99;
+    }
+
+    &.dt-white-row {
+        background: #fff;
+        td {
+            background: #fff;
+            // border-color: #fff;
+        }
+    }
+    &.dt-error-msg-row {
+        td {
+            // font-weight: normal;
+            // text-align: left;
+        }
+    }
+
+    td {
+        &:first-child {
+            border-left: none;
+        }
+    }
+}
+
+.tb-header {
+    min-width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-right: 15px;
+    // border-bottom: 1px solid #999;
+    // background: #f0f0f0;
+    user-select: none;
+    z-index: 10;
+
+    table{
+        &:first-child {
+            td {
+                // border-top: none;
+                
+            }
+        }
+        &:last-child {
+            td {
+                // border-top: 1px solid orange;
+                // border-bottom: none;
+            }
+        }
+    }
+
+
+    // + .tb-header {
+    //     td {
+    //         border-top: none;
+    //     }
+    // }
+}
+
+.tb-body {
+    // margin-top: 50px;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    // box-shadow: inset 0 3px rgba(0,0,0,.1);
+    z-index: 9;
+    // height: 30px;
+    // overflow: auto;
+    // overflow-x: hidden;
+    // padding-right: 15px;
+
+    tr:first-child {
+        td {
+            border-top: none;
+        }
+    }
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+// tr {
+//     .tb-body &:first {
+//         td {
+//             border-top: none;
+//         }
+//     }
+// }
+
+td {
+    position: relative;
+    table-layout: fixed;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-collapse: collapse;
+    border-spacing: 0;
+    // word-break:   
+
+    &.error {
+        background: rgb(255, 174, 174);
+    }
+
+    // 步骤四第一个格子使用
+    // &.status-col {
+        // width: 20px;
+    // }
+
+    > div {
+        white-space: nowrap;
+        // overflow: hidden;    
+    } 
+
+    tr > & {
+        &:last-child {
+            border-right-color: #aaa;
+        }
+    }
+
+    .tb-header & {
+        height: 27px;
+        // background: #fff;
+        background: #f0f0f0;
+        // font-weight: bold;
+        // text-align: center;
+        border-width: 0 1px;
+        font-size: 14px;
+
+        .header-text {
+            padding: 0 5px;
+        }
+    }
+
+    .tb-body & {
+        height: 22px;
+        border-width: 0 1px;
+
+        // > div {
+        //     padding: 0 4px;
+        // }
+    }
+
+    .can-drag & {
+        position: relative;
+    }
+    .drag-line {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: inherit;
+        width: 5px;
+        background: rgba(0,0,0,0);
+        background: red;
+        cursor: col-resize;
+        z-index: 99;
+
+        &.frozen {
+            cursor: default;
+        }
+    }
+}
+
+.button-like-select {
+    position: relative;
+    height: 24px; 
+    line-height: 22px;
+    margin: 2px; 
+    border: 1px solid #ccc; 
+    padding: 0 15px 0 18px;
+    cursor: pointer;
+    border-radius: 3px;
+
+    .text-content {
+        // margin: 0 12px; 
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis;
+        color: red;
+        user-select: none;
+    }
+
+    .fa {
+        position: absolute; 
+        right: 3px;
+        top: 3px;
+        font-size: 125%;
+    }
+
+    &:hover {
+        // border-color: @color-active;
+        .fa {
+            color: @color-active;
+        }
+    }
+
+    .status-col & {
+        padding: 0;
+        text-align: center;
+
+        .fa {
+            position: static;
+        }
+    }
+
+}
+
+ul.import-data-msg {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    max-height: 90px; 
+    overflow: auto; 
+    padding: 4px; 
+    flex: 1 1 auto; 
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    border-bottom: none;
+
+    .orange {
+        color: #ff985d;
+
+        .square {
+            background: #ff985d;
+        }
+    }
+    
+    .red {
+        color: @impt-red;
+
+        .square {
+            background: @impt-red;
+        }
+    }
+
+    .green {
+        color: @color-succes;
+
+        .square {
+            background: @color-succes;
+        }
+    }
+    
+    .blue {
+        color: @color-active;
+        .square {
+            background: @color-active;
+        }
+    }
+
+    .gray {
+        .square {
+            background: #666;
+        }
+    }
+
+    .square {
+        display: inline-block; 
+        width: 10px; 
+        height: 11px; 
+        margin-right: 10px;;
+    }
+}
+
+
+.drag-table-step-3-content {
+    margin: 10px;
+
+    & + .drag-table-step-3-content {
+        margin-top: 15px;
+    }
+
+    tr {
+        td {
+            padding: 0 5px;
+            height: 22px;
+
+            &:first-child {
+                width: 68px;
+                text-align: center;
+            }
+        }
+    }
+
+
+
+    thead {
+        td {
+            height: 27px;
+            background: #f0f0f0;
+            border-bottom: 1px solid #999;
+            // font-weight: bold;
+            font-size: 14px;
+            // text-align: center;
+
+            // &.check-td {
+            //     width: 68px;
+            // }
+        }
+    }
+
+    .table-msg {
+        line-height: 1.8em;
+        margin-bottom: 5px;
+
+        i.fa {
+            color: @color-less;
+        }
+    }
+}
+
+.step4-content {
+    height: inherit; 
+    display: flex; 
+    flex-direction: column;
+}
+
+.step4-tb-content {
+    position: static; 
+    // 与上面信息列表的间距
+    // border-top: 5px solid transparent; 
+    flex: 1 1 auto; 
+    position: relative;
+}

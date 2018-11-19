@@ -2,17 +2,22 @@
 <input hidden type="range" min="1" max="2.5" step="0.1" [(ngModel)]="curRange" name="thumbRange" >
 <div class="thumbnail-container"  [style.width]="curRange * 180 + 'px'">
     <div class="thumbnail-img-box"  [style.height]="'calc(' + curRange * 180 * 9 / 16  + 'px)'">
-        <div *ngIf="true" class="thumbnail-img-content" if="有图片"><img src="http://localhost:4200/assets/style/images/img2.jpg" alt="这个是图片"></div>
-        <div *ngIf="false" class="thumbnail-noimg-content" if="没图片"><span><i class="fa fa-upload"></i><br>上传图片</span></div>
+        <div *ngIf="!true" class="thumbnail-img-content" if="有图片"><img src="http://localhost:4200/assets/style/images/img2.jpg" alt="这个是图片"></div>
+        <div *ngIf="!false" class="thumbnail-noimg-content thumbnail-noimg-disabled" if="没图片"><span><i class="fa fa-upload"></i><br>上传图片</span></div>
+        <div class="thumbnail-follow-icon-box active">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+        </div>
         <div class="thumbnail-tools active">
             <i class="fa fa-bars"></i>
             <div class="modal-flatest-container">
                 <ul>
                     <li><i class="fa fa-fw fa-upload"></i> 更换封面</li>
-                    <li><i class="fa fa-fw fa-remove"></i> 删除封面</li>
+                    <li class="cmenu-item-disabled"><i class="fa fa-fw fa-remove"></i> 删除封面</li>
                 </ul>
             </div>
         </div>
+        <!-- <span class="thumbnail-play-btn-box"><i class="fa fa-play"></i></span> -->
     </div>
     <div class="thumbnail-fields-box" *ngIf="!notShowThumFiels">
         <div class="fields-item" *ngFor="let item of dataSource; let i = index;">

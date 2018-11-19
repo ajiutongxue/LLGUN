@@ -2,6 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+// import { NormalStringRendererComponent } from '../grid/normal-string-renderer';
 
 import {AppComponent} from './app.component';
 // import { ModalComponent } from './modal/modal.component';
@@ -62,6 +63,13 @@ import { PlayerLayerComponent } from './player-layer/player-layer.component';
 import { SingleTrackComponent } from './single-track/single-track.component';
 import { MultipleTrackComponent } from './multiple-track/multiple-track.component';
 import { MediaComponent } from './media/media.component';
+import { DragTableComponent } from './drag-table/drag-table.component';
+import { PermissionComponent } from './permission/permission.component';
+import { MenuContentComponent } from './menu-content/menu-content.component';
+import { MenuShowsComponent } from './menu-shows/menu-shows.component';
+import { CommentComponent } from './comment/comment.component';
+import { LabelStringInputComponent } from './label-string-input/label-string-input.component';
+import { ContextMenuComponent } from './context-menu/context-menu.component';
 
 const appRoutes: Routes = [
 
@@ -134,6 +142,22 @@ const appRoutes: Routes = [
         component: DragRulerComponent
     },
     {
+        path: 'dragTable',
+        component: DragTableComponent
+    },
+    {
+        path: 'permission',
+        component: PermissionComponent
+    },
+    {
+        path: 'menu',
+        component: MenuShowsComponent
+    },
+    {
+        path: 'comment',
+        component: CommentComponent
+    },
+    {
         path: '',
         redirectTo: '/all',
         pathMatch: 'full' // 这个full是必须的
@@ -184,6 +208,13 @@ const appRoutes: Routes = [
         MultipleTrackComponent,
         SingleTrackComponent,
         MediaComponent,
+        DragTableComponent,
+        PermissionComponent,
+        MenuContentComponent,
+        MenuShowsComponent,
+        CommentComponent,
+        LabelStringInputComponent,
+        ContextMenuComponent,
         // HighlightDirective
     ],
     imports: [

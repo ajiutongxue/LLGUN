@@ -1,0 +1,61 @@
+// 针对评论中使用的特殊设置
+.within-comment {
+
+    &.form-row {
+        font-size: inherit;
+
+        td {
+            font-size: inherit;
+
+            &.row-title {
+                width: 20px;
+                padding: 0;
+    
+                > i.fa {
+                    position: static;
+                    font-size: 14px;
+                    color: var(--third-words-color);
+                }
+            }
+        }
+    }
+
+    .input-box {
+        > span {
+            color: var(--primary-words-color);
+        }
+    }
+
+    &.within-comment-state {
+        table-layout: unset;
+        .input-box {
+            > span {
+                color: var(--second-words-color);
+            }
+        }
+    }
+
+    .ll-label {
+        display: inline-block;
+        background: var(--light-bg-color);
+        border-radius: 10px;
+        font-size: 12px;
+        height: 16px;
+        line-height: 14px;
+        padding: 0 5px;
+        border: 1px solid var(--label-border-color);
+        color: var(--normal-link-color);
+        cursor: pointer;
+        min-width: 80px;
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover {
+            border-color: var(--active-color);
+            background: var(--active-color);
+            color: #fff;
+        }
+    }
+}

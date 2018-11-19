@@ -13,7 +13,7 @@ export class MyPlayerComponent implements OnInit {
     picCvs;
     picCtx;
     // msgbox
-    msgBoxDefaultWidth = '360px';
+    msgBoxDefaultWidth = '480px';
     isShowMsgBox = true;
     // player
     vdo;

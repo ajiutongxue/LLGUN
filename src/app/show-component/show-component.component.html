@@ -272,7 +272,7 @@
 </jqxWindow>
 
 
-<jqxWindow [width]="700" [height]="550" [isModal]="true" [resizable]="false">
+<jqxWindow [width]="700" [height]="550" [isModal]="true" [resizable]="false" *ngIf="false">
     <div class="ll-modal-header">
         <span class="fa-stack ll-modal-header-icon icon-combo">
             <i class="fa fa-list-alt fa-stack-1x icon-combo-main"></i>
@@ -308,6 +308,37 @@
 </jqxWindow>
 
 
+
+
+<button class="btn btn-primary" (click)="isShowCha = !isShowCha">show 角色权限编辑</button>
+
+<jqxWindow [width]="600" [height]="450" [isModal]="true" [resizable]="false" *ngIf="!isShowCha">
+    <div class="ll-modal-header">
+        <span class="fa-stack ll-modal-header-icon icon-combo">
+            <i class="fa fa-list-alt fa-stack-1x icon-combo-main"></i>
+            <i class="fa fa-plus-circle fa-stack-1x icon-combo-symbol"></i>
+        </span>
+        <i class="fa fa-check-circle ll-modal-header-icon" style="display:none;"></i>新建资产
+    </div>
+    <div class="ll-modal-main no-shadow">
+        <div class="ll-modal-body" style="padding: 30px 2em;">
+
+            <app-permission></app-permission>
+            
+
+        </div>
+        <div class="ll-modal-footer no-shadow">
+            <div class="checkbox-row">
+                <label>
+                    <input type="checkbox">
+                    <span>不关闭窗口，继续创建</span>
+                </label>
+            </div>
+            <button class="btn btn-primary"><i class="fa fa-check"></i> 确定</button>
+            <button class="btn btn-default"><i class="fa fa-reply"></i> 取消</button>
+        </div>
+    </div>
+</jqxWindow>
 
 
 <button class="btn btn-primary" (click)="isShow3In1 = !isShow3In1">show 3个显示在一行</button>

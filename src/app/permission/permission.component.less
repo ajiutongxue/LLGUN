@@ -1,0 +1,120 @@
+@import '../../base';
+
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.select-container {
+    position: absolute; 
+    top: 20px; 
+    left: 210px;
+    width: 160px;
+    margin-bottom: 1.5em;
+}
+
+@nav-section-width: 115px;
+.nav-container {
+    background: #f0f0f0;
+    border-right: 1px solid #ccc;
+    position: absolute;
+    left: 0; 
+    top: 0; 
+    bottom: 0;
+    width: @nav-section-width + 65;
+}
+
+.nav-section {
+    margin-left: 30px;
+    margin-top: 30px;
+    width: @nav-section-width;
+
+    li {
+        margin-bottom: 5px;
+    }
+
+    @linke-height: 28px;
+    a {
+        display: block;
+        height: @linke-height;
+        line-height: @linke-height;
+        padding-left: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .active {
+        a {
+            background: @color-active;
+            color: #fff;
+            cursor: default;
+        }
+    }
+}
+
+.permission-container {
+    position: absolute;
+    top: 60px;
+    left: @nav-section-width + 65;
+    right: 0;
+    bottom: 0;
+    padding: 0 25px 50px 30px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.permission-group {
+    padding-left: 30px;
+    margin-bottom: 20px;
+}
+.permission-group-title {
+    margin-left: -30px;
+    font-size: 1.2em;
+
+    > span {
+        cursor: pointer;
+        &:hover {
+            color: @color-active;
+        }
+    }
+}
+
+.permission-content {
+    display: grid;
+    grid-template-columns: 68px auto;
+
+    > div {
+        line-height: 30px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .title {
+        font-weight: bold;
+    }
+
+    label {
+        height: 12px;
+        line-height: 12px;
+        margin-right: 20px;
+        display: inline-block;
+        // vertical-align: middle;
+
+        &:before,
+        &:after {
+            content: '';
+            display: table;
+        }
+        
+        &:after {
+            clear: both;
+        }
+
+        input[type="checkbox"] {
+            float: left;
+            margin-right: 5px;
+        }
+    }
+
+}
