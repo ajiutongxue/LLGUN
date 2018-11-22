@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/echarts.js"></script>
+</head>
+<body>  
+    <div id="main1" style="height:200px"></div>
+
+    <div id="main2" style="height:200px"></div>
+
+    <script>
+        var myChart1 = echarts.init(document.getElementById('main1'));
+
+        var myChart2 = echarts.init(document.getElementById('main2'));
+
+        
+        var option1 = {
+
+        title : {
+
+            text: '温度状况',
+
+            subtext: '纯属虚构'
+
+        },
+
+        tooltip : {
+
+            trigger: 'axis'
+
+        },
+
+        legend: {
+
+            data:['设定温度','进水温度','出水温度','环境温度']
+
+        },
+
+        toolbox: {
+
+            show : true,
+
+            feature : {
+
+                mark : {show: true},
+
+                dataView : {show: true, readOnly: false},
+
+                magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+
+                restore : {show: true},
+
+                saveAsImage : {show: true}
+
+            }
+
+        },
+
+        xAxis : [
+
+            {
+
+                type : 'category', //x轴为类目类型
+
+                axisLabel:{
+
+                    show:true,
+
+                    interval:0,
+
+                    rotate:45
+
+                },
+
+                data : ['00:00:00','00:05:00','00:10:00','00:15:00','00:20:00','00:25:00','00:30:00','00:35:00','00:40:00','00:45:00']
+
+
+
+            }],
+
+        yAxis : [
+
+            {
+
+                type : 'value'  //y轴为值类型
+
+            }
+
+        ],
+
+        series : [{
+
+            name:'设定温度',
+
+            type:'line',
+
+            smooth:true,
+
+            data:[55,55,55,55,55,55,55,55,55,55]
+
+        }]
+
+        }
+
+
+
+        var option2 = {
+
+        tooltip : {
+
+            trigger: 'axis'
+
+        },
+
+        legend: {
+
+            y:-30,
+
+            data:['设定温度','进水温度','出水温度','环境温度']
+
+        },
+
+        toolbox: {
+
+            y : -30,
+
+            show : true,
+
+            feature : {
+
+                mark : {show: true},
+
+                dataView : {show: true, readOnly: false},
+
+                magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+
+                restore : {show: true},
+
+                saveAsImage : {show: true}
+
+            }
+
+        },
+
+        xAxis : [
+
+            {
+
+                type : 'category', //x轴为类目类型
+
+                axisLabel:{
+
+                    show:true,
+
+                    interval:0,
+
+                    rotate:45
+
+                },
+
+                data : ['00:00:00','00:05:00','00:10:00','00:15:00','00:20:00','00:25:00','00:30:00','00:35:00','00:40:00','00:45:00']
+
+
+
+            }],
+
+        yAxis : [
+
+            {
+
+                type : 'value'  //y轴为值类型
+
+            }
+
+        ],
+
+        series : [{
+
+            name:'进水温度',
+
+            type:'line',
+
+            smooth:true,
+
+            data:[15,15,16,18,18,19,19,19,19,19]
+
+        }]
+
+        }
+        myChart1.setOption(option1);
+
+        myChart2.setOption(option2);
+        echarts.connect([myChart1, myChart2]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/echarts.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+        #main {
+            width: 600px; 
+            height: 300px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+    <button id="btn">change data</button>
+
+    <script>
+        let chart = echarts.init(document.getElementById('main'))
+        let d = [23, 66, 22, 16, 9, 0, 88, 100, 40, 66, 23, 23, 77, 88, 55]
+        const btn = document.getElementById('btn')
+        let isParent = true
+
+        btn.addEventListener('click', () => {
+            let data = []
+            if (isParent) {
+                data = d
+            } else {
+                data = [99, 66, 33]
+            }
+            isParent = !isParent
+            chart.setOption(getOption(data));
+        })
+
+
+        function getOption (d) {
+            let option = {
+                "tooltip": {
+                    "trigger": "axis",
+                    "axisPointer": {
+                        "type": "shadow"
+                    }
+                },
+                action: {
+
+                },
+                angleAxis: {
+                    type: 'category',
+                    data: d.map(i => `hehe: ${i}`),
+                },
+                radiusAxis: {
+                    minInterval: 2,
+
+                },
+                polar: {
+                    // radius: 20,
+                },
+                series: [{
+                    type: 'bar',
+                    data: d,
+                    coordinateSystem: 'polar',
+                    name: 'A',
+                    stack: 'a',
+                    children: [{
+                        type: 'bar',
+                        data: d.map(i => 66),
+                        coordinateSystem: 'polar',
+                        name: 'B',
+                        stack: 'a',
+
+                    }]
+                }, {
+                    type: 'bar',
+                    data: d.map(i => 100 - i),
+                    coordinateSystem: 'polar',
+                    name: 'B',
+                    stack: 'a',
+                    barCategoryGap: '0%' // 放在序列的最后一个才会生效
+                }],
+                legend: {
+                    show: true,
+                    data: ['A', 'B'],
+                }
+            };
+            return option
+        }
+
+        chart.setOption(getOption(d));
+
+        chart.on('click', function (params) {
+            console.log(params)
+            if (params.dataIndex === 5) {
+                chart.setOption(getOption([66, 55, 22]));
+            }
+            // if (params.componentType === 'markPoint') {
+            //     // 点击到了 markPoint 上
+            //     if (params.seriesIndex === 5) {
+            //         // 点击到了 index 为 5 的 series 的 markPoint 上。
+            //     }
+            // }
+            // else if (params.componentType === 'series') {
+            //     if (params.seriesType === 'graph') {
+            //         if (params.dataType === 'edge') {
+            //             // 点击到了 graph 的 edge（边）上。
+            //         }
+            //         else {
+            //             // 点击到了 graph 的 node（节点）上。
+            //         }
+            //     }
+            // }
+        });
+
+
+    </script>
+</body>
+</html>

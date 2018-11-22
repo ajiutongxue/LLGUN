@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/echarts.js"></script>
+</head>
+<body>
+    <div id="chart" style="width: 600px;height:400px;"></div>
+    <button id="btn">change</button>
+    <script>
+        const btn = document.getElementById('btn')
+        let isChange = true
+        btn.addEventListener('click', () => {
+            if (isChange) {
+                d = d.map(i => 5)
+            } else {
+                d = [23, 66, 22, 16, 9, 0, 88, 100, 40, 66, 23, 23, 77, 88, 55]
+            }
+            isChange = !isChange
+        })
+        // const dom2 = document.createElement('div')
+        // dom2.style.width = '600px'
+        // dom2.style.height = '400px'
+        // const chart2 = echarts.init(dom2)
+
+    var myChart = echarts.init(document.getElementById('chart'));
+    let d = [23, 66, 22, 16, 9, 0, 88, 100, 40, 66, 23, 23, 77, 88, 55]
+
+        // echarts.connect([myChart, chart2])
+    // app.title = '极坐标系下的堆叠柱状图';
+
+    option = {
+        "tooltip": {
+            "trigger": "axis",
+            "axisPointer": {
+                "type": "shadow"
+            }
+        },
+        action: {
+
+        },
+        angleAxis: {
+            type: 'category',
+            data: d.map(d => `hehe: ${d}`),
+        },
+        radiusAxis: {
+            minInterval: 2,
+
+        },
+        polar: {
+            // radius: 20,
+        },
+        series: [{
+            type: 'bar',
+            data: d,
+            coordinateSystem: 'polar',
+            name: 'A',
+            stack: 'a',
+            children: [{
+                type: 'bar',
+                data: d.map(d => 66),
+                coordinateSystem: 'polar',
+                name: 'B',
+                stack: 'a',
+
+            }]
+        }, {
+            type: 'bar',
+            data: d.map(d => 100 - d),
+            coordinateSystem: 'polar',
+            name: 'B',
+            stack: 'a',
+            barCategoryGap: '0%' // 放在序列的最后一个才会生效
+        }],
+        legend: {
+            show: true,
+            data: ['A', 'B'],
+        }
+    };
+
+    myChart.setOption(option);
+
+    </script>
+</body>
+</html>
