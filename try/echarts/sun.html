@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/echarts.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 500px; height: 500px;"></div>
+
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+
+        var data = [{
+            name: 'Grandpa',
+            children: [{
+                name: 'Uncle Leo',
+                value: 15,
+                children: [{
+                    name: 'Cousin Jack',
+                    value: 2
+                }, {
+                    name: 'Cousin Mary',
+                    value: 5,
+                    children: [{
+                        name: 'Jackson',
+                        value: 2
+                    }]
+                }, {
+                    name: 'Cousin Ben',
+                    value: 4
+                }]
+            }, {
+                name: 'Aunt Jane',
+                children: [{
+                    name: 'Cousin Kate',
+                    value: 4
+                }]
+            }, {
+                name: 'Father',
+                value: 10,
+                children: [{
+                    name: 'Me',
+                    value: 5,
+                    itemStyle: {
+                        color: 'red'
+                    }
+                }, {
+                    name: 'Brother Peter',
+                    value: 1
+                }]
+            }]
+        }, {
+            name: 'Mike',
+            children: [{
+                name: 'Uncle Dan',
+                children: [{
+                    name: 'Cousin Lucy',
+                    value: 3
+                }, {
+                    name: 'Cousin Luck',
+                    value: 4,
+                    children: [{
+                        name: 'Nephew',
+                        value: 2
+                    }]
+                }]
+            }]
+        }, {
+            name: 'Nancy',
+            children: [{
+                name: 'Uncle Nike',
+                children: [{
+                    name: 'Cousin Betty',
+                    value: 1
+                }, {
+                    name: 'Cousin Jenny',
+                    value: 2
+                }]
+            }]
+        }];
+
+        data = [
+            { 
+                r: '50%',
+                // children: [{ 
+                // r: '50%', // 第一圈的半径的百分比（从level里面的r0开始）
+                link: "javascript:alert('hehe')",
+                target: 'self',
+                children:[
+                    { r0: '50%',
+                    value: 1, 
+                    link: "javascript:alert('hehe')",
+                    target: 'self',
+                    }
+                // ]}
+            ]},
+            { 
+                r: '30%',
+                // children: [{ 
+                // r: '30%', // 第一圈的半径的百分比（从level里面的r0开始）
+                children:[
+                    { r0: '30%',
+                    value: 1, }
+                // ]}
+            ]},
+            { 
+                r: '45%',
+                // children: [{ 
+                // r: '45%', // 第一圈的半径的百分比（从level里面的r0开始）
+                children:[
+                    { r0: '45%',
+                    value: 1, }
+                // ]}
+            ]},
+            // { children: [{ 
+            //     r: '21%', // 第一圈的半径的百分比（从level里面的r0开始）
+            //     children:[
+            //         { r0: '21%',
+            //         value: 1, }
+            //     ]}
+            // ]},
+            // { children: [{ 
+            //     r: '44%', // 第一圈的半径的百分比（从level里面的r0开始）
+            //     children:[
+            //         { r0: '44%',
+            //         value: 1, }
+            //     ]}
+            // ]},
+        ]
+
+        option = {
+            visualMap: {
+                type: 'continuous',
+                min: 0,
+                max: 10,
+                inRange: {
+                    color: ['#2D5F73', '#538EA6', '#F2D1B3', '#F2B8A2', '#F28C8C']
+                }
+            },
+            "tooltip": {
+                "trigger": "item",
+                // "axisPointer": {
+                //     "type": "shadow"
+                // }
+            },
+            series: {
+                type: 'sunburst',
+                data: data,
+                radius: [0, '100%'],
+                nodeClick: 'link',
+                // zlevel: 1,
+                label: {
+                    rotate: 'radial'
+                },
+                levels: [{
+                    r0: 0,
+                    r: '15%',
+                    itemStyle: {
+                        color: 'red'
+                    }
+                }, {
+                    r0: '15%', // 中间的圆的半径的百分比
+                    // r: '10%',
+                    itemStyle: {
+                        borderWidth: 0,
+                        color: 'pink'
+                    },
+                    label: {
+                        rotate: 'tangential'
+                    },
+                }, {
+                    // r0: '10%',
+                    r: '100%',
+                    label: {
+                        align: 'right'
+                    },
+                    itemStyle: {
+                        color: 'gray'
+                    }
+                    // value: 3
+                }]
+            }
+        };
+        
+        o2 = {
+            series : [
+                {
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '50%'],
+                    data:[
+                        {value:100, name:'直接访问'},
+                        // {value:310, name:'邮件营销'},
+                        // {value:234, name:'联盟广告'},
+                        // {value:135, name:'视频广告'},
+                        // {value:1548, name:'搜索引擎'}
+                    ],
+                    itemStyle: {
+                        // emphasis: {
+                        //     // shadowBlur: 10,
+                        //     // shadowOffsetX: 0,
+                        //     // shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        // }
+                    },
+                    // zlevel: 10
+                }
+            ]
+        }
+        myChart.setOption(option);
+
+        console.log(myChart)
+        // setTimeout(() => {
+        //     myChart.setOption(o2);
+        // }, 1000)
+        
+
+
+    </script>
+</body>
+</html>

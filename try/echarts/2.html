@@ -56,15 +56,18 @@
                 },
                 radiusAxis: {
                     minInterval: 2,
-
+                    // maxInterval: 10
                 },
                 polar: {
                     // radius: 20,
+                    // radius: ['15%', '100%'],
+
                 },
                 series: [{
                     type: 'bar',
                     data: d,
                     coordinateSystem: 'polar',
+                    radius: ['10%', '100%'],
                     name: 'A',
                     stack: 'a',
                     children: [{
