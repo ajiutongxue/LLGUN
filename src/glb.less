@@ -32,6 +32,13 @@
     vertical-align: middle;
 }
 
+a.disabled,
+a.disabled:hover {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+
 .pointer-cursor {
     cursor: pointer
 }
@@ -487,7 +494,7 @@ td {
     border: 1px solid #000;
     border-left: none;
     border-right: none;
-    z-index: 400;
+    z-index: 999999;
     
     a {
         color: #f0f0f0;
@@ -1376,7 +1383,7 @@ td {
     // 从tools-bar那一行移动上来等
     // ## 又挪下去了，不知道哪天又要挪上来
     ._btn {
-        float: left;
+        // float: left;
         display: inline-block;
         position: relative;
         height: 22px;
@@ -1440,8 +1447,14 @@ td {
         text-decoration: none;
 
         &:hover {
-            color: @btn-primary-border;
-            border-color: @btn-primary-border;
+            border-color: #CCCFD1;
+            background: #fff;
+
+            // .my-fa-clean {
+            //     color: @color-active;
+            // }
+            // color: @btn-primary-border;
+            // border-color: @btn-primary-border;
         }
     }
 }
@@ -1454,6 +1467,8 @@ td {
 // ###应该是用不到了，又要把两行和一起了
 // ###又换回来了。。。
 // ********************************
+
+
 .tools-bar-container {
     @_height: 32px;
     
@@ -1473,6 +1488,7 @@ td {
         line-height: 22px;
         font-size: 12px;
         margin-top: -1px;
+
         
         &._no-icon {
             a {
@@ -1500,8 +1516,14 @@ td {
             .fa {
                 margin: 0 5px;
             }
+
             
-            &:hover {
+            &.disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+            
+            &:not(.disabled):hover {
                 //border-color: @normal-border;
                 //border-color: #CCCFD1;
                 border-color: @color-input-border;
@@ -2433,6 +2455,7 @@ td {
     
     &.cannt-click {
         color: @color-weak;
+        cursor: not-allowed;
     }
     
     .modal-context-container > & {
@@ -5136,7 +5159,7 @@ table.parent-version-link-list {
     margin-left: -18px;
     top: 50%;
     margin-top: -18px;
-    line-height: 36px;
+    // line-height: 36px;
     text-align: center;
     cursor: pointer;
     color: rgba(255, 255, 255, 1);
@@ -5158,7 +5181,7 @@ table.parent-version-link-list {
         height: @_h;
         margin: 0;
         font-size: 16px;
-        line-height: @_h;
+        // line-height: @_h;
         color: rgba(255, 255, 255, 1);
         // color: @color-active;
         //transform: scale(.5);
