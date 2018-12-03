@@ -10,19 +10,71 @@
         body {
             text-align: center;
         }
-        #main {
+        /* #main {
             width: 600px; 
             height: 300px;
             margin: 50px auto;
-        }
+        } */
     </style>
 </head>
 <body>
-    <div id="main"></div>
+    <div style="position: relative;">
+        <div id="main" style="position: absolute; margin: 0; left: 100px; top: 100px; width: 500px; height: 500px;"></div>
+        <div id="back" style="position: absolute; margin: 0; left: 295px; top: 295px; width: 110px; height: 110px;"></div>
+    </div>
     <button id="btn">change data</button>
 
     <script>
         let chart = echarts.init(document.getElementById('main'))
+        var backChart = echarts.init(document.getElementById('back'));
+        
+        backChart.setOption({
+            tooltip: {
+                //title: '返回上一级',
+                formatter: '变成坑'
+            },
+            series : [
+                {
+                    type: 'pie',
+                    radius : '50%',
+                    center: ['50%', '50%'],
+                    label: {
+                        normal: {
+                            show: false, // 把中间的圆 上面指出来的线和label隐藏掉了
+                            //formatter: 'hehehe',
+                            //backgroundColor: '#eee',
+                            //borderColor: '#aaa',
+                            //borderWidth: 1,
+                            //borderRadius: 4,
+                            // shadowBlur:3,
+                            // shadowOffsetX: 2,
+                            // shadowOffsetY: 2,
+                            // shadowColor: '#999',
+                            // padding: [0, 7],
+                        },
+                    },
+                    data:[
+                        {
+                            value:100, 
+                        },
+                        // {value:310, name:'邮件营销'},
+                        // {value:234, name:'联盟广告'},
+                        // {value:135, name:'视频广告'},
+                        // {value:1548, name:'搜索引擎'}
+                    ],
+                    itemStyle: {
+                        color: 'orange'
+                        // emphasis: {
+                        //     // shadowBlur: 10,
+                        //     // shadowOffsetX: 0,
+                        //     // shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        // }
+                    },
+                    zlevel: 10
+                }
+            ]
+        })
+
         let d = [23, 66, 22, 16, 9, 0, 88, 100, 40, 66, 23, 23, 77, 88, 55]
         const btn = document.getElementById('btn')
         let isParent = true
@@ -53,43 +105,84 @@
                 angleAxis: {
                     type: 'category',
                     data: d.map(i => `hehe: ${i}`),
+                    textStyle : {
+                        align: 'right' ,
+                        verticalAlign: 'middle',
+                        // position: 'inner'
+                    },
+            //         label: {
+            //     position: 'inside',
+            //     padding: 3,
+            //     silent: false
+            // },
+                    axisLine: {
+                        show: false, // 坐标轴线，最外面的一圈黑线
+                    },
+                    axisTick: {
+                        show: false, // 坐标刻度，最外面支出去的刻度
+                    },
+
                 },
                 radiusAxis: {
-                    minInterval: 2,
+                    // minInterval: 2,
                     // maxInterval: 10
+                    show:false // 圆下面一圈一圈的刻度
                 },
                 polar: {
                     // radius: 20,
-                    // radius: ['15%', '100%'],
-
+                    // radius: ['30%', '100%'],
+                    // center: ['50%', '50%'],
+                    // center: [250, 250],
                 },
-                series: [{
+                series: [
+                    {
+                    
+                    type: 'bar',
+                    data: d.map(i => 20), // 当前默认好像是 20 一个档，不到20 会有个白边在最外面
+                    coordinateSystem: 'polar',
+                    name: 'C',
+                    stack: 'a',
+                    itemStyle: {
+                        color: '#fff'
+                    },
+                    label: {
+                        position: 'inside',
+                        formatter: 'hehe'
+                    }
+                }, 
+                {
                     type: 'bar',
                     data: d,
+                    // data: d.map(i => i - 15 >= 0 ? i -15 : 10),
                     coordinateSystem: 'polar',
-                    radius: ['10%', '100%'],
+                    // radius: [10, 100],
                     name: 'A',
                     stack: 'a',
-                    children: [{
-                        type: 'bar',
-                        data: d.map(i => 66),
-                        coordinateSystem: 'polar',
-                        name: 'B',
-                        stack: 'a',
+                    itemStyle: {
+                        color: 'lightblue'
+                    }
+                    // children: [{ // 下钻之后显示的东西
+                    //     type: 'bar',
+                    //     data: d.map(i => 66),
+                    //     coordinateSystem: 'polar',
+                    //     name: 'B',
+                    //     stack: 'a',
 
-                    }]
+                    // }]
                 }, {
                     type: 'bar',
                     data: d.map(i => 100 - i),
                     coordinateSystem: 'polar',
+                    // radius: [10, 100],
+
                     name: 'B',
                     stack: 'a',
                     barCategoryGap: '0%' // 放在序列的最后一个才会生效
                 }],
-                legend: {
-                    show: true,
-                    data: ['A', 'B'],
-                }
+                // legend: {
+                //     show: true,
+                //     data: ['A', 'B', 'C'],
+                // }
             };
             return option
         }
