@@ -31,7 +31,7 @@
         backChart.setOption({
             tooltip: {
                 //title: '返回上一级',
-                formatter: '变成坑'
+                formatter: 'back'
             },
             series : [
                 {
@@ -63,7 +63,7 @@
                         // {value:1548, name:'搜索引擎'}
                     ],
                     itemStyle: {
-                        color: 'orange'
+                        color: '#F5D30A'
                         // emphasis: {
                         //     // shadowBlur: 10,
                         //     // shadowOffsetX: 0,
@@ -88,7 +88,11 @@
             }
             isParent = !isParent
             chart.setOption(getOption(data));
+            // document.title = isParent
+            document.getElementById('back').style.display = isParent ? 'block' : 'none'
+            
         })
+        
 
 
         function getOption (d) {
@@ -126,7 +130,7 @@
                 radiusAxis: {
                     // minInterval: 2,
                     // maxInterval: 10
-                    show:false // 圆下面一圈一圈的刻度
+                    show:false, // 圆下面一圈一圈的刻度
                 },
                 polar: {
                     // radius: 20,
@@ -158,8 +162,22 @@
                     // radius: [10, 100],
                     name: 'A',
                     stack: 'a',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'inner',
+                            formatter: "heheheheheh"
+                        }
+                    },
                     itemStyle: {
-                        color: 'lightblue'
+                        normal : {
+                            // color: '#6CBFFC'
+                            color: function (params) {
+                                console.log(params)
+                                return params.data === 100 ? '#009BFF' : '#6CBFFC'
+                            },
+                            // borderColor: 'black'
+                        }
                     }
                     // children: [{ // 下钻之后显示的东西
                     //     type: 'bar',
@@ -174,10 +192,12 @@
                     data: d.map(i => 100 - i),
                     coordinateSystem: 'polar',
                     // radius: [10, 100],
-
+                    itemStyle: {
+                        color: '#E6F1FF',
+                    },
                     name: 'B',
                     stack: 'a',
-                    barCategoryGap: '0%' // 放在序列的最后一个才会生效
+                    barCategoryGap: '1%', // 放在序列的最后一个才会生效
                 }],
                 // legend: {
                 //     show: true,
