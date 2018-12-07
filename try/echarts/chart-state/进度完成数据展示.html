@@ -15,45 +15,54 @@
     <script>
         data = []
         data.lv = [
-            {id: 'a', title: 'Liya 皮肤', finish: 60},
-            {id: 'b', title: 'Liya 贴图', finish: 40},
-            {id: 'c', title: 'Liya 模型', finish: 80},
-            {id: 'd', title: 'Layout', finish: 45},
-            {id: 'e', title: '小鱼模型', finish: 23},
-            {id: 'f', title: '小鱼皮肤', finish: 0},
-            {id: 'g', title: '小鱼贴图', finish: 66},
-            {id: 'h', title: '小镇场景', finish: 12},
+            {id: 'a', title: 'Liya 皮肤', finish: 60, hasChildren: true},
+            {id: 'b', title: 'Liya 贴图', finish: 40, hasChildren: true},
+            {id: 'c', title: 'Liya 模型', finish: 80, hasChildren: true},
+            {id: 'd', title: 'Layout', finish: 45, hasChildren: true},
+            {id: 'e', title: '小鱼模型', finish: 23, hasChildren: true},
+            {id: 'f', title: '小鱼皮肤', finish: 0, hasChildren: true},
+            {id: 'g', title: '小鱼贴图', finish: 66, hasChildren: true},
+            {id: 'h', title: '小镇场景', finish: 12, hasChildren: true},
         ]
         // 对应 lv1.a liya皮肤的任务
         data.lv_a = [
-            {id: 'a_a', title: 'Liya 皮肤 脸', finish: 100},
-            {id: 'a_b', title: 'Liya 皮肤 上身', finish: 60},
-            {id: 'a_c', title: 'Liya 皮肤 下身', finish: 50},
-            {id: 'a_d', title: 'Liya 皮肤 头发', finish: 85},
-            {id: 'a_e', title: 'Liya 皮肤 战斗服装', finish: 53},
-            {id: 'a_f', title: 'Liya 皮肤 宴会服装', finish: 99},
-            {id: 'a_g', title: 'Liya 皮肤 鞋', finish: 66},
-            {id: 'a_h', title: 'Liya 皮肤 武器', finish: 12},
+            {id: 'a_a', title: 'Liya 皮肤 脸', finish: 100, hasChildren: true},
+            {id: 'a_b', title: 'Liya 皮肤 上身', finish: 60, hasChildren: true},
+            {id: 'a_c', title: 'Liya 皮肤 下身', finish: 50, hasChildren: true},
+            {id: 'a_d', title: 'Liya 皮肤 头发', finish: 85, hasChildren: true},
+            {id: 'a_e', title: 'Liya 皮肤 战斗服装', finish: 53, hasChildren: true},
+            {id: 'a_f', title: 'Liya 皮肤 宴会服装', finish: 99, hasChildren: true},
+            {id: 'a_g', title: 'Liya 皮肤 鞋', finish: 66, hasChildren: true},
+            {id: 'a_h', title: 'Liya 皮肤 武器', finish: 12, hasChildren: true},
         ]
         // 对应 lv1.a liya皮肤的任务
         data.lv_a_a = [
-            {id: 'a_a_a', title: 'Liya 皮肤 眼睛', finish: 100},
-            {id: 'a_a_b', title: 'Liya 皮肤 嘴', finish: 60},
-            {id: 'a_a_c', title: 'Liya 皮肤 脸', finish: 50},
-            {id: 'a_a_d', title: 'Liya 皮肤 舌头', finish: 100},
-            {id: 'a_a_e', title: 'Liya 皮肤 鼻子', finish: 99},
+            {id: 'a_a_a', title: 'Liya 皮肤 眼睛', finish: 100, hasChildren: false},
+            {id: 'a_a_b', title: 'Liya 皮肤 嘴', finish: 60, hasChildren: false},
+            {id: 'a_a_c', title: 'Liya 皮肤 脸', finish: 50, hasChildren: false},
+            {id: 'a_a_d', title: 'Liya 皮肤 舌头', finish: 100, hasChildren: false},
+            {id: 'a_a_e', title: 'Liya 皮肤 鼻子', finish: 99, hasChildren: false},
         ]
 
         let currentLevel = 'lv'
 
         /// 返回上一级
-        // @return data
+        //--- @return data
         function back () {
+            console.log(`before level is: ${currentLevel}`)
+
             const lvs = currentLevel.split('_')
             // 当前是跟节点，或者back根本就不应该被调用到
             if (lvs.length <= 1) return
-            currentLevel = (lvs.length - 1).join()
-            return data[currentLevel]
+            console.log('==================')
+            console.log(lvs)
+            console.log('==================')
+            lvs.length--
+            currentLevel = lvs.join('_')
+            render()
+            console.log(`new level is: ${currentLevel}`)
+
+            // return data[currentLevel]
         }
 
         function fetchCurrentData () {
@@ -71,29 +80,66 @@
     <script>
         let chart = echarts.init(document.getElementById('main'))
         var backChart = echarts.init(document.getElementById('back'));
-        let currentDataList = fetchCurrentData()
+        let currentDataList = []
         
-        backChart.setOption({
-            tooltip: {
-                formatter: 'back'
-            },
-            series : [ {
-                type: 'pie',
-                radius : '50%',
-                center: ['50%', '50%'],
-                label: {
-                    normal: {
-                        show: false, // 把中间的圆 上面指出来的线和label隐藏掉了
+
+
+        renderBackChart = function () {
+            if (currentLevel === 'lv') {
+                backChart.setOption({
+                    tooltip: {
+                        show: false
                     },
+                    series : [ {
+                        hoverAnimation: false,
+                        radius : '60%',
+                        itemStyle: { color: 'blue' }
+                    } ]
+                })
+                console.log('>>> option: ')
+                console.log(backChart.getOption())
+            } else {
+                backChart.setOption({
+                    tooltip: {
+                        show: true,
+                    },
+                    series : [ {
+                        hoverAnimation: true,
+                        radius : '50%',
+                        itemStyle: { color: '#F5D30A' },
+                    } ]
+                })
+                console.log('>>> option: ')
+                console.log(backChart.getOption())
+            }
+        }
+
+        initRenderBackChart = function () {
+            backChart.setOption({
+                tooltip: {
+                    show: false,
+                    formatter: 'back'
                 },
-                data:[ { value:100,  }, ],
-                itemStyle: { color: '#F5D30A' },
-                zlevel: 10
-            } ]
-        })
+                series: [ {
+                    type: 'pie',
+                    hoverAnimation: false,
+                    radius : '60%',
+                    center: ['50%', '50%'],
+                    label: {
+                        normal: {
+                            show: false, // 把中间的圆 上面指出来的线和label隐藏掉了
+                        },
+                    },
+                    data: [ { value:100, }, ],
+                    itemStyle: { 
+                        normal: {color: 'blue' }
+                    },
+                    zlevel: 10
+                } ]
+            })
+        }
 
-
-        function getOption (currentDataList) {
+        function getOption () {
             let option = {
                 "tooltip": {
                     "trigger": "axis",
@@ -117,7 +163,6 @@
                     axisTick: {
                         show: false, // 坐标刻度，最外面支出去的刻度
                     },
-
                 },
                 radiusAxis: {
                     show:false, // 圆下面一圈一圈的刻度
@@ -155,7 +200,7 @@
                     itemStyle: {
                         normal : {
                             color: function (params) {
-                                console.log(params)
+                                // console.log(params)
                                 return params.data === 100 ? '#009BFF' : '#6CBFFC'
                             },
                             borderColor: 'white'
@@ -174,25 +219,46 @@
                     stack: 'a',
                     barCategoryGap: '0%', // 放在序列的最后一个才会生效
                 }],
-                // legend: {
-                //     show: true,
-                //     data: ['A', 'B', 'C'],
-                // }
             };
             return option
         }
 
-        chart.setOption(getOption(currentDataList));
+        renderCharts = function () {
+            console.log(`will render - level is: ${currentLevel}`)
+            currentDataList = fetchCurrentData()
+            // console.log(currentDataList)
+            chart.setOption(getOption());
+        }
+
+        render = function (isInit) {
+            if (isInit) {
+                initRenderBackChart()
+                renderCharts()
+            } else {
+                renderCharts()
+                renderBackChart()
+            }
+        }
+
+        render(true)
 
         chart.on('click', function (params) {
-            console.log(currentDataList[params.dataIndex])
+            // console.log(currentDataList[params.dataIndex])
             const triggerItem = currentDataList[params.dataIndex]
-            // currentLevel += '_' + triggerItem.id
-            currentLevel += '_' + 'a'
-            currentDataList = fetchCurrentData()
-            chart.setOption(getOption(currentDataList))
-        });
+            if (triggerItem.hasChildren) {
+                // currentLevel += '_' + triggerItem.id
+                currentLevel += '_' + 'a'
+                // currentDataList = fetchCurrentData()
+                // chart.setOption(getOption(currentDataList))
+                render()
+                console.log(`level is: ${currentLevel}`)
+            } else {
+                console.log('no children')
+            }
 
+        });
+        
+        backChart.on('click', back)
 
     </script>
 </body>
