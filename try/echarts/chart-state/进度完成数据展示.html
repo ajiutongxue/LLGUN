@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="../js/echarts.js"></script>
+    <script src="echarts.js"></script>
     <style>
         body {
             text-align: center;
@@ -14,32 +14,33 @@
     </style>
     <script>
         data = []
+        // 根节点
         data.lv = [
-            {id: 'a', title: 'Liya 皮肤', finish: 60, hasChildren: true},
-            {id: 'b', title: 'Liya 贴图', finish: 40, hasChildren: true},
-            {id: 'c', title: 'Liya 模型', finish: 80, hasChildren: true},
-            {id: 'd', title: 'Layout', finish: 45, hasChildren: true},
+            {id: 'a', title: 'Liya 皮肤', finish: 60, hasChildren: true}, // 点了应该显示 data.lv_a 的数据
+            {id: 'b', title: 'Liya 贴图', finish: 40, hasChildren: true}, // 点了应该显示 data.lv_b 的数据
+            {id: 'c', title: 'Liya 模型', finish: 80, hasChildren: true}, // 点了应该显示 data.lv_c 的数据 
+            {id: 'd', title: 'Layout', finish: 45, hasChildren: true}, //  。。。 其他同理
             {id: 'e', title: '小鱼模型', finish: 23, hasChildren: true},
             {id: 'f', title: '小鱼皮肤', finish: 0, hasChildren: true},
             {id: 'g', title: '小鱼贴图', finish: 66, hasChildren: true},
             {id: 'h', title: '小镇场景', finish: 12, hasChildren: true},
         ]
-        // 对应 lv1.a liya皮肤的任务
+        // 对应 lv.a liya皮肤的任务
         data.lv_a = [
-            {id: 'a_a', title: 'Liya 皮肤 脸', finish: 100, hasChildren: true},
-            {id: 'a_b', title: 'Liya 皮肤 上身', finish: 60, hasChildren: true},
-            {id: 'a_c', title: 'Liya 皮肤 下身', finish: 50, hasChildren: true},
+            {id: 'a_a', title: 'Liya 皮肤 脸', finish: 100, hasChildren: true}, // 点了应显示 data.lv_a_a
+            {id: 'a_b', title: 'Liya 皮肤 上身', finish: 60, hasChildren: true}, // 点了应显示 data.lv_a_b
+            {id: 'a_c', title: 'Liya 皮肤 下身', finish: 50, hasChildren: true}, // 点了应显示 data.lv_a_c
             {id: 'a_d', title: 'Liya 皮肤 头发', finish: 85, hasChildren: true},
             {id: 'a_e', title: 'Liya 皮肤 战斗服装', finish: 53, hasChildren: true},
             {id: 'a_f', title: 'Liya 皮肤 宴会服装', finish: 99, hasChildren: true},
             {id: 'a_g', title: 'Liya 皮肤 鞋', finish: 66, hasChildren: true},
             {id: 'a_h', title: 'Liya 皮肤 武器', finish: 12, hasChildren: true},
         ]
-        // 对应 lv1.a liya皮肤的任务
+        // 对应 lv.a liya皮肤的任务
         data.lv_a_a = [
-            {id: 'a_a_a', title: 'Liya 皮肤 眼睛', finish: 100, hasChildren: false},
-            {id: 'a_a_b', title: 'Liya 皮肤 嘴', finish: 60, hasChildren: false},
-            {id: 'a_a_c', title: 'Liya 皮肤 脸', finish: 50, hasChildren: false},
+            {id: 'a_a_a', title: 'Liya 皮肤 眼睛', finish: 100, hasChildren: false}, // 点了应显示 data.lv_a_a_a
+            {id: 'a_a_b', title: 'Liya 皮肤 嘴', finish: 60, hasChildren: false}, // 点了应显示 data.lv_a_a_b
+            {id: 'a_a_c', title: 'Liya 皮肤 脸', finish: 50, hasChildren: false}, // 点了应显示 data.lv_a_a_c
             {id: 'a_a_d', title: 'Liya 皮肤 舌头', finish: 100, hasChildren: false},
             {id: 'a_a_e', title: 'Liya 皮肤 鼻子', finish: 99, hasChildren: false},
         ]
@@ -47,22 +48,19 @@
         let currentLevel = 'lv'
 
         /// 返回上一级
-        //--- @return data
         function back () {
             console.log(`before level is: ${currentLevel}`)
 
             const lvs = currentLevel.split('_')
             // 当前是跟节点，或者back根本就不应该被调用到
             if (lvs.length <= 1) return
-            console.log('==================')
+            console.log('=== ===============')
             console.log(lvs)
             console.log('==================')
             lvs.length--
             currentLevel = lvs.join('_')
             render()
             console.log(`new level is: ${currentLevel}`)
-
-            // return data[currentLevel]
         }
 
         function fetchCurrentData () {
@@ -74,7 +72,7 @@
 <body>
     <div style="position: relative;">
         <div id="main" style="position: absolute; margin: 0; left: 100px; top: 100px; width: 500px; height: 500px;"></div>
-        <div id="back" style="position: absolute; margin: 0; left: 295px; top: 295px; width: 110px; height: 110px;"></div>
+        <div id="back" style="position: absolute; margin: 0; left: 315px; top: 315px; width: 70px; height: 70px; border-radius: 50%; background: #fff;"></div>
     </div>
 
     <script>
@@ -82,8 +80,6 @@
         var backChart = echarts.init(document.getElementById('back'));
         let currentDataList = []
         
-
-
         renderBackChart = function () {
             if (currentLevel === 'lv') {
                 backChart.setOption({
@@ -92,8 +88,8 @@
                     },
                     series : [ {
                         hoverAnimation: false,
-                        radius : '60%',
-                        itemStyle: { color: 'blue' }
+                        radius : '0%',
+                        itemStyle: { color: '#fff' }
                     } ]
                 })
                 console.log('>>> option: ')
@@ -105,7 +101,7 @@
                     },
                     series : [ {
                         hoverAnimation: true,
-                        radius : '50%',
+                        radius : '65%',
                         itemStyle: { color: '#F5D30A' },
                     } ]
                 })
@@ -123,7 +119,7 @@
                 series: [ {
                     type: 'pie',
                     hoverAnimation: false,
-                    radius : '60%',
+                    radius : '0%',
                     center: ['50%', '50%'],
                     label: {
                         normal: {
@@ -132,7 +128,7 @@
                     },
                     data: [ { value:100, }, ],
                     itemStyle: { 
-                        normal: {color: 'blue' }
+                        normal: {color: 'white' }
                     },
                     zlevel: 10
                 } ]
@@ -247,9 +243,7 @@
             const triggerItem = currentDataList[params.dataIndex]
             if (triggerItem.hasChildren) {
                 // currentLevel += '_' + triggerItem.id
-                currentLevel += '_' + 'a'
-                // currentDataList = fetchCurrentData()
-                // chart.setOption(getOption(currentDataList))
+                currentLevel += '_' + 'a' // 演示效果，写死是a，应该是用上面代码拼出来的
                 render()
                 console.log(`level is: ${currentLevel}`)
             } else {
