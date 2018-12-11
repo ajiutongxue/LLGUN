@@ -33,7 +33,8 @@ import {MyFnComponent} from './my-fn/my-fn.component';
 import { ImgsAsMovComponent } from './fus/imgs-as-mov/imgs-as-mov.component';
 import { PaintFrameDirective } from './fus/paint-frame.directive';
 
-import { FileUploadModule } from 'ng2-file-upload';
+// 公司的环境，说找不到这个东西 20181211
+// import { FileUploadModule } from 'ng2-file-upload';
 
 import { AgGridModule } from 'ag-grid-angular/main';
 import { GridComponent } from './grid/grid.component';
@@ -221,7 +222,7 @@ const appRoutes: Routes = [
         BrowserModule,
         MyDatePickerModule, ReactiveFormsModule, FormsModule,
         TreeModule,
-        FileUploadModule,
+        // FileUploadModule,
         AgGridModule.withComponents([GridStringRenderer, GridStringInput, NormalStringRendererComponent, GridUserComponent, GridUserRender],
         ),
         RouterModule.forRoot(appRoutes)
