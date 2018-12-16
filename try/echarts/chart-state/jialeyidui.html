@@ -71,8 +71,8 @@
 </head>
 <body>
     <div style="position: relative;">
-        <div id="main" style="position: absolute; margin: 0; left: 100px; top: 100px; width: 900px; height: 600px;"></div>
-        <div id="back" style="position: absolute; margin: 0; left: 510px; top: 360px; width: 80px; height: 80px; border-radius: 50%; background: #fff;"></div>
+        <div id="main" style="position: absolute; margin: 0; left: 100px; top: 100px; width: 500px; height: 500px;"></div>
+        <div id="back" style="position: absolute; margin: 0; left: 315px; top: 315px; width: 70px; height: 70px; border-radius: 50%; background: #fff;"></div>
     </div>
 
     <script>
@@ -110,6 +110,7 @@
             }
         }
 
+        // 返回按钮
         initRenderBackChart = function () {
             backChart.setOption({
                 tooltip: {
@@ -142,8 +143,7 @@
                     "axisPointer": {
                         "type": "shadow"
                     },
-                    // formatter: '{a1}: {c1}<br />{a2}: {c2}'
-                    formatter: '{a1}: {c1}'
+                    formatter: '{a1}: {c1}<br />{a2}: {c2}'
                 },
                 action: {
                 },
@@ -153,10 +153,39 @@
                         return {
                             value: i.title,
                             textStyle: {
-                                color: '#fff',
-                                backgroundColor: '#000',
-                                padding: [5, 10],
-                                borderRadius: 15
+                                color: 'pink',
+                                backgroundColor: 'blue',
+                                align: 'center',
+                                rich: {
+                                    a: {
+                                        color: '#999',
+                                        lineHeight: 22,
+                                        align: 'center'
+                                    },
+                                    // abg: {
+                                    //     backgroundColor: '#333',
+                                    //     width: '100%',
+                                    //     align: 'right',
+                                    //     height: 22,
+                                    //     borderRadius: [4, 4, 0, 0]
+                                    // },
+                                    hr: {
+                                        borderColor: '#aaa',
+                                        width: '100%',
+                                        borderWidth: 0.5,
+                                        height: 0
+                                    },
+                                    b: {
+                                        fontSize: 16,
+                                        lineHeight: 33
+                                    },
+                                    per: {
+                                        color: '#eee',
+                                        backgroundColor: '#334455',
+                                        padding: [2, 4],
+                                        borderRadius: 2
+                                    }
+                                }
                             }
                         }
                     }),
@@ -165,6 +194,45 @@
                     },
                     axisTick: {
                         show: false, // 坐标刻度，最外面支出去的刻度
+                    },
+                    axisLable: {
+                        formatter: 'asfasf',
+                        rich: {
+                        a: {
+                            color: '#999',
+                            lineHeight: 22,
+                            align: 'center'
+                        },
+                        // abg: {
+                        //     backgroundColor: '#333',
+                        //     width: '100%',
+                        //     align: 'right',
+                        //     height: 22,
+                        //     borderRadius: [4, 4, 0, 0]
+                        // },
+                        hr: {
+                            borderColor: '#aaa',
+                            width: '100%',
+                            borderWidth: 0.5,
+                            height: 0
+                        },
+                        b: {
+                            fontSize: 16,
+                            lineHeight: 33
+                        },
+                        per: {
+                            color: '#eee',
+                            backgroundColor: '#334455',
+                            padding: [2, 4],
+                            borderRadius: 2
+                        }
+                    }
+                    },
+                    axisPointer: {
+                        label: {
+                            show: true,
+                            formatter: 'hh'
+                        }
                     },
                 },
                 radiusAxis: {
@@ -180,12 +248,46 @@
                         name: 'C',
                         stack: 'a',
                         itemStyle: {
-                            color: '#fff',
+                            color: '#fff'
                         },
+                        // label: {
+                        //     position: 'inside',
+                        //     formatter: 'hehe'
+                        // },
                         label: {
-                            position: 'inside',
-                            formatter: 'hehe'
+                            normal: {
+                                position: 'inner'
+                            },rich: {
+                        a: {
+                            color: '#999',
+                            lineHeight: 22,
+                            align: 'center'
+                        },
+                        // abg: {
+                        //     backgroundColor: '#333',
+                        //     width: '100%',
+                        //     align: 'right',
+                        //     height: 22,
+                        //     borderRadius: [4, 4, 0, 0]
+                        // },
+                        hr: {
+                            borderColor: '#aaa',
+                            width: '100%',
+                            borderWidth: 0.5,
+                            height: 0
+                        },
+                        b: {
+                            fontSize: 16,
+                            lineHeight: 33
+                        },
+                        per: {
+                            color: '#eee',
+                            backgroundColor: '#334455',
+                            padding: [2, 4],
+                            borderRadius: 2
                         }
+                    }
+                        },
                     }, 
                 {
                     type: 'bar',
@@ -193,28 +295,32 @@
                     coordinateSystem: 'polar',
                     name: '已完成',
                     stack: 'a',
+                    // label: {
+                    //     normal: {
+                    //         show: true,
+                    //         position: 'insideRight',
+                    //         formatter: "heheheheheh"
+                    //     }
+                    // },
                     label: {
-                        normal: {
-                            show: true,
-                            position: 'inner',
-                            formatter: "heheheheheh"
-                        }
+                        position: 'outside',
+                        padding: 3,
+                        silent: false
                     },
                     itemStyle: {
                         normal : {
-                            color: function (params) {
-                                // console.log(params)
-                                // return params.data === 100 ? '#009BFF' : '#6CBFFC'
-                                if (params.data === 100) {
-                                    return '#009BFF'
-                                } 
-                                return new echarts.graphic.RadialGradient(0, 0, 1,  [{
-                                      offset: 0, color: '#6CBFFC' // 0% 处的颜色
-                                    }, {
-                                      offset: 1, color: '#009BFF' // 100% 处的颜色
-                                    }], false)
-                                
-                            },
+                            // color: function (params) {
+                            //     // console.log(params)
+                            //     return params.data === 100 ? '#009BFF' : '#6CBFFC'
+                            // },
+                            // color: '#c23531', 
+                            color:  new echarts.graphic.RadialGradient(0, 0, 1,  [{
+                              offset: 0, color: '#cc0099' // 0% 处的颜色
+                            }, {
+                              offset: 1, color: '#99ff99' // 100% 处的颜色
+                            }], false),
+                            // shadowBlur: 200, 
+                            // shadowColor: 'rgba(0, 0, 0, 1)',
                             borderColor: 'white'
                         }
                     }
@@ -225,9 +331,19 @@
                     // radius: [10, 100],
                     itemStyle: {
                         color: '#E6F1FF',
+                        // color: {
+                        //     type: 'linear',
+                        //     x: -1,
+                        //     y: 0,
+                        //     r: 1,
+                        //     colorStops: [{
+                        //         offset: 0, color: 'red' // 0% 处的颜色
+                        //     }, {
+                        //         offset: 1, color: 'blue' // 100% 处的颜色
+                        //     }],
+                        //     globalCoord: false // 缺省为 false
+                        // },
                         borderColor: "white",
-                        shadowBlur: 50,
-                        shadowColor: 'rgba(0, 0, 0, 0.3)'
                     },
                     name: '未完成',
                     stack: 'a',
