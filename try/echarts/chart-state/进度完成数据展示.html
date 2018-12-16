@@ -142,8 +142,16 @@
                     "axisPointer": {
                         "type": "shadow"
                     },
+                    // alwaysShowContent: true,
                     // formatter: '{a1}: {c1}<br />{a2}: {c2}'
-                    formatter: '{a1}: {c1}'
+                    formatter: '{a1}: {c1}',
+                    // emphasis: {
+                    //     itemStyle: {
+                    //         // 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
+                    //         color: 'red',
+                    //         shadowColor: 'pink'
+                    //     }
+                    // }
                 },
                 action: {
                 },
@@ -151,12 +159,12 @@
                     type: 'category',
                     data: currentDataList.map(i => {
                         return {
-                            value: i.title,
+                            value: i.title + '\n' + i.finish + '%',
                             textStyle: {
                                 color: '#fff',
-                                backgroundColor: '#000',
+                                backgroundColor: '#2778AF',
                                 padding: [5, 10],
-                                borderRadius: 15
+                                borderRadius: 40
                             }
                         }
                     }),
@@ -166,6 +174,13 @@
                     axisTick: {
                         show: false, // 坐标刻度，最外面支出去的刻度
                     },
+                    // emphasis: {
+                    //     itemStyle: {
+                    //         // 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
+                    //         color: 'red',
+                    //         shadowColor: 'pink'
+                    //     }
+                    // }
                 },
                 radiusAxis: {
                     show:false, // 圆下面一圈一圈的刻度
