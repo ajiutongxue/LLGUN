@@ -13,6 +13,11 @@
 
     </style>
     <script>
+        // todo: 
+        // 1. 至少需要四种颜色，所以，还是定义一个色板，让他们自动去取颜色
+        // 2. 改类似这样 http://www.echartsjs.com/examples/editor.html?c=pie-rich-text
+
+
         data = []
         // 根节点
         data.lv = [
@@ -69,10 +74,13 @@
 
     </script>
 </head>
-<body>
+<body style="background: #e9e9e9;">
     <div style="position: relative;">
-        <div id="main" style="position: absolute; margin: 0; left: 100px; top: 100px; width: 900px; height: 600px;"></div>
-        <div id="back" style="position: absolute; margin: 0; left: 510px; top: 360px; width: 80px; height: 80px; border-radius: 50%; background: #fff;"></div>
+        <div id="main" style="position: absolute; margin: 0; left: 100px; top: 0px; width: 900px; height: 600px;"></div>
+        <div id="back" style="position: absolute; margin: 0; left: 510px; top: 260px; width: 80px; height: 80px; border-radius: 50%; background: #fff;"></div>
+        <div class="legend-box">
+            <div class="legend-finished"></div>
+        </div>
     </div>
 
     <script>
@@ -114,7 +122,7 @@
             backChart.setOption({
                 tooltip: {
                     show: false,
-                    formatter: 'back'
+                    formatter: '返回上一级'
                 },
                 series: [ {
                     type: 'pie',
@@ -140,18 +148,13 @@
                 "tooltip": {
                     "trigger": "axis",
                     "axisPointer": {
-                        "type": "shadow"
+                        "type": "shadow",
+                        shadowStyle: {
+                            color: 'rgba(255, 255, 255, .2)'
+                        }
                     },
-                    // alwaysShowContent: true,
                     // formatter: '{a1}: {c1}<br />{a2}: {c2}'
-                    formatter: '{a1}: {c1}',
-                    // emphasis: {
-                    //     itemStyle: {
-                    //         // 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
-                    //         color: 'red',
-                    //         shadowColor: 'pink'
-                    //     }
-                    // }
+                    formatter: '{a1}: {c1}%',
                 },
                 action: {
                 },
@@ -159,12 +162,28 @@
                     type: 'category',
                     data: currentDataList.map(i => {
                         return {
-                            value: i.title + '\n' + i.finish + '%',
+                            value: ['{t|' + i.title + '}', '{spec|}', '{fin|' + i.finish + '%' + '}'].join('\n'),
                             textStyle: {
-                                color: '#fff',
-                                backgroundColor: '#2778AF',
                                 padding: [5, 10],
-                                borderRadius: 40
+                                borderRadius: 40,
+                                rich: {
+                                    t: {
+                                        color: '#444',
+                                        fontWeight: 'bold'
+                                    },
+                                    spec: {
+                                        height:5,
+                                    },
+                                    fin: {
+                                        color: '#fff',
+                                        backgroundColor: '#5793CF',
+                                        height: 14,
+                                        lineHeight: 14,
+                                        borderRadius: 10,
+                                        top: 30,
+                                        padding: [0, 10]
+                                    }
+                                }
                             }
                         }
                     }),
@@ -174,13 +193,6 @@
                     axisTick: {
                         show: false, // 坐标刻度，最外面支出去的刻度
                     },
-                    // emphasis: {
-                    //     itemStyle: {
-                    //         // 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
-                    //         color: 'red',
-                    //         shadowColor: 'pink'
-                    //     }
-                    // }
                 },
                 radiusAxis: {
                     show:false, // 圆下面一圈一圈的刻度
@@ -202,52 +214,56 @@
                             formatter: 'hehe'
                         }
                     }, 
-                {
-                    type: 'bar',
-                    data: currentDataList.map(i => i.finish),
-                    coordinateSystem: 'polar',
-                    name: '已完成',
-                    stack: 'a',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'inner',
-                            formatter: "heheheheheh"
+                    {
+                        type: 'bar',
+                        data: currentDataList.map(i => i.finish),
+                        coordinateSystem: 'polar',
+                        name: '已完成',
+                        stack: 'a',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'inner',
+                                formatter: "heheheheheh"
+                            }
+                        },
+                        itemStyle: {
+                            normal : {
+                                color: function (params) {
+                                    // console.log(params)
+                                    // return params.data === 100 ? '#009BFF' : '#6CBFFC'
+                                    if (params.data === 100) {
+                                        // return '#009BFF'
+                                        return '#0065FC'
+                                    } 
+                                    return new echarts.graphic.RadialGradient(0, 0, 1,  [{
+                                          offset: 0, color: '#6CBFFC' // 0% 处的颜色
+                                        }, {
+                                          offset: 1, color: '#009BFF' // 100% 处的颜色
+                                        }], false)
+                                    
+                                },
+                                borderColor: 'white'
+                            }
                         }
-                    },
-                    itemStyle: {
-                        normal : {
-                            color: function (params) {
-                                // console.log(params)
-                                // return params.data === 100 ? '#009BFF' : '#6CBFFC'
-                                if (params.data === 100) {
-                                    return '#009BFF'
-                                } 
-                                return new echarts.graphic.RadialGradient(0, 0, 1,  [{
-                                      offset: 0, color: '#6CBFFC' // 0% 处的颜色
-                                    }, {
-                                      offset: 1, color: '#009BFF' // 100% 处的颜色
-                                    }], false)
-                                
-                            },
-                            borderColor: 'white'
-                        }
-                    }
-                }, {
-                    type: 'bar',
-                    data: currentDataList.map(i => 100 - i.finish),
-                    coordinateSystem: 'polar',
-                    // radius: [10, 100],
-                    itemStyle: {
-                        color: '#E6F1FF',
-                        borderColor: "white",
-                        shadowBlur: 50,
-                        shadowColor: 'rgba(0, 0, 0, 0.3)'
-                    },
-                    name: '未完成',
-                    stack: 'a',
-                    barCategoryGap: '0%', // 放在序列的最后一个才会生效
-                }],
+                    }, 
+                    {
+                        type: 'bar',
+                        data: currentDataList.map(i => 100 - i.finish),
+                        coordinateSystem: 'polar',
+                        // radius: [10, 100],
+                        itemStyle: {
+                            color: '#E6F1FF',
+                            borderColor: "white",
+                            shadowBlur: 50,
+                            // shadowColor: 'rgba(0, 0, 0, 0.3)',
+                            shadowColor: 'rgba(0,128,255, .2)'
+                        },
+                        name: '未完成',
+                        stack: 'a',
+                        barCategoryGap: '0%', // 放在序列的最后一个才会生效
+                    }, 
+                ],
             };
             return option
         }
@@ -282,7 +298,7 @@
             } else {
                 console.log('no children')
             }
-
+ 
         });
         
         backChart.on('click', back)
