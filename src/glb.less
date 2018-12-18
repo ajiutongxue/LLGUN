@@ -6344,3 +6344,32 @@ color:  #54aae4;
         left: -2px; color: inherit; right: unset; bottom: unset;
     }
 }
+
+// 创建 - 包含在弹出框中
+.create-btn-list {
+    margin-left: 30px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    display: inline-block;
+
+    .create-btn-item {
+        line-height: 24px;
+        border: 1px solid #555;
+        padding-left: 10px;
+        width: 140px;
+        margin-bottom: 6px;
+        color: #444;
+        background: #fff;
+        cursor: pointer;
+        
+        .fa {
+            font-size: 1.2em;
+        }
+
+        &:hover {
+            color: #222;
+            border-color: rgba(2, 147, 221, .8);
+            box-shadow: 0 0 4px rgba(2, 147, 221, .5);
+        }
+    }
+}
