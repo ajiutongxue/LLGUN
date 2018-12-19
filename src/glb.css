@@ -352,10 +352,10 @@ button.more-fields {
 }
 .btn.btn-primary {
   background: #54aae4;
-  border-color: #0293DD;
+  border-color: #0293dd;
 }
 .btn.btn-primary:hover:not(.btn-disabled) {
-  background: #0293DD;
+  background: #0293dd;
 }
 .btn.btn-warning {
   background: #E30000;
@@ -2112,7 +2112,7 @@ context-menu {
   padding: 0 0 0 10px;
 }
 .jqx-window .ll-modal-header .ll-modal-header-icon {
-  color: #0293DD;
+  color: #0293dd;
   transform: scale(1.2);
   margin-right: 0.5em;
 }
@@ -2762,7 +2762,7 @@ context-menu {
 }
 .ll-side-tree .tree-node-leaf.tree-node-active {
   background: #54aae4;
-  border: 1px solid #0293DD;
+  border: 1px solid #0293dd;
 }
 .ll-side-tree .tree-node-leaf.tree-node-active .node-wrapper {
   background: #54aae4;
@@ -4441,4 +4441,28 @@ filter-row .remove-btn:hover {
   color: inherit;
   right: unset;
   bottom: unset;
+}
+.create-btn-list {
+  margin-left: 30px;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
+.create-btn-list .create-btn-item {
+  line-height: 24px;
+  border: 1px solid #555;
+  padding-left: 10px;
+  width: 140px;
+  margin-bottom: 6px;
+  color: #444;
+  background: #fff;
+  cursor: pointer;
+}
+.create-btn-list .create-btn-item .fa {
+  font-size: 1.2em;
+}
+.create-btn-list .create-btn-item:hover {
+  color: #222;
+  border-color: rgba(2, 147, 221, 0.8);
+  box-shadow: 0 0 4px rgba(2, 147, 221, 0.5);
 }

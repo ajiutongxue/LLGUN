@@ -225,7 +225,10 @@
 .label-box {
     margin: 5px 0 20px;
     &.contain-label-string {
-        margin-left: -20px;
+        // 这个搞不清楚加上干什么的了，导致了一个错位
+        // 先注释调
+        // yang 2018/12/19
+        // margin-left: -20px;
     }
 }
 .label-box.download {
@@ -315,6 +318,10 @@
     cursor: pointer;
     // for label-string-input
     margin-left: -20px;
+
+    &.title--not-edit {
+        margin-left: 0;
+    }
 }
 .content {
     line-height: 1.8em;
