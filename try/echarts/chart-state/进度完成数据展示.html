@@ -76,7 +76,8 @@
 </head>
 <body style="background: #e9e9e9;">
     <div style="position: relative;">
-        <div id="main" style="position: absolute; margin: 0; left: 100px; top: 0px; width: 900px; height: 600px;"></div>
+        <!-- w:900px l:100px; w: 80px l:510px  -->
+        <div id="main" style="position: absolute; margin: 0; left: 100px; top: 0px; width: 400px; height: 600px;"></div>
         <div id="back" style="position: absolute; margin: 0; left: 510px; top: 260px; width: 80px; height: 80px; border-radius: 50%; background: #fff;"></div>
         <div class="legend-box">
             <div class="legend-finished"></div>
@@ -87,6 +88,7 @@
         let chart = echarts.init(document.getElementById('main'))
         var backChart = echarts.init(document.getElementById('back'));
         let currentDataList = []
+        let tmp_click_index = 0; // 临时使用，记录点了序列里面的第几个扇形，以后真是数据，不使用这样方法
         
         renderBackChart = function () {
             if (currentLevel === 'lv') {
@@ -142,9 +144,11 @@
                 } ]
             })
         }
-
+        colorList = ['#007BC7', '#B8D200', '#009FA8', '#22AC38', '#F5A500', '#956134', '#EA5504', '#E5005A', '#AF3E92', '#E4007F', '#591A86'
+                   , '#E4007F', '#AF3E92', '#E5005A', '#EA5504', '#956134', '#F5A500', '#22AC38', '#009FA8', '#B8D200','#007BC7', '#591A86']
         function getOption () {
             let option = {
+                // color: 
                 "tooltip": {
                     "trigger": "axis",
                     "axisPointer": {
@@ -230,17 +234,22 @@
                         itemStyle: {
                             normal : {
                                 color: function (params) {
-                                    // console.log(params)
+                                    console.log('params')
+                                    console.log(params)
+                                    if (currentLevel.split('_').length > 1) {
+                                        return colorList[tmp_click_index]
+                                    }
+                                    return colorList[params.dataIndex]
                                     // return params.data === 100 ? '#009BFF' : '#6CBFFC'
-                                    if (params.data === 100) {
-                                        // return '#009BFF'
-                                        return '#0065FC'
-                                    } 
-                                    return new echarts.graphic.RadialGradient(0, 0, 1,  [{
-                                          offset: 0, color: '#6CBFFC' // 0% 处的颜色
-                                        }, {
-                                          offset: 1, color: '#009BFF' // 100% 处的颜色
-                                        }], false)
+                                //     if (params.data === 100) {
+                                //         // return '#009BFF'
+                                //         return '#0065FC'
+                                //     } 
+                                //     return new echarts.graphic.RadialGradient(0, 0, 1,  [{
+                                //           offset: 0, color: '#6CBFFC' // 0% 处的颜色
+                                //         }, {
+                                //           offset: 1, color: '#009BFF' // 100% 处的颜色
+                                //         }], false)
                                     
                                 },
                                 borderColor: 'white'
@@ -290,6 +299,9 @@
         chart.on('click', function (params) {
             // console.log(currentDataList[params.dataIndex])
             const triggerItem = currentDataList[params.dataIndex]
+            if (currentLevel == 'lv') {
+                tmp_click_index = params.dataIndex // 只记录第一层被点击的序列，也就是第一层点的扇形的颜色用到了所有的后代上面
+            }
             if (triggerItem.hasChildren) {
                 // currentLevel += '_' + triggerItem.id
                 currentLevel += '_' + 'a' // 演示效果，写死是a，应该是用上面代码拼出来的
@@ -298,6 +310,7 @@
             } else {
                 console.log('no children')
             }
+            
  
         });
         

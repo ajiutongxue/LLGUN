@@ -230,6 +230,13 @@
         // yang 2018/12/19
         // margin-left: -20px;
     }
+
+    .label-box-title {
+        display: inline-block;
+        height: 16px;
+        line-height: 16px;
+        overflow: hidden;
+    }
 }
 .label-box.download {
     border: 1px solid var(--light-border-color);
@@ -431,34 +438,36 @@
     text-align: center;
     line-height:  40px;
     // 统一和grid的翻页样式
-    // a {
-    //     color: var(--link-color);
-    //     margin: 0 5px;
-    //     font-size:  12px;
-
-    //     &:not(.current-pagination):hover {
-    //         color: var(--active-color);
-    //         cursor: pointer;
-    //     }
-
-    //     &.current-pagination {
-    //         color: var(--third-words-color);
-    //     }
-    // }
-    font-size: 12px;
-
     a {
+        color: var(--link-color);
         margin: 0 5px;
-        cursor: pointer;
-        &:hover {
+        font-size:  12px;
+
+        &:not(.current-pagination):hover {
             color: var(--active-color);
+            cursor: pointer;
+        }
+
+        &.current-pagination {
+            color: var(--third-words-color);
         }
     }
-    input {
-        width: 30px;
-        height: 20px;
-        text-align: center;
-    }
+
+    // 来不及，暂时先用回原来样式，下面是和grid样式一样的
+    // font-size: 12px;
+
+    // a {
+    //     margin: 0 5px;
+    //     cursor: pointer;
+    //     &:hover {
+    //         color: var(--active-color);
+    //     }
+    // }
+    // input {
+    //     width: 30px;
+    //     height: 20px;
+    //     text-align: center;
+    // }
 }
 
 

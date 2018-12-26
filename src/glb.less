@@ -585,6 +585,11 @@ td {
     }
 }
 
+.ll-left-piechart-container {
+    position: relative;
+    flex: 0 0 480px;
+}
+
 .ll-main-container {
     position: relative;
     flex: 1 1 auto;
@@ -593,6 +598,7 @@ td {
     &._homepage {
         // flex: 0 0 500px;
         flex: 0 0 auto;
+        border-left: 1px solid #ccc;
     }
 
     .ll-drag-line {
@@ -6426,6 +6432,14 @@ color:  #54aae4;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-align: center;
+
+            > span {
+                display: inline;
+                color: inherit;
+                overflow: unset;
+                text-overflow: unset;
+            }
     
             &:hover {
                 border-color: var(--active-color);

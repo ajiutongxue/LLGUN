@@ -40,7 +40,7 @@ export class ProjectHomepageComponent implements OnInit {
     initDom() {
         // $('.homepage-content').css('minHeight', $('.ll-right-container').height() - this.$tabsBox.height());
         $('.homepage-content').css('minHeight', $(window).height() - this.$tabsBox.height() - this.boundaryTop - this.scrollBarBoundaryTop - 1);
-        this.initWidth = $(window).width() - 480;
+        this.initWidth = $(window).width() - 480 - 480; // 左边又空了480 放饼图
         this.siderHeight = this.$siderBox.height();
 
         this.$scrollBox.on('scroll', () => {

@@ -109,6 +109,16 @@
             <a class="change-face"><i class="fa fa-pencil"></i> 更改封面</a>
         </div>
         <div class="homepage-main-content-box">
+            <div class="ll-left-piechart-container">
+
+                <div style="position: relative; width: 400px; height: 400px;">
+                    <div id="chart-main" style="position: absolute; margin: 0; left: 0px; top: 0px; width: 500px; height: 500px;"></div>
+                    <div id="chart-back" style="position: absolute; margin: 0; left: 20px; top: 260px; width: 80px; height: 80px; border-radius: 50%; background: #fff;"></div>
+                    <div class="legend-box">
+                        <div class="legend-finished"></div>
+                    </div>
+                </div>
+            </div>
             <div class="ll-main-container _homepage" [style.flexBasis.px]="initWidth">
                 <div class="ll-drag-line" [minSize]="400" [maxSize]="2900" appDragSetWidth></div>
 
@@ -207,4 +217,287 @@
             </div>
         </div>
     </div>
+    <script>
+            // todo: 
+            // 1. 至少需要四种颜色，所以，还是定义一个色板，让他们自动去取颜色
+            // 2. 改类似这样 http://www.echartsjs.com/examples/editor.html?c=pie-rich-text
+    
+    
+            data = []
+            // 根节点
+            data.lv = [
+                {id: 'a', title: 'Liya 皮肤', finish: 60, hasChildren: true}, // 点了应该显示 data.lv_a 的数据
+                {id: 'b', title: 'Liya 贴图', finish: 40, hasChildren: true}, // 点了应该显示 data.lv_b 的数据
+                {id: 'c', title: 'Liya 模型', finish: 80, hasChildren: true}, // 点了应该显示 data.lv_c 的数据 
+                {id: 'd', title: 'Layout', finish: 45, hasChildren: true}, //  。。。 其他同理
+                {id: 'e', title: '小鱼模型', finish: 23, hasChildren: true},
+                {id: 'f', title: '小鱼皮肤', finish: 0, hasChildren: true},
+                {id: 'g', title: '小鱼贴图', finish: 66, hasChildren: true},
+                {id: 'h', title: '小镇场景', finish: 12, hasChildren: true},
+            ]
+            // 对应 lv.a liya皮肤的任务
+            data.lv_a = [
+                {id: 'a_a', title: 'Liya 皮肤 脸', finish: 100, hasChildren: true}, // 点了应显示 data.lv_a_a
+                {id: 'a_b', title: 'Liya 皮肤 上身', finish: 60, hasChildren: true}, // 点了应显示 data.lv_a_b
+                {id: 'a_c', title: 'Liya 皮肤 下身', finish: 50, hasChildren: true}, // 点了应显示 data.lv_a_c
+                {id: 'a_d', title: 'Liya 皮肤 头发', finish: 85, hasChildren: true},
+                {id: 'a_e', title: 'Liya 皮肤 战斗服装', finish: 53, hasChildren: true},
+                {id: 'a_f', title: 'Liya 皮肤 宴会服装', finish: 99, hasChildren: true},
+                {id: 'a_g', title: 'Liya 皮肤 鞋', finish: 66, hasChildren: true},
+                {id: 'a_h', title: 'Liya 皮肤 武器', finish: 12, hasChildren: true},
+            ]
+            // 对应 lv.a liya皮肤的任务
+            data.lv_a_a = [
+                {id: 'a_a_a', title: 'Liya 皮肤 眼睛', finish: 100, hasChildren: false}, // 点了应显示 data.lv_a_a_a
+                {id: 'a_a_b', title: 'Liya 皮肤 嘴', finish: 60, hasChildren: false}, // 点了应显示 data.lv_a_a_b
+                {id: 'a_a_c', title: 'Liya 皮肤 脸', finish: 50, hasChildren: false}, // 点了应显示 data.lv_a_a_c
+                {id: 'a_a_d', title: 'Liya 皮肤 舌头', finish: 100, hasChildren: false},
+                {id: 'a_a_e', title: 'Liya 皮肤 鼻子', finish: 99, hasChildren: false},
+            ]
+    
+            let currentLevel = 'lv'
+    
+            /// 返回上一级
+            function back () {
+                console.log(`before level is: ${currentLevel}`)
+    
+                const lvs = currentLevel.split('_')
+                // 当前是跟节点，或者back根本就不应该被调用到
+                if (lvs.length <= 1) return
+                console.log('=== ===============')
+                console.log(lvs)
+                console.log('==================')
+                lvs.length--
+                currentLevel = lvs.join('_')
+                render()
+                console.log(`new level is: ${currentLevel}`)
+            }
+    
+            function fetchCurrentData () {
+                return data[currentLevel]
+            } 
+    
+        </script>
+         <script>console.log('ehehhe');
+                let chart = echarts.init(document.getElementById('chart-main'))
+                var backChart = echarts.init(document.getElementById('chart-back'));
+                console.log('ehehhe');
+                let currentDataList = []
+                
+                renderBackChart = function () {
+                    if (currentLevel === 'lv') {
+                        backChart.setOption({
+                            tooltip: {
+                                show: false
+                            },
+                            series : [ {
+                                hoverAnimation: false,
+                                radius : '0%',
+                                itemStyle: { color: '#fff' }
+                            } ]
+                        })
+                        console.log('>>> option: ')
+                        console.log(backChart.getOption())
+                    } else {
+                        backChart.setOption({
+                            tooltip: {
+                                show: true,
+                            },
+                            series : [ {
+                                hoverAnimation: true,
+                                radius : '65%',
+                                itemStyle: { color: '#F5D30A' },
+                            } ]
+                        })
+                        console.log('>>> option: ')
+                        console.log(backChart.getOption())
+                    }
+                }
+        
+                initRenderBackChart = function () {
+                    backChart.setOption({
+                        tooltip: {
+                            show: false,
+                            formatter: '返回上一级'
+                        },
+                        series: [ {
+                            type: 'pie',
+                            hoverAnimation: false,
+                            radius : '0%',
+                            center: ['50%', '50%'],
+                            label: {
+                                normal: {
+                                    show: false, // 把中间的圆 上面指出来的线和label隐藏掉了
+                                },
+                            },
+                            data: [ { value:100, }, ],
+                            itemStyle: { 
+                                normal: {color: 'white' }
+                            },
+                            zlevel: 10
+                        } ]
+                    })
+                }
+        
+                function getOption () {
+                    let option = {
+                        "tooltip": {
+                            "trigger": "axis",
+                            "axisPointer": {
+                                "type": "shadow",
+                                shadowStyle: {
+                                    color: 'rgba(255, 255, 255, .2)'
+                                }
+                            },
+                            // formatter: '{a1}: {c1}<br />{a2}: {c2}'
+                            formatter: '{a1}: {c1}%',
+                        },
+                        action: {
+                        },
+                        angleAxis: {
+                            type: 'category',
+                            data: currentDataList.map(i => {
+                                return {
+                                    value: ['{t|' + i.title + '}', '{spec|}', '{fin|' + i.finish + '%' + '}'].join('\n'),
+                                    textStyle: {
+                                        padding: [5, 10],
+                                        borderRadius: 40,
+                                        rich: {
+                                            t: {
+                                                color: '#444',
+                                                fontWeight: 'bold'
+                                            },
+                                            spec: {
+                                                height:5,
+                                            },
+                                            fin: {
+                                                color: '#fff',
+                                                backgroundColor: '#5793CF',
+                                                height: 14,
+                                                lineHeight: 14,
+                                                borderRadius: 10,
+                                                top: 30,
+                                                padding: [0, 10]
+                                            }
+                                        }
+                                    }
+                                }
+                            }),
+                            axisLine: {
+                                show: false, // 坐标轴线，最外面的一圈黑线
+                            },
+                            axisTick: {
+                                show: false, // 坐标刻度，最外面支出去的刻度
+                            },
+                        },
+                        radiusAxis: {
+                            show:false, // 圆下面一圈一圈的刻度
+                        },
+                        polar: {
+                        },
+                        series: [
+                            {
+                                type: 'bar',
+                                data: currentDataList.map(i => 20), // 当前默认好像是 20 一个档，不到20 会有个白边在最外面
+                                coordinateSystem: 'polar',
+                                name: 'C',
+                                stack: 'a',
+                                itemStyle: {
+                                    color: '#fff',
+                                },
+                                label: {
+                                    position: 'inside',
+                                    formatter: 'hehe'
+                                }
+                            }, 
+                            {
+                                type: 'bar',
+                                data: currentDataList.map(i => i.finish),
+                                coordinateSystem: 'polar',
+                                name: '已完成',
+                                stack: 'a',
+                                label: {
+                                    normal: {
+                                        show: true,
+                                        position: 'inner',
+                                        formatter: "heheheheheh"
+                                    }
+                                },
+                                itemStyle: {
+                                    normal : {
+                                        color: function (params) {
+                                            // console.log(params)
+                                            // return params.data === 100 ? '#009BFF' : '#6CBFFC'
+                                            if (params.data === 100) {
+                                                // return '#009BFF'
+                                                return '#0065FC'
+                                            } 
+                                            return new echarts.graphic.RadialGradient(0, 0, 1,  [{
+                                                  offset: 0, color: '#6CBFFC' // 0% 处的颜色
+                                                }, {
+                                                  offset: 1, color: '#009BFF' // 100% 处的颜色
+                                                }], false)
+                                            
+                                        },
+                                        borderColor: 'white'
+                                    }
+                                }
+                            }, 
+                            {
+                                type: 'bar',
+                                data: currentDataList.map(i => 100 - i.finish),
+                                coordinateSystem: 'polar',
+                                // radius: [10, 100],
+                                itemStyle: {
+                                    color: '#E6F1FF',
+                                    borderColor: "white",
+                                    shadowBlur: 50,
+                                    // shadowColor: 'rgba(0, 0, 0, 0.3)',
+                                    shadowColor: 'rgba(0,128,255, .2)'
+                                },
+                                name: '未完成',
+                                stack: 'a',
+                                barCategoryGap: '0%', // 放在序列的最后一个才会生效
+                            }, 
+                        ],
+                    };
+                    return option
+                }
+        
+                renderCharts = function () {
+                    console.log(`will render - level is: ${currentLevel}`)
+                    currentDataList = fetchCurrentData()
+                    // console.log(currentDataList)
+                    chart.setOption(getOption());
+                }
+        
+                render = function (isInit) {
+                    if (isInit) {
+                        initRenderBackChart()
+                        renderCharts()
+                    } else {
+                        renderCharts()
+                        renderBackChart()
+                    }
+                }
+        
+                render(true)
+        
+                chart.on('click', function (params) {
+                    // console.log(currentDataList[params.dataIndex])
+                    const triggerItem = currentDataList[params.dataIndex]
+                    if (triggerItem.hasChildren) {
+                        // currentLevel += '_' + triggerItem.id
+                        currentLevel += '_' + 'a' // 演示效果，写死是a，应该是用上面代码拼出来的
+                        render()
+                        console.log(`level is: ${currentLevel}`)
+                    } else {
+                        console.log('no children')
+                    }
+         
+                });
+                
+                backChart.on('click', back)
+        
+            </script>
 </div>

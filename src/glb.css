@@ -412,7 +412,7 @@ td {
   border: 1px solid #000;
   border-left: none;
   border-right: none;
-  z-index: 999999;
+  z-index: 400;
 }
 .ll-header-box a {
   color: #f0f0f0;
@@ -4504,6 +4504,13 @@ filter-row .remove-btn:hover {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
+}
+.comment .tmp-in-glb .ll-label > span {
+  display: inline;
+  color: inherit;
+  overflow: unset;
+  text-overflow: unset;
 }
 .comment .tmp-in-glb .ll-label:hover {
   border-color: var(--active-color);
