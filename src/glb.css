@@ -1401,6 +1401,7 @@ td {
 }
 .homepage-content {
   padding: 30px;
+  background: #f2f2f2;
 }
 .homepage-content .detail-content {
   margin: -30px auto 0 20px;
@@ -4517,4 +4518,14 @@ filter-row .remove-btn:hover {
 }
 .comment .send-cc-div editor-group-select + editor-group-select {
   margin-top: 10px;
+}
+.comment editor-ckeditor .form-row td.row-title {
+  width: 0;
+  padding-right: 0;
+}
+.comment .subject + reply-array .reply:first-child {
+  margin-top: 10px;
+}
+project-home note-version-array .comment {
+  margin-left: 50px !important;
 }
