@@ -4466,3 +4466,55 @@ filter-row .remove-btn:hover {
   border-color: rgba(2, 147, 221, 0.8);
   box-shadow: 0 0 4px rgba(2, 147, 221, 0.5);
 }
+.comment .state .form-row {
+  width: auto;
+}
+.comment .state .form-row td.row-title > i.fa {
+  right: 0;
+}
+.comment .tmp-in-glb .form-row {
+  font-size: inherit!important;
+}
+.comment .tmp-in-glb .form-row td {
+  font-size: inherit!important;
+}
+.comment .tmp-in-glb .form-row td.row-title {
+  width: 20px!important;
+  padding: 0!important;
+}
+.comment .tmp-in-glb .form-row td.row-title > i.fa {
+  position: static!important;
+  font-size: 14px!important;
+  color: var(--third-words-color) !important;
+}
+.comment .tmp-in-glb .ll-label {
+  display: inline-block;
+  background: var(--light-bg-color);
+  border-radius: 10px;
+  font-size: 12px;
+  height: 16px;
+  line-height: 14px;
+  padding: 0 5px;
+  border: 1px solid var(--label-border-color);
+  color: var(--normal-link-color) !important;
+  cursor: pointer;
+  min-width: 80px;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.comment .tmp-in-glb .ll-label:hover {
+  border-color: var(--active-color);
+  background: var(--active-color);
+  color: #fff !important;
+}
+.comment .send-cc-div {
+  padding: 5px 10px 5px 0;
+  background: #fafafa;
+  border: 1px solid #ccc;
+  border-bottom: none;
+}
+.comment .send-cc-div editor-group-select + editor-group-select {
+  margin-top: 10px;
+}

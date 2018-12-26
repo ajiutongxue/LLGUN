@@ -3,12 +3,39 @@
     <section class="comment">
         <div class="subject">
             <!-- <div class="state"><i class="fa fa-play"></i> 正常</div> -->
-            <div class="state"><label-string-input [commentState]="true"></label-string-input></div>
-
-            <!-- <div class="title">孔雀好像还挺常见，为什么绿孔雀如此濒危？</div> -->
-            <div class="title">
-              <label-string-input [commentTitle]="true"></label-string-input>
+            <!-- <div class="state"><label-string-input [commentState]="true"></label-string-input></div> -->
+            <div class="state">
+                <table class="table-fixed form-row select-row" id="" style="display: table;">
+                    <tbody>
+                        <tr>
+                            <td class="row-title" id="label"><i class="fa fa-pencil"></i></td>
+                            <td id="value">
+                                <div class="select-box">
+                                    <div class="input-box only-showing">
+                                        <i class="fa fa-fw fa-spinner"></i>
+                                        <span style="color: rgb(0, 0, 0);">待开始</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="display: none;">
+                            <td></td>
+                            <td id="message">
+                                <!-- <message><div class="error-msg" id="error"><i class="fa fa-info-circle"></i> </div></message> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
+            <div class="title">孔雀好像还挺常见，为什么绿孔雀如此濒危？</div>
+            <hr>
+            <div class="title tmp-in-glb">
+              <label-string-input></label-string-input>
+            </div>
+            <!-- <div class="title">
+              <label-string-input [commentTitle]="true"></label-string-input>
+            </div> -->
             <!-- !!!! 新增 contain-label-string -->
             <div class="label-box contain-label-string">
                 <div class="label"><i class="fa fa-cube"></i> jdwondow-043</div>
@@ -86,7 +113,8 @@
                 <a class="toggle-content">收起 <i class="fa fa-angle-up"></i></a>
             </div>
         </div>
-        <div class="pagination-box">
+        <!-- 原来的样子，要修改成grid翻页的样子 -->
+        <!-- <div class="pagination-box">
             <a>上一页</a>
             <a>1</a>
             <a>2</a>
@@ -95,6 +123,11 @@
             <a>5</a>
             <a>6</a>
             <a>下一页</a>
+        </div> -->
+        <div class="pagination-box">
+            <a><i class="fa fa-angle-left"></i> 上一页</a>
+            <span>第 <input type="text"> / 10 页</span>
+            <a>下一页 <i class="fa fa-angle-right"></i></a>
         </div>
         <div class="editor">
             <div class="editor-content"></div>

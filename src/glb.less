@@ -6373,3 +6373,87 @@ color:  #54aae4;
         }
     }
 }
+
+// ///////////////////////////////////
+// comment 评论设置
+// 描述：覆盖一些comment内部用到的组件的样式
+// 作者：Yang
+// 时间：2018 12 24
+// ///////////////////////////////////
+.comment {
+    .state {
+        .form-row {
+            width: auto;
+            td.row-title > i.fa { right: 0; }
+        }
+    }
+
+    // 这个样式多个地方都使用了，纯粹是为了临时标记，不存在层级关系
+    .tmp-in-glb {
+        .form-row {
+            font-size: inherit!important;
+    
+            td {
+                font-size: inherit!important;
+    
+                &.row-title {
+                    width: 20px!important;
+                    padding: 0!important;
+        
+                    > i.fa {
+                        position: static!important;
+                        font-size: 14px!important;
+                        color: var(--third-words-color)!important;
+                    }
+                }
+            }
+        }
+        .ll-label {
+            display: inline-block;
+            background: var(--light-bg-color);
+            border-radius: 10px;
+            font-size: 12px;
+            height: 16px;
+            line-height: 14px;
+            padding: 0 5px;
+            border: 1px solid var(--label-border-color);
+            color: var(--normal-link-color)!important;
+            cursor: pointer;
+            min-width: 80px;
+            max-width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+    
+            &:hover {
+                border-color: var(--active-color);
+                background: var(--active-color);
+                color: #fff!important;
+            }
+        }
+    }
+
+    .send-cc-div {
+        padding: 5px 10px 5px 0;
+        background: #fafafa;
+        border: 1px solid #ccc;
+        border-bottom: none;
+
+        editor-group-select + editor-group-select {
+            margin-top: 10px;
+        }
+    }
+
+    editor-ckeditor {
+        .form-row td.row-title {
+            width: 0;
+            padding-right: 0;
+        }
+    }
+
+    .subject + reply-array {
+        .reply:first-child {
+            margin-top: 10px;
+        }
+    }
+}

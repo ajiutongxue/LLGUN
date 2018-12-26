@@ -367,7 +367,7 @@
 
 
 .editor {
-    border: 1px solid var(--dark-border-color);
+    // border: 1px solid var(--dark-border-color);
     margin: 10px 30px;
 }
 .editor-content {
@@ -430,19 +430,34 @@
     height: 40px;
     text-align: center;
     line-height:  40px;
+    // 统一和grid的翻页样式
+    // a {
+    //     color: var(--link-color);
+    //     margin: 0 5px;
+    //     font-size:  12px;
+
+    //     &:not(.current-pagination):hover {
+    //         color: var(--active-color);
+    //         cursor: pointer;
+    //     }
+
+    //     &.current-pagination {
+    //         color: var(--third-words-color);
+    //     }
+    // }
+    font-size: 12px;
+
     a {
-        color: var(--link-color);
         margin: 0 5px;
-        font-size:  12px;
-
-        &:not(.current-pagination):hover {
+        cursor: pointer;
+        &:hover {
             color: var(--active-color);
-            cursor: pointer;
         }
-
-        &.current-pagination {
-            color: var(--third-words-color);
-        }
+    }
+    input {
+        width: 30px;
+        height: 20px;
+        text-align: center;
     }
 }
 
