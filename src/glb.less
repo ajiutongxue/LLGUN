@@ -164,7 +164,7 @@ a.disabled:hover {
         bottom: 1px; 
         color: inherit;
     }
-    transform: scale(.8);
+    transform: scale(0.7) translateY(1px);
 }
 
 
@@ -588,6 +588,7 @@ td {
 .ll-left-piechart-container {
     position: relative;
     flex: 0 0 480px;
+    background: #ededed;
 }
 
 .ll-main-container {
@@ -622,6 +623,7 @@ td {
     border-left: 1px solid @color-input-border;
     overflow: hidden;
     background: @bg-weak;
+    background: #ededed;
     z-index: 19;
 
 }
@@ -1833,6 +1835,7 @@ td {
 .homepage-content {
     padding: 30px;
     background: #f2f2f2;
+    background: #f8f8f8;
 
     .detail-content {
         // margin: -30px auto 0 115px;
@@ -1862,6 +1865,7 @@ td {
 .right-content-box {
     z-index: 19;
     background: @bg-weak;
+    background: #ededed;
     border-left: 1px solid @color-input-border;
     margin-left: -1px;
 }
@@ -6476,3 +6480,10 @@ color:  #54aae4;
 project-home note-version-array .comment { 
     margin-left: 50px !important;
 }
+
+// video页面组件包裹层级不是太考虑，所以这里直接覆盖
+video_play note-detail-rightpage .detail-container {
+    background: none!important;
+}
+
+
