@@ -3686,11 +3686,11 @@ table.parent-version-link-list > tbody > tr > td:last-child a:hover > .fa-plus {
   padding: 0;
   overflow: hidden;
 }
-.ll-player-msg .note-modal-body ::-webkit-scrollbar {
+.ll-player-msg .note-modal-body ::-webkit-scrollbar:not(.scroll-container) {
   background: #313030;
   width: 12px;
 }
-.ll-player-msg .note-modal-body ::-webkit-scrollbar-thumb {
+.ll-player-msg .note-modal-body ::-webkit-scrollbar-thumb:not(.scroll-container) {
   background: #444;
   border-radius: 8px;
 }
@@ -4564,4 +4564,14 @@ project-home note-version-array .comment {
 }
 video_play note-detail-rightpage .detail-container {
   background: none!important;
+}
+video_play note-detail-rightpage .detail-container .input-box.only-showing .fa,
+video_play note-detail-rightpage .detail-container .input-box.only-showing span {
+  color: #bfbfbf !important;
+}
+video_play note-detail-rightpage .detail-container .container .item {
+  color: #14323A !important;
+}
+.send-cc-div + ckeditor-component ._editor {
+  padding-top: 0 !important;
 }

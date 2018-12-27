@@ -5271,11 +5271,11 @@ table.parent-version-link-list {
         padding: 0;
         overflow: hidden;
         
-        ::-webkit-scrollbar {
+        ::-webkit-scrollbar:not(.scroll-container) {
             background: #313030;
             width: 12px;
         }
-        ::-webkit-scrollbar-thumb {
+        ::-webkit-scrollbar-thumb:not(.scroll-container) {
             background: #444;
             border-radius: 8px;
         }
@@ -6513,6 +6513,22 @@ project-home note-version-array .comment {
 // video页面组件包裹层级不是太考虑，所以这里直接覆盖
 video_play note-detail-rightpage .detail-container {
     background: none!important;
+
+    .input-box.only-showing {
+        .fa,
+        span {
+            color: #bfbfbf!important;
+        }
+    }
+
+    .container .item {
+        color: @color-stronger !important;
+    }
 }
 
 
+.send-cc-div + ckeditor-component {
+    ._editor {
+        padding-top: 0 !important;
+    }
+}
