@@ -6422,6 +6422,12 @@ color:  #54aae4;
 // 时间：2018 12 24
 // ///////////////////////////////////
 .comment {
+    .content {
+        img {
+            max-width: 100%;
+        }
+    }
+
     .state {
         .form-row {
             width: auto;
@@ -6472,6 +6478,7 @@ color:  #54aae4;
                 color: inherit;
                 overflow: unset;
                 text-overflow: unset;
+                margin-left: 10px;
             }
     
             &:hover {
@@ -6514,7 +6521,7 @@ project-home note-version-array .comment {
 video_play note-detail-rightpage .detail-container {
     background: none!important;
 
-    .input-box.only-showing {
+    .state .input-box.only-showing {
         .fa,
         span {
             color: #bfbfbf!important;
@@ -6531,4 +6538,10 @@ video_play note-detail-rightpage .detail-container {
     ._editor {
         padding-top: 0 !important;
     }
+}
+
+
+.title-left-border span {
+    padding-left: 10px;
+    border-left: 3px solid @color-active;
 }
