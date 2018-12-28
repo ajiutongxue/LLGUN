@@ -4493,27 +4493,69 @@ filter-row .remove-btn:hover {
   border-color: rgba(2, 147, 221, 0.8);
   box-shadow: 0 0 4px rgba(2, 147, 221, 0.5);
 }
+.ll-main-container-comment .content img,
+.ll-main-container-comment .comment .content img,
+.comment .content img,
+.ll-main-container-comment .reply-content img,
+.ll-main-container-comment .comment .reply-content img,
+.comment .reply-content img {
+  max-width: 100%;
+}
+.ll-main-container-comment .state .form-row,
+.ll-main-container-comment .comment .state .form-row,
 .comment .state .form-row {
   width: auto;
 }
+.ll-main-container-comment .state .form-row td.row-title > i.fa,
+.ll-main-container-comment .comment .state .form-row td.row-title > i.fa,
 .comment .state .form-row td.row-title > i.fa {
   right: 0;
 }
+.ll-main-container-comment .state .select-box .input-box,
+.ll-main-container-comment .comment .state .select-box .input-box,
+.comment .state .select-box .input-box {
+  margin-left: 0;
+  height: 20px;
+  line-height: 20px;
+}
+.ll-main-container-comment .tmp-in-glb .form-row,
+.ll-main-container-comment .comment .tmp-in-glb .form-row,
 .comment .tmp-in-glb .form-row {
   font-size: inherit!important;
 }
+.ll-main-container-comment .tmp-in-glb .form-row td,
+.ll-main-container-comment .comment .tmp-in-glb .form-row td,
 .comment .tmp-in-glb .form-row td {
   font-size: inherit!important;
 }
+.ll-main-container-comment .tmp-in-glb .form-row td.row-title,
+.ll-main-container-comment .comment .tmp-in-glb .form-row td.row-title,
 .comment .tmp-in-glb .form-row td.row-title {
   width: 20px!important;
   padding: 0!important;
 }
+.ll-main-container-comment .tmp-in-glb .form-row td.row-title > i.fa,
+.ll-main-container-comment .comment .tmp-in-glb .form-row td.row-title > i.fa,
 .comment .tmp-in-glb .form-row td.row-title > i.fa {
   position: static!important;
   font-size: 14px!important;
   color: var(--third-words-color) !important;
 }
+.ll-main-container-comment .tmp-in-glb .form-row .input-box,
+.ll-main-container-comment .comment .tmp-in-glb .form-row .input-box,
+.comment .tmp-in-glb .form-row .input-box {
+  margin-left: 0;
+  height: 28px;
+  line-height: 28px;
+}
+.ll-main-container-comment .tmp-in-glb .form-row .input-box input[type="text"],
+.ll-main-container-comment .comment .tmp-in-glb .form-row .input-box input[type="text"],
+.comment .tmp-in-glb .form-row .input-box input[type="text"] {
+  height: 28px;
+  line-height: 28px;
+}
+.ll-main-container-comment .tmp-in-glb .ll-label,
+.ll-main-container-comment .comment .tmp-in-glb .ll-label,
 .comment .tmp-in-glb .ll-label {
   display: inline-block;
   background: var(--light-bg-color);
@@ -4531,31 +4573,45 @@ filter-row .remove-btn:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  padding-right: 20px;
 }
+.ll-main-container-comment .tmp-in-glb .ll-label > span,
+.ll-main-container-comment .comment .tmp-in-glb .ll-label > span,
 .comment .tmp-in-glb .ll-label > span {
   display: inline;
   color: inherit;
   overflow: unset;
   text-overflow: unset;
+  margin-left: 10px;
 }
+.ll-main-container-comment .tmp-in-glb .ll-label:hover,
+.ll-main-container-comment .comment .tmp-in-glb .ll-label:hover,
 .comment .tmp-in-glb .ll-label:hover {
   border-color: var(--active-color);
   background: var(--active-color);
   color: #fff !important;
 }
+.ll-main-container-comment .send-cc-div,
+.ll-main-container-comment .comment .send-cc-div,
 .comment .send-cc-div {
   padding: 5px 10px 5px 0;
   background: #fafafa;
   border: 1px solid #ccc;
   border-bottom: none;
 }
+.ll-main-container-comment .send-cc-div editor-group-select + editor-group-select,
+.ll-main-container-comment .comment .send-cc-div editor-group-select + editor-group-select,
 .comment .send-cc-div editor-group-select + editor-group-select {
   margin-top: 10px;
 }
+.ll-main-container-comment editor-ckeditor .form-row td.row-title,
+.ll-main-container-comment .comment editor-ckeditor .form-row td.row-title,
 .comment editor-ckeditor .form-row td.row-title {
   width: 0;
   padding-right: 0;
 }
+.ll-main-container-comment .subject + reply-array .reply:first-child,
+.ll-main-container-comment .comment .subject + reply-array .reply:first-child,
 .comment .subject + reply-array .reply:first-child {
   margin-top: 10px;
 }
@@ -4564,9 +4620,10 @@ project-home note-version-array .comment {
 }
 video_play note-detail-rightpage .detail-container {
   background: none!important;
+  margin-left: 2px;
 }
-video_play note-detail-rightpage .detail-container .input-box.only-showing .fa,
-video_play note-detail-rightpage .detail-container .input-box.only-showing span {
+video_play note-detail-rightpage .detail-container .state .input-box.only-showing .fa,
+video_play note-detail-rightpage .detail-container .state .input-box.only-showing span {
   color: #bfbfbf !important;
 }
 video_play note-detail-rightpage .detail-container .container .item {
@@ -4574,4 +4631,34 @@ video_play note-detail-rightpage .detail-container .container .item {
 }
 .send-cc-div + ckeditor-component ._editor {
   padding-top: 0 !important;
+}
+.title-left-border span {
+  padding-left: 10px;
+  border-left: 3px solid #54aae4;
+}
+.jqx-window-content .textlink-row {
+  top: 0!important;
+  padding-top: 20px;
+  padding-bottom: 13px;
+  left: 0!important;
+  padding-left: 50px;
+  background: #f0f0f0;
+  margin: 0px!important;
+}
+.detail-main-container.detail-main-container-comment {
+  background: #f0f0f0 !important;
+}
+.detail-main-container.detail-main-container-comment > .detail-content {
+  background: #f0f0f0 !important;
+  padding-top: 0!important;
+}
+.detail-main-container.detail-main-container-comment .textlink-row {
+  left: -30px !important;
+  padding-left: 0;
+}
+.detail-main-container.detail-main-container-comment .comment {
+  margin-left: 45px!important;
+}
+.ll-main-container-comment .comment {
+  margin-left: 45px!important;
 }

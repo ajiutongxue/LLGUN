@@ -6421,8 +6421,11 @@ color:  #54aae4;
 // 作者：Yang
 // 时间：2018 12 24
 // ///////////////////////////////////
+.ll-main-container-comment,
+.ll-main-container-comment .comment,
 .comment {
-    .content {
+    .content,
+    .reply-content {
         img {
             max-width: 100%;
         }
@@ -6432,6 +6435,14 @@ color:  #54aae4;
         .form-row {
             width: auto;
             td.row-title > i.fa { right: 0; }
+        }
+        .select-box {
+            .input-box {
+                margin-left: 0;
+                height: 20px;
+                line-height: 20px;
+
+            }
         }
     }
 
@@ -6454,6 +6465,19 @@ color:  #54aae4;
                     }
                 }
             }
+
+            // .select-box {
+                .input-box {
+                    margin-left: 0;
+                    height: 28px;
+                    line-height: 28px;
+
+                    input[type="text"] {
+                        height: 28px;
+                        line-height: 28px;
+                    }
+                }
+            // }
         }
         .ll-label {
             display: inline-block;
@@ -6472,6 +6496,7 @@ color:  #54aae4;
             overflow: hidden;
             text-overflow: ellipsis;
             text-align: center;
+            padding-right: 20px;
 
             > span {
                 display: inline;
@@ -6530,7 +6555,7 @@ video_play note-detail-rightpage .detail-container {
     }
 
     .container .item {
-        color: @color-stronger !important;
+        color: @color-stronger !important; 
     }
 }
 
@@ -6547,11 +6572,37 @@ video_play note-detail-rightpage .detail-container {
     border-left: 3px solid @color-active;
 }
 .jqx-window-content .textlink-row{
-    top: 0;
+    top: 0!important;
     padding-top: 20px;
-    padding-bottom: 10px;
-    left: 0;
-    padding-left: 25px;
+    padding-bottom: 13px;
+    left: 0!important;
+    padding-left: 50px;
     background: #f0f0f0;
-    margin: 0px;
+    margin: 0px!important;
+}
+
+.detail-main-container {
+    &.detail-main-container-comment {
+        background: #f0f0f0 !important;
+
+        > .detail-content {
+            background: #f0f0f0 !important;
+            padding-top: 0!important;
+        }
+
+        .textlink-row {
+            left: -30px!important;
+            padding-left: 0;
+        }
+
+        .comment {
+            margin-left: 45px!important;
+        }
+    }
+}
+
+.ll-main-container-comment {
+    .comment {
+        margin-left: 45px!important;
+    }
 }
