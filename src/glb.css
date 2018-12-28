@@ -4541,6 +4541,12 @@ filter-row .remove-btn:hover {
   font-size: 14px!important;
   color: var(--third-words-color) !important;
 }
+.ll-main-container-comment .tmp-in-glb .form-row .ll-label-content .input-box input[type="text"],
+.ll-main-container-comment .comment .tmp-in-glb .form-row .ll-label-content .input-box input[type="text"],
+.comment .tmp-in-glb .form-row .ll-label-content .input-box input[type="text"] {
+  height: 20px;
+  line-height: 20px;
+}
 .ll-main-container-comment .tmp-in-glb .form-row .input-box,
 .ll-main-container-comment .comment .tmp-in-glb .form-row .input-box,
 .comment .tmp-in-glb .form-row .input-box {
