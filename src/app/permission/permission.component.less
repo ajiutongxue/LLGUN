@@ -1,6 +1,14 @@
 @import '../../base';
 
-
+/// 使用flex重新布局
+/// add
+// 统一设置字段名宽度
+@title-width: 68px;
+// 权限选项宽度
+@cell-width: 50px;
+// 每一行的行高
+@row-height: 30px;
+/// -end add
 ul {
     margin: 0;
     padding: 0;
@@ -69,6 +77,7 @@ ul {
     padding-left: 30px;
     margin-bottom: 20px;
 }
+
 .permission-group-title {
     margin-left: -30px;
     font-size: 1.2em;
@@ -81,40 +90,81 @@ ul {
     }
 }
 
-.permission-content {
-    display: grid;
-    grid-template-columns: 68px auto;
 
+/// 使用flex重写
+
+// 原先结构无法直接使用
+// 使用“行”结构
+// .permission-content {
+//     display: grid;
+//     grid-template-columns: 68px auto;
+
+//     > div {
+//         line-height: 30px;
+//         border-bottom: 1px solid #ccc;
+//     }
+
+//     .title {
+//         font-weight: bold;
+//     }
+
+//     label {
+//         height: 12px;
+//         line-height: 12px;
+//         margin-right: 20px;
+//         display: inline-block;
+//         // vertical-align: middle;
+
+//         &:before,
+//         &:after {
+//             content: '';
+//             display: table;
+//         }
+        
+//         &:after {
+//             clear: both;
+//         }
+
+//         input[type="checkbox"] {
+//             float: left;
+//             margin-right: 5px;
+//         }
+//     }
+// }
+// 新增 “行” 结构
+.permission-content__row {
+    display: flex;
     > div {
-        line-height: 30px;
+        line-height: @row-height;
         border-bottom: 1px solid #ccc;
+        padding-top: (@row-height - 12) / 2;
     }
 
     .title {
+        flex: 0 0 @title-width;
         font-weight: bold;
+        line-height: 1em;
+
+        // 选项内容部分
+        + div {
+            flex: 1 1 auto;
+            &::after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+            label {
+                float: left;
+                height: 12px;
+                line-height: 12px;
+                width: @cell-width;
+                margin-bottom: (@row-height - 12) / 2;
+                input[type="checkbox"] {
+                    float: left;
+                    margin-right: 5px;
+                }
+            }
+        }
     }
-
-    label {
-        height: 12px;
-        line-height: 12px;
-        margin-right: 20px;
-        display: inline-block;
-        // vertical-align: middle;
-
-        &:before,
-        &:after {
-            content: '';
-            display: table;
-        }
-        
-        &:after {
-            clear: both;
-        }
-
-        input[type="checkbox"] {
-            float: left;
-            margin-right: 5px;
-        }
-    }
-
 }
+/// -end 
