@@ -3,7 +3,8 @@
 /// 使用flex重新布局
 /// add
 // 统一设置字段名宽度
-@title-width: 68px;
+@title-width: 68px;         //// 中文用
+@title-width-en: 200px;     //// 英文用
 // 权限选项宽度
 @cell-width: 50px;
 // 每一行的行高
@@ -144,6 +145,8 @@ ul {
         flex: 0 0 @title-width;
         font-weight: bold;
         line-height: 1em;
+        overflow: hidden;
+        white-space: nowrap;
 
         // 选项内容部分
         + div {
@@ -159,6 +162,8 @@ ul {
                 line-height: 12px;
                 width: @cell-width;
                 margin-bottom: (@row-height - 12) / 2;
+                overflow: hidden;
+                white-space: nowrap;
                 input[type="checkbox"] {
                     float: left;
                     margin-right: 5px;
@@ -168,3 +173,18 @@ ul {
     }
 }
 /// -end 
+
+/// 左边属性名英文宽度设置
+:lang(en) {
+    .permission-content__row {
+        .title {
+            flex: 0 0 @title-width-en;
+            + div {
+                label {
+                    // 需要的话，可以在这个地方设置英文时的checkbox的长度
+                    width: 60px; // 我随便写的，使用时根据实际情况
+                }
+            }
+        }
+    }
+}
