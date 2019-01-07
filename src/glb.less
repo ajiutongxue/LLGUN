@@ -6449,6 +6449,21 @@ color:  #54aae4;
 
     // 这个样式多个地方都使用了，纯粹是为了临时标记，不存在层级关系
     .tmp-in-glb {
+        &.title {
+            .form-row{
+                .input-box {
+                    margin-left: 0;
+                    height: 28px;
+                    line-height: 28px;
+    
+                    input[type="text"] {
+                        height: 28px;
+                        line-height: 28px;
+                    }
+                }
+            }
+
+        }
         .form-row {
             font-size: inherit!important;
     
@@ -6476,18 +6491,7 @@ color:  #54aae4;
                 }
             }
 
-            // .select-box {
-                .input-box {
-                    margin-left: 0;
-                    height: 28px;
-                    line-height: 28px;
 
-                    input[type="text"] {
-                        height: 28px;
-                        line-height: 28px;
-                    }
-                }
-            // }
         }
         .ll-label {
             display: inline-block;

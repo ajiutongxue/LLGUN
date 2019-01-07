@@ -4518,6 +4518,19 @@ filter-row .remove-btn:hover {
   height: 20px;
   line-height: 20px;
 }
+.ll-main-container-comment .tmp-in-glb.title .form-row .input-box,
+.ll-main-container-comment .comment .tmp-in-glb.title .form-row .input-box,
+.comment .tmp-in-glb.title .form-row .input-box {
+  margin-left: 0;
+  height: 28px;
+  line-height: 28px;
+}
+.ll-main-container-comment .tmp-in-glb.title .form-row .input-box input[type="text"],
+.ll-main-container-comment .comment .tmp-in-glb.title .form-row .input-box input[type="text"],
+.comment .tmp-in-glb.title .form-row .input-box input[type="text"] {
+  height: 28px;
+  line-height: 28px;
+}
 .ll-main-container-comment .tmp-in-glb .form-row,
 .ll-main-container-comment .comment .tmp-in-glb .form-row,
 .comment .tmp-in-glb .form-row {
@@ -4546,19 +4559,6 @@ filter-row .remove-btn:hover {
 .comment .tmp-in-glb .form-row .ll-label-content .input-box input[type="text"] {
   height: 20px;
   line-height: 20px;
-}
-.ll-main-container-comment .tmp-in-glb .form-row .input-box,
-.ll-main-container-comment .comment .tmp-in-glb .form-row .input-box,
-.comment .tmp-in-glb .form-row .input-box {
-  margin-left: 0;
-  height: 28px;
-  line-height: 28px;
-}
-.ll-main-container-comment .tmp-in-glb .form-row .input-box input[type="text"],
-.ll-main-container-comment .comment .tmp-in-glb .form-row .input-box input[type="text"],
-.comment .tmp-in-glb .form-row .input-box input[type="text"] {
-  height: 28px;
-  line-height: 28px;
 }
 .ll-main-container-comment .tmp-in-glb .ll-label,
 .ll-main-container-comment .comment .tmp-in-glb .ll-label,
