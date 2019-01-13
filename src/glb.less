@@ -5280,6 +5280,51 @@ table.parent-version-link-list {
             border-radius: 8px;
         }
 
+        // fix: 泡泡画面，评论部分>阅读全文 标题颜色不对
+        .input-box {
+            > span { color: #e6e6e6; }
+        }
+        // fix -end-
+        
+        // add: 泡泡画面，富文本编辑器暗色主题
+        @comment-primary-color: hsl(0, 0%, 90%);
+        //@comment-gary-border-color: hsl(0, 0%, 30%);
+        @comment-edit-inner-border-color: hsl(0, 0%, 10%);
+        .cke_wysiwyg_div {
+            background: #292929;
+            color: @comment-primary-color;
+        }
+        .cke_top {
+            //background: #3e3e3e;
+            background: #1f1f1f;
+            border-bottom-color: @comment-edit-inner-border-color;
+        }
+        .cke_bottom {
+            background: #1f1f1f;
+            border-top-color: @comment-edit-inner-border-color;
+            > span {
+                color: hsl(0, 0%, 50%);
+            }
+        }
+        .cke_resizer {
+            border-color: transparent hsl(0, 0%, 50%) transparent transparent;
+        }
+        .cke_chrome {
+            border-color: @comment-edit-inner-border-color;
+        }
+        a.cke_button_off:hover,
+        a.cke_button_off:focus,
+        a.cke_button_off:active {
+            background: #131313;
+            border-color: #111;
+        }
+        .cke_toolgroup a.cke_button:last-child:after,
+        .cke_toolgroup a.cke_button.cke_button_disabled:hover:last-child:after {
+            border-right-color: hsl(0,0%,5%);
+        }
+        // add -end-
+        
+        
         .note-section-top {
             background: rgba(227, 238, 245, 0.16);
             // background: #f1f8ff;
@@ -5291,12 +5336,16 @@ table.parent-version-link-list {
 
         @border-color: #b1b1b1;
         .reply-footer {
-            background: #d8dcde;
-            border-color: @border-color;
-            color: #111;
+            // fix: 富文本颜色改了，这个地方的颜色也要配套一起改
+            //background: #d8dcde;
+            //border-color: @border-color;
+            //color: #111;
+            background: #1f1f1f;
+            border-color: @comment-edit-inner-border-color;
+            color: @comment-primary-color;
 
             ._btn {
-                border-color: @border-color;
+                border-color: hsl(0, 0%, 5%);
             }
         }
         
