@@ -112,13 +112,18 @@
     background: var(--content-bg-color);
     border: 1px solid var(--gray-border-color);
     border-radius: 4px;
-    padding-bottom:  30px;
+    // fix: 改的紧密一些
+    //padding-bottom:  30px;
+    padding-bottom:  10px;
     position: relative;
 }
 
 
 .subject {
-    padding: 30px 30px 0px;
+    // fix: 改的紧密一些
+    //padding: 30px 30px 0px;
+    padding: 15px 20px 0;
+    
     position:  relative;
     
     .writer .date + div {
@@ -191,7 +196,9 @@
 
 .name {
     display: inline-block;
-    color: var(--second-words-color);
+    // fix: 人名颜色浅
+    //color: var(--second-words-color);
+    color: var(--primary-words-color);
     /* font-weight: 600; */
 }
 .date {
@@ -223,7 +230,9 @@
 
 
 .label-box {
-    margin: 5px 0 20px;
+    // fix:标题下方的小标 与 用户信息之前空太多了
+    //margin: 5px 0 20px;
+    margin: 5px 0;
     &.contain-label-string {
         // 这个搞不清楚加上干什么的了，导致了一个错位
         // 先注释调
@@ -242,7 +251,7 @@
     border: 1px solid var(--light-border-color);
     border-width:  1px 0;
     padding: 10px 0;
-    margin: 10px 0;
+    //margin: 10px 0;
     margin-bottom: -10px;
     font-size: 12px;
     color: var(--third-words-color);
@@ -328,6 +337,8 @@
     font-size: 20px;
     line-height: 1.4em;
     cursor: pointer;
+    // 标题及编辑时input的文字全部加粗
+    font-weight: bold;
     // for label-string-input
     margin-left: -20px;
 
