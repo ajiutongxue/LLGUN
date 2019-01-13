@@ -16,7 +16,11 @@
         // todo: 
         // 1. 至少需要四种颜色，所以，还是定义一个色板，让他们自动去取颜色
         // 2. 改类似这样 http://www.echartsjs.com/examples/editor.html?c=pie-rich-text
-
+        const llIcon = {
+            'Sunny': './icon/i1.png',
+            'Cloudy': './icon/i2.png',
+            'Showers': './icon/i3.png'
+        };
 
         data = []
         // 根节点
@@ -70,177 +74,233 @@
 
         function fetchCurrentData () {
             return data[currentLevel]
-        } 
+        }
 
     </script>
 </head>
 <body style="background: #e9e9e9;">
-    <div style="position: relative;">
-        <!-- w:900px l:100px; w: 80px l:510px  -->
-        <div id="main" style="position: absolute; margin: 0; left: 100px; top: 0px; width: 900px; height: 600px;"></div>
-        <div id="back" style="position: absolute; margin: 0; left: 510px; top: 260px; width: 80px; height: 80px; border-radius: 50%; background: #fff;"></div>
-        <div class="legend-box">
-            <div class="legend-finished"></div>
-        </div>
+<div style="position: relative;">
+    <!-- w:900px l:100px; w: 80px l:510px  -->
+    <div id="main" style="position: absolute; margin: 0; left: 100px; top: 0px; width: 900px; height: 600px;"></div>
+    <div id="back"
+         style="position: absolute; margin: 0; left: 510px; top: 260px; width: 80px; height: 80px; border-radius: 50%; background: #fff;"></div>
+    <div class="legend-box">
+        <div class="legend-finished"></div>
     </div>
+</div>
 
-    <script>
-        let chart = echarts.init(document.getElementById('main'))
-        var backChart = echarts.init(document.getElementById('back'));
-        let currentDataList = []
-        let tmp_click_index = 0; // 临时使用，记录点了序列里面的第几个扇形，以后真是数据，不使用这样方法
-        
-        renderBackChart = function () {
-            if (currentLevel === 'lv') {
-                backChart.setOption({
-                    tooltip: {
-                        show: false
-                    },
-                    series : [ {
-                        hoverAnimation: false,
-                        radius : '0%',
-                        itemStyle: { color: '#fff' }
-                    } ]
-                })
-                console.log('>>> option: ')
-                console.log(backChart.getOption())
-            } else {
-                backChart.setOption({
-                    tooltip: {
-                        show: true,
-                    },
-                    series : [ {
-                        hoverAnimation: true,
-                        radius : '65%',
-                        itemStyle: { color: '#F5D30A' },
-                    } ]
-                })
-                console.log('>>> option: ')
-                console.log(backChart.getOption())
-            }
-        }
+<script>
+    let chart = echarts.init(document.getElementById('main'))
+    var backChart = echarts.init(document.getElementById('back'));
+    let currentDataList = []
+    let tmp_click_index = 0; // 临时使用，记录点了序列里面的第几个扇形，以后真是数据，不使用这样方法
 
-        initRenderBackChart = function () {
+    renderBackChart = function () {
+        if (currentLevel === 'lv') {
             backChart.setOption({
                 tooltip: {
-                    show: false,
-                    formatter: '返回上一级'
+                    show: false
                 },
-                series: [ {
-                    type: 'pie',
+                series: [{
                     hoverAnimation: false,
-                    radius : '0%',
-                    center: ['50%', '50%'],
+                    radius: '0%',
+                    itemStyle: {color: '#fff'}
+                }]
+            })
+            console.log('>>> option: ')
+            console.log(backChart.getOption())
+        } else {
+            backChart.setOption({
+                tooltip: {
+                    show: true,
+                },
+                series: [{
+                    hoverAnimation: true,
+                    radius: '65%',
+                    itemStyle: {color: '#F5D30A'},
+                }]
+            })
+            console.log('>>> option: ')
+            console.log(backChart.getOption())
+        }
+    }
+
+    initRenderBackChart = function () {
+        backChart.setOption({
+            tooltip: {
+                show: false,
+                formatter: '返回上一级'
+            },
+            series: [{
+                type: 'pie',
+                hoverAnimation: false,
+                radius: '0%',
+                center: ['50%', '50%'],
+                label: {
+                    normal: {
+                        show: false, // 把中间的圆 上面指出来的线和label隐藏掉了
+                    },
+                },
+                data: [{value: 100,},],
+                itemStyle: {
+                    normal: {color: 'white'}
+                },
+                zlevel: 10
+            }]
+        })
+    }
+    colorList = ['#007BC7', '#B8D200', '#009FA8', '#22AC38', '#F5A500', '#956134', '#EA5504', '#E5005A', '#AF3E92', '#E4007F', '#591A86'
+        , '#E4007F', '#AF3E92', '#E5005A', '#EA5504', '#956134', '#F5A500', '#22AC38', '#009FA8', '#B8D200', '#007BC7', '#591A86']
+
+    function getOption () {
+        let option = {
+            // color:
+            "tooltip": {
+                "trigger": "axis",
+                "axisPointer": {
+                    "type": "shadow",
+                    shadowStyle: {
+                        color: 'rgba(255, 255, 255, .2)'
+                    }
+                },
+                // formatter: '{a1}: {c1}<br />{a2}: {c2}'
+                formatter: '{a1}: {c1}%',
+            },
+            action: {},
+            angleAxis: {
+                type: 'category',
+                data: currentDataList.map((i, index) => {
+                    return {
+                        // value: ['{t|' + i.title + '}', '{spec|}', '{fin|' + i.finish + '%' + '}'].join('\n'),
+                        value: [
+                            '{colorRect|}{t|' + i.title + '}{fin|' + i.finish + '%}',
+                            '{wbg|adfs}{item|}',
+                            '{item|}sadfsadf',
+                        ].join('\n'),
+                        textStyle: {
+                            backgroundColor: '#C7D5D9',
+                            borderRadius: 4,
+                            padding: [0, 5, 5, 5],
+//                                 padding: [5, 10],
+//                                 borderRadius: 40,
+// /*
+//                                 rich: {
+//                                     t: {
+//                                         color: '#444',
+//                                         fontWeight: 'bold'
+//                                     },
+//                                     spec: {
+//                                         height:5,
+//                                     },
+//                                     fin: {
+//                                         color: '#fff',
+//                                         backgroundColor: '#5793CF',
+//                                         height: 14,
+//                                         lineHeight: 14,
+//                                         borderRadius: 10,
+//                                         top: 30,
+//                                         padding: [0, 10]
+//                                     }
+//                                 }
+// */
+                            rich: {
+                                wbg: {
+                                    height: 30,
+                                    backgroundColor: '#F1F4F5',
+                                    width: '100%',
+                                    align: 'right',
+                                    // padding: [0, 5, 0, 5]
+                                },
+                                t: {
+                                    align: 'left',
+                                    height: 22,
+                                    color: '#3F494C',
+                                    padding: [0,0,0,5]
+                                },
+                                colorRect: {
+                                    backgroundColor: colorList[index],
+                                    align: 'left',
+                                    width: 10,
+                                    height: 10,
+                                },
+                                fin: {
+                                    fontWeight: 'bold',
+                                    align: 'right',
+                                    color: '#3F494C',
+                                    padding: [0,10,0,0]
+                                },
+                                item: {
+                                    height: 16,
+                                    width: 16,
+                                    align: 'left',
+                                    color: '#111',
+                                    backgroundColor: {
+                                        image: llIcon.Sunny
+                                    }
+                                },
+                            }
+                        }
+                    }
+                }),
+                axisLabel: {
+                    show: true,
+                    lineStyle: {
+                        type: 'solid'
+                    }
+                    // formatter: '222heheheh'
+                },
+                axisPointer: {
+                    // type: 'line'  // 内部指示
+                },
+                axisLine: {
+                    show: false, // 坐标轴线，最外面的一圈黑线
+                },
+                axisTick: {
+                    show: false, // 坐标刻度，最外面支出去的刻度
+                },
+            },
+            radiusAxis: {
+                show: false, // 圆下面一圈一圈的刻度
+            },
+            polar: {},
+            series: [
+                {
+                    type: 'bar',
+                    data: currentDataList.map(i => 20), // 当前默认好像是 20 一个档，不到20 会有个白边在最外面
+                    coordinateSystem: 'polar',
+                    name: 'C',
+                    stack: 'a',
+                    itemStyle: {
+                        color: '#fff',
+                    },
+                    label: {
+                        position: 'inside',
+                        formatter: 'hehe'
+                    }
+                },
+                {
+                    type: 'bar',
+                    data: currentDataList.map(i => i.finish),
+                    coordinateSystem: 'polar',
+                    name: '已完成',
+                    stack: 'a',
                     label: {
                         normal: {
-                            show: false, // 把中间的圆 上面指出来的线和label隐藏掉了
-                        },
-                    },
-                    data: [ { value:100, }, ],
-                    itemStyle: { 
-                        normal: {color: 'white' }
-                    },
-                    zlevel: 10
-                } ]
-            })
-        }
-        colorList = ['#007BC7', '#B8D200', '#009FA8', '#22AC38', '#F5A500', '#956134', '#EA5504', '#E5005A', '#AF3E92', '#E4007F', '#591A86'
-                   , '#E4007F', '#AF3E92', '#E5005A', '#EA5504', '#956134', '#F5A500', '#22AC38', '#009FA8', '#B8D200','#007BC7', '#591A86']
-        function getOption () {
-            let option = {
-                // color: 
-                "tooltip": {
-                    "trigger": "axis",
-                    "axisPointer": {
-                        "type": "shadow",
-                        shadowStyle: {
-                            color: 'rgba(255, 255, 255, .2)'
+                            show: true,
+                            position: 'inner',
+                            formatter: "heheheheheh"
                         }
                     },
-                    // formatter: '{a1}: {c1}<br />{a2}: {c2}'
-                    formatter: '{a1}: {c1}%',
-                },
-                action: {
-                },
-                angleAxis: {
-                    type: 'category',
-                    data: currentDataList.map(i => {
-                        return {
-                            value: ['{t|' + i.title + '}', '{spec|}', '{fin|' + i.finish + '%' + '}'].join('\n'),
-                            textStyle: {
-                                padding: [5, 10],
-                                borderRadius: 40,
-                                rich: {
-                                    t: {
-                                        color: '#444',
-                                        fontWeight: 'bold'
-                                    },
-                                    spec: {
-                                        height:5,
-                                    },
-                                    fin: {
-                                        color: '#fff',
-                                        backgroundColor: '#5793CF',
-                                        height: 14,
-                                        lineHeight: 14,
-                                        borderRadius: 10,
-                                        top: 30,
-                                        padding: [0, 10]
-                                    }
+                    itemStyle: {
+                        normal: {
+                            color: function (params) {
+                                console.log('params')
+                                console.log(params)
+                                if (currentLevel.split('_').length > 1) {
+                                    return colorList[tmp_click_index]
                                 }
-                            }
-                        }
-                    }),
-                    axisLine: {
-                        show: false, // 坐标轴线，最外面的一圈黑线
-                    },
-                    axisTick: {
-                        show: false, // 坐标刻度，最外面支出去的刻度
-                    },
-                },
-                radiusAxis: {
-                    show:false, // 圆下面一圈一圈的刻度
-                },
-                polar: {
-                },
-                series: [
-                    {
-                        type: 'bar',
-                        data: currentDataList.map(i => 20), // 当前默认好像是 20 一个档，不到20 会有个白边在最外面
-                        coordinateSystem: 'polar',
-                        name: 'C',
-                        stack: 'a',
-                        itemStyle: {
-                            color: '#fff',
-                        },
-                        label: {
-                            position: 'inside',
-                            formatter: 'hehe'
-                        }
-                    }, 
-                    {
-                        type: 'bar',
-                        data: currentDataList.map(i => i.finish),
-                        coordinateSystem: 'polar',
-                        name: '已完成',
-                        stack: 'a',
-                        label: {
-                            normal: {
-                                show: true,
-                                position: 'inner',
-                                formatter: "heheheheheh"
-                            }
-                        },
-                        itemStyle: {
-                            normal : {
-                                color: function (params) {
-                                    console.log('params')
-                                    console.log(params)
-                                    if (currentLevel.split('_').length > 1) {
-                                        return colorList[tmp_click_index]
-                                    }
-                                    return colorList[params.dataIndex]
-                                    // return params.data === 100 ? '#009BFF' : '#6CBFFC'
+                                return colorList[params.dataIndex]
+                                // return params.data === 100 ? '#009BFF' : '#6CBFFC'
                                 //     if (params.data === 100) {
                                 //         // return '#009BFF'
                                 //         return '#0065FC'
@@ -250,72 +310,73 @@
                                 //         }, {
                                 //           offset: 1, color: '#009BFF' // 100% 处的颜色
                                 //         }], false)
-                                    
-                                },
-                                borderColor: 'white'
-                            }
+
+                            },
+                            borderColor: 'white'
                         }
-                    }, 
-                    {
-                        type: 'bar',
-                        data: currentDataList.map(i => 100 - i.finish),
-                        coordinateSystem: 'polar',
-                        // radius: [10, 100],
-                        itemStyle: {
-                            color: '#E6F1FF',
-                            borderColor: "white",
-                            shadowBlur: 50,
-                            // shadowColor: 'rgba(0, 0, 0, 0.3)',
-                            shadowColor: 'rgba(0,128,255, .2)'
-                        },
-                        name: '未完成',
-                        stack: 'a',
-                        barCategoryGap: '0%', // 放在序列的最后一个才会生效
-                    }, 
-                ],
-            };
-            return option
+                    }
+                },
+                {
+                    type: 'bar',
+                    data: currentDataList.map(i => 100 - i.finish),
+                    coordinateSystem: 'polar',
+                    // radius: [10, 100],
+                    itemStyle: {
+                        color: '#E6F1FF',
+                        borderColor: "white",
+                        shadowBlur: 50,
+                        // shadowColor: 'rgba(0, 0, 0, 0.3)',
+                        shadowColor: 'rgba(0,128,255, .2)'
+                    },
+
+                    name: '未完成',
+                    stack: 'a',
+                    barCategoryGap: '0%', // 放在序列的最后一个才会生效
+                },
+            ],
+        };
+        return option
+    }
+
+    renderCharts = function () {
+        console.log(`will render - level is: ${currentLevel}`)
+        currentDataList = fetchCurrentData()
+        // console.log(currentDataList)
+        chart.setOption(getOption());
+    }
+
+    render = function (isInit) {
+        if (isInit) {
+            initRenderBackChart()
+            renderCharts()
+        } else {
+            renderCharts()
+            renderBackChart()
+        }
+    }
+
+    render(true)
+
+    chart.on('click', function (params) {
+        // console.log(currentDataList[params.dataIndex])
+        const triggerItem = currentDataList[params.dataIndex]
+        if (currentLevel == 'lv') {
+            tmp_click_index = params.dataIndex // 只记录第一层被点击的序列，也就是第一层点的扇形的颜色用到了所有的后代上面
+        }
+        if (triggerItem.hasChildren) {
+            // currentLevel += '_' + triggerItem.id
+            currentLevel += '_' + 'a' // 演示效果，写死是a，应该是用上面代码拼出来的
+            render()
+            console.log(`level is: ${currentLevel}`)
+        } else {
+            console.log('no children')
         }
 
-        renderCharts = function () {
-            console.log(`will render - level is: ${currentLevel}`)
-            currentDataList = fetchCurrentData()
-            // console.log(currentDataList)
-            chart.setOption(getOption());
-        }
 
-        render = function (isInit) {
-            if (isInit) {
-                initRenderBackChart()
-                renderCharts()
-            } else {
-                renderCharts()
-                renderBackChart()
-            }
-        }
+    });
 
-        render(true)
+    backChart.on('click', back)
 
-        chart.on('click', function (params) {
-            // console.log(currentDataList[params.dataIndex])
-            const triggerItem = currentDataList[params.dataIndex]
-            if (currentLevel == 'lv') {
-                tmp_click_index = params.dataIndex // 只记录第一层被点击的序列，也就是第一层点的扇形的颜色用到了所有的后代上面
-            }
-            if (triggerItem.hasChildren) {
-                // currentLevel += '_' + triggerItem.id
-                currentLevel += '_' + 'a' // 演示效果，写死是a，应该是用上面代码拼出来的
-                render()
-                console.log(`level is: ${currentLevel}`)
-            } else {
-                console.log('no children')
-            }
-            
- 
-        });
-        
-        backChart.on('click', back)
-
-    </script>
+</script>
 </body>
 </html>
