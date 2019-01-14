@@ -494,8 +494,8 @@ td {
     border: 1px solid #000;
     border-left: none;
     border-right: none;
-    // z-index: 999999;
-    z-index: 400;
+    z-index: 999999;
+    // z-index: 400;
     
     a {
         color: #f0f0f0;
@@ -4542,7 +4542,8 @@ thumbnail-view {
     padding-right: 15px;
     border-top: 1px solid @normal-border;
     text-align: center;
-    z-index: 20000;
+    // z-index: 20000;
+    z-index: 200;
     
     .range-container {
         line-height: @_h;
@@ -5322,6 +5323,46 @@ table.parent-version-link-list {
         .cke_toolgroup a.cke_button.cke_button_disabled:hover:last-child:after {
             border-right-color: hsl(0,0%,5%);
         }
+
+        .comment {
+            .send-cc-div {
+                background: #1f1f1f;
+                border-color: @comment-edit-inner-border-color;    
+            }
+        }
+        /// input暂时不暗色设置，因为还有配套的下拉等等东西要一起调整
+        .ll-label-content {
+            background: #353535;
+        }
+        .ll-label-box input[type="text"] {
+            background: #292929;
+            color: @comment-primary-color;
+            border-color: @comment-edit-inner-border-color;    
+        }
+        table.add-version-uploadfile-list {
+            th {
+                border-color: @comment-edit-inner-border-color;
+                color: @comment-primary-color;
+                background: #1f1f1f;
+            }
+            td {
+                color: @comment-primary-color;
+                background: #292929;
+                border-color: @comment-edit-inner-border-color;
+            }
+        }
+        .uploaded-box {
+            color: @comment-primary-color!important;
+            background: #292929!important;
+            border-color: @comment-edit-inner-border-color!important;
+
+            ._obj .ll-label {
+                color: rgba(107, 148, 167, 0.9);
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+
         // add -end-
         
         
@@ -5345,25 +5386,34 @@ table.parent-version-link-list {
             color: @comment-primary-color;
 
             ._btn {
-                border-color: hsl(0, 0%, 5%);
+                border-color: hsl(0, 0%, 5%) !important;
             }
         }
         
+        // 改为神色
         ._editor {
             padding-top: 10px;
             // margin-left: 0 !important;
-            color: #333;
+            // color: #333;
+            color: @comment-primary-color;
+
             ._edit-area {
-                background: #f5f5f5;
-                border-color: @border-color;
+                // background: #f5f5f5;
+                // border-color: @border-color;
+                background: #292929;
+                color: @comment-primary-color;
+                border-color: @comment-edit-inner-border-color;
             }
             ._edit-area-footer {
                 background: #d6d6d6;
                 border-color: @border-color;
             }
             .upload-box {
-                border-color: @border-color;
-                background: #f5f5f5;
+                // border-color: @border-color;
+                // background: #f5f5f5;
+                background: #292929;
+                color: @comment-primary-color;
+                border-color: @comment-edit-inner-border-color;
             }
         }
     
@@ -6610,6 +6660,7 @@ video_play .jqx-window-content .textlink-row {
     background: none!important;
 }
 // video页面组件包裹层级不是太考虑，所以这里直接覆盖
+app-media note-detail-rightpage .detail-container,
 video_play note-detail-rightpage .detail-container {
     background: none!important;
     margin-left: 2px;
