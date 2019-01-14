@@ -4743,3 +4743,12 @@ video_play note-detail-rightpage .detail-container .container .item {
 .ll-main-container-comment .comment {
   margin-left: 45px!important;
 }
+filter-button ._btn.active a {
+  color: #fff !important;
+  border-color: #2f92ef !important;
+  background: #54aae4 !important;
+}
+filter-button ._btn.active a:hover {
+  background: #2f92ef !important;
+  color: #fff !important;
+}
