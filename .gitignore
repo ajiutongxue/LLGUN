@@ -42,3 +42,10 @@ testem.log
 Thumbs.db
 *.mp4
 package-lock.json
+try/echarts/.idea/misc.xml
+try/echarts/.idea/echarts.iml
+try/echarts/.idea/encodings.xml
+try/echarts/.idea/modules.xml
+try/echarts/.idea/vcs.xml
+try/echarts/.idea/workspace.xml
+try/echarts/.idea/workspace.xml
