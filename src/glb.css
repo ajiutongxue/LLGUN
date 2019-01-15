@@ -615,12 +615,13 @@ td {
   text-align: center;
   font-size: 16px;
   line-height: 18px;
+  overflow: hidden;
 }
 .topbar-container ._navbar ._main-box > li .note-msg-box .note-msg-tabs ._tab,
 .topbar-container ._navbar ._user-box > li .note-msg-box .note-msg-tabs ._tab {
   position: relative;
-  display: inline-block;
-  width: 30%;
+  float: left;
+  width: 126.66666667px;
   text-align: center;
   color: #3F5767;
   margin-top: 13px;
@@ -654,7 +655,7 @@ td {
 }
 .topbar-container ._navbar ._main-box > li .note-msg-box .modal-normal-container,
 .topbar-container ._navbar ._user-box > li .note-msg-box .modal-normal-container {
-  width: 320px;
+  width: 400px;
   top: 40px;
 }
 .topbar-container ._navbar ._main-box > li .note-msg-box .modal-normal-container ul._normal,
