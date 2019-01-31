@@ -72,6 +72,8 @@ import { CommentComponent } from './comment/comment.component';
 import { LabelStringInputComponent } from './label-string-input/label-string-input.component';
 import { ContextMenuComponent } from './context-menu/context-menu.component';
 import { MyNewTaskComponent } from './my-new-task/my-new-task.component';
+import { MyNewTaskDetailComponent } from './my-new-task/my-new-task-detail.component';
+import { MyTask2Component } from './my-task-2/my-task-2.component';
 
 const appRoutes: Routes = [
 
@@ -126,6 +128,14 @@ const appRoutes: Routes = [
     {
         path: 'new-task',
         component: MyNewTaskComponent
+    },
+    {
+        path: 'task-dark',
+        component: MyTask2Component
+    },
+    {
+        path: 'task-detail',
+        component: MyNewTaskDetailComponent
     },
     {
         path: 'my-player',
@@ -222,6 +232,8 @@ const appRoutes: Routes = [
         LabelStringInputComponent,
         ContextMenuComponent,
         MyNewTaskComponent,
+        MyNewTaskDetailComponent,
+        MyTask2Component,
         // HighlightDirective
     ],
     imports: [

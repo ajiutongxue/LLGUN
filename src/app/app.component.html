@@ -1,25 +1,30 @@
 
-<nav *ngIf="showThis" style="position: fixed; left: 0; top: 0; width: 100%; height: 30px; text-align: center; z-index: 99999;">
-    <a routerLink="/login">login</a> /
-    <a routerLink="/track">track</a> /
-    <a routerLink="/media">media</a> /
-    <a routerLink="/player-layer">player layer</a> /
-    <a routerLink="/home">home</a> /
-    <a routerLink="/layout">layout</a> /
-    <a routerLink="/show">latest style</a> /
-    <a routerLink="/all">components</a> /
-    <a routerLink="/select">mouse select</a> /
-    <a routerLink="/my-tree">bug tree</a> /
-    <a routerLink="/grid">grid</a> /
-    <a routerLink="/my-player">player</a> /
-    <a routerLink="/my-fn">some fun</a> /
-    <a routerLink="/my-task">my task</a> /
-    <a routerLink="/ruler">drag ruler</a> /
-    <a routerLink="/sort">sort</a> /
-    <a routerLink="/dragTable">dragTable</a> /
-    <a routerLink="/permission">permission</a> /
-    <a routerLink="/menu">menu</a> /
-    <a routerLink="/comment">comment</a>
+<nav *ngIf="showThis"
+     style="position: fixed; left: 0; top: 0; width: 200px; bottom: 0; text-align: left; background:#ccc; padding-left: 30px; line-height: 2em; overflow: auto; z-index: 99999;"
+>
+    <div><a routerLink="/login">login</a></div>
+    <div><a routerLink="/track">track</a></div>
+    <div><a routerLink="/media">media</a></div>
+    <div><a routerLink="/player-layer">player layer</a></div>
+    <div><a routerLink="/home">home</a></div>
+    <div><a routerLink="/layout">layout</a></div>
+    <div><a routerLink="/show">latest style</a></div>
+    <div><a routerLink="/all">components</a></div>
+    <div><a routerLink="/select">mouse select</a></div>
+    <div><a routerLink="/my-tree">bug tree</a></div>
+    <div><a routerLink="/grid">grid</a></div>
+    <div><a routerLink="/my-player">player</a></div>
+    <div><a routerLink="/my-fn">some fun</a></div>
+    <div><a routerLink="/my-task">my task</a></div>
+    <div><a routerLink="/ruler">drag ruler</a></div>
+    <div><a routerLink="/sort">sort</a></div>
+    <div><a routerLink="/dragTable">dragTable</a></div>
+    <div><a routerLink="/permission">permission</a></div>
+    <div><a routerLink="/menu">menu</a></div>
+    <div><a routerLink="/comment">comment</a></div>
+    <div><a routerLink="/task-dark">dark task</a></div>
+    <div><a routerLink="/new-task">newTask</a></div>
+    <div><a routerLink="/task-detail">taskDetail</a></div>
 </nav>
 <button (click)="showThis = !showThis" style="position: fixed; left: 2px; bottom: 2px; font-size: 36px; z-index: 99999"><i class="fa fa-eye"></i></button>
 <router-outlet></router-outlet>

@@ -1,0 +1,122 @@
+<div class="ll-layout">
+    <div class="ll-header-box">
+        <div class="topbar-container">
+            <div class="ll-brand" style="text-transform: uppercase; flex: 0 1 170px;">WHIRLIGIG</div>
+            <div class="_navbar">
+                <ul class="_main-box">
+                    <li><a routerLink="inbox"><i class="fa fa-inbox"></i>收件箱</a></li>
+                    <li><a routerLink="my-task" class="active" routerLink="inbox"><i class="fa fa-tasks"></i>我的任务</a></li>
+                    <li showproject>
+                        <a><i class="fa fa-video-camera"></i>项目<i class="fa fa-caret-down"></i></a>
+                    </li>
+                    <li><a routerLink="inbox"><i class="fa fa-sliders"></i>设置</a></li>
+                    <li><a routerLink="inbox"><i class="fa fa-newspaper-o"></i>公告</a></li>
+                    <li><a routerLink="inbox"><i class="fa fa-wrench"></i>自定义</a></li>
+                </ul>
+                <ul class="_user-box">
+                    <li><a routerLink="inbox">自定义</a></li>
+                    <li showlogout class="_user">
+                        <a (click)="showlogout = !showlogout" routerLink="inbox">
+                            <div class="_avatar" style="background-image('/assets/style/tmpImg/detail-p1.png');"></div>英俊<i class="fa fa-caret-down"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ？这个是否需要留着 -->
+    <div class="ll-page-nav-box">
+        <div class="project-bar-container">
+            <div class="project-title">我的任务</div>
+        </div>
+    </div>
+
+    <!-- 如果 my-task 是一个组件  可以以 ll-task-container 为范围划分 -->
+    <!-- 上面的标签，都属于通用的布局部分 -->
+    <div class="ll-task-container">
+
+        <div class="ll-task-nav">
+            <div class="ll-task-nav__page-select">
+                <div class="page-select__item--current">我的任务 <i class="fa fa-caret-down"></i></div>
+            </div>
+            <div class="ll-task-nav__tab-list">
+                <div [ngClass]="{'task-nav__tab--active': tab === 'waiting', 'task-nav__tab': tab !== 'waiting'}"
+                    (click)="tab = 'waiting'" >未开始</div>
+                <div [ngClass]="{'task-nav__tab--active': tab === 'tasks', 'task-nav__tab': tab !== 'tasks'}"
+                    (click)="tab = 'tasks'">今日任务</div>
+                <div [ngClass]="{'task-nav__tab--active': tab === 'finished', 'task-nav__tab': tab !== 'finished'}"
+                    (click)="tab = 'finished'">已完成</div>
+            </div>
+        </div>
+
+
+        <!-- 这是原来的 ll-main-container，现在改成 task-main-container 了 -->
+        <div *ngIf="tab=='waiting'" class="task-main-container">
+            waiting 也放 task-card？ 不要列表了？
+            操作是通过右键来？
+        </div>
+
+        <div *ngIf="tab=='tasks'" class="task-main-container">
+            <div class="task-card">
+                <div class="task-card__img-box">
+                    <img src="../../assets/style/images/img2.jpg" alt="task face">
+                </div>
+                <div class="task-card__info">
+                    <div class="task-card__info-row">
+                        <div class="task-card__title">任务的标题任务的标题任务的标题 任务的标题</div>
+                        <div class="task-card__status--doing"><i class="fa fa-play"></i> 进行中</div>
+                    </div>
+                    <div class="task-card__info-row">
+                        <div class="task-card__users">
+                            <div class="task-card__avatar-list">
+                                <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                                <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                                <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                                <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                                <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                                <!-- 什么时候使用省略？建议最多显示4、5个头像，剩下的就用省略 -->
+                                <div class="task-card__avatar-item task-card__more-avatar-item"></div>
+                            </div>
+                            <!--<div class="task-card__username">刘大宝</div>-->
+                        </div>
+                        <div class="task-card__ending-time"><span class="task-card__ending-time__label">预计完成</span>2019/12/12</div>
+                    </div>
+                </div>
+            </div>
+            <div class="task-card">
+                <div class="task-card__img-box">
+                    <img src="../../assets/style/images/img2.jpg" alt="task face">
+                </div>
+                <div class="task-card__info">
+                    <div class="task-card__info-row">
+                        <div class="task-card__title">任务的标题任务的标题任务的标题 任务的标题</div>
+                        <div class="task-card__status--doing"><i class="fa fa-play"></i> 进行中</div>
+                    </div>
+                    <div class="task-card__info-row">
+                        <div class="task-card__users">
+                            <div class="task-card__avatar-list">
+                                <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                                <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                                <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                                <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                                <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                                <!-- 什么时候使用省略？建议最多显示4、5个头像，剩下的就用省略 -->
+                                <div class="task-card__avatar-item task-card__more-avatar-item"></div>
+                            </div>
+                            <!--<div class="task-card__username">刘大宝</div>-->
+                        </div>
+                        <div class="task-card__ending-time"><span class="task-card__ending-time__label">预计完成</span>2019/12/12</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="tab=='finished'" class="task-main-container">
+            finish 也放 task-card？ 不要列表了？
+        </div>
+
+    </div>
+
+</div>

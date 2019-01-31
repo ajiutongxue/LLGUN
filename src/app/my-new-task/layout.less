@@ -1,0 +1,387 @@
+// 默认暗色主题，如后续需要亮色主题，通过 data-theme="light" 来添加。
+
+/*
+    该文件主要定义结构，应该属于需要全局调用的样式文件，地位和原来的 glb.css 等同
+*/
+
+
+@import "./app-base";
+
+
+
+/// 尺寸
+@head-bar-height: 42px;
+@nav-height: 36px;
+
+
+
+/// ------------------------- container -- start ----------------
+/// ----------------------------------------------------------
+.ll-app-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: @bg-1;
+    color: @font-color-2;
+}
+
+/// ----------------------------------------------------------
+/// ------------------------- header -- end ----------------
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// ------------------------- header -- start ----------------
+/// ----------------------------------------------------------
+
+.app-header__head-bar {
+    display: flex;
+    flex: 0 0 @head-bar-height;
+    line-height: @head-bar-height;
+    font-size: 14px;
+    background: @bg-1;
+    border-bottom: 1px solid @border-color-1;
+}
+
+
+/// -- start -- 首页、上一页、下一页 跟路径有关的几个按钮
+.app-header__path-tools {
+    flex: 0 0 95px;
+    padding: 0 10px;
+    font-size: 20px;
+    .clear();
+}
+.app-header__path-tools__home,
+.app-header__path-tools__prev,
+.app-header__path-tools__next {
+    float: left;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border-radius: 50%;
+    margin-top: (@head-bar-height - 25) / 2;
+    line-height: 25px;
+    cursor: pointer;
+    transition: .3s;
+    
+    &.disabled {
+        color: @font-color-9;
+        cursor: default;
+    }
+    &:not(.disabled):hover {
+        background: rgba(0,0,0,.15);
+        color: @font-color-1;
+    }
+}
+// -- end --
+
+
+/// -- start -- 右边部分：搜索框、用户等
+.app-header__side-tools {
+    flex: auto;
+    display: flex;
+    padding-right: 5px;
+}
+
+.app-header__side-tools__user {
+    flex: 0 0 45px;
+    text-align: center;
+    cursor: pointer;
+    
+    &:hover {
+        img { opacity: .9; }
+    }
+    
+    img {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        object-fit: cover;
+        vertical-align: middle;
+    }
+}
+.app-header__side-tools__search-box {
+    position: relative;
+    flex: auto;
+    input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border: none;
+        width: 100%;
+        line-height: @head-bar-height - 1;
+        padding-left: 1em;
+        background: none;
+        color: @font-color-1;
+        z-index: 2; // 可以在没激活的时候，点击了搜索按钮，激活输入框
+        transition: .3s;
+        
+        &:hover { background: rgba(0,0,0,.1);}
+        &:focus {
+            background: rgba(0,0,0,.4);
+            z-index: 0;
+        }
+    }
+}
+.app-header__side-tools__search-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: @head-bar-height;
+    width: 32px;
+    background: none;
+    font-size: 18px;
+    color: @font-color-2;
+    z-index: 1;
+    cursor: pointer;
+    transition: .3s;
+    
+    &:focus { outline: none; }
+    &:hover { color: lighten(@brand-color, 10%); }
+}
+// -- end --
+
+
+/// -- start -- 中间几（当前是 两 ）个业务相关的按钮
+.app-header__action-tools {
+    font-size: 13px;
+    .app-btn {
+        &:last-child {
+            margin-right: 10px;
+        }
+    }
+}
+// -- end --
+
+
+/// ----------------------------------------------------------
+/// ------------------------- header -- end -------------------
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/// ------------------------- task-info 顶上nav下面的一部分 -- start --------------------
+/// ----------------------------------------------------------
+.app-task-info {
+    flex: 0 0 auto;
+    padding: 15px;
+}
+.task-info__img-box {
+    float: left;
+    margin-right: 10px;
+}
+.task-info__info-list {
+    overflow: hidden;
+}
+/// ----------------------------------------------------------
+/// ------------------------- task-info -- end --------------------
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+/// ------------------------- tabs -- start --------------------
+/// ----------------------------------------------------------
+
+.app-home-nav {
+    display: flex;
+    flex: 0 0 @nav-height;
+    background: @bg-2;
+    color: @font-color-2;
+    line-height: @nav-height;
+    padding: 0 15px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+// toggle 我的任务 我的审核 -- start
+.home-nav__page-select {
+    position: relative;
+    cursor: pointer;
+}
+.home-nav__toggle {
+    position: absolute;
+    left: -5px;
+    top: 5px;
+    width: 75px;
+    line-height: 1.8em;
+    background: @bg-1;
+    border: 1px solid @border-color-1;
+    border-radius: 2px;
+    padding: 2px 0;
+    
+}
+.home-nav__toggle-item {
+    padding: 0 5px;
+    color: @font-color-2;
+    transition: .3s;
+    text-align: center;
+    
+    &:hover { color: lighten(@brand-color, 15%); }
+}
+// toggle  -- end
+
+.home-nav__tabs {
+    flex: auto;
+    text-align: center;
+}
+.home-nav__tab-fn() {
+    display: inline-block;
+    height: @nav-height - 2;
+    line-height: @nav-height - 2;
+    text-align: center;
+    padding: 0 .5em;
+    margin: 0 .5em;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: .3s;
+}
+.home-nav__tab {
+    .home-nav__tab-fn();
+    
+    &:hover {
+        border-bottom-color: @brand-color--dark;
+    }
+}
+.home-nav__tab--active {
+    .home-nav__tab-fn();
+    cursor: default;
+    color: lighten(@brand-color, 10%);
+    border-bottom-color: @brand-color;
+}
+
+/// ----------------------------------------------------------
+/// ------------------------- tabs -- end --------------------
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/// ------------------------- task-container -- start --------------------
+/// ----------------------------------------------------------
+// 通用的container 设置
+.task-container {
+    flex: auto;
+    overflow: auto;
+    background: #222;
+    padding: 10px;
+    .clear();
+    
+    // 应该像这样，由外面的容器来决定里面的东西怎么放
+    // task-card 封装成组件之后，这里可以改成对应的组件名字
+    .task-card {
+        float: left;
+        margin: 8px;
+    }
+}
+
+// -- log - 具体内容设置
+.log-card {
+    .task-container & {
+        margin: 10px;
+    }
+}
+// --log -end --
+
+/// ----------------------------------------------------------
+/// ------------------------- task-container -- end --------------------
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/// --------------------------- glb 样式设置 -- start ------------------------------
+/// -- 这部分应该单独一个文件来进行维护 -
+/// ------------------------------------------------------------------------------------
+
+/// --- label - start ---
+.task-info__label-links {
+    overflow: hidden;
+    margin-left: -2px;
+    
+    .app-task-info & {
+        margin-top: 2px;
+    }
+}
+.label-link {
+    float: left;
+    background: rgba(255,255,255,.1);
+    border-radius: 10px;
+    font-size: 12px;
+    height: 16px;
+    line-height: 14px;
+    padding: 0 5px;
+    border: 1px solid rgba(255,255,255,.1);
+    color: lighten(@brand-color, 25%);
+    cursor: pointer;
+    min-width: 80px;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 2px;
+    transition: .3s;
+    
+    &:hover {
+        background: lighten(@brand-color, 5%);
+        color: @font-color-1;
+    }
+}
+
+/// --- label - end ---
+
+/// --- button - start ---
+button {
+    // 通用设置
+    &.app-btn {
+        border: none;
+        padding: 0;
+        font-family: inherit;
+        transition: .3s;
+    }
+    
+    /* 按钮颜色 */
+    // 通常就是个白色的按钮
+    &[data-type="default"] {}
+    // 通常就是个蓝色的按钮
+    &[data-type="primary"] {
+        background: @brand-color;
+        color: #fff;
+        &:hover {
+            background: lighten(@brand-color, 5%);
+        }
+    }
+    
+    /* 按钮大小 */
+    // - 按钮大小并不是一个规定值
+    // - 按钮大小是根据按钮所在上下文的文字大小来计算的
+    // - 未经验证，预计是： small: 1.6em; normal: 1.85em; large: 字变大;
+    &[data-size="small"] {}
+    &[data-size="normal"] {
+        line-height: 1.85em;
+        padding: 0 1em;
+    }
+    &[data-size="large"] {}
+    
+    /* 按钮形状 */
+    // 不设置时，默认是border-radius：0
+    // 圆角
+    &[data-shape="round"] {
+        border-radius: 100px;
+    }
+    // 方角
+    &[data-shape="square"] {
+        border-radius: 4px;
+    }
+}
+/// --- button - end ---
+
+/// ------------------------------------------------------------------------------------
+/// --------------------------- glb 样式设置 -- end ------------------------------
