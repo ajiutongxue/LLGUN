@@ -8,10 +8,12 @@
 @import "./app-base";
 
 
+html,
+body {
+    font: @font-set;
+}
 
-/// 尺寸
-@head-bar-height: 42px;
-@nav-height: 36px;
+
 
 
 
@@ -43,6 +45,11 @@
     font-size: 14px;
     background: @bg-1;
     border-bottom: 1px solid @border-color-1;
+    // add by yang, -start 2019/2/21
+    // 增加了 search-box 的下拉框，需要设置zindex已正常显示
+    position: relative;
+    z-index: 66;
+    // add -end 2019/2/21
 }
 
 
@@ -89,6 +96,11 @@
     flex: 0 0 45px;
     text-align: center;
     cursor: pointer;
+    position: relative;
+    
+    &.side-tools__user--active {
+        background: @bg-2;
+    }
     
     &:hover {
         img { opacity: .9; }
@@ -101,47 +113,92 @@
         object-fit: cover;
         vertical-align: middle;
     }
-}
-.app-header__side-tools__search-box {
-    position: relative;
-    flex: auto;
-    input {
+    
+    // 调整了头像部分的结构，将图片用 a 标签包了起来
+    .user__avatar { display: block; }
+    
+    .user__menu {
         position: absolute;
-        left: 0;
-        top: 0;
-        border: none;
-        width: 100%;
-        line-height: @head-bar-height - 1;
-        padding-left: 1em;
-        background: none;
-        color: @font-color-1;
-        z-index: 2; // 可以在没激活的时候，点击了搜索按钮，激活输入框
+        border-radius: 0 0 2px 2px;
+        right: 0;
+        top: 40px;
+        width: 82px;
+        z-index: 98;
+        box-shadow: 0 3px 8px rgba(0,0,0,.6);
+        line-height: 1.8em;
+        background: @bg-1;
+        border: 1px solid @border-color-1;
+        font-size: 12px;
+    }
+    .user__menu__item {
+        padding: 0 5px 0 8px;
+        color: @font-color-2;
         transition: .3s;
-        
-        &:hover { background: rgba(0,0,0,.1);}
-        &:focus {
-            background: rgba(0,0,0,.4);
-            z-index: 0;
+
+        &:hover {
+            color: @dark-text-color--normal;
+            background: @bg-2;
         }
     }
 }
-.app-header__side-tools__search-btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: @head-bar-height;
-    width: 32px;
-    background: none;
-    font-size: 18px;
-    color: @font-color-2;
-    z-index: 1;
-    cursor: pointer;
-    transition: .3s;
+
+
+
+.app-header__side-tools__search-box {
+    position: relative;
+    flex: auto;
     
-    &:focus { outline: none; }
-    &:hover { color: lighten(@brand-color, 10%); }
+    // mod by yang - start, 2019/2/21
+    // 单独出 search-box 组件，组件内容相关样式移动至自己样式文件中
+    //input {
+    //    position: absolute;
+    //    left: 0;
+    //    top: 0;
+    //    border: none;
+    //    width: 100%;
+    //    line-height: @head-bar-height - 1;
+    //    padding-left: 1em;
+    //    background: none;
+    //    color: @font-color-1;
+    //    z-index: 2; // 可以在没激活的时候，点击了搜索按钮，激活输入框
+    //    transition: .3s;
+    //    outline: none;
+    //    box-sizing: border-box;
+    //
+    //    &:hover { background: rgba(0,0,0,.1);}
+    //    &:focus {
+    //        background: rgba(0,0,0,.4);
+    //        z-index: 0;
+    //    }
+    //}
+    // --mod end 2019/2/21
 }
+
+// mod by yang - start, 2019/2/21
+// 单独出 search-box 组件，组件内容相关样式移动至自己样式文件中
+//.app-header__side-tools__search-btn {
+//    position: absolute;
+//    right: 0;
+//    top: 0;
+//    height: @head-bar-height;
+//    border: none;
+//    padding: 0;
+//    width: 32px;
+//    background: none;
+//    font-size: 18px;
+//    color: @font-color-2;
+//    z-index: 1;
+//    cursor: pointer;
+//    transition: .3s;
+//
+//    &:focus { outline: none; }
+//    &:hover { color: lighten(@brand-color, 10%); }
+//}
+// --mod end 2019/2/21
+
+
 // -- end --
+
 
 
 /// -- start -- 中间几（当前是 两 ）个业务相关的按钮
@@ -161,6 +218,30 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/// ------------------------- app-task-content  -- start --------------------
+//  -----  整个tab的标签和内容，下方的tabs和task-container 属于 task-app-content的内部
+/// ----------------------------------------------------------
+.app-task-content {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+}
+app-my-task,
+app-task-detail,
+app-version-detail {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+}
+
+/// ----------------------------------------------------------
+/// ------------------------- header -- end -------------------
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 /// ------------------------- task-info 顶上nav下面的一部分 -- start --------------------
@@ -196,7 +277,10 @@
     color: @font-color-2;
     line-height: @nav-height;
     padding: 0 15px;
-    font-size: 13px;
+    // mod start 2019/02/15
+    //font-size: 13px;
+    font-size: 12px;
+    // mod end
     white-space: nowrap;
 }
 
@@ -207,29 +291,58 @@
 }
 .home-nav__toggle {
     position: absolute;
-    left: -5px;
-    top: 5px;
-    width: 75px;
+    // mod start 2019/02/15
+    //left: -5px;
+    //top: 5px;
+    //width: 75px;
+    //border-radius: 2px;
+    //padding: 2px 0;
+    border-radius: 0 0 2px 2px;
+    left: -8px;
+    top: 33px;
+    width: 72px;
+    z-index: 98;
+    box-shadow: 0 3px 8px rgba(0,0,0,.6);
+    // mod end
     line-height: 1.8em;
     background: @bg-1;
     border: 1px solid @border-color-1;
-    border-radius: 2px;
-    padding: 2px 0;
     
 }
 .home-nav__toggle-item {
     padding: 0 5px;
     color: @font-color-2;
     transition: .3s;
-    text-align: center;
+    // mod start 2019/02/15
+    padding-left: 8px;
+    //text-align: center;
+    // mod end
     
-    &:hover { color: lighten(@brand-color, 15%); }
+    // mod start 2019/02/15
+    //&:hover {
+    &:not(.toggle-item--selected):hover {
+        //color: lighten(@brand-color, 15%);
+        color: @dark-text-color--normal;
+        background: @bg-2;
+        // mod end
+    }
+    // add start 2019/02/15
+    &.toggle-item--selected {
+        cursor: default;
+        color: lighten(@brand-color, 15%);
+    }
+    // add end
+    
 }
 // toggle  -- end
 
 .home-nav__tabs {
     flex: auto;
-    text-align: center;
+    // mod start 2019/02/15
+    //text-align: center;
+    text-align: left;
+    padding-left: 10px;
+    // mod end
 }
 .home-nav__tab-fn() {
     display: inline-block;
@@ -237,7 +350,9 @@
     line-height: @nav-height - 2;
     text-align: center;
     padding: 0 .5em;
-    margin: 0 .5em;
+    // mod start 2019/02/15
+    //margin: 0 .5em;
+    // mod end
     border-bottom: 2px solid transparent;
     cursor: pointer;
     transition: .3s;
@@ -272,12 +387,20 @@
     overflow: auto;
     background: #222;
     padding: 10px;
+    padding-bottom: 40px;
     .clear();
+    //// add start, 2019/02/15
+    //text-align: center;
+    //// add end
     
     // 应该像这样，由外面的容器来决定里面的东西怎么放
     // task-card 封装成组件之后，这里可以改成对应的组件名字
     .task-card {
-        float: left;
+        // mod start, 2019/02/15
+        //float: left;
+        display: inline-block;
+        text-align: left;
+        // mod end
         margin: 8px;
     }
 }
@@ -385,3 +508,20 @@ button {
 
 /// ------------------------------------------------------------------------------------
 /// --------------------------- glb 样式设置 -- end ------------------------------
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/// --------------------------- 覆盖一些历史包袱的组件样式 -- start ------------------------------
+/// ------------------------------------------------------------------------------------
+
+/// editor-string-input -- start
+@import './history-shoulder';
+/// editor-string-input -- end
+
+
+/// ------------------------------------------------------------------------------------
+/// --------------------------- 覆盖一些历史包袱的组件样式 -- end ------------------------------

@@ -24,6 +24,10 @@
 @bg-1: rgb(78, 76, 78);
 @bg-2: #3C3A3C;
 @bg-3: #2c2b2d;
+@bg-4: rgba(16, 15, 17, 0.25);
+@bg-5: rgba(16, 15, 17, 0.45);
+@bg-6: rgba(16, 15, 17, 0.55);
+@bg-7: rgba(16, 15, 17, 0.7);
 
 @border-color-1: rgba(255,255,255,.05);
 
@@ -39,6 +43,12 @@
 
 
 
+/// 尺寸
+@head-bar-height: 42px;
+@nav-height: 36px;
+
+
+
 .clear() {
     &:after {
         content: '';
@@ -46,4 +56,8 @@
         display: table;
     }
 };
+
+.clear {
+    .clear();
+}
 

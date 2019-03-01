@@ -73,7 +73,11 @@ import { LabelStringInputComponent } from './label-string-input/label-string-inp
 import { ContextMenuComponent } from './context-menu/context-menu.component';
 import { MyNewTaskComponent } from './my-new-task/my-new-task.component';
 import { MyNewTaskDetailComponent } from './my-new-task/my-new-task-detail.component';
+import { SearchBoxComponent } from './my-new-task/search-box/search-box.component';
 import { MyTask2Component } from './my-task-2/my-task-2.component';
+import { TaskActivityComponent } from './my-new-task/task-activity/task-activity.component';
+import { NoteAddComponent } from './my-new-task/task-activity/note-add/note-add.component';
+import { NoteReplyComponent } from './my-new-task/note-reply/note-reply.component';
 
 const appRoutes: Routes = [
 
@@ -234,6 +238,10 @@ const appRoutes: Routes = [
         MyNewTaskComponent,
         MyNewTaskDetailComponent,
         MyTask2Component,
+        SearchBoxComponent,
+        TaskActivityComponent,
+        NoteAddComponent,
+        NoteReplyComponent,
         // HighlightDirective
     ],
     imports: [

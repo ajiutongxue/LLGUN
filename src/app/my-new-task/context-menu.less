@@ -1,0 +1,40 @@
+/**
+ *  右键菜单
+ */
+
+@import "./app-base";
+
+
+.context-menu {
+    position: fixed;
+    min-width: 160px;
+    max-width: 300px;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px 1px #000;
+    background: @bg-1;
+    border: 1px solid @border-color-1;
+    z-index: 99;
+}
+
+.context-menu__item {
+    line-height: 2.2em;
+    padding: 0 5px;
+    cursor: pointer;
+    transition: .3s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    .clear();
+    
+    &:hover {
+        background: @bg-2;
+        color: @dark-text-color--normal;
+    }
+}
+
+.item__icon {
+    margin-right: 2px;
+}
+
+.item__text { }
+

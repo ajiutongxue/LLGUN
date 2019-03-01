@@ -23,7 +23,10 @@
                 <button class="app-btn" data-type="primary" data-size="normal" data-shape="square">审核通过</button>
             </div>
             <div class="app-header__side-tools">
-                <div class="app-header__side-tools__search-box"><input type="text" /><button class="app-header__side-tools__search-btn"><i class="fa fa-search"></i></button></div>
+                <div class="app-header__side-tools__search-box">
+                    <!--<input type="text" /><button class="app-header__side-tools__search-btn"><i class="fa fa-search"></i></button>-->
+                    <app-search-box></app-search-box>
+                </div>
                 <div class="app-header__side-tools__user"><img src="../../assets/style/images/img3.jpg" /></div>
             </div>
         </div>
@@ -49,7 +52,9 @@
 
     <div class="app-home-nav">
         <div class="home-nav__tabs">
-            <div (click)="tab = 'news'" class="home-nav__tab">动态</div>
+            <div (click)="tab = 'news'"
+                 [ngClass]="{'home-nav__tab--active': tab === 'news', 'home-nav__tab': tab !== 'news'}"
+            >动态</div>
             <div (click)="tab = 'info'"
                  [ngClass]="{'home-nav__tab--active': tab === 'info', 'home-nav__tab': tab !== 'info'}"
             >详细信息</div>
@@ -68,7 +73,7 @@
 
 
     <div *ngIf="tab=='news'" class="task-container">
-        试试之前的动态
+        <task-activity></task-activity>
     </div>
 
     <div *ngIf="tab=='info'" class="task-container">

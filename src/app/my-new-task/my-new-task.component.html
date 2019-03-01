@@ -24,90 +24,142 @@
             <!--<button>审核通过</button>-->
         </div>
         <div class="app-header__side-tools">
-            <div class="app-header__side-tools__search-box"><input type="text" /><button class="app-header__side-tools__search-btn"><i class="fa fa-search"></i></button></div>
-            <div class="app-header__side-tools__user"><img src="../../assets/style/images/img3.jpg" /></div>
-        </div>
-    </div>
-</div>
-
-<div class="app-home-nav">
-    <div class="home-nav__page-select" (click)="toggle = !toggle">
-        <div class="home-nav__item--current">我的任务 <i class="fa fa-caret-down"></i></div>
-        <div *ngIf="toggle" class="home-nav__toggle">
-            <div class="home-nav__toggle-item">我的任务</div>
-            <div class="home-nav__toggle-item">我的审核</div>
-        </div>
-    </div>
-    <div class="home-nav__tabs">
-        <div (click)="currentTab = 'waiting'" class="home-nav__tab--active"
-             [ngClass]="{'home-nav__tab': currentTab !== 'waiting', 'home-nav__tab--active': currentTab === 'waiting'}"
-        >未开始 (2)</div>
-        <div (click)="currentTab = 'tasks'" class="home-nav__tab"
-             [ngClass]="{'home-nav__tab': currentTab !== 'tasks', 'home-nav__tab--active': currentTab === 'tasks'}"
-        >进行中 (3)</div>
-        <div (click)="currentTab = 'finished'"
-             [ngClass]="{'home-nav__tab': currentTab !== 'finished', 'home-nav__tab--active': currentTab === 'finished'}"
-        >已完成 (77)</div>
-    </div>
-</div>
-
-
-<div *ngIf="currentTab=='waiting'" class="task-container">
-    <div class="task-card" data-theme="dark">
-        <div class="task-card__img-box">
-            <img src="../../assets/style/images/img2.jpg" alt="task face">
-        </div>
-        <div class="task-card__info">
-            <div class="task-card__info-row">
-                <div class="task-card__title">任务的标题任务的标题任务的标题 任务的标题</div>
-                <div class="task-card__status--doing"><i class="fa fa-play"></i> 进行中</div>
+            <!-- mod by yang, -start 2019/2/21 -->
+            <!-- 独立出了search-box 组件 -->
+            <!-- 说明：app-header__side-tools__search-box 是负责定位的，需要留在外面 -->
+            <!--<div class="app-header__side-tools__search-box"><input type="text" /><button class="app-header__side-tools__search-btn"><i class="fa fa-search"></i></button></div>-->
+            <div class="app-header__side-tools__search-box">
+                <app-search-box></app-search-box>
             </div>
-            <div class="task-card__info-row">
-                <div class="task-card__users">
-                    <div class="task-card__avatar-list">
-                        <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
-                        <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
-                        <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
-                        <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
-                        <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
-                        <!-- 什么时候使用省略？建议最多显示4、5个头像，剩下的就用省略 -->
-                        <div class="task-card__avatar-item task-card__more-avatar-item"></div>
-                    </div>
-                    <!--<div class="task-card__username">刘大宝</div>-->
+            <!-- mod -end 2019/2/21 -->
+
+            <!-- 注销登录 - start -->
+            <!-- 说明：本地增加了一个变量，当为true的时候，影响两个地方，通过 ngClass 和 ngIf 来控制的 ，请注意-->
+            <div class="app-header__side-tools__user" [ngClass]="{ 'side-tools__user--active': isShowUserMenu }">
+                <!-- 需要1个 a 标签？ 那就这样 -->
+                <a class="user__avatar" (click)="isShowUserMenu = !isShowUserMenu"><img src="../../assets/style/images/img3.jpg" /></a>
+                <div class="user__menu" *ngIf="isShowUserMenu">
+                    <div class="user__menu__item"><i class="fa fa-sign-out"></i> 退出登录</div>
                 </div>
-                <div class="task-card__ending-time"><span class="task-card__ending-time__label">预计完成</span>2019/12/12</div>
             </div>
+            <!-- 注销登录 - end -->
         </div>
     </div>
-    <div class="task-card" data-theme="dark">
-        <div class="task-card__img-box">
-            <img src="../../assets/style/images/img2.jpg" alt="task face">
-        </div>
-        <div class="task-card__info">
-            <div class="task-card__info-row">
-                <div class="task-card__title">任务的标题任务</div>
-                <div class="task-card__status--doing"><i class="fa fa-play"></i> 进行中</div>
+</div>
+
+<!-- 20190213 这部分结构进行了调整，新增了布局标签 app-task-content -->
+<div class="app-task-content">
+    <!--  你的 <app-my-task> 从这里开始 -->
+    <div class="app-home-nav">
+        <div class="home-nav__page-select" (click)="toggle = !toggle">
+            <div class="home-nav__item--current">我的任务 <i class="fa fa-caret-down"></i></div>
+            <div *ngIf="toggle" class="home-nav__toggle">
+                <div class="home-nav__toggle-item toggle-item--selected">我的任务</div>
+                <div class="home-nav__toggle-item">我的审核</div>
             </div>
-            <div class="task-card__info-row">
-                <div class="task-card__users">
-                    <div class="task-card__avatar-list">
-                        <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
-                        <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
-                    </div>
+        </div>
+        <div class="home-nav__tabs">
+            <div (click)="currentTab = 'waiting'" class="home-nav__tab--active"
+                 [ngClass]="{'home-nav__tab': currentTab !== 'waiting', 'home-nav__tab--active': currentTab === 'waiting'}"
+            >未开始 (2)</div>
+            <div (click)="currentTab = 'tasks'" class="home-nav__tab"
+                 [ngClass]="{'home-nav__tab': currentTab !== 'tasks', 'home-nav__tab--active': currentTab === 'tasks'}"
+            >进行中 (3)</div>
+            <div (click)="currentTab = 'finished'"
+                 [ngClass]="{'home-nav__tab': currentTab !== 'finished', 'home-nav__tab--active': currentTab === 'finished'}"
+            >已完成 (77)</div>
+        </div>
+    </div>
+
+
+    <div *ngIf="currentTab=='waiting'" class="task-container" style="text-align: center;">
+        <div class="task-card task-card--selected" data-theme="dark">
+            <div class="task-card__img-box">
+                <span class="task-card__img-ctrl-btn"><i class="fa fa-search-plus"></i></span>
+                <img src="../../assets/style/images/img2.jpg" alt="task face">
+            </div>
+            <div class="task-card__info">
+                <div class="task-card__info-row">
+                    <div class="task-card__title">任务的标题任务的标题任务的标题 任务的标题</div>
+                    <div class="task-card__status--doing"><i class="fa fa-play"></i> 进行中</div>
                 </div>
-                <div class="task-card__ending-time"><span class="task-card__ending-time__label">预计完成</span>2019/12/12</div>
+                <div class="task-card__info-row">
+                    <div class="task-card__users">
+                        <div class="task-card__avatar-list">
+                            <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                            <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                            <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                            <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                            <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                            <!-- 什么时候使用省略？建议最多显示4、5个头像，剩下的就用省略 -->
+                            <div class="task-card__avatar-item task-card__more-avatar-item"></div>
+                        </div>
+                        <!--<div class="task-card__username">刘大宝</div>-->
+                    </div>
+                    <div class="task-card__ending-time"><span class="task-card__ending-time__label">预计完成</span>2019/12/12</div>
+                </div>
             </div>
+        </div>
+        <div class="task-card" data-theme="dark">
+            <div class="task-card__img-box">
+                <span class="task-card__img-ctrl-btn"><i class="fa fa-play-circle-o"></i></span>
+                <img src="../../assets/style/images/img2.jpg" alt="task face">
+            </div>
+            <div class="task-card__info">
+                <div class="task-card__info-row">
+                    <div class="task-card__title">任务的标题任务</div>
+                    <div class="task-card__status--doing"><i class="fa fa-play"></i> 进行中</div>
+                </div>
+                <div class="task-card__info-row">
+                    <div class="task-card__users">
+                        <div class="task-card__avatar-list">
+                            <div class="task-card__avatar-item">
+                                <img src="../../assets/style/images/img3.jpg" alt="">
+                            </div>
+                            <div class="task-card__avatar-item"><img src="../../assets/style/images/img3.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="task-card__ending-time"><span class="task-card__ending-time__label">预计完成</span>2019/12/12</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="currentTab=='tasks'" class="task-container">
+        tasks tab
+    </div>
+
+    <div *ngIf="currentTab=='finished'" class="task-container">
+        finish tab
+    </div>
+    <!--  你的 </app-my-task> 到这里结束-->
+
+    <!-- 右键菜单 -->
+    <div class="context-menu" *ngIf="isContextMenu" style="left: 200px; top: 300px;">
+        <div class="context-menu__item">
+            <span class="item__icon"><i class="fa fa-file-o fa-fw"></i></span>
+            <span class="item__text">从浏览器打开</span>
+        </div>
+        <div class="context-menu__item">
+            <span class="item__icon"><i class="fa fa-file-o fa-fw"></i></span>
+            <span class="item__text">从浏览器打开</span>
+        </div>
+        <div class="context-menu__item">
+            <span class="item__icon"><i class="fa fa-file-o fa-fw"></i></span>
+            <span class="item__text">从浏览器打开</span>
+        </div>
+        <div class="context-menu__item">
+            <span class="item__icon"><i class="fa fa-file-o fa-fw"></i></span>
+            <span class="item__text">从浏览器打开</span>
+        </div>
+        <div class="context-menu__item">
+            <span class="item__icon"><i class="fa fa-file-o fa-fw"></i></span>
+            <span class="item__text">从浏览器打开</span>
         </div>
     </div>
 </div>
 
-<div *ngIf="currentTab=='tasks'" class="ll-main-container">
-    tasks tab
-</div>
 
-<div *ngIf="currentTab=='finished'" class="ll-main-container">
-    finish tab
-</div>
 
 
 

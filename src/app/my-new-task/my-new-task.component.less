@@ -12,7 +12,7 @@
     color: @dark-text-color--second;
     transition: .3s;
     
-    &:hover { box-shadow: 0 4px 16px 1px #000; }
+    &:not(.task-card--selected):hover { box-shadow: 0 4px 16px 1px #000; }
     &:focus { outline: none; }
     
     &[data-theme="dark"] {
@@ -21,7 +21,10 @@
         // 此处只是为了说明
     }
     
+    &.task-card--selected { box-shadow: 0 0 1px 2px lighten(@brand-color, 15%)}
+    
     .task-card__img-box {
+        position: relative;
         width: 240px;
         height: 136px;
         border-radius: @border-radius @border-radius 0 0;
@@ -29,10 +32,47 @@
         border-bottom: none;
     
         > img {
-            width: 100%;
+            width: ~"calc(100% - 2px)";
             height: 100%;
             border-radius: @border-radius @border-radius 0 0;
             object-fit: cover;
+            transition: .3s;
+        }
+    
+        // fjb 添加的 - start
+        .hide-img {
+            &:hover {
+                img {
+                    display: none;
+                }
+            }
+        }
+        // fjb 添加的 - end
+    
+    }
+    .task-card__img-ctrl-btn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        font-size: 4em;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        transition: .3s;
+        z-index: 1;
+        color: rgba(255, 255, 255, .75);
+        text-shadow: 0 0 10px rgba(0,0,0,.6);
+
+    }
+    &:hover {
+        .task-card__img-ctrl-btn {
+            color: rgba(255, 255, 255, .9);
+    
+            &:hover {
+                color: lighten(@brand-color, 10%);
+                text-shadow: 0 0 10px rgba(255,255,255,.1);
+        
+                & + img { opacity: .6; }
+            }
         }
     }
     

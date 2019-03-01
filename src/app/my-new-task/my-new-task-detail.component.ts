@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MyNewTaskDetailComponent implements OnInit {
 
-    tab = 'info';
+    tab = 'news';
 
     constructor() {
     }

@@ -1,0 +1,443 @@
+.comment-container {
+    --font-family: 'Microsoft Yahei';
+
+    font: 14px/24px var(--font-family);
+    color: var(--primary-words-color);
+
+    --content-bg-color: hsla(0, 0%, 0%, 0.15);
+    --dark-bg-color: rgba(0,0,0,.1); /* 回复的背景颜色 */
+
+    --primary-words-color: hsl(0, 0%, 90%);
+    --second-words-color: hsl(0, 0%, 75%);
+    --third-words-color: hsl(0, 0%, 51%);
+
+    --link-color: #4e98ca;
+    --normal-link-color: rgba(107, 148, 167, 0.9);
+
+    --gray-border-color: hsl(0, 0%, 30%);
+    --light-border-color: #444;
+    --dark-border-color: rgba(255,255,255,.1);
+    --label-border-color: var(--dark-border-color);
+
+    --light-bg-color: rgba(255,255,255,.1);
+
+    --active-color: #15a1ff;
+    --warnging-color: #E30000;
+    --lighter-bg-color: #fafafa;
+
+    --editor-outer-border-color: #111;
+    --editor-border-color: #ccc;
+    --editor-words-color: #14323A;
+    --editor-tools-bg-color: var(--lighter-bg-color);
+
+    background: hsl(0, 0%, 25%);
+    max-width: 600px;
+    margin: 0 auto;
+
+}
+
+.margintop0 {
+    margin-top: 0!important;
+}
+
+// 通用
+.logined-edit {
+    position: absolute;
+    left: -20px;
+    color: var(--third-words-color);
+    font-size: 14px!important;
+    line-height: inherit!important;
+}
+.relative {
+    position: relative;
+}
+
+.comment {
+    max-width: 600px;
+    margin: 10px auto;
+    background: var(--content-bg-color);
+    border: 1px solid var(--gray-border-color);
+    border-radius: 4px;
+    // fix: 改的紧密一些
+    //padding-bottom:  30px;
+    padding-bottom:  10px;
+    position: relative;
+}
+
+
+.subject {
+    // fix: 改的紧密一些
+    //padding: 30px 30px 0px;
+    padding: 15px 20px 0;
+    
+    position:  relative;
+    
+    .writer .date + div {
+        /* line-height: 24px; */
+        clear: both;
+    }
+}
+
+.writer {
+    position: relative;
+    height: 55px;
+    padding-left: 60px;
+
+    .avatar {
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 40px;
+        height: 40px;
+
+    }
+    .name {
+        /* float: left; */
+        line-height: 16px;
+    }
+    .date {
+        /* float: left; */
+        /* margin-left: 15px; */
+        line-height: 16px;
+    }
+}
+.avatar {
+    border-radius: 100%;
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+}
+
+.reply {
+    border-top: 1px solid var(--light-border-color);
+    margin: 0 30px;
+    padding: 14px 20px 10px;
+    border: 1px solid var(--light-border-color);
+    background: var(--dark-bg-color);
+    & + .reply {
+        border-top: none;
+    }
+
+    .writer {
+        padding-left: 42px;
+        padding-top: 5px;
+        height: 35px;
+    }
+
+    .editor {
+        margin: 0;
+    }
+    .date,
+    .name {
+        float: left;
+    }
+    .date {
+        margin-left: 10px;
+    }
+} 
+
+.name {
+    display: inline-block;
+    // fix: 人名颜色浅
+    //color: var(--second-words-color);
+    color: var(--primary-words-color);
+    /* font-weight: 600; */
+}
+.date {
+    font-size: 12px;
+    color: var(--third-words-color);
+}
+
+.state {
+    color: var(--second-words-color);
+    font-size: 12px;
+    margin-bottom:  10px;
+    position:  absolute;
+    right: 15px;
+    top: 6px;
+    // fix: 会被title的input-box遮住
+    z-index: 10;
+}
+
+.op-btn {
+    position:absolute;
+    right: 0;
+    top: 2px;
+    background: var(--active-color);
+    color: #fff;
+    padding: 0 1em;
+    border-radius:4px;
+    font-size: 13px;
+    height: 30px;
+    line-height: 30px;
+}
+
+
+.label-box {
+    // fix:标题下方的小标 与 用户信息之前空太多了
+    //margin: 5px 0 20px;
+    margin: 5px 0;
+    &.contain-label-string {
+        // 这个搞不清楚加上干什么的了，导致了一个错位
+        // 先注释调
+        // yang 2018/12/19
+        margin-left: -20px;
+    }
+
+    .label-box-title {
+        display: inline-block;
+        height: 16px;
+        line-height: 16px;
+        overflow: hidden;
+    }
+}
+.label-box.download {
+    border: 1px solid var(--light-border-color);
+    border-width:  1px 0;
+    padding: 10px 0;
+    //margin: 10px 0;
+    margin-bottom: -10px;
+    font-size: 12px;
+    color: var(--third-words-color);
+    border-bottom: 0;
+    border: none;
+    // 去掉下面的线，放到somelinks上面去
+}
+.label {
+    display: inline-block;
+    background: var(--light-bg-color);
+    border-radius: 10px;
+    font-size: 12px;
+    height: 16px;
+    line-height: 14px;
+    padding: 0 5px;
+    border: 1px solid var(--label-border-color);
+    color: var(--normal-link-color);
+    cursor: pointer;
+    min-width: 80px;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+        border-color: var(--active-color);
+        background: var(--active-color);
+        color: #fff;
+    }
+}
+
+.read-more {
+    color: var(--link-color);
+    margin-left: .5em;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+        color: var(--active-color)
+    }
+}
+.some-links {
+    position: relative;
+    // margin-top: 20px;
+    margin-top: 10px;
+    font-size: 12px;
+    border-top: 1px solid var(--light-border-color);
+    padding-top: 10px;
+
+    a {
+        color: var(--normal-link-color);
+        cursor: pointer;
+
+        & + a {
+            margin-left: 20px;
+        }
+
+        &:hover {
+            color: var(--active-color);
+        }
+
+        &.toggle-content {
+            position: absolute;
+            right: 0;
+        }
+        &.remove:hover {
+            color: var(--warnging-color);
+        }
+    }
+}
+
+.reply {
+    .avatar {
+        width: 25px;
+        height: 25px;
+    }
+    .op-btn {
+        top: -3px;
+    }
+}
+
+.title {
+    font-size: 20px;
+    line-height: 1.4em;
+    cursor: pointer;
+    // 标题及编辑时input的文字全部加粗
+    font-weight: bold;
+    // for label-string-input
+    margin-left: -20px;
+
+    &.title--not-edit {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+}
+.content {
+    min-height: 1.8em;
+    line-height: 1.8em;
+    img {
+        max-width: 100%;
+    }
+}
+.content-thumbnail {
+    float: left;
+    width: 152px;
+    height: 89px;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-top: 6px;
+    img {
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
+    }
+}
+
+.reply-content:not(.has-thumbnail) img, 
+.content:not(.has-thumbnail) img, 
+.editor-content img {
+    display: block;
+    margin: 1em auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.reply {
+
+}
+
+
+.subject + .reply {
+    margin-top: 10px;
+}
+
+.no-links {
+    padding-bottom: 20px;
+    &.has-up {
+        padding-bottom: 35px;
+    }
+}
+
+
+.editor {
+    // border: 1px solid var(--dark-border-color);
+    margin: 10px 30px;
+}
+.editor-content {
+    height: 70px;
+}
+.editor-tools {
+    height: 28px;
+    border-top: 1px solid var(--dark-border-color);
+    line-height:  28px;
+    background: var(--lighter-bg-color);
+    font-size:  12px;
+    position:  relative;
+    > div {
+        position: absolute;
+        border: 1px solid var(--dark-border-color);
+        cursor:  pointer;
+    }
+    .paperclip {
+        left: 0;
+        padding: 0 10px;
+        border: 0;
+    }
+    .cut {
+        left: 29px;
+        padding: 0 10px;
+        border-width: 0 1px;
+    }
+    .cancel {
+        right: 60px;
+        border-width:  0 0 0 1px;
+        padding: 0 10px;
+    }
+    .submit {
+        right: 0;
+        padding: 0 10px;
+        border-width: 0;
+        background: var(--active-color);
+        color: #fff;
+    }
+}
+
+// .reply .editor, 
+// #comment-edit .editor {
+//     margin: 0;
+// }
+// #reply-modify .reply .editor-content, #comment-edit .editor-content {
+//     height: 400px;
+//     overflow: auto;
+//     padding: 10px;
+// }
+// #reply-modify .reply .editor-content {
+//     height: 100px;
+// }
+
+/* 翻页组件，以后可能会抽取公用 */
+.pagination-box {
+    border: 1px solid var(--light-border-color);
+    border-top: none;
+    margin: 0 30px;
+    height: 40px;
+    text-align: center;
+    line-height:  40px;
+    // 统一和grid的翻页样式
+    // a {
+    //     color: var(--link-color);
+    //     margin: 0 5px;
+    //     font-size:  12px;
+
+    //     &:not(.current-pagination):hover {
+    //         color: var(--active-color);
+    //         cursor: pointer;
+    //     }
+
+    //     &.current-pagination {
+    //         color: var(--third-words-color);
+    //     }
+    // }
+
+    // 来不及，暂时先用回原来样式，下面是和grid样式一样的
+    font-size: 12px;
+
+    a {
+        margin: 0 5px;
+        cursor: pointer;
+        &:hover {
+            color: var(--active-color);
+        }
+    }
+    input {
+        width: 30px;
+        height: 20px;
+        text-align: center;
+    }
+}
+
+
+
