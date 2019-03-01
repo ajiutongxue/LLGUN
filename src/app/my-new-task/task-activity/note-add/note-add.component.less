@@ -1,0 +1,82 @@
+@import "../../app-base";
+
+/// 覆盖一些历史负担的组件样式，
+/// 最终使用时，不!!!通过这里导入
+@import '../../history-shoulder';
+
+.add-panel__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.7);
+    z-index: 997;
+}
+
+
+.add-panel {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    //margin: 0 20px;
+    max-width: 600px;
+    //width: 100%;
+    height: 300px;
+    background: @bg-7;
+    box-shadow: 0 -8px 15px rgba(0,0,0,.8);
+    border: 1px solid @dark-border-color--weakest;
+    border-radius: 4px 4px 0 0;
+    transition: .4s;
+    padding: 30px;
+    width: ~'calc(100% - 40px)';
+    z-index: 998;
+}
+
+.add-panel__container {
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.add-panel__show-btn {
+    position: absolute;
+    right: 10px;
+    top: -30px;
+    height: 30px;
+    width: 86px;
+    background: @bg-2;
+    background: @bg-7;
+    text-align: center;
+    border-radius: 6px 6px 0 0;
+    line-height: 30px;
+    border: 1px solid @dark-border-color--weakest;
+    border-bottom: none;
+    box-shadow: inset 0 -5px 15px rgba(0,0,0,.5);
+    transition: .3s;
+    cursor: pointer;
+    z-index: 1000;
+    
+    &:hover {
+        color: #fff;
+        background: @brand-color;
+        box-shadow: inset 0 -5px 15px rgba(0,0,0,.5), 0 -2px 15px rgba(0,0,0,.5);
+    }
+}
+
+// 新建收起来的时候，按钮的显示效果
+.add-panel__show-btn--hide {
+    height: 48px;
+    line-height: 48px;
+    //border-radius: 50%;
+    border-radius: 0;
+    box-shadow: 0 -5px 15px rgba(0,0,0,.5);
+    background: @brand-color;
+    top: -48px;
+    color: #fff;
+    
+    &:hover {
+        background: lighten(@brand-color, 5%);
+        box-shadow: 0 -5px 25px rgba(0,0,0,.7);
+    }
+}

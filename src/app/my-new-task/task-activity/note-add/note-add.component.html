@@ -1,0 +1,127 @@
+<div class="add-panel__mask" *ngIf="hideAddPanel">
+</div>
+
+<div class="add-panel" [ngStyle]="hideAddPanel ? '': {bottom: '-300px'}">
+    <div class="add-panel__show-btn" (click)="hideAddPanel = !hideAddPanel"
+         [ngClass]="hideAddPanel ? '' : 'add-panel__show-btn--hide'">
+        <span *ngIf="hideAddPanel">
+            <i class="fa fa-angle-down"></i> 收起评论
+        </span>
+        <span *ngIf="!hideAddPanel">
+            <i class="fa fa-plus"></i> 新建评论
+        </span>
+    </div>
+
+    <div class="add-panel__container">
+
+        <!-- 具体表单内容部分了 -->
+
+        <!-- 应该是你的 editor-string-input 组件-->
+        <!-- 在 这个组件没有重新来过之前，我会把他的样式写到公共文件当中 -->
+        <!-- ！！！ 注意一下：我就不新建这个组件了，用div代替editor-string-input标签，在你实际使用这里时，不需要这个包着的div-->
+        <div title="就当这个标签是 editor-string-input ">
+            <table class="table-fixed form-row">
+                <tbody>
+                <tr>
+                    <td class="row-title">主题</td>
+                    <td>
+                        <!-- 你的 string-input 组件 -->
+                        <div class="input-box">
+                            <input type="text">
+                        </div>
+                        <!-- string-input 结束 -->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- editor-string-input 结束 -->
+
+
+        <!-- 你的 editor-search-select 组件 开始-->
+        <table class="table-fixed form-row" style="display: table;">
+            <tbody>
+            <tr>
+                <td class="row-title">连接对象</td>
+                <td>
+                    <!-- search-select 组件 开始-->
+                    <!--！！ mod <div class="select-box grid-label-box">, 改成下面了-->
+                    <div class="select-box">
+                        <div class="input-box ll-label-box">
+                            <div class="ll-label-content clearfix" style="margin-left:0px">
+                                    <span class="ll-label">
+                                        <i class="fa fa-fw fa-check-circle"></i>
+                                        <span>引用版本任务</span>
+                                        <div class="remove-ll-label"><i class="fa fa-remove"></i></div>
+                                    </span>
+                            </div>
+                            <input type="text" (click)="hideSearchSelect = !hideSearchSelect">
+                        </div>
+                        <div class="container" *ngIf="hideSearchSelect">
+                            <div class="scroll-container">
+                                <div class="content">
+                                    <div class="item">
+                                        <span class="icon"></span>
+                                        <span class="text" style="color:#0293DD">创建对象</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="before"></div>
+                            <div class="after"></div>
+                        </div>
+                    </div>
+                    <!-- search-select 组件 开始-->
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <!-- 你的 editor-search-select 组件 结束-->
+
+
+        <!-- editor-dictionary-select 组件开始-->
+        <table class="table-fixed form-row">
+            <tbody>
+            <tr>
+                <td class="row-title">状态</td>
+                <td>
+
+                    <!-- status-select 组件开始-->
+                    <div class="select-box">
+                        <div class="input-box">
+                            <i class="fa fa-fw fa-arrow-right"></i>
+                            <!-- 注意：！！ 这个地方修改了，去掉了行间的颜色样式-->
+                            <!--<input type="text" style="color: rgb(20, 50, 58);">-->
+                            <input type="text" (click)="hideStatusSelect = !hideStatusSelect">
+                        </div>
+                        <div class="container" *ngIf="hideStatusSelect">
+                            <div class="scroll-container">
+                                <div class="content">
+                                    <div class="item">
+                                        <span class="icon"><i class="fa fa-fw fa-circle"></i></span>
+                                        <span class="acronym">clsd</span>
+                                        <span class="text">关闭</span>
+                                    </div>
+                                    <div class="item">
+                                        <span class="icon"><i class="fa fa-fw fa-play-circle"></i></span>
+                                        <span class="acronym">ip</span>
+                                        <span class="text">进行中</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="before"></div>
+                            <div class="after"></div>
+                        </div>
+                    </div>
+                    <!-- status-select 组件结束-->
+
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <!-- editor-dictionary-select 组件结束-->
+
+    </div>
+
+</div>
