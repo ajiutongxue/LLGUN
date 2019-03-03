@@ -1,0 +1,76 @@
+.put-up {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.put-down {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.clear:after {
+  content: '';
+  clear: both;
+  display: table;
+}
+.form-row {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+}
+.form-row td.row-title {
+  color: rgba(255, 255, 255, 0.5);
+  padding-top: 1px;
+}
+.form-row .select-box .container {
+  position: absolute;
+  border-radius: 0 0 2px 2px;
+  left: 0px;
+  min-width: 128px;
+  max-width: 360px;
+  z-index: 98;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+  line-height: 1.8em;
+  background: #4e4c4e;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.form-row .select-box .container .item {
+  padding: 0 8px;
+  color: rgba(255, 255, 255, 0.65);
+  transition: .3s;
+  cursor: pointer;
+}
+.form-row .select-box .container .item:hover {
+  color: #E6E6E6;
+  background: #3C3A3C;
+}
+.form-row .input-box {
+  border-color: #393739;
+}
+.form-row .input-box > i {
+  color: inherit;
+}
+.form-row .input-box input[type="text"] {
+  background: #3C3A3C;
+  color: inherit;
+  border: none;
+  font-size: inherit;
+}
+.form-row .input-box input[type="text"]:focus {
+  background: #2c2b2d;
+  outline: none;
+}
+.select-box .input-box {
+  border-color: #393739;
+}
+.select-box .input-box > i {
+  color: inherit;
+}
+.select-box .input-box input[type="text"] {
+  background: #3C3A3C;
+  color: inherit;
+  border: none;
+  font-size: inherit;
+  padding-left: 20px;
+}
+.select-box .input-box input[type="text"]:focus {
+  background: #2c2b2d;
+  outline: none;
+}

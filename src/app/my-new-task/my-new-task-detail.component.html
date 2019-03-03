@@ -1,0 +1,167 @@
+<!--
+在进行组件划分时需要注意：
+- 用于布局的标签，不应该和内容作为同级划分到一个组件中：
+  布局用的：app-header__path-tools，app-header__action-tools，
+          app-header__side-tools，home-nav__item--current，task-container。。。。。。
+-->
+
+
+<div class="ll-app-container">
+
+
+
+    <!-- 考虑多客户端，所以遗弃了一些之前的通用 class -->
+    <div class="app-header">
+        <div class="app-header__head-bar">
+            <div class="app-header__path-tools">
+                <div class="app-header__path-tools__home"><i class="fa fa-home"></i></div>
+                <div class="app-header__path-tools__prev disabled"><i class="fa fa-caret-left"></i></div>
+                <div class="app-header__path-tools__next"><i class="fa fa-caret-right"></i></div>
+            </div>
+            <div class="app-header__action-tools">
+                <button class="app-btn" data-type="primary" data-size="normal" data-shape="square">开始审核</button>
+                <button class="app-btn" data-type="primary" data-size="normal" data-shape="square">审核通过</button>
+            </div>
+            <div class="app-header__side-tools">
+                <div class="app-header__side-tools__search-box">
+                    <!--<input type="text" /><button class="app-header__side-tools__search-btn"><i class="fa fa-search"></i></button>-->
+                    <app-search-box></app-search-box>
+                </div>
+                <div class="app-header__side-tools__user"><img src="../../assets/style/images/img3.jpg" /></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-task-info">
+        <div class="task-info__img-box">
+            <img src="../../assets/style/images/img2.jpg" alt="task face">
+        </div>
+        <div class="task-info__info-list">
+            <div class="task-info__title">S_动画 这就是一个动画的task的标题</div>
+            <div class="task-info__state--waiting"><i class="fa fa-pause"></i> 待开始</div>
+            <div class="task-info__label-links">
+                <div class="label-link"><i class="fa fa-film"></i> shot_004shot_004shot_004</div>
+                <div class="label-link"><i class="fa fa-film"></i> shot_004</div>
+                <div class="label-link"><i class="fa fa-film"></i> shot_004</div>
+            </div>
+            <div class="task-info__btns">
+                <button class="app-btn" data-type="primary" data-size="normal" data-shape="square">关注</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-home-nav">
+        <div class="home-nav__tabs">
+            <div (click)="tab = 'news'"
+                 [ngClass]="{'home-nav__tab--active': tab === 'news', 'home-nav__tab': tab !== 'news'}"
+            >动态</div>
+            <div (click)="tab = 'info'"
+                 [ngClass]="{'home-nav__tab--active': tab === 'info', 'home-nav__tab': tab !== 'info'}"
+            >详细信息</div>
+            <div (click)="tab = 'version'" class="home-nav__tab"
+                 [ngClass]="{'home-nav__tab--active': tab === 'version', 'home-nav__tab': tab !== 'version'}"
+            >版本</div>
+            <div (click)="tab = 'log'"
+                 [ngClass]="{'home-nav__tab--active': tab === 'log', 'home-nav__tab': tab !== 'log'}"
+            >时间记录</div>
+            <div (click)="tab = 'files'"
+                 [ngClass]="{'home-nav__tab--active': tab === 'files', 'home-nav__tab': tab !== 'files'}"
+            >文件</div>
+            <div (click)="tab = 'note'" class="home-nav__tab">评论</div>
+        </div>
+    </div>
+
+
+    <div *ngIf="tab=='news'" class="task-container">
+        <task-activity></task-activity>
+    </div>
+
+    <div *ngIf="tab=='info'" class="task-container">
+        <div class="detail-info__list">
+            <div class="detail-info__item">
+                <div class="detail-info__name">名称:</div>
+                <div class="detail-info__content">这个就是名称</div>
+            </div>
+            <div class="detail-info__item">
+                <div class="detail-info__name">开始时间:</div>
+                <div class="detail-info__content">2019/12/12</div>
+            </div>
+            <div class="detail-info__item">
+                <div class="detail-info__name">资产:</div>
+                <div class="detail-info__content"><a href="#">一个资产</a>, <a href="#">2个资产</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="tab=='version'" class="task-container">
+        试试之前的版本
+    </div>
+
+    <div *ngIf="tab=='log'" class="task-container">
+        <div class="log-card">
+            <div class="log-card__avatar"><img src="https://tse2-mm.cn.bing.net/th?id=OIP.PDsQSg3ZjCpHz82KNcHMLQHaFj&w=215&h=160&c=7&o=5&pid=1.7" alt=""></div>
+            <div class="log-card__info-list">
+                <!-- 注意：字段名后面的冒号，统一使用英文的半角冒号 -->
+                <div class="log-card__info-item"><span class="log-card__info-item__label">用户:</span><span class="log-card__info-item__content">刘大宝</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">开始时间:</span><span class="log-card__info-item__content">2019/01/01:09:42:22</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">结束时间:</span><span class="log-card__info-item__content">2019/01/01:09:42:22</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">期间:</span><span class="log-card__info-item__content">8 小时</span></div>
+            </div>
+        </div>
+        <div class="log-card">
+            <div class="log-card__avatar"><img src="https://tse2-mm.cn.bing.net/th?id=OIP.PDsQSg3ZjCpHz82KNcHMLQHaFj&w=215&h=160&c=7&o=5&pid=1.7" alt=""></div>
+            <div class="log-card__info-list">
+                <!-- 注意：字段名后面的冒号，统一使用英文的半角冒号 -->
+                <div class="log-card__info-item"><span class="log-card__info-item__label">用户:</span><span class="log-card__info-item__content">刘大宝</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">开始时间:</span><span class="log-card__info-item__content">2019/01/01:09:42:22</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">结束时间:</span><span class="log-card__info-item__content">2019/01/01:09:42:22</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">期间:</span><span class="log-card__info-item__content">8 小时</span></div>
+            </div>
+        </div>
+        <div class="log-card">
+            <div class="log-card__avatar"><img src="https://tse2-mm.cn.bing.net/th?id=OIP.PDsQSg3ZjCpHz82KNcHMLQHaFj&w=215&h=160&c=7&o=5&pid=1.7" alt=""></div>
+            <div class="log-card__info-list">
+                <!-- 注意：字段名后面的冒号，统一使用英文的半角冒号 -->
+                <div class="log-card__info-item"><span class="log-card__info-item__label">用户:</span><span class="log-card__info-item__content">刘大宝</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">开始时间:</span><span class="log-card__info-item__content">2019/01/01:09:42:22</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">结束时间:</span><span class="log-card__info-item__content">2019/01/01:09:42:22</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">期间:</span><span class="log-card__info-item__content">8 小时</span></div>
+            </div>
+        </div>
+        <div class="log-card">
+            <div class="log-card__avatar"><img src="https://tse2-mm.cn.bing.net/th?id=OIP.PDsQSg3ZjCpHz82KNcHMLQHaFj&w=215&h=160&c=7&o=5&pid=1.7" alt=""></div>
+            <div class="log-card__info-list">
+                <!-- 注意：字段名后面的冒号，统一使用英文的半角冒号 -->
+                <div class="log-card__info-item"><span class="log-card__info-item__label">用户:</span><span class="log-card__info-item__content">刘大宝</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">开始时间:</span><span class="log-card__info-item__content">2019/01/01:09:42:22</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">结束时间:</span><span class="log-card__info-item__content">2019/01/01:09:42:22</span></div>
+                <div class="log-card__info-item"><span class="log-card__info-item__label">期间:</span><span class="log-card__info-item__content">8 小时</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="tab=='files'" class="task-container">
+        <div class="files-list">
+            <div class="file-item">
+                <div class="file-item__name"><a href="#"><i class="fa fa-file-video-o"></i> 发布文件.max</a></div>
+                <div class="file-item__path"><i class="fa fa-folder-open"></i> h:\版本01\xxxx\44\33\fd</div>
+            </div>
+            <div class="file-item">
+                <div class="file-item__name"><a href="#"><i class="fa fa-file-video-o"></i> 文件01.ma</a></div>
+                <div class="file-item__path"><i class="fa fa-folder-open"></i> h:\版本01\xx4\33\fd</div>
+            </div>
+            <div class="file-item">
+                <div class="file-item__name"><a href="#"><i class="fa fa-file-video-o"></i> 发布文件01.max</a></div>
+                <div class="file-item__path"><i class="fa fa-folder-open"></i> h:\版xxx\44\33\fd</div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="tab=='note'" class="task-container">
+        试试之前的note
+    </div>
+
+
+
+
+</div>

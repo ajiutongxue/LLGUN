@@ -1,92 +1,38 @@
 .comment-container {
-    /*====== font =======*/
     --font-family: 'Microsoft Yahei';
-
-    /*====== words color ======*/
-    /* 主要文字颜色，正常阅读，颜色最深 */
-    --primary-words-color: #14323A;
-    /* 弱一级使用的文字颜色 */
-    --second-words-color: #585d61;
-    /* 最弱的文字颜色 */
-    --third-words-color: #9FA5A8;
-    /* 不易阅读，基本装饰使用的文字颜色 */
-    --less-words-color: #CCCFD1;
-    /* 一般链接 */
-    --link-color: #0071bd;
-    --normal-link-color: rgb(135, 165, 179);
-
-    /*===== border color =======*/
-    --gray-border-color: #d8dbdc;
-    --light-border-color: #eee;
-    --dark-border-color: #ccc;
-    --label-border-color: var(--less-words-color);
-
-    /*====== bg color ======*/
-    --light-bg-color: #f0f0f0;
-    --content-bg-color: #fff;
-    --dark-bg-color: #fff; // 回复的颜色
-
-    /*===== 情景颜色 =======*/
-    --active-color: #15a1ff;
-    --warnging-color: #E30000;
-    --lighter-bg-color: #fafafa;
-
 
     font: 14px/24px var(--font-family);
     color: var(--primary-words-color);
 
-    // light
-    &.comment-light-style {
-        background: #f0f0f0;
-    }
+    --content-bg-color: hsla(0, 0%, 0%, 0.15);
+    --dark-bg-color: rgba(0,0,0,.1); /* 回复的背景颜色 */
 
-    // dark
-    &.comment-dark-style {
-    
-        /* 暗色背景下，颜色设置 */
-        --content-bg-color: hsla(0, 0%, 0%, 0.15);
-        --dark-bg-color: rgba(0,0,0,.1); /* 回复的背景颜色 */
-            
-        /**********************************************************
-        * 覆盖base 
-        **********************************************************/
-        /*====== words color ======*/
-        /* 主要文字颜色，正常阅读，颜色最深 */
-        --primary-words-color: hsl(0, 0%, 90%);
-        /* 弱一级使用的文字颜色 */
-        --second-words-color: hsl(0, 0%, 75%);
-        /* 最弱的文字颜色 */
-        --third-words-color: hsl(0, 0%, 51%);
-        /* !! 不易阅读，基本装饰使用的文字颜色 */
-        /* --less-words-color: hsl(0, 0%, 29%); */
-        /* 一般链接 */
-        --link-color: #4e98ca;
-        --normal-link-color: rgba(107, 148, 167, 0.9);
+    --primary-words-color: hsl(0, 0%, 90%);
+    --second-words-color: hsl(0, 0%, 75%);
+    --third-words-color: hsl(0, 0%, 51%);
 
-        /*===== border color =======*/
-        --gray-border-color: hsl(0, 0%, 30%);
-        /* --light-border-color: #464646; */
-        --light-border-color: #444;
-        --dark-border-color: rgba(255,255,255,.1);
-        --label-border-color: var(--dark-border-color);
+    --link-color: #4e98ca;
+    --normal-link-color: rgba(107, 148, 167, 0.9);
 
-        /*====== bg color ======*/
-        --light-bg-color: rgba(255,255,255,.1);
+    --gray-border-color: hsl(0, 0%, 30%);
+    --light-border-color: #444;
+    --dark-border-color: rgba(255,255,255,.1);
+    --label-border-color: var(--dark-border-color);
 
-        /*===== 情景颜色 =======*/
-        --active-color: #15a1ff;
-        --warnging-color: #E30000;
-        --lighter-bg-color: #fafafa;
+    --light-bg-color: rgba(255,255,255,.1);
 
-        /* dark editor */
-        --editor-outer-border-color: #111;
-        --editor-border-color: #ccc;
-        --editor-words-color: #14323A;
-        --editor-tools-bg-color: var(--lighter-bg-color);
+    --active-color: #15a1ff;
+    --warnging-color: #E30000;
+    --lighter-bg-color: #fafafa;
 
-        // ===
-        background: hsl(0, 0%, 25%);
-    }
+    --editor-outer-border-color: #111;
+    --editor-border-color: #ccc;
+    --editor-words-color: #14323A;
+    --editor-tools-bg-color: var(--lighter-bg-color);
+
+    background: hsl(0, 0%, 25%);
+    max-width: 600px;
+    margin: 0 auto;
 
 }
 

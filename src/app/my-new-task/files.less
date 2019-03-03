@@ -1,0 +1,50 @@
+/*
+ *  文件 的样式设置， 不确定有个发布文件 和 这个文件 两个tab下有什么不同
+ */
+
+@import "./app-base";
+
+
+.files-list {
+    background: @bg-3;
+    padding: 15px;
+    font-size: 13px;
+    
+    a {
+        color: lighten(@brand-color, 20%);
+        //color: @font-color-1;
+        text-decoration: none;
+        transition: .3s;
+        
+        .fa { color: @font-color-3; }
+        
+        &:hover {
+            color: lighten(@brand-color, 10%);
+        }
+    }
+}
+
+
+@row-height: 36px;
+.file-item {
+    white-space: nowrap;
+    height: @row-height;
+    line-height: @row-height;
+    border-bottom: 1px solid @border-color-1;
+}
+
+.file-item__name {
+    float: left;
+    margin-right: 15px;
+    font-weight: bold;
+    
+    .fa { margin-right: 5px; }
+}
+.file-item__path {
+    overflow: hidden;
+    color: @font-color-3;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    
+    .fa { color: @font-color-9; }
+}

@@ -1,0 +1,40 @@
+/*
+ *  详细信息 的样式设置
+ */
+
+@import "./app-base";
+
+
+.detail-info__list {
+    background: @bg-3;
+    padding: 15px;
+    font-size: 13px;
+    
+    a {
+        color: lighten(@brand-color, 20%);
+        text-decoration: none;
+        transition: .3s;
+        
+        &:hover {
+            color: lighten(@brand-color, 10%);
+        }
+    }
+}
+
+.detail-info__item {
+    padding: 12px 0;
+    line-height: 1.5em;
+    border-bottom: 1px solid @border-color-1;
+}
+
+.detail-info__name {
+    width: 8em;
+    float: left;
+    color: @font-color-3;
+    padding-right: 2em;
+    text-align: right;
+}
+.detail-info__content {
+    overflow: hidden;
+    color: @font-color-1;
+}

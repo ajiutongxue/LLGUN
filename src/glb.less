@@ -152,8 +152,8 @@ a.disabled:hover {
     .my-fa-symbol();
     .icon-combo-main {
         left: 1px;
-        transform: rotate(-45deg); 
-        top: 3px; 
+        transform: rotate(-45deg);
+        top: 3px;
         font-size: 1.2em;
     }
     .icon-combo-symbol {
@@ -161,7 +161,7 @@ a.disabled:hover {
         bottom: 0;
         transform: scale(1);
         right: -5px;
-        bottom: 1px; 
+        bottom: 1px;
         color: inherit;
     }
     transform: scale(0.7) translateY(1px);
@@ -233,6 +233,7 @@ body {
     //font: 14px/24px @ll-font-family;
     // font: .875rem/1.5rem @ll-font-family;
     color: @color-normal;
+    height: 100%;
 }
 
 input,
@@ -494,8 +495,8 @@ td {
     border: 1px solid #000;
     border-left: none;
     border-right: none;
-    // z-index: 999999;
-    z-index: 400;
+    z-index: 999999;
+    // z-index: 400;
     
     a {
         color: #f0f0f0;
@@ -667,6 +668,9 @@ td {
 // *******************************************
 // 最顶部导航条  - .topbar-container
 // *******************************************
+
+
+
 .topbar-container {
     @_height: 34px;
     
@@ -718,6 +722,7 @@ td {
                 font-size: 14px;
 
                 // span
+                @note-msg-width: 400px;
                 .note-msg-box {
                     padding: 0;
                     display: inline-block;
@@ -746,7 +751,7 @@ td {
                             border-color: #000;
                             // color: @color-active;
                             // .fa:not(.fa-caret-down):not(.fa-bell) {
-                                
+                            
                             // }
                         }
                     }
@@ -768,11 +773,14 @@ td {
                         text-align: center;
                         font-size: 16px;
                         line-height: 18px;
+                        overflow: hidden;
+                        // width: @note-msg-width - 15;
 
                         ._tab {
                             position: relative;
-                            display: inline-block;
-                            width: 30%;
+                            // display: inline-block;
+                            float: left;
+                            width: (@note-msg-width - 20) / 3;
                             text-align: center;
                             color: #3F5767;
                             margin-top: 13px;
@@ -811,7 +819,8 @@ td {
                     }
                     
                     .modal-normal-container {
-                        width: 320px;
+                        // width: 320px;
+                        width: @note-msg-width;
                         top: 40px;
 
                         ul._normal {
@@ -825,7 +834,7 @@ td {
                                 padding-left: 15px;
                                 padding-right: 15px;
                                 padding-top: 8px;
-                                padding-bottom: 8px; 
+                                padding-bottom: 8px;
                                 cursor: default;
                                 background: rgba(0, 0, 0, 0.05);
 
@@ -1036,7 +1045,7 @@ td {
 /*             width: auto;
             min-width: 225px;
             max-width: 280px;
- */            
+ */
             ._list-title {
                 padding-left: 15px;
                 line-height: 24px;
@@ -1151,7 +1160,7 @@ td {
                                 color: #fff!important;
                             }
                         }
-                    } 
+                    }
 
                     
                 }
@@ -1176,7 +1185,8 @@ td {
             max-width: 240px;
             height: auto;
             min-height: 20px;
-            max-height: 500px;
+            // 按要求从500改成540
+            max-height: 540px;
             
             ul {
                 
@@ -2630,8 +2640,8 @@ context-menu {
 
         /* td */
         .op-btns {
-            width: 45px; 
-            padding-right: 10px; 
+            width: 45px;
+            padding-right: 10px;
             text-align: right;
 
             span {
@@ -3369,22 +3379,22 @@ context-menu {
             background: #70caff;
             animation-timing-function: cubic-bezier(0, 1, 1, 0);
 
-            &:nth-child(1) {  
+            &:nth-child(1) {
                 left: 8px;
                 animation: lds-ellipsis1 0.6s infinite;
             }
 
-            &:nth-child(2) {  
+            &:nth-child(2) {
                 left: 8px;
                 animation: lds-ellipsis2 0.6s infinite;
             }
 
-            &:nth-child(3) {  
+            &:nth-child(3) {
                 left: 32px;
                 animation: lds-ellipsis2 0.6s infinite;
             }
 
-            &:nth-child(4) {  
+            &:nth-child(4) {
                 left: 56px;
                 animation: lds-ellipsis3 0.6s infinite;
             }
@@ -4238,7 +4248,7 @@ context-menu {
                     // flex-direction: row;
                     flex: 1 1 30%;
 
-                    display: block; 
+                    display: block;
                     position: relative;
                     //outline: 1px solid blue;
                 }
@@ -4273,7 +4283,7 @@ context-menu {
                         max-width: 80px;
                         margin-right: 0;
                         text-overflow: ellipsis;
-                        padding-right: 5px;   
+                        padding-right: 5px;
 
                         background: #f7f8f9;
                         border-color: #B3B6B9;
@@ -4284,7 +4294,7 @@ context-menu {
             
                         .fa {
                             color: #8C9CA5;
-                        } 
+                        }
 
                         &._black {
                             border: 1px solid #B3B6B9;
@@ -4542,7 +4552,8 @@ thumbnail-view {
     padding-right: 15px;
     border-top: 1px solid @normal-border;
     text-align: center;
-    z-index: 20000;
+    // z-index: 20000;
+    z-index: 200;
     
     .range-container {
         line-height: @_h;
@@ -5280,6 +5291,91 @@ table.parent-version-link-list {
             border-radius: 8px;
         }
 
+        // fix: 泡泡画面，评论部分>阅读全文 标题颜色不对
+        .input-box {
+            > span { color: #e6e6e6; }
+        }
+        // fix -end-
+        
+        // add: 泡泡画面，富文本编辑器暗色主题
+        @comment-primary-color: hsl(0, 0%, 90%);
+        //@comment-gary-border-color: hsl(0, 0%, 30%);
+        @comment-edit-inner-border-color: hsl(0, 0%, 10%);
+        .cke_wysiwyg_div {
+            background: #292929;
+            color: @comment-primary-color;
+        }
+        .cke_top {
+            //background: #3e3e3e;
+            background: #1f1f1f;
+            border-bottom-color: @comment-edit-inner-border-color;
+        }
+        .cke_bottom {
+            background: #1f1f1f;
+            border-top-color: @comment-edit-inner-border-color;
+            > span {
+                color: hsl(0, 0%, 50%);
+            }
+        }
+        .cke_resizer {
+            border-color: transparent hsl(0, 0%, 50%) transparent transparent;
+        }
+        .cke_chrome {
+            border-color: @comment-edit-inner-border-color;
+        }
+        a.cke_button_off:hover,
+        a.cke_button_off:focus,
+        a.cke_button_off:active {
+            background: #131313;
+            border-color: #111;
+        }
+        .cke_toolgroup a.cke_button:last-child:after,
+        .cke_toolgroup a.cke_button.cke_button_disabled:hover:last-child:after {
+            border-right-color: hsl(0,0%,5%);
+        }
+
+        .comment {
+            .send-cc-div {
+                background: #1f1f1f;
+                border-color: @comment-edit-inner-border-color;
+            }
+        }
+        /// input暂时不暗色设置，因为还有配套的下拉等等东西要一起调整
+        .ll-label-content {
+            background: #353535;
+        }
+        .ll-label-box input[type="text"] {
+            background: #292929;
+            color: @comment-primary-color;
+            border-color: @comment-edit-inner-border-color;
+        }
+        table.add-version-uploadfile-list {
+            th {
+                border-color: @comment-edit-inner-border-color;
+                color: @comment-primary-color;
+                background: #1f1f1f;
+            }
+            td {
+                color: @comment-primary-color;
+                background: #292929;
+                border-color: @comment-edit-inner-border-color;
+            }
+        }
+        .uploaded-box {
+            color: @comment-primary-color!important;
+            background: #292929!important;
+            border-color: @comment-edit-inner-border-color!important;
+
+            ._obj .ll-label {
+                color: rgba(107, 148, 167, 0.9);
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        // add -end-
+        
+        
         .note-section-top {
             background: rgba(227, 238, 245, 0.16);
             // background: #f1f8ff;
@@ -5291,30 +5387,43 @@ table.parent-version-link-list {
 
         @border-color: #b1b1b1;
         .reply-footer {
-            background: #d8dcde;
-            border-color: @border-color;
-            color: #111;
+            // fix: 富文本颜色改了，这个地方的颜色也要配套一起改
+            //background: #d8dcde;
+            //border-color: @border-color;
+            //color: #111;
+            background: #1f1f1f;
+            border-color: @comment-edit-inner-border-color;
+            color: @comment-primary-color;
 
             ._btn {
-                border-color: @border-color;
+                border-color: hsl(0, 0%, 5%) !important;
             }
         }
         
+        // 改为神色
         ._editor {
             padding-top: 10px;
             // margin-left: 0 !important;
-            color: #333;
+            // color: #333;
+            color: @comment-primary-color;
+
             ._edit-area {
-                background: #f5f5f5;
-                border-color: @border-color;
+                // background: #f5f5f5;
+                // border-color: @border-color;
+                background: #292929;
+                color: @comment-primary-color;
+                border-color: @comment-edit-inner-border-color;
             }
             ._edit-area-footer {
                 background: #d6d6d6;
                 border-color: @border-color;
             }
             .upload-box {
-                border-color: @border-color;
-                background: #f5f5f5;
+                // border-color: @border-color;
+                // background: #f5f5f5;
+                background: #292929;
+                color: @comment-primary-color;
+                border-color: @comment-edit-inner-border-color;
             }
         }
     
@@ -5451,7 +5560,7 @@ table.parent-version-link-list {
                 //     word-break: break-all;
                 //     white-space: normal;
                 //     //padding-right: 10px;
-                    
+                
                 // }
                 
                 // img,
@@ -5651,7 +5760,7 @@ table.parent-version-link-list {
     //     border-top: 1px solid #DEDEDE;
     //     margin-top: 30px;
     // }
-        
+    
     ._title {
         // height: 30px;
         line-height: 30px;
@@ -5931,7 +6040,7 @@ filter-row {
 
     .comb-filter {
         display: flex;
-        flex: 0 0 230px; 
+        flex: 0 0 230px;
     }
 
     .ctrls {
@@ -6007,7 +6116,7 @@ filter-row {
 }
 
 .player-video-box img {
-    object-fit: contain;           
+    object-fit: contain;
 }
 
 
@@ -6128,7 +6237,7 @@ filter-row {
                 color: #81878B;
             }
           
-            color: #14323A;    
+            color: #14323A;
         }
     }
 }
@@ -6211,8 +6320,8 @@ color:  #54aae4;
     }
 }
 .more-btn-box {
-    position: absolute; 
-    right: 5px; 
+    position: absolute;
+    right: 5px;
     top: 6px;
 
     .more-op {
@@ -6346,11 +6455,11 @@ color:  #54aae4;
 }
 
 .red-square {
-    position: absolute; 
-    display: inline-block; 
-    width: 10px; 
-    height: 11px; 
-    background: @impt-red; 
+    position: absolute;
+    display: inline-block;
+    width: 10px;
+    height: 11px;
+    background: @impt-red;
     left: 4px;
     top: 5px;
     border: 1px solid #fff;
@@ -6362,7 +6471,7 @@ color:  #54aae4;
 }
 
 .newcls {
-    display: block; 
+    display: block;
     border: 5px solid red;
 
     .input-box {
@@ -6430,11 +6539,21 @@ color:  #54aae4;
             max-width: 100%;
         }
     }
+    
+    .error-msg {
+        font-size: 12px;
+        line-height: 20px;
+    }
 
     .state {
         .form-row {
-            width: auto;
-            td.row-title > i.fa { right: 0; }
+            // 改为3个字加一个图标的宽度
+            //width: auto;
+            width: 60px;
+            td.row-title{
+                width: 0;
+                > i.fa { right: 0; }
+            }
         }
         .select-box {
             .input-box {
@@ -6445,11 +6564,11 @@ color:  #54aae4;
             }
         }
     }
-
-
+    
     // 这个样式多个地方都使用了，纯粹是为了临时标记，不存在层级关系
     .tmp-in-glb {
         &.title {
+            margin-top: 5px;
             .form-row{
                 .input-box {
                     margin-left: 0;
@@ -6460,10 +6579,16 @@ color:  #54aae4;
                         height: 28px;
                         line-height: 28px;
                     }
+                    
+                    > span { padding-left: 0;}
                 }
             }
 
         }
+        
+        //table.form-row {
+        //    margin-top: -3px;
+        //}
         .form-row {
             font-size: inherit!important;
     
@@ -6526,6 +6651,12 @@ color:  #54aae4;
                 color: #fff!important;
             }
         }
+        &.label-box {
+            margin-top: 2px;
+            .ll-label-box.only-showing {
+                padding-left: 0;
+            }
+        }
     }
 
     .send-cc-div {
@@ -6552,15 +6683,22 @@ color:  #54aae4;
         }
     }
 }
-project-home note-version-array .comment { 
+project-home note-version-array .comment {
     margin-left: 0px !important;
 }
 
 // video 页面组件上方 删除新建评论背景颜色
+.jqx-window-content app-media-player .textlink-row,
 video_play .jqx-window-content .textlink-row {
     background: none!important;
 }
+.jqx-window-content app-media-player .textlink-row {
+    padding-left: 25px;
+}
+
 // video页面组件包裹层级不是太考虑，所以这里直接覆盖
+app-media note-detail-rightpage .detail-container,
+app-media-player note-detail-rightpage .detail-container,
 video_play note-detail-rightpage .detail-container {
     background: none!important;
     margin-left: 2px;
@@ -6573,7 +6711,7 @@ video_play note-detail-rightpage .detail-container {
     }
 
     .container .item {
-        color: @color-stronger !important; 
+        color: @color-stronger !important;
     }
 }
 
@@ -6622,5 +6760,25 @@ video_play note-detail-rightpage .detail-container {
 .ll-main-container-comment {
     .comment {
         margin-left: 45px!important;
+    }
+}
+
+// 筛选按钮，生效时 激活样式
+filter-button {
+    ._btn {
+        &.active {
+            // background: #54aae4 !;
+            // border-radius: 4px;
+            a {
+                color: #fff !important;
+                border-color: #2f92ef !important;
+                background: #54aae4 !important;
+
+                &:hover {
+                    background: #2f92ef !important;
+                    color: #fff !important;
+                }
+            }
+        }
     }
 }

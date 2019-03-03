@@ -1,0 +1,375 @@
+@import "./app-base";
+
+////////////////////////////////////////
+// 覆盖一些历史负担组件样式
+// ---------------------------------------
+// 使用时，直接通过 @import 从 layout 导入即可，
+// 当前开发环境，导入到 note-add 使用
+////////////////////////////////////////
+
+
+/// editor-string-input -- start
+.form-row {
+    // 通用的设置
+    color: @font-color-1;
+    margin-bottom: 10px;
+    
+    
+    td.row-title {
+        color: @font-color-3;
+        padding-top: 1px;
+    }
+    
+    // 通常，这个select-box是包在input-box外面的
+    .select-box {
+        .container {
+            position: absolute;
+            border-radius: 0 0 2px 2px;
+            left: 0px;
+            //top: 22px;
+            min-width: 128px;
+            max-width: 360px;
+            z-index: 98;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, .6);
+            line-height: 1.8em;
+            background: @bg-1;
+            border: 1px solid @border-color-1;
+            
+            .item {
+                // todo: 这里可以给item里面的图标加点颜色
+                padding: 0 8px;
+                color: @font-color-2;
+                transition: .3s;
+                cursor: pointer;
+                
+                &:hover {
+                    color: @dark-text-color--normal;
+                    background: @bg-2;
+                }
+                
+                // 没有这个样式，要使用的时候，可以加这个
+                //&.item--selected {
+                //    cursor: default;
+                //    color: lighten(@brand-color, 15%);
+                //}
+                
+            }
+        }
+    }
+    
+    
+    .input-box {
+        border-color: @dark-border-color--weak;
+        
+        > i {
+            color: inherit;
+        }
+        
+        input[type="text"] {
+            background: @bg-2;
+            color: inherit;
+            
+            &:focus {
+                background: @bg-3;
+            }
+        }
+    }
+    
+    // 新建评论中的
+    .add-panel & {
+        
+        td.row-title {
+            width: 6em !important;
+            padding-top: 1px !important;
+        }
+        
+        .input-box {
+        }
+        
+        
+        /// label box的设置
+        .ll-label-box {
+            &.input-box {
+                background: none !important;
+                
+                .ll-label-content {
+                    width: 100% !important;
+                    background: @bg-2 !important;
+                }
+                
+                input[type="text"] {
+                    border-color: @dark-border-color--weak !important;
+                }
+                
+            }
+        }
+        
+    }
+}
+
+/// editor-string-input -- end
+
+
+/// input-row 这类组件，一行字前面放一个铅笔图标的情况
+//- label-string-input、  组件使用
+.input-row-with-pencil () {
+    
+    .row-title {
+        width: 20px !important;
+        text-align: center !important;
+        padding: 0 !important;
+        
+        > i.fa {
+            position: static !important;
+            color: @font-color-9 !important;
+            font-size: 12px !important;
+        }
+    }
+}
+
+
+/// 评论中，右上角的"状态" - start
+.status-select--insider {
+    .input-row-with-pencil ();
+    
+    .row-title {
+        width: 20px !important;
+        text-align: center !important;
+        
+        + td {
+            width: 6em !important;
+        }
+    }
+    
+    .form-row {
+        .input-box {
+            height: 20px !important;
+            position: relative !important;
+            
+            > i {
+                position: absolute !important;
+                left: 2px !important;
+                top: 5px;
+            }
+    
+            &.only-showing {
+                padding-left: 20px;
+        
+                > i { top: 7px;}
+            }
+        }
+        
+        
+    }
+    
+}
+
+/// 评论中，右上角的"状态" - end
+
+
+/// 评论中，标题下面的小标区域 - start
+.label-area--under-title {
+    .input-row-with-pencil ();
+    margin-left: -20px !important;
+    margin-top: -8px !important;
+    margin-bottom: 20px !important;
+    
+    .only-showing {
+        .ll-label-content {
+            padding-bottom: 0 !important;
+            padding-left: 0 !important;
+        }
+    }
+    
+}
+
+/// 评论中，标题下面的小标区域 - end
+
+
+/// 每个comment 都由这样一个样式包裹
+.ex-comment-card {
+    
+    .subject {
+        padding-bottom: 14px !important;
+    }
+    
+    .only-showing {
+        border: none !important;
+    }
+    
+    .title {
+        .input-box {
+            font-size: 16px !important;
+            height: 28px !important;
+            line-height: 28px !important;
+            
+            span {
+                color: @font-color-1 !important;
+                padding-left: 0 !important;
+                font-weight: normal !important;
+            }
+        }
+    }
+    
+    // 评论标题, 覆盖原样式 - end
+    .form-row {
+        .input-box {
+            span {
+                // 影响太大，先去掉看看
+                //color: @font-color-3 !important;
+            }
+            
+            input[type="text"] {
+                background: @bg-3 !important;
+                font-weight: normal !important;
+                font-size: inherit !important;
+                border: none !important;
+                
+                &:focus {
+                    background: @bg-5 !important;
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+
+.input-row-with-pencil {
+    .input-row-with-pencil ();
+}
+
+
+/// label
+.ll-label {
+    float: left;
+    background: rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    font-size: 12px;
+    height: 16px;
+    line-height: 14px;
+    padding: 0 18px 0 5px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    color: lighten(@brand-color, 25%) !important;
+    cursor: pointer;
+    width: auto !important;
+    max-width: unset !important;
+    margin: 2px;
+    transition: .3s;
+    
+    // 非编辑状态，label后面没有 ❌按钮
+    .only-showing & {
+        padding-right: 5px;
+    }
+    
+    > i {
+        left: 2px;
+    }
+    
+    > span {
+        color: inherit !important;
+        margin-left: 14px;
+        width: auto;
+        min-width: 60px;
+        max-width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    &:hover {
+        background: lighten(@brand-color, 5%);
+        color: @font-color-1 !important;
+    }
+}
+
+
+/// 覆盖一些评论页面上独有的样式，不在评论组件样式文件中修改，是因为那个文件以后要被干掉
+.label-box {
+    &.download {
+        overflow: hidden !important;
+        
+        .label-box-title {
+            color: @font-color-2 !important;
+            float: left !important;
+        }
+    }
+}
+
+.some-links a {
+    color: lighten(@brand-color, 25%);
+    
+    &:hover {
+        color: lighten(@brand-color, 5%);
+    }
+}
+
+.reply {
+    margin: 0 20px;
+}
+
+
+/// 快速回复样式 - start
+.simple-editor {
+    font-size: 12px;
+    margin: 10px 20px;
+}
+
+.simple-editor__row {
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+.simple-editor__title {
+    color: @font-color-2;
+}
+
+.simple-editor__change-pro {
+    float: right;
+    color: @brand-color;
+    cursor: pointer;
+    line-height: 28px;
+}
+
+.simple-editor__input {
+    color: @font-color-2;
+    background: @bg-3;
+    border: 1px solid @border-color-1;
+    border-radius: 4px;
+    width: ~'calc(100% - 120px)';
+    padding: 8px 5px;
+    height: 32px;
+    line-height: 32 - 2 - 16px;
+    float: left;
+    
+    &:focus {
+        background: @bg-5;
+    }
+    
+}
+
+.simple-editor__submit {
+    height: 24px;
+    width: 55px;
+    text-align: center;
+    float: right;
+    background: @brand-color;
+    margin-right: 10px;
+    color: #fff;
+    line-height: 24px;
+    border-radius: 4px;
+    //border: 1px solid transparent;
+    margin-top: 3px;
+    cursor: pointer;
+    
+    &:hover {
+        background: lighten(@brand-color, 5%);
+    }
+}
+
+/// 快速回复样式 - end
+
+
+.title.title--not-edit {
+    font-weight: normal !important;
+}

@@ -1,0 +1,63 @@
+/// 将通过该文件，抽离出原来 base.less 文件中公用的设置，减少与原系统耦合
+
+// todo：将被干掉 ⬇️
+@import "../../base";
+
+// 该文件独立出来之后，需要在 body 中添加该设置
+@font-set: 12px/20px -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+
+
+@border-radius: 4px;
+
+@card-width: 240px;
+
+@card-bg: #3c3c3c;
+@dark-border-color--weakest: #2A2729;
+@dark-border-color--weak: #393739;
+//@dark-text-color--second: #959498;
+@dark-text-color--second: #B3B3B3;
+@dark-text-color--normal: #E6E6E6;
+
+
+
+
+@bg-1: rgb(78, 76, 78);
+@bg-2: #3C3A3C;
+@bg-3: #2c2b2d;
+@bg-4: rgba(16, 15, 17, 0.25);
+@bg-5: rgba(16, 15, 17, 0.45);
+@bg-6: rgba(16, 15, 17, 0.55);
+@bg-7: rgba(16, 15, 17, 0.7);
+
+@border-color-1: rgba(255,255,255,.05);
+
+@font-color-0: rgba(255, 255, 255, .95);
+@font-color-1: rgba(255, 255, 255, .8);
+@font-color-2: rgba(255, 255, 255, .65);
+@font-color-3: rgba(255, 255, 255, .5);
+@font-color-9: rgba(255, 255, 255, .25);
+
+@brand-color: #0082ff;
+@brand-color--lighter: lighten(@brand-color, 30%);
+@brand-color--dark: fadeout(@brand-color, 30%);
+
+
+
+/// 尺寸
+@head-bar-height: 42px;
+@nav-height: 36px;
+
+
+
+.clear() {
+    &:after {
+        content: '';
+        clear: both;
+        display: table;
+    }
+};
+
+.clear {
+    .clear();
+}
+

@@ -71,6 +71,13 @@ import { MenuShowsComponent } from './menu-shows/menu-shows.component';
 import { CommentComponent } from './comment/comment.component';
 import { LabelStringInputComponent } from './label-string-input/label-string-input.component';
 import { ContextMenuComponent } from './context-menu/context-menu.component';
+import { MyNewTaskComponent } from './my-new-task/my-new-task.component';
+import { MyNewTaskDetailComponent } from './my-new-task/my-new-task-detail.component';
+import { SearchBoxComponent } from './my-new-task/search-box/search-box.component';
+import { MyTask2Component } from './my-task-2/my-task-2.component';
+import { TaskActivityComponent } from './my-new-task/task-activity/task-activity.component';
+import { NoteAddComponent } from './my-new-task/task-activity/note-add/note-add.component';
+import { NoteReplyComponent } from './my-new-task/note-reply/note-reply.component';
 
 const appRoutes: Routes = [
 
@@ -121,6 +128,18 @@ const appRoutes: Routes = [
     {
         path: 'my-task',
         component: MyTaskComponent
+    },
+    {
+        path: 'new-task',
+        component: MyNewTaskComponent
+    },
+    {
+        path: 'task-dark',
+        component: MyTask2Component
+    },
+    {
+        path: 'task-detail',
+        component: MyNewTaskDetailComponent
     },
     {
         path: 'my-player',
@@ -216,6 +235,13 @@ const appRoutes: Routes = [
         CommentComponent,
         LabelStringInputComponent,
         ContextMenuComponent,
+        MyNewTaskComponent,
+        MyNewTaskDetailComponent,
+        MyTask2Component,
+        SearchBoxComponent,
+        TaskActivityComponent,
+        NoteAddComponent,
+        NoteReplyComponent,
         // HighlightDirective
     ],
     imports: [

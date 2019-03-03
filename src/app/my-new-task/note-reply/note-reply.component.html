@@ -1,0 +1,257 @@
+<!--
+ ----------------------------
+ -  这是一个展开状态的评论     --
+ ----------------------------
+-->
+
+<!-- !!! 注意class -->
+<!--<div class="comment-container ">-->
+<div class="comment-container ex-comment-card">
+    <section class="comment">
+        <div class="subject">
+            <div class="state">
+                <!-- label-dictionary-select 组件 start -->
+                <!-- 用这个div 暂时示意一下组件,
+                   - 下方 class 使用时放到 label-dictionary-select 组件上
+                -->
+                <div class="status-select--insider">
+                    <!--<label-dictionary-select>-->
+                    <table *ngIf="isStatusSelect" (click)="isStatusSelect=!isStatusSelect" class="table-fixed form-row select-row" style="display: table;">
+                        <tbody>
+                        <tr>
+                            <td class="row-title"><i class="fa fa-pencil"></i></td>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box only-showing">
+                                        <i class="fa fa-fw fa-circle-o"></i>
+                                        <span>开启</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!-- 第二状态-->
+                    <table *ngIf="!isStatusSelect" (click)="isStatusSelect=!isStatusSelect" class="table-fixed form-row select-row" style="display: table;">
+                        <tbody>
+                        <tr>
+                            <td class="row-title"><i class="fa fa-pencil"></i></td>
+                            <td>
+                                <!-- status-select 组件开始 -->
+                                <!--<status-select>-->
+                                <div class="select-box">
+                                    <div class="input-box">
+                                        <i class="fa fa-fw fa-circle-o"></i>
+                                        <!-- 行间的颜色样式要去掉-->
+                                        <!--<input type="text" style="color: rgb(20, 50, 58);">-->
+                                        <input type="text" value="开启">
+                                    </div>
+                                    <div class="container" style="display: block;">
+                                        <div class="scroll-container">
+                                            <div class="content">
+                                                <div class="item">
+                                                <span class="icon">
+                                                    <i class="fa fa-fw fa-circle"></i>
+                                                </span>
+                                                    <span class="acronym">clsd</span>
+                                                    <span class="text">关闭</span>
+                                                </div>
+                                                <div class="item">
+                                                    <span class="icon"><i class="fa fa-fw fa-play-circle"></i></span>
+                                                    <span class="acronym">ip</span>
+                                                    <span class="text">进行中</span>
+                                                </div>
+                                                <div class="item selected">
+                                                    <span class="icon"><i class="fa fa-fw fa-circle-o"></i></span>
+                                                    <span class="acronym">opn</span>
+                                                    <span class="text">开启</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="before"></div>
+                                        <div class="after"></div>
+                                    </div>
+                                </div>
+                                <!--</status-select>-->
+                                <!-- status-select 组件结束 -->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!--</label-dictionary-select>-->
+                </div>
+                <!-- label-dictionary-select 组件 end -->
+            </div>
+
+
+            <!-- 注意！！ 样式改了 -->
+            <div class="title ">
+                <!--<div class="title tmp-in-glb">-->
+
+                <!-- label-string-input 组件 start-->
+                <!-- 注意样式，下方 class 使用时放到 label-string-input 组件上-->
+                <div class="input-row-with-pencil">
+                    <!--<label-string-input>-->
+                    <table *ngIf="isLabelString" (click)="isLabelString=!isLabelString"
+                           class="table-fixed form-row select-row" style="display: table;">
+                        <tbody>
+                        <tr>
+                            <td class="row-title"><i class="fa fa-pencil"></i></td>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box only-showing">
+                                        <span>这个是中文标题</span><input style="display: none;">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!-- 第二种状态 -->
+                    <table *ngIf="!isLabelString" (dblclick)="isLabelString=!isLabelString"
+                           class="table-fixed form-row select-row" style="display: table;">
+                        <tbody>
+                        <tr>
+                            <td class="row-title"><i class="fa fa-pencil"></i></td>
+                            <td>
+                                <!--<string-input>-->
+                                <div class="input-box">
+                                    <input type="text" value="这个是中文标题">
+                                </div>
+                                <!--</string-input>-->
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <!--</label-string-input>-->
+                </div>
+                <!-- label-string-input 组件 end-->
+
+            </div>
+
+
+            <!--!!! 注意： 这里样式改了-->
+            <!--<div class="label-box tmp-in-glb contain-label-string">-->
+            <div class="label-box">
+
+
+                <!-- label-search-select 组件开始 -->
+                <!-- 注意样式-->
+                <div class="label-area--under-title">
+                    <!--<label-search-select>-->
+                    <table class="table-fixed form-row select-row" style="display: table;">
+                        <tbody>
+                        <tr>
+                            <td class="row-title"><i class="fa fa-pencil"></i></td>
+                            <td>
+                                <div class="select-box">
+                                    <div class="input-box ll-label-box only-showing">
+                                        <div class="ll-label-content clearfix">
+                                            <!-- ！！！这里样式改了-->
+                                            <!--<span class="ll-label" style="cursor: pointer;">-->
+                                            <span class="ll-label">
+                                                <i class="fa fa-fw fa-cube"></i>
+                                                <span class="pointer-cursor">test22222</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!--</label-search-select>-->
+                </div>
+                <!-- label-search-select 组件结束 -->
+
+
+            </div>
+            <div class="writer">
+                <div class="avatar">
+                    <img src="http://122.112.241.110:5001/api/download/downloadThumbnail/thumbnail/1065">
+                </div>
+                <div class="name">范 嘉斌 (fan)</div>
+                <div class="date">2019-02-20 10:26:33</div>
+            </div>
+            <div class="content">
+                <img src="http://122.112.241.110:5001/api/download/downloadImage/455">
+            </div>
+            <div class="label-box download">
+                <div class="label-box-title">附件：</div>
+                <!-- !!! 注意，这里直接改了样式 -start -->
+                <div class="label-link" title="layout_rid2.gif">
+                    <i class="fa fa-download"></i>layout_rid2.gif
+                </div>
+                <!--<div class="label" title="layout_rid2.gif">-->
+                    <!--<i class="fa fa-download"></i>layout_rid2.gif-->
+                <!--</div>-->
+                <!-- !!! 注意，这里直接改了样式 -end -->
+            </div>
+
+            <div class="some-links">
+                <a>回复 (2) <i class="fa fa-angle-up"></i></a>
+                <a><i class="fa fa-pencil-square-o"></i> 编辑</a>
+
+                <a class="remove"><i class="fa fa-trash-o"></i> 删除</a>
+                <a><i class="fa fa-star"></i> 取消关注</a>
+
+                <a class="toggle-content">收起 <i class="fa fa-angle-up"></i></a>
+            </div>
+        </div>
+
+        <!-- reply-array 组件 开始-->
+        <div>
+            <!--<reply-array>-->
+            <div class="reply">
+                <div class="writer">
+                    <div class="avatar">
+                        <img src="http://122.112.241.110:5001/api/download/downloadThumbnail/thumbnail/1065"/>
+                    </div>
+                    <div class="name">范 嘉斌 (fan)</div>
+                    <div class="date">2019-02-25 22:18:27</div>
+                </div>
+
+                <div class="reply-content">
+                    <span></span>
+                    <a class="read-more"> <i class="fa fa-angle-down"></i></a>
+                </div>
+            </div>
+
+            <div class="reply">
+                <div class="writer">
+                    <div class="avatar">
+                        <img src="http://122.112.241.110:5001/api/download/downloadThumbnail/thumbnail/1065"/>
+                    </div>
+                    <div class="name">范 嘉斌 (fan)</div>
+                    <div class="date">2019-02-25 22:18:31</div>
+                </div>
+
+                <div class="reply-content">
+                    <span></span>
+                    <a class="read-more"> <i class="fa fa-angle-down"></i></a>
+                </div>
+            </div>
+
+
+            <!-- ！！！ 注意，这里整个结构都改了-->
+            <!--<div class="editor">-->
+            <div class="simple-editor">
+                <span class="simple-editor__title">快速回复</span>
+                <!--<div class="simple-editor__row">-->
+
+                <!--</div>-->
+                <div class="simple-editor__row">
+                    <input class="simple-editor__input" type="text">
+                    <span class="simple-editor__change-pro">高级回复</span>
+                    <span class="simple-editor__submit">确定</span>
+                </div>
+            </div>
+            <!--</reply-array>-->
+        </div>
+        <!-- reply-array 组件 结束-->
+
+    </section>
+</div>

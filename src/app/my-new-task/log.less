@@ -1,0 +1,45 @@
+/*
+ * log 的组件样式
+ */
+
+@import "app-base";
+
+
+@avatar-height: 65px;
+
+.log-card {
+    background: @bg-3;
+    border-radius: @border-radius;
+    padding: 15px;
+    min-height: @avatar-height + 30;
+    color: @font-color-1;
+    font-size: 13px;
+    line-height: 1.7em;
+    transition: .3s;
+    
+    &:hover { box-shadow: 0 4px 16px 1px #000; }
+}
+
+.log-card__avatar {
+    float: left;
+    width: @avatar-height;
+    height: @avatar-height;
+    margin-right: 15px;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+.log-card__info-list {
+    overflow: hidden;
+    margin-top: -5px;
+}
+.log-card__info-item__label {
+    color: @font-color-3;
+    font-size: 12px;
+    margin-right: 5px;
+}

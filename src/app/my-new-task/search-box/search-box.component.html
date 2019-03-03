@@ -1,0 +1,26 @@
+<div class="llg-search-box">
+    <input (click)="display = !display" type="text"/>
+    <button class="llg-search-box__btn"><i class="fa fa-search"></i></button>
+</div>
+<div class="llg-search-result" [style.display]="display?'block':'none'">
+    <div class="llg-search-result__content">
+        <div class="result__content__item">
+            <span class="result__content__item__parent">
+                <i class="fa fa-play"></i> hehehe
+            </span>
+            <span class="result__content__item__child">
+                <i class="fa fa-play"></i> hehehe
+            </span>
+        </div>
+        <div class="result__content__item"><i class="fa fa-play"></i> hehehe</div>
+        <div class="result__content__item"><i class="fa fa-play"></i> hehehe</div>
+        <div class="result__content__item"><i class="fa fa-play"></i> hehehe</div>
+        <div class="result__content__item"><i class="fa fa-play"></i> hehehe</div>
+
+        <!-- <hr class="spc" *ngIf="dataSource != null && dataSource.length > 0" />
+        <div class="item" (click)="createLink()">
+            <span class="icon"></span>
+            <span class="text" style="color:#0293DD">{{search | strpipe}}</span>
+        </div> -->
+    </div>
+</div>

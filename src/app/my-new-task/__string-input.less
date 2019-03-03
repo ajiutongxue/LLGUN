@@ -1,0 +1,101 @@
+/// string input select 等之类组件的组件样式
+
+@import "app-base";
+
+/// editor-string-input -- start
+.form-row {
+    // 通用的设置
+    color: @font-color-1;
+    margin-bottom: 10px;
+    
+    
+    td.row-title {
+        color: @font-color-3;
+        padding-top: 1px;
+    }
+    
+    // 通常，这个select-box是包在input-box外面的
+    .select-box {
+        .container {
+            position: absolute;
+            border-radius: 0 0 2px 2px;
+            left: 0px;
+            //top: 22px;
+            min-width: 128px;
+            max-width: 360px;
+            z-index: 98;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, .6);
+            line-height: 1.8em;
+            background: @bg-1;
+            border: 1px solid @border-color-1;
+            
+            .item {
+                // todo: 这里可以给item里面的图标加点颜色
+                padding: 0 8px;
+                color: @font-color-2;
+                transition: .3s;
+                cursor: pointer;
+                
+                &:hover {
+                    color: @dark-text-color--normal;
+                    background: @bg-2;
+                }
+                
+                // 没有这个样式，要使用的时候，可以加这个
+                //&.item--selected {
+                //    cursor: default;
+                //    color: lighten(@brand-color, 15%);
+                //}
+                
+            }
+        }
+    }
+    
+    
+    .input-box {
+        border-color: @dark-border-color--weak;
+        
+        > i {
+            color: inherit;
+        }
+        
+        input[type="text"] {
+            background: @bg-2;
+            color: inherit;
+            border: none;
+            font-size: inherit;
+    
+            &:focus {
+                background: @bg-3;
+                outline: none;
+            }
+        }
+    }
+}
+
+
+
+/// 评论的右上角的 status 设置 - start
+.select-box {
+    .input-box {
+        border-color: @dark-border-color--weak;
+        
+        > i {
+            color: inherit;
+        }
+        
+        input[type="text"] {
+            background: @bg-2;
+            color: inherit;
+            border: none;
+            font-size: inherit;
+            padding-left: 20px;
+            
+            &:focus {
+                background: @bg-3;
+                outline: none;
+            }
+        }
+    }
+}
+/// 评论的右上角的 status 设置 - end
