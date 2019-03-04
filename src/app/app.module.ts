@@ -78,6 +78,8 @@ import { MyTask2Component } from './my-task-2/my-task-2.component';
 import { TaskActivityComponent } from './my-new-task/task-activity/task-activity.component';
 import { NoteAddComponent } from './my-new-task/task-activity/note-add/note-add.component';
 import { NoteReplyComponent } from './my-new-task/note-reply/note-reply.component';
+import { AlertBoxComponent } from './my-new-task/alert-box/alert-box.component';
+import { AlertDialogComponent } from './my-new-task/alert-dialog/alert-dialog.component';
 
 const appRoutes: Routes = [
 
@@ -242,6 +244,8 @@ const appRoutes: Routes = [
         TaskActivityComponent,
         NoteAddComponent,
         NoteReplyComponent,
+        AlertBoxComponent,
+        AlertDialogComponent,
         // HighlightDirective
     ],
     imports: [

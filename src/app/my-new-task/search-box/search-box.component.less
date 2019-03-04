@@ -9,20 +9,38 @@
 
 input {
     position: absolute;
-    left: 0;
-    top: 0;
     border: none;
     width: 100%;
-    line-height: @head-bar-height - 1;
     padding-left: 1em;
-    background: none;
     color: @font-color-1;
     z-index: 2; // 可以在没激活的时候，点击了搜索按钮，激活输入框
     transition: .3s;
     outline: none;
     box-sizing: border-box;
-    
-    &:hover { background: rgba(0,0,0,.1);}
+    //// 修改样式 -start
+    height: 25px;
+    //line-height: @head-bar-height - 1;
+    line-height: 25px;
+    border-radius: 20px;
+    //top: 0;
+    top: 10px;
+    //left: 0;
+    left: auto;
+    right: 0;
+    max-width: 300px;
+    //background: none;
+    background: rgba(0,0,0,.15);
+    //&:hover { background: rgba(0,0,0,.1);}
+    &:hover { background: rgba(0,0,0,.25);}
+    //// 修改样式 -end
+
+    ///// 要看清头像 - start
+    top: 18px;
+    right: 10px;
+    ///// 要看清头像 - end
+
+
+
     &:focus {
         background: rgba(0,0,0,.4);
         z-index: 0;
@@ -43,7 +61,13 @@ input {
     z-index: 1;
     cursor: pointer;
     transition: .3s;
-    
+
+    ///// 要看清头像 - start
+    top: 8px;
+    right: 10px;
+    ///// 要看清头像 - end
+
+
     &:focus { outline: none; }
     &:hover { color: lighten(@brand-color, 10%); }
 }
@@ -65,16 +89,28 @@ input {
     overflow-x: hidden;
     border-radius: 0 0 4px 4px;
     transition: .3s;
-    
-    // 为下拉框添加了自适应，可以通过注释去掉自适应效果
-    @media ( max-width: 400px ) {
-        & {
-            position: fixed;
-            left: 10px;
-            right: 10px;
-            width: auto;
-        }
-    }
+
+    //// 修改样式 -start
+    max-width: 300px;
+    left: auto;
+    right: 0;
+    //// 修改样式 -end
+
+
+    /// 要看清头像 -- start
+    right: 10px;
+    /// 要看清头像 -- end
+
+
+    //// 为下拉框添加了自适应，可以通过注释去掉自适应效果
+    //@media ( max-width: 400px ) {
+    //    & {
+    //        position: fixed;
+    //        left: 10px;
+    //        right: 10px;
+    //        width: auto;
+    //    }
+    //}
 }
 
 

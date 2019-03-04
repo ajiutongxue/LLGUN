@@ -68,7 +68,10 @@ body {
     height: 25px;
     text-align: center;
     border-radius: 50%;
-    margin-top: (@head-bar-height - 25) / 2;
+    //// 呵呵 - start
+    margin-top: 17px;
+    //margin-top: (@head-bar-height - 25) / 2;
+    //// 呵呵 - end
     line-height: 25px;
     cursor: pointer;
     transition: .3s;
@@ -93,6 +96,10 @@ body {
 }
 
 .app-header__side-tools__user {
+    //// 要看清出头像什么样 - start
+    padding: 5px;
+    //// 要看清出头像什么样 - end
+
     flex: 0 0 45px;
     text-align: center;
     cursor: pointer;
@@ -107,8 +114,12 @@ body {
     }
     
     img {
-        width: 26px;
-        height: 26px;
+        //// 要看清出头像什么样 - start
+        width: 48px;
+        height: 48px;
+        //width: 26px;
+        //height: 26px;
+        //// 要看清出头像什么样 - end
         border-radius: 50%;
         object-fit: cover;
         vertical-align: middle;
@@ -121,7 +132,10 @@ body {
         position: absolute;
         border-radius: 0 0 2px 2px;
         right: 0;
-        top: 40px;
+        ////  呵呵 - start
+        //top: 40px;
+        top: 58px;
+        //// 呵呵 - end
         width: 82px;
         z-index: 98;
         box-shadow: 0 3px 8px rgba(0,0,0,.6);

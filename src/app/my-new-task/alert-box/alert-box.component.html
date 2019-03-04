@@ -1,0 +1,10 @@
+<div id="undo-box" class="alert-box alert-undo" *ngIf="isShowAlert">
+    <span class="_msg"><i class="fa fa-check-circle"></i>sdfsdfs</span>
+    <a class="_undo">uduoo</a>
+    <a class="_close" (click)="isShowAlert=false"><i class="fa fa-remove"></i></a>
+</div>
+
+<div id="error-box" class="alert-box alert-error" style="display:none" >
+    <span class="_msg" id="error_msg"><i class="fa fa-warning"></i></span>
+    <a class="_close" ><i class="fa fa-remove"></i></a>
+</div>

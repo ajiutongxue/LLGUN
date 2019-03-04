@@ -61,7 +61,7 @@ body {
   height: 25px;
   text-align: center;
   border-radius: 50%;
-  margin-top: 8.5px;
+  margin-top: 17px;
   line-height: 25px;
   cursor: pointer;
   transition: .3s;
@@ -84,6 +84,7 @@ body {
   padding-right: 5px;
 }
 .app-header__side-tools__user {
+  padding: 5px;
   flex: 0 0 45px;
   text-align: center;
   cursor: pointer;
@@ -96,8 +97,8 @@ body {
   opacity: .9;
 }
 .app-header__side-tools__user img {
-  width: 26px;
-  height: 26px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
   vertical-align: middle;
@@ -109,7 +110,7 @@ body {
   position: absolute;
   border-radius: 0 0 2px 2px;
   right: 0;
-  top: 40px;
+  top: 58px;
   width: 82px;
   z-index: 98;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
