@@ -10,7 +10,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.65);
     z-index: 997;
 }
 
@@ -24,7 +24,7 @@
     max-width: 600px;
     //width: 100%;
     height: 300px;
-    background: @bg-7;
+    background: @bg-8;
     box-shadow: 0 -8px 15px rgba(0,0,0,.8);
     border: 1px solid @dark-border-color--weakest;
     border-radius: 4px 4px 0 0;
@@ -37,6 +37,14 @@
 .add-panel__container {
     overflow: auto;
     overflow-x: hidden;
+    // fix: 滚动
+    position: absolute;
+    padding: 30px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    // fix -end
 }
 
 .add-panel__show-btn {
