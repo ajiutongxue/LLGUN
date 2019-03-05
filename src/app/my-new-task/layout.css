@@ -361,6 +361,7 @@ button[data-shape="square"] {
 .add-panel .form-row td.row-title {
   width: 6em !important;
   padding-top: 1px !important;
+  color: rgba(255, 255, 255, 0.5);
 }
 .add-panel .form-row .ll-label-box.input-box {
   background: none !important;
@@ -413,6 +414,18 @@ button[data-shape="square"] {
 }
 .status-select--insider .form-row .input-box.only-showing > i {
   top: 7px;
+}
+.status-select---edit-box .input-box {
+  position: relative;
+}
+.status-select---edit-box .input-box .fa {
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.status-select---edit-box .input-box input[type="text"] {
+  padding-left: 20px;
 }
 .label-area--under-title {
   margin-left: -20px !important;
@@ -580,4 +593,61 @@ button[data-shape="square"] {
 }
 .title.title--not-edit {
   font-weight: normal !important;
+}
+.select-file-btns .webuploader-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+.select-file-btns .webuploader-pick {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+table.add-version-uploadfile-list {
+  table-layout: fixed;
+  width: 100%;
+}
+table.add-version-uploadfile-list tr td:nth-child(1) {
+  width: 45px;
+}
+table.add-version-uploadfile-list tr td:nth-child(3) {
+  width: 80px;
+}
+table.add-version-uploadfile-list tr td:last-child {
+  width: 30px;
+  text-align: center;
+}
+table.add-version-uploadfile-list tr td:last-child a {
+  color: #ff4d4f;
+  cursor: pointer;
+}
+._editor .reply-footer {
+  overflow: hidden;
+}
+._editor ._btn {
+  float: right;
+  line-height: 25px;
+  padding: 0 10px;
+  cursor: pointer;
+  background: #0082ff;
+}
+._editor ._btn:hover {
+  background: #1a8eff;
+  color: #fff;
+}
+._editor ._btn._show-file {
+  float: left;
+  background: rgba(255, 255, 255, 0.1);
+}
+._editor .cke_editable img {
+  max-width: 100%;
+}
+.uploaded-box {
+  overflow: hidden;
 }
