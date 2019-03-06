@@ -66,7 +66,7 @@
         }
         
         input[type="text"] {
-            background: @bg-2;
+            //background: @bg-2;
             color: inherit;
             
             &:focus {
@@ -86,14 +86,16 @@
         
         .input-box {
             /// add 20190305 - start,
-            border-radius: 2px;
-            border: 1px solid @dark-border-color--weak;
-            
-            &.input-active {
-                outline: none;
-                border-color: @dark-border-color--weak;
-            }
-            
+            /// remove 20190306 - start
+            //border-radius: 2px;
+            //border: 1px solid @dark-border-color--weak;
+            //
+            //&.input-active {
+            //    outline: none;
+            //    border-color: @dark-border-color--weak;
+            //}
+            /// remove 20190306 - end
+
             /// fix: 新建中的input的很细
             input[type="text"] {
                 box-sizing: content-box;
@@ -114,8 +116,8 @@
                 background: none !important;
                 
                 .ll-label-content {
-                    width: 100% !important;
-                    background: @bg-2 !important;
+                    width: ~'calc(100% - 1px)' !important;
+                    //background: @bg-2 !important;
                 }
                 
                 input[type="text"] {
@@ -219,6 +221,10 @@
     
     .only-showing {
         border: none !important;
+    }
+
+    .content {
+        img { max-width: 100%; }
     }
     
     .title {
@@ -415,6 +421,7 @@
         
         input[type="text"] {
             padding-left: 20px;
+            width: ~'calc(100% - 21px)'!important;
         }
     }
 }

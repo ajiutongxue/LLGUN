@@ -1,7 +1,7 @@
 <div class="add-panel__mask" *ngIf="hideAddPanel">
 </div>
 
-<div class="add-panel" [ngStyle]="hideAddPanel ? '': {bottom: '-300px'}">
+<div class="add-panel" [ngStyle]="hideAddPanel ? '': {bottom: '-500px'}">
     <div class="add-panel__show-btn" (click)="hideAddPanel = !hideAddPanel"
          [ngClass]="hideAddPanel ? '' : 'add-panel__show-btn--hide'">
         <span *ngIf="hideAddPanel">

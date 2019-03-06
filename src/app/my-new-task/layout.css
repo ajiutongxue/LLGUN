@@ -360,7 +360,6 @@ button[data-shape="square"] {
   color: inherit;
 }
 .form-row .input-box input[type="text"] {
-  background: #3C3A3C;
   color: inherit;
 }
 .form-row .input-box input[type="text"]:focus {
@@ -370,14 +369,6 @@ button[data-shape="square"] {
   width: 6em !important;
   padding-top: 1px !important;
   color: rgba(255, 255, 255, 0.5);
-}
-.add-panel .form-row .input-box {
-  border-radius: 2px;
-  border: 1px solid #393739;
-}
-.add-panel .form-row .input-box.input-active {
-  outline: none;
-  border-color: #393739;
 }
 .add-panel .form-row .input-box input[type="text"] {
   box-sizing: content-box;
@@ -392,8 +383,7 @@ button[data-shape="square"] {
   background: none !important;
 }
 .add-panel .form-row .ll-label-box.input-box .ll-label-content {
-  width: 100% !important;
-  background: #3C3A3C !important;
+  width: calc(100% - 1px) !important;
 }
 .add-panel .form-row .ll-label-box.input-box input[type="text"] {
   border-color: #393739 !important;
@@ -474,6 +464,9 @@ button[data-shape="square"] {
 }
 .ex-comment-card .only-showing {
   border: none !important;
+}
+.ex-comment-card .content img {
+  max-width: 100%;
 }
 .ex-comment-card .title .input-box {
   font-size: 16px !important;
@@ -618,6 +611,7 @@ button[data-shape="square"] {
 }
 .status-select---edit-box .input-box input[type="text"] {
   padding-left: 20px;
+  width: calc(100% - 21px) !important;
 }
 .select-file-btns .webuploader-container {
   position: absolute;
