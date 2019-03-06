@@ -79,7 +79,10 @@
     .add-panel & {
         
         td.row-title {
-            width: 6em !important;
+            /// mod 20190406, fjb 说要小 - start
+            //width: 6em !important;
+            width: 4em !important;
+            /// mod - end
             padding-top: 1px !important;
             color: @font-color-3;
         }
@@ -101,7 +104,10 @@
                 box-sizing: content-box;
                 width: ~'calc(100% - 8px)';
                 height: auto;
-                line-height: 22px;
+                /// mod, fjb 说要小 - start
+                line-height: 20px;
+                //line-height: 22px;
+                /// mod - end
                 
                 &:focus { outline: none; }
             }
@@ -449,6 +455,10 @@
         left: 0;
         right: 0;
         bottom: 0;
+        + div {
+            width: 100% !important;
+            height: 100% !important;
+        }
     }
 }
 
@@ -490,20 +500,21 @@ table.add-version-uploadfile-list {
             cursor: pointer;
             background: @brand-color;
             transition: .3s;
-        
+            
             &:hover {
                 background: lighten(@brand-color, 5%);
                 color: #fff;
             }
-        
+            
             &._show-file {
                 float: left;
-                background: rgba(255, 255, 255, .2);
+                background: rgba(255, 255, 255, 0);
+                border-right: 1px solid rgba(255,255,255,.1);
             }
         }
     }
     
-
+    
     
     .cke_editable img {
         max-width: 100%;
@@ -519,7 +530,7 @@ table.add-version-uploadfile-list {
 
 /// 新建的编辑中 -- start
 ._editor {
-    .add-panel & {
+    .ll-app-container .add-panel & {
         padding-top: 0;
         //border: 1px solid @dark-border-color--weak;
         border-radius: 2px;

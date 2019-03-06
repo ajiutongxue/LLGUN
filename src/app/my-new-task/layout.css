@@ -17,6 +17,7 @@
 html,
 body {
   font: 12px/20px -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+  overflow: hidden;
 }
 ::-webkit-scrollbar {
   background: rgba(16, 15, 17, 0.9);
@@ -366,7 +367,7 @@ button[data-shape="square"] {
   background: #2c2b2d;
 }
 .add-panel .form-row td.row-title {
-  width: 6em !important;
+  width: 4em !important;
   padding-top: 1px !important;
   color: rgba(255, 255, 255, 0.5);
 }
@@ -374,7 +375,7 @@ button[data-shape="square"] {
   box-sizing: content-box;
   width: calc(100% - 8px);
   height: auto;
-  line-height: 22px;
+  line-height: 20px;
 }
 .add-panel .form-row .input-box input[type="text"]:focus {
   outline: none;
@@ -629,6 +630,10 @@ button[data-shape="square"] {
   right: 0;
   bottom: 0;
 }
+.select-file-btns .webuploader-pick + div {
+  width: 100% !important;
+  height: 100% !important;
+}
 table.add-version-uploadfile-list {
   table-layout: fixed;
   width: 100%;
@@ -666,7 +671,8 @@ table.add-version-uploadfile-list tr td:last-child a {
 }
 ._editor .reply-footer ._btn._show-file {
   float: left;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 ._editor .cke_editable img {
   max-width: 100%;
@@ -674,12 +680,12 @@ table.add-version-uploadfile-list tr td:last-child a {
 .uploaded-box {
   overflow: hidden;
 }
-.add-panel ._editor {
+.ll-app-container .add-panel ._editor {
   padding-top: 0;
   border-radius: 2px;
 }
-.add-panel ._editor .cke_top,
-.add-panel ._editor .cke_reset,
-.add-panel ._editor .upload-box {
+.ll-app-container .add-panel ._editor .cke_top,
+.ll-app-container .add-panel ._editor .cke_reset,
+.ll-app-container .add-panel ._editor .upload-box {
   border-color: #393739;
 }
