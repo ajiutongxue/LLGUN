@@ -166,7 +166,7 @@
         text-align: center !important;
         
         + td {
-            width: 6em !important;
+            //width: 6em !important;
         }
     }
     
@@ -316,6 +316,32 @@
     &:hover {
         background: lighten(@brand-color, 5%);
         color: @font-color-1 !important;
+    }
+
+    .add-panel .input-box:not(.only-showing) &,
+    .ex-comment-card .input-box:not(.only-showing) & {
+        .remove-ll-label {
+            position: absolute;
+            right: 5px;
+            top: -1px;
+        }
+        > span {
+            margin-right: 14px;
+        }
+    }
+
+
+    .add-panel .input-box &,
+    .ex-comment-card .input-box & {
+        position: relative;
+
+        > i {
+            position: absolute;
+            top: 1px;
+        }
+        > span {
+            display: block;
+        }
     }
 }
 

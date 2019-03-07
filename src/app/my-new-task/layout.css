@@ -535,6 +535,22 @@ button[data-shape="square"] {
   background: #1a8eff;
   color: rgba(255, 255, 255, 0.8) !important;
 }
+.ex-comment-card .input-box:not(.only-showing) .ll-label {
+  position: relative;
+}
+.ex-comment-card .input-box:not(.only-showing) .ll-label .remove-ll-label {
+  position: absolute;
+  right: 5px;
+  top: -1px;
+}
+.ex-comment-card .input-box:not(.only-showing) .ll-label > i {
+  position: absolute;
+  top: 1px;
+}
+.ex-comment-card .input-box:not(.only-showing) .ll-label > span {
+  display: block;
+  margin-right: 14px;
+}
 .label-box.download {
   overflow: hidden !important;
 }

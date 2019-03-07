@@ -288,16 +288,6 @@ input[type="text"] {
   border: 1px solid #1a1a1a;
   box-sizing: border-box;
 }
-note-add {
-  max-width: 600px;
-  margin: 0 auto;
-  display: block;
-  padding: 15px 15px;
-  box-sizing: border-box;
-  background: #292929;
-  border: 1px solid #353535;
-  border-radius: 2px;
-}
 note-add editor-string-input .row-title {
   width: 8em;
   text-align: right;
