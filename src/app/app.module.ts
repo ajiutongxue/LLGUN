@@ -80,6 +80,7 @@ import { NoteAddComponent } from './my-new-task/task-activity/note-add/note-add.
 import { NoteReplyComponent } from './my-new-task/note-reply/note-reply.component';
 import { AlertBoxComponent } from './my-new-task/alert-box/alert-box.component';
 import { AlertDialogComponent } from './my-new-task/alert-dialog/alert-dialog.component';
+import { NoticComponent } from './my-new-task/notic/notic.component';
 
 const appRoutes: Routes = [
 
@@ -246,6 +247,7 @@ const appRoutes: Routes = [
         NoteReplyComponent,
         AlertBoxComponent,
         AlertDialogComponent,
+        NoticComponent,
         // HighlightDirective
     ],
     imports: [

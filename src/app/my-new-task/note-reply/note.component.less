@@ -1,7 +1,7 @@
 .comment-container {
     --font-family: 'Microsoft Yahei';
 
-    font: 14px/24px var(--font-family);
+    font: 12px/24px var(--font-family);
     color: var(--primary-words-color);
 
     --content-bg-color: hsla(0, 0%, 0%, 0.15);
@@ -60,7 +60,7 @@
     border-radius: 4px;
     // fix: 改的紧密一些
     //padding-bottom:  30px;
-    padding-bottom:  10px;
+    //padding-bottom:  10px;
     position: relative;
 }
 
@@ -68,8 +68,10 @@
 .subject {
     // fix: 改的紧密一些
     //padding: 30px 30px 0px;
-    padding: 15px 20px 0;
-    
+    // fix: 0311 - start
+    //padding: 15px 20px 0;
+    padding: 12px;
+    // fix 0311 -end
     position:  relative;
     
     .writer .date + div {
@@ -81,7 +83,10 @@
 .writer {
     position: relative;
     height: 55px;
-    padding-left: 60px;
+    // fix 0311 --start
+    //padding-left: 60px;
+    padding-left: 50px;
+    // fix 0311 --end
 
     .avatar {
         position: absolute;
@@ -115,7 +120,10 @@
 .reply {
     border-top: 1px solid var(--light-border-color);
     margin: 0 30px;
-    padding: 14px 20px 10px;
+    // fix 0311 -start
+    padding: 8px 12px;
+    //padding: 14px 20px 10px;
+    // fix 0311 -end
     border: 1px solid var(--light-border-color);
     background: var(--dark-bg-color);
     & + .reply {
@@ -123,7 +131,10 @@
     }
 
     .writer {
-        padding-left: 42px;
+        // fix 0311 -start
+        //padding-left: 42px;
+        padding-left: 36px;
+        // fix 0311 -end
         padding-top: 5px;
         height: 35px;
     }
@@ -161,6 +172,9 @@
     top: 6px;
     // fix: 会被title的input-box遮住
     z-index: 10;
+    // rm 0311 -start
+    //background: #363636;
+    // rm 0311 -end
 }
 
 .op-btn {
@@ -207,27 +221,43 @@
     border: none;
     // 去掉下面的线，放到somelinks上面去
 }
+
+@brand-color: #0082ff;
+@font-color-1: rgba(255, 255, 255, .8);
 .label {
     display: inline-block;
-    background: var(--light-bg-color);
+    //background: var(--light-bg-color);
+    background: rgba(255,255,255,.1);
+    
     border-radius: 10px;
     font-size: 12px;
     height: 16px;
     line-height: 14px;
     padding: 0 5px;
-    border: 1px solid var(--label-border-color);
-    color: var(--normal-link-color);
+    //border: 1px solid var(--label-border-color);
+    //color: var(--normal-link-color);
+    
+    border: 1px solid rgba(255,255,255,.1);
+    color: lighten(@brand-color, 25%);
+    
     cursor: pointer;
     min-width: 80px;
     max-width: 120px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    
+    transition: .3s;
 
+    //&:hover {
+    //    border-color: var(--active-color);
+    //    background: var(--active-color);
+    //    color: #fff;
+    //}
+    
     &:hover {
-        border-color: var(--active-color);
-        background: var(--active-color);
-        color: #fff;
+        background: lighten(@brand-color, 5%);
+        color: @font-color-1;
     }
 }
 
@@ -254,7 +284,7 @@
         cursor: pointer;
 
         & + a {
-            margin-left: 20px;
+            margin-left: 10px;
         }
 
         &:hover {

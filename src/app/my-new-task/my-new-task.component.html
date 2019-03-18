@@ -47,6 +47,38 @@
     </div>
 </div>
 
+
+<!-- 0312 start -->
+<!-- header 内容结构做了调整 -->
+<div class="app-header">
+    <div class="app-header__head-bar">
+        <div class="app-header__head-bar__main">
+            <div class="app-header__path-tools">
+                <div class="app-header__path-tools__home"><i class="fa fa-home"></i></div>
+                <div class="app-header__path-tools__prev disabled"><i class="fa fa-caret-left"></i></div>
+                <div class="app-header__path-tools__next"><i class="fa fa-caret-right"></i></div>
+                <div class="app-header__path-tools__refresh"><i class="fa fa-refresh"></i></div>
+                <div class="app-header__notice">
+                    <app-notice></app-notice>
+                </div>
+            </div>
+            <div class="app-header__side-tools__search-box">
+                <app-search-box></app-search-box>
+            </div>
+        </div>
+        <div class="app-header__side-tools__user" [ngClass]="{ 'side-tools__user--active': isShowUserMenu }">
+            <a class="user__avatar" (click)="isShowUserMenu = !isShowUserMenu"><img src="../../assets/style/images/img3.jpg" /></a>
+            <div class="user__menu" *ngIf="isShowUserMenu">
+                <div class="user__menu__item"><i class="fa fa-sign-out"></i> 退出登录</div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- 0312 end -->
+
+
 <!-- 20190213 这部分结构进行了调整，新增了布局标签 app-task-content -->
 <div class="app-task-content">
     <!--  你的 <app-my-task> 从这里开始 -->

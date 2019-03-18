@@ -242,6 +242,7 @@ body {
   margin: 0;
   font: 12px/20px -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
   color: #14323A;
+  height: 100%;
 }
 input,
 textarea,
@@ -945,7 +946,7 @@ td {
   max-width: 240px;
   height: auto;
   min-height: 20px;
-  max-height: 500px;
+  max-height: 540px;
 }
 .topbar-container .modal-normal-container._sub-level:not(._project) ul._normal > li {
   line-height: 28px;
@@ -3106,12 +3107,19 @@ thumbnail-view .footer-container {
   text-align: center;
   width: 400px;
   left: 50%;
-  margin-left: -200px;
   background: #00B577;
   color: #fff;
   border-radius: 12px;
   margin-top: 1px;
   font-size: 12px;
+  width: auto;
+  max-width: 600px;
+  transform: translateX(-50%);
+  overflow: hidden;
+  padding: 0 20px 0 10px;
+  white-space: nowrap;
+  min-width: 250px;
+  text-overflow: ellipsis;
 }
 .alert-box ._msg {
   opacity: .8;
@@ -3119,20 +3127,27 @@ thumbnail-view .footer-container {
 .alert-box ._undo {
   text-decoration: underline;
   margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
 }
 .alert-box ._close {
   position: absolute;
   right: 5px;
-  display: inline-block;
   border-radius: 100%;
   height: 1em;
   width: 1em;
   top: 4px;
   line-height: 1em;
+  cursor: pointer;
 }
 .alert-box ._close:hover {
   background: #fff;
   color: #00B577;
+}
+.alert-box.alert-undo {
+  padding-right: 4em;
 }
 .alert-box.alert-error {
   color: #fff;
@@ -4791,4 +4806,25 @@ filter-button ._btn.active a {
 filter-button ._btn.active a:hover {
   background: #2f92ef !important;
   color: #fff !important;
+}
+grid-date-select .modal-flatest-container {
+  left: 0 !important;
+}
+.topbar-container .modal-normal-container._project .scroll-box::-webkit-scrollbar {
+  /* 定义了滚动条整体的样式 */
+  height: 6px;
+  width: 6px;
+}
+.topbar-container .modal-normal-container._project .scroll-box::-webkit-scrollbar-track {
+  /* 轨道部分 */
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.topbar-container .modal-normal-container._project .scroll-box::-webkit-scrollbar-thumb {
+  /* 滑块部分 */
+  border-radius: 5px;
+  background-color: rgba(110, 110, 110, 0.2);
+  outline: #333 solid 1px;
+}
+.topbar-container .modal-normal-container._project .scroll-box::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(110, 110, 110, 0.8);
 }

@@ -1,0 +1,31 @@
+
+    <div class="bell-notice" >
+        <i class="fa fa-bell" (click)="showWarn = !showWarn"></i><span class="notice__count">{{3}}</span>
+        <div *ngIf="showWarn" class="notice__tab-container">
+            <!--<div class="gray-label"></div>-->
+            <div class="notice__tab__tabs">
+                <span class="notice__tab__tabs-title"><i class="fa fa-list-ul"></i><span class="notice__tabs-title__count">{{66}}</span></span>
+                <span class="notice__tab__tabs-title"><i class="fa fa-tasks"></i><span class="notice__tabs-title__count">{{8}}</span></span>
+                <span class="notice__tab__tabs-title--active"><i class="fa fa-envelope"></i><span class="notice__tabs-title__count">{{6}}</span></span>
+            </div>
+            <div class="notice__tab-pane">
+                <div class="notice__tab-pane__item">
+                    <!-- 不知道你怎么传图片地址，可能是包在你的innerHTML里面的
+                         如果是这样，那么就把下面这个div包一串的东西一起当你的innerHMTL就行
+                         我会把这个东西忘layout加一个，如果不需要告诉我，我把他删了
+                    -->
+                    <div class="notice__tab-pane__img-bg" style="background-image: url('https://img3.doubanio.com/view/photo/l/public/p2539353092.webp')">
+                        <div class="notice__tab-pane__linear-bg">
+                            <a>刘 君杰 (liuJJ)</a> 修改了任务:<a>test_任务12</a> 的连接对象 (03-08 17:37)
+                        </div>
+                    </div>
+                </div>
+                <div class="notice__tab-pane__item"><a>刘 君杰 (liuJJ)</a> 修改了任务:<a>test_任务12</a> 的连接对象 (03-08 17:37)</div>
+                <div class="notice__tab-pane__item"><a>刘 君杰 (liuJJ)</a> 修改了任务:<a>test_任务12</a> 的连接对象 (03-08 17:37)</div>
+                <div class="notice__tab-pane__item"><a>刘 君杰 (liuJJ)</a> 修改了任务:<a>test_任务12</a> 的连接对象 (03-08 17:37)</div>
+            </div>
+            <div class="notice__tab__footer">
+                <a class="footer__text-link" href="javascript:;"><i class="fa fa-search-plus"></i> {{'查看全部消息'}}</a>
+            </div>
+        </div>
+    </div>

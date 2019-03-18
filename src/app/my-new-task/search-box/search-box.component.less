@@ -5,7 +5,27 @@
 
 @import "../app-base";
 
-.llg-search-box {}
+.llg-search-box {
+    // add 0312 , 改了内容和结构布局 - start
+    padding: 0 8px 0 12px;
+    line-height: 25px;
+    
+    input {
+        position: static;
+        height: 22px;
+        line-height: 22px;
+        max-width: 100%;
+    }
+    
+    .llg-search-box__btn {
+        height: 25px;
+        line-height: 25px;
+        top: 0;
+        font-size: 16px;
+        right: 6px;
+    }
+    // add 0312 - end
+}
 
 input {
     position: absolute;
@@ -94,6 +114,7 @@ input {
     max-width: 300px;
     left: auto;
     right: 0;
+    top: 34px;
     //// 修改样式 -end
 
 
@@ -111,6 +132,13 @@ input {
     //        width: auto;
     //    }
     //}
+    
+    // add 0312 改结构和内容 -start
+    left: 18px;
+    right: 16px;
+    max-width: unset;
+    width: auto;
+    // add 0312 -end
 }
 
 

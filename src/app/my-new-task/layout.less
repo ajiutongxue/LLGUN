@@ -8,6 +8,10 @@
 @import "./app-base";
 
 
+// add, 统一左右边距，0308 - start
+@all-padding-l-r: 12px;
+// -end
+
 html,
 body {
     font: @font-set;
@@ -18,12 +22,13 @@ body {
 /// ---------------------------------------------------------------
 ::-webkit-scrollbar {
     background: @bg-8;
-    width: 12px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #333;
     border-radius: 8px;
+    border: 2px solid @bg-8;
 }
 /// ---------------------------------------------------------------
 /// ------------------------- 统一滚动条设置 -- end -------------==
@@ -57,7 +62,12 @@ body {
 
 .app-header__head-bar {
     display: flex;
-    flex: 0 0 @head-bar-height;
+    // mod 0314 -start
+    // 没什么用
+    //flex: 0 0 @head-bar-height;
+    height: 66px;
+    // mod 0314 -end
+    
     line-height: @head-bar-height;
     font-size: 14px;
     background: @bg-1;
@@ -69,6 +79,75 @@ body {
     // add -end 2019/2/21
 }
 
+// add , 顶部内容，结构变化 0312 -start
+.app-header__head-bar__main {
+    flex: auto;
+    flex-direction: column;
+    
+    .app-header__path-tools {
+        flex: 0 0 25px;
+        // add 0314
+        padding-bottom: 5px;
+        // -end
+    }
+    
+    .app-header__path-tools__home,
+    .app-header__path-tools__prev,
+    .app-header__path-tools__next,
+    .app-header__path-tools__refresh {
+        float: left;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        border-radius: 50%;
+        margin-top: 5px;
+        line-height: 25px;
+        cursor: pointer;
+        transition: .3s;
+        
+        &.disabled {
+            color: @font-color-9;
+            cursor: default;
+        }
+        &:not(.disabled):hover {
+            background: rgba(0,0,0,.15);
+            color: @font-color-1;
+        }
+    }
+    
+    .app-header__notice {
+        //position: relative;
+        float: right;
+        height: 25px;
+        line-height: 25px;
+        margin-top:  5px;
+        width: 25px;
+        text-align: center;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: .3s;
+        
+        // add 0317
+        .fa-bell {
+            font-size: 17px;
+        }
+        // -end
+    
+        &.disabled {
+            color: @font-color-9;
+            cursor: default;
+        }
+        &:not(.disabled):hover {
+            background: rgba(0,0,0,.15);
+            color: @font-color-1;
+        }
+    }
+    
+}
+// add 0312 -end
+
+
+
 
 /// -- start -- 首页、上一页、下一页 跟路径有关的几个按钮
 .app-header__path-tools {
@@ -79,7 +158,8 @@ body {
 }
 .app-header__path-tools__home,
 .app-header__path-tools__prev,
-.app-header__path-tools__next {
+.app-header__path-tools__next,
+.app-header__path-tools__refresh { // add 0312
     float: left;
     width: 25px;
     height: 25px;
@@ -116,6 +196,9 @@ body {
     //// 要看清出头像什么样 - start
     padding: 5px;
     //// 要看清出头像什么样 - end
+    // add 0314
+    padding-right: 10px;
+    // -end
 
     flex: 0 0 45px;
     text-align: center;
@@ -143,7 +226,12 @@ body {
     }
     
     // 调整了头像部分的结构，将图片用 a 标签包了起来
-    .user__avatar { display: block; }
+    .user__avatar {
+        display: block;
+        // add 0317
+        line-height: 50px;
+        // -end
+    }
     
     .user__menu {
         position: absolute;
@@ -279,7 +367,13 @@ app-version-detail {
 /// ----------------------------------------------------------
 .app-task-info {
     flex: 0 0 auto;
-    padding: 15px;
+    // mod 0308, 改紧凑，统一整个左边边距 - start
+    //padding: 15px;
+    padding: 15px @all-padding-l-r;
+    // mod 0308 - end
+    // add 0317，区别详情顶上和上面导航 - start
+    background: rgba(0,0,0,.1);
+    // add 0317 -end
 }
 .task-info__img-box {
     float: left;
@@ -307,7 +401,10 @@ app-version-detail {
     background: @bg-2;
     color: @font-color-2;
     line-height: @nav-height;
-    padding: 0 15px;
+    // mod 0308 -- start
+    //padding: 0 15px;
+    padding: 0 @all-padding-l-r;
+    // mode -end
     // mod start 2019/02/15
     //font-size: 13px;
     font-size: 12px;
@@ -319,6 +416,7 @@ app-version-detail {
 .home-nav__page-select {
     position: relative;
     cursor: pointer;
+    margin-right: 10px;
 }
 .home-nav__toggle {
     position: absolute;
@@ -372,7 +470,9 @@ app-version-detail {
     // mod start 2019/02/15
     //text-align: center;
     text-align: left;
-    padding-left: 10px;
+    // mode 0308 - start
+    //padding-left: 10px;
+    // mode 0308 -end
     // mod end
 }
 .home-nav__tab-fn() {
@@ -380,7 +480,10 @@ app-version-detail {
     height: @nav-height - 2;
     line-height: @nav-height - 2;
     text-align: center;
-    padding: 0 .5em;
+    // mod 0317 -start
+    //padding: 0 .5em;
+    padding: 0 7px;
+    // mod 0317 -end
     // mod start 2019/02/15
     //margin: 0 .5em;
     // mod end
@@ -417,8 +520,11 @@ app-version-detail {
     flex: auto;
     overflow: auto;
     background: #222;
-    padding: 10px;
-    padding-bottom: 40px;
+    // mod 0308 - start
+    padding: 10px @all-padding-l-r 40px;
+    //padding: 10px;
+    //padding-bottom: 40px;
+    // mod 0308 - end
     .clear();
     //// add start, 2019/02/15
     //text-align: center;
@@ -512,12 +618,30 @@ button {
             background: lighten(@brand-color, 5%);
         }
     }
+    &[data-type="warning"] {
+        background: @danger-color;
+        color: #fff;
+        &:hover {
+            background: lighten(@danger-color, 5%);
+        }
+    }
+    &[data-type="success"] {
+        background: @success-color;
+        color: #fff;
+        &:hover {
+            background: lighten(@success-color, 5%);
+        }
+    }
     
     /* 按钮大小 */
     // - 按钮大小并不是一个规定值
     // - 按钮大小是根据按钮所在上下文的文字大小来计算的
     // - 未经验证，预计是： small: 1.6em; normal: 1.85em; large: 字变大;
-    &[data-size="small"] {}
+    &[data-size="small"] {
+        font-size: .85em;
+        padding: 0 .65em;
+        line-height: 1.5em;
+    }
     &[data-size="normal"] {
         line-height: 1.85em;
         padding: 0 1em;
@@ -556,3 +680,33 @@ button {
 
 /// ------------------------------------------------------------------------------------
 /// --------------------------- 覆盖一些历史包袱的组件样式 -- end ------------------------------
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/// --------------------------- 一些需要全局的样式组件样式 -- start ------------------------------
+/// ------------------------------------------------------------------------------------
+
+// notice 背景渐变效果
+.notice__tab-pane__img-bg {
+    background-position: center center;
+    background-size: cover;
+}
+.notice__tab-pane__linear-bg {
+    --pos: 30%;
+    padding: 5px 16px;
+    transition: 1s ease-in-out;
+    background: linear-gradient(to right, rgba(44,43,45,0.95) var(--pos), rgba(44,43,45,0.25));
+    
+    &:hover {
+        --pos: 45%;
+        //background: linear-gradient(to right, rgba(44,43,45,1) 45%, rgba(44,43,45,0.6));
+    }
+}
+
+/// ------------------------------------------------------------------------------------
+/// --------------------------- 一些需要全局的样式组件样式 -- end ------------------------------

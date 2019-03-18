@@ -75,11 +75,6 @@
   background: #292929!important;
   border-color: #1a1a1a !important;
 }
-.ll-app-container .uploaded-box ._obj .ll-label {
-  color: rgba(107, 148, 167, 0.9);
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.1);
-}
 .ll-app-container .note-section-top {
   background: rgba(227, 238, 245, 0.16);
 }
@@ -92,7 +87,6 @@
   color: #e6e6e6;
 }
 .ll-app-container ._editor {
-  padding-top: 10px;
   color: #e6e6e6;
 }
 .ll-app-container ._editor ._edit-area {
@@ -266,7 +260,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #80c0ff;
   cursor: pointer;
-  min-width: 80px;
+  min-width: 60px;
   max-width: 120px;
   white-space: nowrap;
   overflow: hidden;

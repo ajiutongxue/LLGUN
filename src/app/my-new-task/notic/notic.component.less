@@ -1,0 +1,168 @@
+@import "../app-base";
+
+a {
+    text-decoration: none;
+}
+
+.bell-notice {
+    position: relative;
+    width: 25px;
+    height: 25px;
+}
+
+.count-style() {
+    background: @danger-color;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 8px;
+    line-height: 1.5em;
+    padding: 0 3px;
+    border: 1px solid rgba(255, 255, 255, .8);
+}
+
+.notice__count {
+    .count-style();
+    position: absolute;
+    right: -3px;
+    top: 1px;
+}
+
+
+.notice__tab-container {
+    font-size: 12px;
+    // fix 0314 - start
+    //position: absolute;
+    //right: 0px;
+    position: fixed;
+    right: 10px;
+    // fix 0314 -end
+    left: auto;
+    width: 300px;
+    z-index: 10;
+    
+    height: auto;
+    //max-height: 300px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .6);
+    line-height: 2.2em;
+    background: @bg-3;
+    border: 1px solid @border-color-1;
+    overflow: hidden;
+    border-radius: 0 0 4px 4px;
+    transition: .3s;
+    padding-top: 5px;
+}
+
+.notice__tab__tabs {
+    display: flex;
+}
+
+.notice__tab__tabs-title() {
+    flex: 100px;
+    position: relative;
+    text-align: center;
+    border-right: 1px solid @border-color-1;
+    font-size: 13px;
+    //border-bottom: 3px solid rgba(0, 130, 255, 0);
+    border-bottom: 3px solid #454647;
+    transition: .3s;
+    
+    &:last-child {
+        border-right: none;
+    }
+    
+    &:not(.notice__tab__tabs-title--active):hover {
+        border-bottom-color: rgba(0, 130, 255, 0.6);
+    }
+}
+
+.notice__tab__tabs-title {
+    .notice__tab__tabs-title()
+}
+
+.notice__tab__tabs-title--active {
+    .notice__tab__tabs-title();
+    border-bottom-color: rgba(0, 130, 255, 1);
+    
+    
+    .fa {
+        color: #fff;
+    }
+}
+
+.notice__tabs-title__count {
+    .count-style();
+    position: absolute;
+    
+}
+
+
+
+.notice__tab-pane {
+    overflow: auto;
+    overflow-x: hidden;
+    height: 300px;
+    text-align: left;
+    padding: 8px 0;
+}
+
+.notice__tab-pane__item {
+    position: relative;
+    //padding: 5px 16px;
+    line-height: 1.5em;
+    border-bottom: 1px solid @border-color-1;
+    
+    a {
+        color: @brand-color;
+        cursor: pointer;
+        &:hover {
+            color: lighten(@brand-color, 5%);
+        }
+    }
+}
+
+.notice__tab-pane__item--unread {
+    //&::after {
+    //    position: absolute;
+    //    left: 4px;
+    //    top: 10px;
+    //    content: '';
+    //    width: 6px;
+    //    height: 6px;
+    //    background: @danger-color;
+    //    border-radius: 50%;
+    //}
+    background: rgba(255,255,255,.3);
+}
+
+
+.notice__tab__footer {
+    text-align: right;
+    border-top: 1px solid @border-color-1;
+    padding-right: 16px;
+}
+.footer__text-link {
+    color: @brand-color;
+    cursor: pointer;
+    &:hover {
+        color: lighten(@brand-color, 5%);
+    }
+}
+
+
+
+/// 需要放到layout中的样式
+.notice__tab-pane__img-bg {
+    background-position: center center;
+    background-size: cover;
+}
+.notice__tab-pane__linear-bg {
+    --pos: 30%;
+    padding: 5px 16px;
+    transition: 1s ease-in-out;
+    background: linear-gradient(to right, rgba(44,43,45,0.95) var(--pos), rgba(44,43,45,0.25));
+    
+    &:hover {
+        --pos: 45%;
+        //background: linear-gradient(to right, rgba(44,43,45,1) 45%, rgba(44,43,45,0.6));
+    }
+}

@@ -19,8 +19,8 @@
                 <div class="app-header__path-tools__next"><i class="fa fa-caret-right"></i></div>
             </div>
             <div class="app-header__action-tools">
-                <button class="app-btn" data-type="primary" data-size="normal" data-shape="square">开始审核</button>
-                <button class="app-btn" data-type="primary" data-size="normal" data-shape="square">审核通过</button>
+                <!--<button class="app-btn" data-type="primary" data-size="normal" data-shape="square">开始审核</button>-->
+                <!--<button class="app-btn" data-type="primary" data-size="normal" data-shape="square">审核通过</button>-->
             </div>
             <div class="app-header__side-tools">
                 <div class="app-header__side-tools__search-box">
@@ -38,14 +38,21 @@
         </div>
         <div class="task-info__info-list">
             <div class="task-info__title">S_动画 这就是一个动画的task的标题</div>
-            <div class="task-info__state--waiting"><i class="fa fa-pause"></i> 待开始</div>
+            <div style="margin-bottom: 10px;">
+                <div class="task-info__state--waiting"><i class="fa fa-pause"></i> 待开始</div>
+                <button class="app-btn" data-type="primary" data-size="small" data-shape="square"><i class="fa fa-fw fa-play"></i></button>
+                <button class="app-btn" data-type="warning" data-size="normal" data-shape="square"><i class="fa fa-fw fa-ban"></i></button>
+                <button class="app-btn" data-type="success" data-size="normal" data-shape="square"><i class="fa fa-fw fa-check"></i></button>
+            </div>
             <div class="task-info__label-links">
                 <div class="label-link"><i class="fa fa-film"></i> shot_004shot_004shot_004</div>
                 <div class="label-link"><i class="fa fa-film"></i> shot_004</div>
                 <div class="label-link"><i class="fa fa-film"></i> shot_004</div>
             </div>
             <div class="task-info__btns">
-                <button class="app-btn" data-type="primary" data-size="normal" data-shape="square">关注</button>
+                <button class="app-btn" data-type="primary" data-size="normal" data-shape="square"><i class="fa fa-fw fa-play"></i> 审核开始</button>
+                <button class="app-btn" data-type="warning" data-size="normal" data-shape="square"><i class="fa fa-fw fa-ban"></i>审核结束</button>
+                <button class="app-btn" data-type="success" data-size="normal" data-shape="square"><i class="fa fa-fw fa-check"></i> 审核通过</button>
             </div>
         </div>
     </div>

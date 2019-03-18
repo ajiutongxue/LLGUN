@@ -77,13 +77,18 @@
 
 // 新建收起来的时候，按钮的显示效果
 .add-panel__show-btn--hide {
-    height: 48px;
-    line-height: 48px;
+    // fix 0314 - start
+    height: 28px;
+    line-height: 28px;
+    top: -28px;
+    //height: 48px;
+    //line-height: 48px;
+    //top: -48px;
+    // fix 0314 - end
     //border-radius: 50%;
     border-radius: 0;
     box-shadow: 0 -5px 15px rgba(0,0,0,.5);
     background: @brand-color;
-    top: -48px;
     color: #fff;
     
     &:hover {
