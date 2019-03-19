@@ -32,12 +32,19 @@
         border-bottom: none;
     
         > img {
-            width: ~"calc(100% - 2px)";
+            // fix 0319 好像没有居中 - start
+            //width: ~"calc(100% - 2px)";
+            width: 100%;
+            box-sizing: border-box;
+            background: rgba(0,0,0,.1);
+            // fix 0319 -end
             height: 100%;
             border-radius: @border-radius @border-radius 0 0;
             //object-fit: cover;
             object-fit: contain;
             transition: .3s;
+            
+            
         }
     
         // fjb 添加的 - start
