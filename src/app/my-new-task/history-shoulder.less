@@ -16,8 +16,12 @@ i.ppl-label-color {
     left: 5px !important;
     top: 2px !important;
 }
+
 step-group-select {
-    input[type="text"] { padding-left: 0 !important;}
+    input[type="text"] {
+        padding-left: 0 !important;
+    }
+    
     .ll-label {
         > span {
             width: 90px;
@@ -34,7 +38,7 @@ step-group-select {
         }
         
         .select-box {
-            background: #353535!important;
+            background: #353535 !important;
         }
     }
 }
@@ -54,7 +58,7 @@ step-group-select {
     }
     
     .container.put-down {
-        left: unset!important;
+        left: unset !important;
     }
     
     
@@ -155,7 +159,7 @@ table {
             //    border-color: @dark-border-color--weak;
             //}
             /// remove 20190306 - end
-
+            
             /// fix: 新建中的input的很细
             input[type="text"] {
                 box-sizing: content-box;
@@ -166,7 +170,9 @@ table {
                 //line-height: 22px;
                 /// mod - end
                 
-                &:focus { outline: none; }
+                &:focus {
+                    outline: none;
+                }
             }
             
             /// add 20190305 - end
@@ -192,15 +198,16 @@ table {
                 
             }
         }
-    
+        
         
         // fix：新建里面的下拉top显示不对了 0308 - start
         .select-box {
             .container {
-                position: absolute!important;
-                top: unset!important;
+                position: absolute !important;
+                top: unset !important;
             }
         }
+        
         // fix - end
         
     }
@@ -237,6 +244,7 @@ table {
     .table-fixed {
         table-layout: unset;
     }
+    
     .input-row-with-pencil ();
     
     .row-title {
@@ -280,7 +288,6 @@ table {
 /// 评论中，右上角的"状态" - end
 
 
-
 /// 评论中，标题下面的小标区域 - start
 .label-area--under-title {
     .input-row-with-pencil ();
@@ -315,13 +322,15 @@ table {
     .only-showing {
         border: none !important;
     }
-
+    
     .content {
-        img { max-width: 100%; }
+        img {
+            max-width: 100%;
+        }
     }
     
     .title {
-        margin-left: 0!important;
+        margin-left: 0 !important;
         
         &,
         .input-box {
@@ -332,7 +341,7 @@ table {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            margin-right: 40px;  // 这个值再斟酌下，原因是右边有个状态，会遮住
+            margin-right: 40px; // 这个值再斟酌下，原因是右边有个状态，会遮住
             // add 0311 - end
             
             span {
@@ -413,7 +422,7 @@ table {
         background: lighten(@brand-color, 5%);
         color: @font-color-1 !important;
     }
-
+    
     .add-panel .input-box:not(.only-showing) &,
     .ex-comment-card .input-box:not(.only-showing) & {
         .remove-ll-label {
@@ -421,20 +430,22 @@ table {
             right: 5px;
             top: -1px;
         }
+        
         > span {
             margin-right: 14px;
         }
     }
-
-
+    
+    
     .add-panel .input-box &,
     .ex-comment-card .input-box & {
         position: relative;
-
+        
         > i {
             position: absolute;
             top: 1px;
         }
+        
         > span {
             display: block;
         }
@@ -479,9 +490,11 @@ table {
     font-size: 12px;
     margin: 10px 12px;
 }
+
 .editor-title () {
     color: @font-color-2;
 }
+
 .change-mode-link() {
     float: right;
     color: @brand-color;
@@ -493,6 +506,7 @@ table {
     // -end
     
 }
+
 /////// 公用 - end
 
 
@@ -553,26 +567,29 @@ table {
 
 
 /// 高级回复样式 -- start
-.pro-editor{
+.pro-editor {
     .editor();
 }
+
 .pro-editor__title {
     .editor-title();
     overflow: hidden;
 }
+
 .pro-editor__change-simple {
     .change-mode-link ();
 }
-.pro-editor__box { margin-top: 5px; }
-/// 高级回复样式 -- end
 
+.pro-editor__box {
+    margin-top: 5px;
+}
+
+/// 高级回复样式 -- end
 
 
 .title.title--not-edit {
     font-weight: normal !important;
 }
-
-
 
 
 /// 编辑中，状态选择 - start
@@ -589,14 +606,12 @@ table {
         
         input[type="text"] {
             padding-left: 20px;
-            width: ~'calc(100% - 21px)'!important;
+            width: ~'calc(100% - 21px)' !important;
         }
     }
 }
 
 /// 编辑中，状态选择 - end
-
-
 
 
 /// 编辑中， 上传部分 - start
@@ -617,6 +632,7 @@ table {
         left: 0;
         right: 0;
         bottom: 0;
+        
         + div {
             width: 100% !important;
             height: 100% !important;
@@ -674,11 +690,10 @@ table.add-version-uploadfile-list {
             &._show-file {
                 float: left;
                 background: rgba(255, 255, 255, 0);
-                border-right: 1px solid rgba(255,255,255,.1);
+                border-right: 1px solid rgba(255, 255, 255, .1);
             }
         }
     }
-    
     
     
     .cke_editable img {
@@ -707,17 +722,26 @@ table.add-version-uploadfile-list {
         }
     }
     
-    .send-cc-div + ckeditor-component & { margin-top: -10px;}
+    .send-cc-div + ckeditor-component & {
+        margin-top: -10px;
+    }
 }
+
 .add-panel {
     editor-ckeditor {
-        .form-row td.row-title { width: 0!important;}
+        .form-row td.row-title {
+            width: 0 !important;
+        }
     }
     
-    ._editor { padding-top: 10px; } // 好像空一些好看
+    ._editor {
+        padding-top: 10px;
+    }
+    
+    // 好像空一些好看
 }
-/// 新建的编辑中 -- end
 
+/// 新建的编辑中 -- end
 
 
 /// 编辑中，把富文本塞到了 string-input 中，
@@ -727,11 +751,11 @@ table.add-version-uploadfile-list {
         width: 0 !important;
         padding: 0 !important;
     }
+    
     ._editor {
         margin-top: -11px;
     }
 }
-
 
 
 //// 范嘉斌把之前web上的cc的样式都扔了
@@ -744,6 +768,7 @@ table.add-version-uploadfile-list {
             .row-title {
                 width: 4em !important;
             }
+            
             .input-box {
                 //height: 22px !important;
                 input[type="text"] {
@@ -761,7 +786,6 @@ table.add-version-uploadfile-list {
 }
 
 
-
 /**** alert 中的input row */
 .ex-alert__body {
     editor-number-input {
@@ -776,13 +800,13 @@ table.add-version-uploadfile-list {
             }
             
             .input-box {
-                background: rgba(0,0,0,.3) !important;
-                border-color: rgba(255,255,255,.1) !important;
+                background: rgba(0, 0, 0, .3) !important;
+                border-color: rgba(255, 255, 255, .1) !important;
                 height: 22px !important;
                 line-height: 22px !important;
                 
                 &.input-active {
-                    background: rgba(0,0,0,.4) !important;
+                    background: rgba(0, 0, 0, .4) !important;
                 }
                 
                 input {
@@ -794,5 +818,53 @@ table.add-version-uploadfile-list {
         }
     }
 }
+
+
+// ***** 详情顶上部分编辑状态修改 - start
+// 状态编辑 ， 多种状态，使用到时，将在这里一一补充
+.task-info__state--waiting {
+    vertical-align: middle;
+    label-dictionary-select {
+        .form-row {
+            margin: 0 !important;
+            width: 74px !important;
+            font-size: 12px!important;
+            font-family: inherit!important;
+        }
+        
+        .input-box {
+            position: relative !important;
+            
+            &.only-showing {
+                > span { margin-left: 18px !important;}
+                font-family: inherit!important;
+                > i.fa { top: 4px !important;}
+            }
+            
+            > i.fa {
+                position: absolute !important;
+                top: 3px !important;
+                left: 1px !important;
+                font-size: 12px!important;
+            }
+            input[type="text"] {
+                padding-left: 18px !important;
+                font-family: inherit!important;
+            }
+        }
+        
+        .row-title {
+            width: 13px !important;
+            padding: 0 !important;
+            
+            > i.fa {
+                right: unset !important;
+                left: 0 !important;
+            }
+        }
+    }
+}
+
+// ***** 详情顶上部分编辑状态修改 - end
 
 

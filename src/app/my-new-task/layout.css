@@ -227,6 +227,7 @@ app-version-detail {
   flex: 0 0 auto;
   padding: 15px 12px;
   background: rgba(0, 0, 0, 0.1);
+  padding-right: 0;
 }
 .task-info__img-box {
   float: left;
@@ -394,7 +395,7 @@ button[data-type="success"]:hover {
 }
 button[data-size="small"] {
   font-size: .85em;
-  padding: 0 .65em;
+  padding: 0 .45em;
   line-height: 1.5em;
 }
 button[data-size="normal"] {
@@ -428,7 +429,7 @@ step-group-select .ll-label > span {
   width: 100% !important;
 }
 .add-panel step-group-select .select-box {
-  background: #353535!important;
+  background: #353535 !important;
 }
 .table-fixed {
   table-layout: fixed;
@@ -437,7 +438,7 @@ step-group-select .ll-label > span {
   position: relative;
 }
 .add-panel .container.put-down {
-  left: unset!important;
+  left: unset !important;
 }
 table {
   border-spacing: 0;
@@ -505,8 +506,8 @@ table {
   border-color: #393739 !important;
 }
 .add-panel .form-row .select-box .container {
-  position: absolute!important;
-  top: unset!important;
+  position: absolute !important;
+  top: unset !important;
 }
 .status-select--insider .table-fixed {
   table-layout: unset;
@@ -592,7 +593,7 @@ table {
   max-width: 100%;
 }
 .ex-comment-card .title {
-  margin-left: 0!important;
+  margin-left: 0 !important;
 }
 .ex-comment-card .title,
 .ex-comment-card .title .input-box {
@@ -866,7 +867,7 @@ table.add-version-uploadfile-list tr td:last-child a {
   margin-top: -10px;
 }
 .add-panel editor-ckeditor .form-row td.row-title {
-  width: 0!important;
+  width: 0 !important;
 }
 .add-panel ._editor {
   padding-top: 10px;
@@ -914,6 +915,45 @@ table.add-version-uploadfile-list tr td:last-child a {
   background: none !important;
   border: none !important;
   color: inherit !important;
+}
+.task-info__state--waiting {
+  vertical-align: middle;
+}
+.task-info__state--waiting label-dictionary-select .form-row {
+  margin: 0 !important;
+  width: 74px !important;
+  font-size: 12px!important;
+  font-family: inherit!important;
+}
+.task-info__state--waiting label-dictionary-select .input-box {
+  position: relative !important;
+}
+.task-info__state--waiting label-dictionary-select .input-box.only-showing {
+  font-family: inherit!important;
+}
+.task-info__state--waiting label-dictionary-select .input-box.only-showing > span {
+  margin-left: 18px !important;
+}
+.task-info__state--waiting label-dictionary-select .input-box.only-showing > i.fa {
+  top: 4px !important;
+}
+.task-info__state--waiting label-dictionary-select .input-box > i.fa {
+  position: absolute !important;
+  top: 3px !important;
+  left: 1px !important;
+  font-size: 12px!important;
+}
+.task-info__state--waiting label-dictionary-select .input-box input[type="text"] {
+  padding-left: 18px !important;
+  font-family: inherit!important;
+}
+.task-info__state--waiting label-dictionary-select .row-title {
+  width: 13px !important;
+  padding: 0 !important;
+}
+.task-info__state--waiting label-dictionary-select .row-title > i.fa {
+  right: unset !important;
+  left: 0 !important;
 }
 .notice__tab-pane__img-bg {
   background-position: center center;

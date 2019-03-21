@@ -374,6 +374,9 @@ app-version-detail {
     // add 0317，区别详情顶上和上面导航 - start
     background: rgba(0,0,0,.1);
     // add 0317 -end
+    // mod 0321 状态加了编辑的笔之后，按钮放不下了 - start
+    padding-right: 0;
+    // mod 0321 -end
 }
 .task-info__img-box {
     float: left;
@@ -639,7 +642,10 @@ button {
     // - 未经验证，预计是： small: 1.6em; normal: 1.85em; large: 字变大;
     &[data-size="small"] {
         font-size: .85em;
-        padding: 0 .65em;
+        // mod 0321 - start
+        //padding: 0 .65em;
+        padding: 0 .45em;
+        // mod 0321 -end
         line-height: 1.5em;
     }
     &[data-size="normal"] {
