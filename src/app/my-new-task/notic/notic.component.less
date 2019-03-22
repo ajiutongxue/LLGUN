@@ -156,13 +156,17 @@ a {
     background-size: cover;
 }
 .notice__tab-pane__linear-bg {
-    --pos: 30%;
+    --pos: 50%;
     padding: 5px 16px;
     transition: 1s ease-in-out;
-    background: linear-gradient(to right, rgba(44,43,45,0.95) var(--pos), rgba(44,43,45,0.25));
+    background: linear-gradient(to right, rgba(44,43,45,1) var(--pos), rgba(44,43,45,0));
     
     &:hover {
-        --pos: 45%;
+        --pos: 65%;
         //background: linear-gradient(to right, rgba(44,43,45,1) 45%, rgba(44,43,45,0.6));
+    }
+
+    .notice__tab-pane__item--unread & {
+        background: linear-gradient(to right, rgba(108,107,108,1) var(--pos), rgba(108,107,108,0));
     }
 }

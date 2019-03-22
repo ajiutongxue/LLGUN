@@ -939,13 +939,14 @@ table.add-version-uploadfile-list tr td:last-child a {
 }
 .task-info__state--waiting label-dictionary-select .input-box > i.fa {
   position: absolute !important;
-  top: 3px !important;
+  top: 6px !important;
   left: 1px !important;
   font-size: 12px!important;
 }
 .task-info__state--waiting label-dictionary-select .input-box input[type="text"] {
   padding-left: 18px !important;
   font-family: inherit!important;
+  font-size: 12px!important;
 }
 .task-info__state--waiting label-dictionary-select .row-title {
   width: 13px !important;
