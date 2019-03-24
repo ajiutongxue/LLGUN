@@ -869,3 +869,76 @@ table.add-version-uploadfile-list {
 // ***** 详情顶上部分编辑状态修改 - end
 
 
+// ************ input-row 的下拉框 - start ********************
+.select-box .container {
+    box-shadow: 0 3px 8px rgba(0,0,0,.6) !important;
+    line-height: 20px !important;
+    background: @bg-1 !important;
+    border: 1px solid @border-color-1 !important;
+    
+    // .content { padding: 0; }
+    
+    .before,
+    .after {
+        display: none !important;
+    }
+    
+    .item {
+        padding: 0 5px 0 8px !important;
+        color: @font-color-2 !important;
+        transition: .3s !important;
+        
+        &.selected, // 多数时候用的selected这个名字
+        &.active {
+            cursor: default !important;
+           // color: lighten(@brand-color, 15%) !important;
+            color: #fff !important;
+            background: @bg-5 !important;
+        }
+        
+        &.disabled,
+        &.disable {
+            cursor:not-allowed!important;
+            opacity: .5 !important;
+        }
+        
+        &:not(.selected, .disabled, .disable, .active):hover {
+            color: @dark-text-color--normal !important;
+            background: @bg-2!important;
+        }
+    }
+
+}
+// ************ input-row 的下拉框 - end ********************
+
+
+
+// ************* 专门对input row 的input设置 - start *****************
+.input-box {
+    input[type="text"] {
+    
+        background: rgba(0,0,0,.15) !important;
+        border: none;
+        
+        &,
+        &:focus {
+            outline: none!important;
+        }
+        
+        &:hover {
+            background: rgba(0,0,0,.25)!important;
+        }
+        
+        &:focus {
+            background: rgba(0,0,0,.4)!important;
+        }
+    }
+}
+
+.cke_focus {
+    .cke_editable {
+        background: #1a1a1a!important;
+    }
+}
+// ************* 专门对input row 的input设置 - end *****************
+
