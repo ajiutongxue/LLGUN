@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AlertDialogComponent implements OnInit {
 
-    isShowAlert = true;
+    isShowAlert = false;
     mask = false;
 
     constructor() {

@@ -81,6 +81,7 @@ import { NoteReplyComponent } from './my-new-task/note-reply/note-reply.componen
 import { AlertBoxComponent } from './my-new-task/alert-box/alert-box.component';
 import { AlertDialogComponent } from './my-new-task/alert-dialog/alert-dialog.component';
 import { NoticComponent } from './my-new-task/notic/notic.component';
+import { StoryBoardComponent } from './my-new-task/story-board/story-board.component';
 
 const appRoutes: Routes = [
 
@@ -143,6 +144,10 @@ const appRoutes: Routes = [
     {
         path: 'task-detail',
         component: MyNewTaskDetailComponent
+    },
+    {
+        path: 'story-board',
+        component: StoryBoardComponent,
     },
     {
         path: 'my-player',
@@ -248,6 +253,7 @@ const appRoutes: Routes = [
         AlertBoxComponent,
         AlertDialogComponent,
         NoticComponent,
+        StoryBoardComponent,
         // HighlightDirective
     ],
     imports: [

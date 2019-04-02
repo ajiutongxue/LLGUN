@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MyNewTaskComponent implements OnInit {
 
-    currentTab = 'waiting';
+    currentTab = 'finished';
     toggle = false;
     isContextMenu = false;
     isShowUserMenu = false;
