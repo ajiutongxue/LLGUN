@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./alert-box.component.less']
 })
 export class AlertBoxComponent implements OnInit {
-    isShowAlert = true;
+    isShowAlert = false;
 
     constructor() {
     }
