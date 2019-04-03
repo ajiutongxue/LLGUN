@@ -10,42 +10,42 @@
 
 
 
-<!-- 考虑多客户端，所以遗弃了一些之前的通用 class -->
-<div class="app-header">
-    <div class="app-header__head-bar">
-        <div class="app-header__path-tools">
-            <div class="app-header__path-tools__home"><i class="fa fa-home"></i></div>
-            <div class="app-header__path-tools__prev disabled"><i class="fa fa-caret-left"></i></div>
-            <div class="app-header__path-tools__next"><i class="fa fa-caret-right"></i></div>
-        </div>
-        <div class="app-header__action-tools">
-            <!-- 这个地方没按钮的时候，可以像现在这样，里面内容为空就行了，如果硬要删掉也没关系 -->
-            <!--<button>开始审核</button>-->
-            <!--<button>审核通过</button>-->
-        </div>
-        <div class="app-header__side-tools">
-            <!-- mod by yang, -start 2019/2/21 -->
-            <!-- 独立出了search-box 组件 -->
-            <!-- 说明：app-header__side-tools__search-box 是负责定位的，需要留在外面 -->
-            <!--<div class="app-header__side-tools__search-box"><input type="text" /><button class="app-header__side-tools__search-btn"><i class="fa fa-search"></i></button></div>-->
-            <div class="app-header__side-tools__search-box">
-                <app-search-box></app-search-box>
-            </div>
-            <!-- mod -end 2019/2/21 -->
+<!--&lt;!&ndash; 考虑多客户端，所以遗弃了一些之前的通用 class &ndash;&gt;-->
+<!--<div class="app-header">-->
+    <!--<div class="app-header__head-bar">-->
+        <!--<div class="app-header__path-tools">-->
+            <!--<div class="app-header__path-tools__home"><i class="fa fa-home"></i></div>-->
+            <!--<div class="app-header__path-tools__prev disabled"><i class="fa fa-caret-left"></i></div>-->
+            <!--<div class="app-header__path-tools__next"><i class="fa fa-caret-right"></i></div>-->
+        <!--</div>-->
+        <!--<div class="app-header__action-tools">-->
+            <!--&lt;!&ndash; 这个地方没按钮的时候，可以像现在这样，里面内容为空就行了，如果硬要删掉也没关系 &ndash;&gt;-->
+            <!--&lt;!&ndash;<button>开始审核</button>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button>审核通过</button>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div class="app-header__side-tools">-->
+            <!--&lt;!&ndash; mod by yang, -start 2019/2/21 &ndash;&gt;-->
+            <!--&lt;!&ndash; 独立出了search-box 组件 &ndash;&gt;-->
+            <!--&lt;!&ndash; 说明：app-header__side-tools__search-box 是负责定位的，需要留在外面 &ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="app-header__side-tools__search-box"><input type="text" /><button class="app-header__side-tools__search-btn"><i class="fa fa-search"></i></button></div>&ndash;&gt;-->
+            <!--<div class="app-header__side-tools__search-box">-->
+                <!--<app-search-box></app-search-box>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; mod -end 2019/2/21 &ndash;&gt;-->
 
-            <!-- 注销登录 - start -->
-            <!-- 说明：本地增加了一个变量，当为true的时候，影响两个地方，通过 ngClass 和 ngIf 来控制的 ，请注意-->
-            <div class="app-header__side-tools__user" [ngClass]="{ 'side-tools__user--active': isShowUserMenu }">
-                <!-- 需要1个 a 标签？ 那就这样 -->
-                <a class="user__avatar" (click)="isShowUserMenu = !isShowUserMenu"><img src="../../assets/style/images/img3.jpg" /></a>
-                <div class="user__menu" *ngIf="isShowUserMenu">
-                    <div class="user__menu__item"><i class="fa fa-sign-out"></i> 退出登录</div>
-                </div>
-            </div>
-            <!-- 注销登录 - end -->
-        </div>
-    </div>
-</div>
+            <!--&lt;!&ndash; 注销登录 - start &ndash;&gt;-->
+            <!--&lt;!&ndash; 说明：本地增加了一个变量，当为true的时候，影响两个地方，通过 ngClass 和 ngIf 来控制的 ，请注意&ndash;&gt;-->
+            <!--<div class="app-header__side-tools__user" [ngClass]="{ 'side-tools__user&#45;&#45;active': isShowUserMenu }">-->
+                <!--&lt;!&ndash; 需要1个 a 标签？ 那就这样 &ndash;&gt;-->
+                <!--<a class="user__avatar" (click)="isShowUserMenu = !isShowUserMenu"><img src="../../assets/style/images/img3.jpg" /></a>-->
+                <!--<div class="user__menu" *ngIf="isShowUserMenu">-->
+                    <!--<div class="user__menu__item"><i class="fa fa-sign-out"></i> 退出登录</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; 注销登录 - end &ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
 
 <!-- 0312 start -->
