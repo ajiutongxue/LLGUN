@@ -67,7 +67,7 @@ body {
     //flex: 0 0 @head-bar-height;
     height: 66px;
     // mod 0314 -end
-    
+
     line-height: @head-bar-height;
     font-size: 14px;
     background: @bg-1;
@@ -83,14 +83,14 @@ body {
 .app-header__head-bar__main {
     flex: auto;
     flex-direction: column;
-    
+
     .app-header__path-tools {
         flex: 0 0 25px;
         // add 0314
         padding-bottom: 5px;
         // -end
     }
-    
+
     .app-header__path-tools__home,
     .app-header__path-tools__prev,
     .app-header__path-tools__next,
@@ -104,7 +104,7 @@ body {
         line-height: 25px;
         cursor: pointer;
         transition: .3s;
-        
+
         &.disabled {
             color: @font-color-9;
             cursor: default;
@@ -114,7 +114,7 @@ body {
             color: @font-color-1;
         }
     }
-    
+
     .app-header__notice {
         //position: relative;
         float: right;
@@ -126,13 +126,13 @@ body {
         border-radius: 50%;
         cursor: pointer;
         transition: .3s;
-        
+
         // add 0317
         .fa-bell {
             font-size: 17px;
         }
         // -end
-    
+
         &.disabled {
             color: @font-color-9;
             cursor: default;
@@ -142,7 +142,7 @@ body {
             color: @font-color-1;
         }
     }
-    
+
 }
 // add 0312 -end
 
@@ -172,7 +172,7 @@ body {
     line-height: 25px;
     cursor: pointer;
     transition: .3s;
-    
+
     &.disabled {
         color: @font-color-9;
         cursor: default;
@@ -204,15 +204,15 @@ body {
     text-align: center;
     cursor: pointer;
     position: relative;
-    
+
     &.side-tools__user--active {
         background: @bg-2;
     }
-    
+
     &:hover {
         img { opacity: .9; }
     }
-    
+
     img {
         //// 要看清出头像什么样 - start
         width: 48px;
@@ -224,7 +224,7 @@ body {
         object-fit: cover;
         vertical-align: middle;
     }
-    
+
     // 调整了头像部分的结构，将图片用 a 标签包了起来
     .user__avatar {
         display: block;
@@ -232,7 +232,7 @@ body {
         line-height: 50px;
         // -end
     }
-    
+
     .user__menu {
         position: absolute;
         border-radius: 0 0 2px 2px;
@@ -266,7 +266,7 @@ body {
 .app-header__side-tools__search-box {
     position: relative;
     flex: auto;
-    
+
     // mod by yang - start, 2019/2/21
     // 单独出 search-box 组件，组件内容相关样式移动至自己样式文件中
     //input {
@@ -432,14 +432,17 @@ app-version-detail {
     border-radius: 0 0 2px 2px;
     left: -8px;
     top: 33px;
-    width: 72px;
+    // mod 要加图标 start 2019/4/3
+    //width: 72px;
+    width: 78px;
+    // mod end 2019/4/3
     z-index: 98;
     box-shadow: 0 3px 8px rgba(0,0,0,.6);
     // mod end
     line-height: 1.8em;
     background: @bg-1;
     border: 1px solid @border-color-1;
-    
+
 }
 .home-nav__toggle-item {
     padding: 0 5px;
@@ -449,7 +452,7 @@ app-version-detail {
     padding-left: 8px;
     //text-align: center;
     // mod end
-    
+
     // mod start 2019/02/15
     //&:hover {
     &:not(.toggle-item--selected):hover {
@@ -464,7 +467,7 @@ app-version-detail {
         color: lighten(@brand-color, 15%);
     }
     // add end
-    
+
 }
 // toggle  -- end
 
@@ -496,7 +499,7 @@ app-version-detail {
 }
 .home-nav__tab {
     .home-nav__tab-fn();
-    
+
     &:hover {
         border-bottom-color: @brand-color--dark;
     }
@@ -532,7 +535,7 @@ app-version-detail {
     //// add start, 2019/02/15
     //text-align: center;
     //// add end
-    
+
     // 应该像这样，由外面的容器来决定里面的东西怎么放
     // task-card 封装成组件之后，这里可以改成对应的组件名字
     .task-card {
@@ -568,7 +571,7 @@ app-version-detail {
 .task-info__label-links {
     overflow: hidden;
     margin-left: -2px;
-    
+
     .app-task-info & {
         margin-top: 2px;
     }
@@ -591,7 +594,7 @@ app-version-detail {
     text-overflow: ellipsis;
     margin: 2px;
     transition: .3s;
-    
+
     &:hover {
         background: lighten(@brand-color, 5%);
         color: @font-color-1;
@@ -609,7 +612,7 @@ button {
         font-family: inherit;
         transition: .3s;
     }
-    
+
     /* 按钮颜色 */
     // 通常就是个白色的按钮
     &[data-type="default"] {}
@@ -635,7 +638,7 @@ button {
             background: lighten(@success-color, 5%);
         }
     }
-    
+
     /* 按钮大小 */
     // - 按钮大小并不是一个规定值
     // - 按钮大小是根据按钮所在上下文的文字大小来计算的
@@ -653,7 +656,7 @@ button {
         padding: 0 1em;
     }
     &[data-size="large"] {}
-    
+
     /* 按钮形状 */
     // 不设置时，默认是border-radius：0
     // 圆角
@@ -707,7 +710,7 @@ button {
     padding: 5px 16px;
     transition: 1s ease-in-out;
     background: linear-gradient(to right, rgba(44,43,45,0.95) var(--pos), rgba(44,43,45,0.25));
-    
+
     &:hover {
         --pos: 45%;
         //background: linear-gradient(to right, rgba(44,43,45,1) 45%, rgba(44,43,45,0.6));
