@@ -97,7 +97,7 @@ export class StoryBoardComponent implements AfterViewInit {
 
                 $(ph).css({
                     display: 'block',
-                    left: e.pageX,
+                    left: e.pageX - 15,
                     top: e.pageY - 15,
                 });
 
