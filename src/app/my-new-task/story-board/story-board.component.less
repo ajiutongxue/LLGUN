@@ -1,0 +1,206 @@
+@import "../app-base";
+
+
+/**
+ * item 共有四种状态，该状态将应用到 story-item 和 story-item__content 上
+ * 1 ： doing
+ * 2 ： check
+ * 3 ： repair
+ * 4 ： delay
+ */
+@max-width: 500px;
+
+.story-time {
+    max-width: @max-width;
+    margin: 8px auto 0 auto;
+}
+
+/** 列表内容的包裹容器，可用来约束内部item的宽度 - start */
+.story-list {
+    max-width: @max-width;
+    margin: 0 auto;
+}
+/** - end - */
+
+
+// 每个story card 的通用设置
+.story-item() {
+    //height: 30px;
+    position: relative;
+    line-height: 20px;
+    padding: 0 8px;
+}
+
+.story-item--doing { .story-item(); }
+.story-item--check { .story-item(); }
+.story-item--repair { .story-item(); }
+.story-item--delay {
+    .story-item();
+    margin: -8px 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: rgba(255,255,255,.2);
+}
+
+
+.story-item__time {
+    @bg-color: @bg-6;
+    float: left;
+    width: 78px;
+    position: relative;
+    padding: 0 10px;
+    background: @bg-color;
+    border-radius: 5px;
+    margin-right: 12px;
+    text-align: center;
+    box-shadow: 0 1px 0 rgba(255,255,255,.1);
+    font-size: 11px;
+    
+    &::after{
+        content: '';
+        border-width: 6px;
+        border-color: transparent transparent transparent @bg-color;
+        border-style: solid;
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: -12px;
+        top: 4px;
+    }
+}
+
+
+.story-item__content() {
+    position: relative;
+    //overflow: hidden;
+    //display: inline-block;
+    background: @bg-2;
+    border-radius: 4px;
+    padding: 6px 10px 6px 42px;
+    transition: .3s;
+    margin-left: 92px;
+    height: 52px;
+    
+    &:hover { box-shadow: 0 4px 16px 1px #000; }
+    
+    // 需要的话还可以有 disable
+    
+    // 可点击状态
+    &.story-item--button-type {
+        cursor: pointer;
+    }
+    
+    // 可拖拽状态
+    &.story-item--drag-type {
+        @hover-color: @bg-3;
+        cursor: move;
+        position: relative;
+        z-index: 1;
+        user-select: none;
+        
+        &::before,
+        &::after {
+            position: absolute;
+            content: '';
+            width: 8px;
+            background: url("./img/bar-left.png") 50% 50% no-repeat @hover-color;
+            height: 46px;
+            left: -8px;
+            top: 3px;
+            border-radius: 6px 0 0 6px;
+            opacity: 0;
+            z-index: -1;
+        }
+        &::after {
+            left: unset;
+            right: -8px;
+            background: url("./img/bar-right.png") 50% 50% no-repeat @hover-color;;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        &:hover {
+            &::before,
+            &::after { opacity: 1; }
+        }
+        
+        // 拖拽时
+        &.dragging {
+            transform: translateX(10px);
+            opacity: .35;
+            box-shadow: 0 4px 16px 1px #000;
+            &::before,
+            &::after { opacity: 1; }
+        }
+    }
+    
+}
+
+
+.story-item__content--doing {
+    .story-item__content();
+    //background: #a0d7ff;
+    //border: 2px solid fade(@brand-color, 40%);
+}
+.story-item__content--check {
+    .story-item__content();
+}
+.story-item__content--repair {
+    .story-item__content();
+}
+.story-item__content--delay {
+    .story-item__content();
+}
+
+
+.item__content__div() {
+    float: left;
+}
+.item__content__no {
+    position: absolute;
+    line-height: 52px;
+    width: 34px;
+    left: 0;
+    text-align: center;
+    top: 0;
+    border-radius: 4px 0 0 4px;
+    .story-item__content--doing &{
+        background: @doing-color;
+    }
+    .story-item__content--check &{
+        background: @check-color;
+    }
+    .story-item__content--repair &{
+        background: @repair-color;
+    }
+    .story-item__content--delay &{
+        background: @delay-color;
+    }
+    
+    
+}
+.item__content__task-name {
+    .item__content__div();
+    font-weight: 600;
+}
+
+.item__content__time {
+    float: right;
+}
+
+.item__content__status {
+    .item__content__div();
+    clear: left;
+    margin-right: 8px;
+}
+
+.item__content__project-name { .item__content__div(); }
+
+
+.story-divider {
+    height: 0;
+    margin: 8px 0;
+    border-top: 1px dashed rgba(255,255,255,.15);
+    //background: rgba(255,255,255,.3);
+}
+
+

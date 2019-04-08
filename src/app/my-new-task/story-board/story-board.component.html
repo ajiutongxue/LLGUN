@@ -1,0 +1,22 @@
+<div class="story-time">
+    <span class="story-time__label"><i class="fa fa-calendar"></i> 当前日期:</span>
+    <span class="story-time__time">2019-12-12</span>
+</div>
+<div class="story-list">
+    <div class="story-divider"></div>
+
+    <div *ngFor="let r of d">
+        <div [ngClass]="r.delay ? 'story-item--delay' : 'story-item--' + r.status">
+            <div class="story-item__time">{{ r.date }}</div>
+            <div [id]="r.id" class="story-item__content--{{r.delay ? 'delay' : r.status}} story-item--{{r.reactType}}-type">
+                <div class="item__content__no">{{ r.no }}</div>
+                <div class="item__content__task-name">{{ r.task }}</div>
+                <div class="item__content__time">{{ r.during }}</div>
+                <div class="item__content__status">{{ r.statusLocal }}</div>
+                <div class="item__content__project-name">{{ r.prj }}</div>
+            </div>
+        </div>
+        <div class="story-divider"></div>
+    </div>
+
+</div>
